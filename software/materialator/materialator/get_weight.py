@@ -6,8 +6,7 @@ from stl import Mesh
 
 def compute_volume(stl_file : str) -> float:
     mesh = Mesh.from_file(stl_file)
-    mass = mesh.get_mass_properties_with_density(1)
-    print(mass)
+    mass = mesh.get_mass_properties()[0]
     return mass
 
 def get_weight(stl_file : str, material : str) -> float:
