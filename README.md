@@ -2,6 +2,9 @@
 
 **One ring to rule them all, in the light bind them**
 
+![Purple Ring](docs/purple_ring.jpg)
+![Red Ring](docs/red_ring.jpg)
+
 Available on :
 - [Tindie](https://www.tindie.com/products/whatnick/lantern-rings/)
 - Etsy
