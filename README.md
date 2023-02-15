@@ -7,7 +7,10 @@
 
 Available on :
 - [Tindie](https://www.tindie.com/products/whatnick/lantern-rings/)
-- Etsy
+- [Etsy](https://www.etsy.com/au/listing/1365896916/lantern-corps-cosplay-ring-with)
+- [PCBWay]
+- [OSHPark]
+- [Aisler](https://aisler.net/p/UOBXJDJP)
 - [Shapeway](https://www.shapeways.com/shops/whatnick)
   - [Ring body](https://www.shapeways.com/product/PLQWLUV6V/lantern-ring-body?optionId=251926151&li=shop-inventory)
   - [Green Lantern Logo](https://www.shapeways.com/product/PLQWLUV6V/lantern-ring-body?optionId=251926155&li=shop-inventory)
