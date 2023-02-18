@@ -2,7 +2,7 @@
 
 **One ring to rule them all, in the light bind them**
 
-![Purple Ring](docs/purple_ring.jpg)
+![Purple Ring](docs/ring_purple.jpg)
 ![Red Ring](docs/red_ring.jpg)
 
 Available on :
