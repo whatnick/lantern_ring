@@ -20,8 +20,8 @@ Available on :
   - [Violet Lantern Logo](https://www.shapeways.com/product/Q4ZM3RG58/purple-love-lanterns-logo?optionId=253810197&li=shops)
   - [Red Lantern Logo](https://www.shapeways.com/product/2T2WC596J/red-rage-lanterns-logo?optionId=253810042&li=shops)
   - [Orange Lantern Logo](https://www.shapeways.com/product/XHF33N3QN/orange-avarice-lanterns-logo?optionId=253810121&li=shops)
-  - [Black Lantern Logo]
-  - [White Lantern Logo]
+  - [Black Lantern Logo](https://www.shapeways.com/product/NEF64B7SB/lantern-ring-life-and-death)
+  - [White Lantern Logo](https://www.shapeways.com/product/NEF64B7SB/lantern-ring-life-and-death)
   - [Black MTG Logo](https://www.shapeways.com/product/NJ25J3LPM/magic-the-gathering-black-mana-logo?optionId=253809132)
 
 [LED Colours and quantum physics](https://www.forbes.com/sites/chadorzel/2019/07/01/the-mostly-quantum-physics-of-making-colors/?sh=2ce5846e3953) are inextricably linked.
