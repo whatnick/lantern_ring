@@ -2099,7 +2099,7 @@
     )
   )
 
-  (symbol (lib_id "Device:Q_PNP_BEC") (at 160.909 60.833 0) (mirror x) (unit 1)
+  (symbol (lib_id "Device:Q_PNP_BEC") (at 160.909 60.833 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid df6a19e9-6359-4874-b780-a07aa80e9e7b)
     (property "Reference" "Q1" (at 168.9649 60.833 90)
@@ -2108,7 +2108,7 @@
     (property "Value" "Q_PNP_BEC" (at 166.1898 60.833 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 165.989 63.373 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 165.989 58.293 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 160.909 60.833 0)
@@ -2129,13 +2129,13 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 163.449 65.913 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid e17208d5-861b-4b2d-b6bb-7b0a6364a6ac)
-    (property "Reference" "#PWR09" (at 163.449 72.263 0)
+  (symbol (lib_name "VCC_1") (lib_id "power:VCC") (at 163.449 65.913 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid e8dd4495-6e96-4469-866f-32886b4a073a)
+    (property "Reference" "#PWR09" (at 163.449 62.103 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 163.449 70.993 0)
+    (property "Value" "VCC" (at 163.449 70.231 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "" (at 163.449 65.913 0)
@@ -2144,7 +2144,7 @@
     (property "Datasheet" "" (at 163.449 65.913 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 67aec774-8865-42cf-82da-bd21275f6a44))
+    (pin "1" (uuid e51a514a-0e22-45e9-82cb-3d9ac9deda47))
     (instances
       (project "ring_pcb_IR"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
