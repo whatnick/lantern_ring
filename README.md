@@ -4,6 +4,7 @@
 
 ![Purple Ring](docs/ring_purple.jpg)
 ![Red Ring](docs/red_ring.jpg)
+![Blue Ring](docs/ring_blue.jpg)
 
 Available on :
 - [Tindie](https://www.tindie.com/products/whatnick/lantern-rings/)
