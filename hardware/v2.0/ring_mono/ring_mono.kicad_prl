@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 44,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -12,9 +12,8 @@
       "pads": 1.0,
       "tracks": 1.0,
       "vias": 1.0,
-      "zones": 1.0
+      "zones": 0.6
     },
-    "ratsnest_display_mode": 0,
     "selection_filter": {
       "dimensions": true,
       "footprints": true,
@@ -52,21 +51,24 @@
       23,
       24,
       25,
+      26,
       27,
       28,
       29,
       30,
+      32,
+      33,
       34,
       35,
       36,
       39,
       40
     ],
-    "visible_layers": "0001000_00000000",
+    "visible_layers": "ffcffff_ffffffff",
     "zone_display_mode": 0
   },
   "meta": {
-    "filename": "ring_pcb.kicad_prl",
+    "filename": "ring_mono.kicad_prl",
     "version": 3
   },
   "project": {
