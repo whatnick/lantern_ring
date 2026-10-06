@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="920" viewBox="0 0 1100 920">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#23506c"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="920" rx="16" fill="#f4f6f8"/>
+  <g font-family="Arial, sans-serif" fill="#203040">
+    <text x="35" y="45" font-size="26" font-weight="bold">Lantern Ring: pressure contacts and metal-body isolation</text>
+    <text x="35" y="74" font-size="16">Authored concept schematic - not Nano Banana, not a manufacturing section, not to scale</text>
+    <rect x="30" y="100" width="510" height="295" rx="12" fill="#fff" stroke="#cad4dc"/>
+    <rect x="560" y="100" width="510" height="295" rx="12" fill="#fff" stroke="#cad4dc"/>
+    <text x="50" y="134" font-size="20" font-weight="bold">A. Rear VCC contact: preload UP</text>
+    <text x="580" y="134" font-size="20" font-weight="bold">B. Front TP1 ground: preload DOWN</text>
+    <rect x="80" y="190" width="290" height="28" fill="#286b49"/>
+    <rect x="200" y="218" width="85" height="8" fill="#cf985b"/>
+    <rect x="170" y="235" width="145" height="9" fill="#c87432"/>
+    <rect x="180" y="244" width="125" height="48" fill="#64a9ce"/>
+    <rect x="100" y="292" width="280" height="28" fill="#d1b477"/>
+    <path d="M242 281 L242 254" stroke="#23506c" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="390" y="207" font-size="15">PCB</text>
+    <text x="330" y="242" font-size="14">bare copper</text>
+    <text x="320" y="273" font-size="14">silicone</text>
+    <text x="70" y="348" font-size="15">Deck backs foil; rear centre VCC pad above it.</text>
+    <text x="70" y="373" font-size="14">Copper is the conductor, not the spring.</text>
+    <rect x="620" y="174" width="290" height="26" fill="#3d9470"/>
+    <rect x="690" y="200" width="110" height="44" fill="#64a9ce"/>
+    <rect x="680" y="244" width="145" height="9" fill="#c87432"/>
+    <rect x="710" y="261" width="82" height="8" fill="#cf985b"/>
+    <rect x="620" y="269" width="290" height="28" fill="#286b49"/>
+    <path d="M745 208 L745 237" stroke="#23506c" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="924" y="193" font-size="14">bezel</text>
+    <text x="830" y="235" font-size="14">silicone</text>
+    <text x="835" y="256" font-size="14">bare copper</text>
+    <text x="924" y="288" font-size="14">PCB</text>
+    <text x="600" y="348" font-size="15">Bezel backs foil; front TP1 ground pad below it.</text>
+    <text x="600" y="373" font-size="14">Adhesive belongs on the support-facing side.</text>
+    <rect x="30" y="415" width="1040" height="455" rx="12" fill="#fff" stroke="#cad4dc"/>
+    <text x="50" y="451" font-size="21" font-weight="bold">C. Metal shell stays electrically floating</text>
+    <text x="50" y="479" font-size="15">Two separate circuits inside a continuous insulating insert; never use the ring band as a terminal.</text>
+    <path d="M185 530 L225 530 L225 785 L850 785 L850 530 L890 530 L890 825 L185 825 Z" fill="#aebbc8"/>
+    <path d="M228 535 L252 535 L252 760 L823 760 L823 535 L847 535 L847 783 L228 783 Z" fill="#69a78b"/>
+    <rect x="360" y="540" width="335" height="24" fill="#286b49"/>
+    <rect x="510" y="564" width="66" height="8" fill="#d59e60"/>
+    <rect x="647" y="532" width="42" height="8" fill="#d59e60"/>
+    <path d="M485 600 L525 577 L562 577" fill="none" stroke="#cf882e" stroke-width="7"/>
+    <path d="M737 582 L704 522 L666 522" fill="none" stroke="#465565" stroke-width="7"/>
+    <path d="M485 600 L485 619 L548 619" fill="none" stroke="#cf882e" stroke-width="5"/>
+    <path d="M737 582 L756 582 L756 737 L541 737" fill="none" stroke="#465565" stroke-width="5"/>
+    <rect x="400" y="650" width="290" height="53" rx="14" fill="#bac4ce" stroke="#6b7a86" stroke-width="2"/>
+    <rect x="436" y="703" width="216" height="7" fill="#d7dde2"/>
+    <rect x="390" y="702" width="47" height="15" fill="#69a78b"/>
+    <rect x="651" y="702" width="48" height="15" fill="#69a78b"/>
+    <rect x="540" y="621" width="16" height="29" fill="#dcae43"/>
+    <rect x="534" y="710" width="16" height="27" fill="#dcae43"/>
+    <text x="495" y="678" font-size="18" font-weight="bold">CR2032 + UP</text>
+    <text x="443" y="727" font-size="12">inset negative disk</text>
+    <text x="56" y="575" font-size="15">Floating metal</text>
+    <path d="M165 572 L200 584" stroke="#526774" fill="none"/>
+    <text x="56" y="628" font-size="15">Insulating liner</text>
+    <path d="M166 625 L239 645" stroke="#526774" fill="none"/>
+    <text x="909" y="572" font-size="15">TP1 ground</text>
+    <path d="M905 566 L686 535" stroke="#526774" fill="none"/>
+    <text x="906" y="624" font-size="15">Rear VCC</text>
+    <path d="M902 618 L577 568" stroke="#526774" fill="none"/>
+    <text x="56" y="852" font-size="14">Concept only: force, wiping travel, terminations, fastener isolation and metal clearances require engineering.</text>
+    <text x="35" y="902" font-size="15">Do not rely on anodizing, paint or copper-tape adhesive as the only short-circuit barrier.</text>
+  </g>
+</svg>

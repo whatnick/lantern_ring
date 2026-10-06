@@ -17,6 +17,11 @@ mono-colour PCB, not a certified battery-powered product.
 [Repository baseline review](docs/design/repository-review.md) distinguishes the
 existing board variants and unfinished experiments.
 
+[Contact and metal-body roadmap](docs/design/contact-roadmap/README.md) explores
+copper-tape pressure contacts, replaceable plated springs and an electrically
+isolated metal shell, with progressive local renders and prepared Nano Banana
+prompts. These concepts do not replace the current manufacturing CAD.
+
 ![Purple Ring](docs/ring_purple.jpg)
 ![Red Ring](docs/red_ring.jpg)
 ![Blue Ring](docs/ring_blue.jpg)

@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.1-flash-image-preview",
+  "common": "Create an original industrial-design concept render of a chunky illuminated electronic finger ring, on a clean warm-white studio background, three-quarter isometric view. No logos, copyrighted characters, hands or unrelated electronics. Use a consistent circular crown and plain finger band across this series. Show a green asymmetric approximately 18 by 19 mm circuit board with six small LEDs, one CR2032 coin cell and a removable three-lug 30-degree twist-lock cassette. The board is seated in a carrier; never twist the bare board. Battery positive face is UP, inset negative face DOWN. There are TWO independent contact circuits: rear centre PCB VCC to the positive battery face, front edge PCB ground to the inset negative battery face. Copper conductors are isolated from each other and from any metal exterior. No charging, sparks or exposed wiring against skin. Use readable numbered callout circles rather than speculative dimension labels. Add a small label 'CONCEPT - NOT ENGINEERING CAD'. Illustrative only: do not imply manufacturability, physical tests, waterproofing or battery certification.",
+  "stages": [
+    {
+      "id": "01-serviceable-pogo",
+      "title": "Serviceable pogo baseline",
+      "prompt": "Show a split assembled/exploded composition of a dark polymer ring socket, green removable cassette, amber insulating PCB contact deck and green screw-retained bezel. Show two gold spring-loaded pogo pins touching opposite battery faces, with insulated red and black wires to the board. Emphasise the wide bayonet lug, retaining shelves, mandatory anti-unlock screw and the cassette removal motion. This first stage still has permanent soldered wire connections; do not depict it as solderless."
+    },
+    {
+      "id": "02-copper-pressure",
+      "title": "Copper tape pressure-contact experiment",
+      "prompt": "Show an exploded polymer cassette and a magnified contact cutaway. Replace the two PCB wire joints with two separate formed copper-tape contact lands in recessed insulating channels: one presses against the board's underside centre VCC pad, the other wraps through an insulated perimeter route and presses DOWN against a front-side edge ground pad. Put a separate blue silicone compression block behind EACH pad-contact land, with the bezel providing sustained normal pressure. Bare copper faces the board; adhesive is on the plastic-facing side. Show a tiny wiping motion during seating, not a friction-only connection. Retain the two battery pogo pins and depict insulated mechanically captured conductor-to-pin-tail clamps as an unqualified experiment. No strip touches the coin-cell positive rim or metallic exterior. Copper foil is not itself a spring."
+    },
+    {
+      "id": "03-plated-springs",
+      "title": "Replaceable plated spring-contact cartridge",
+      "prompt": "Develop the copper-tape experiment into an exploded replaceable insulating contact cartridge holding two independent gold-plated phosphor-bronze leaf contacts with rounded contact dimples. One pushes UP on the underside centre PCB VCC pad; the other pushes DOWN on the top edge PCB ground pad. Show deliberate leaf deflection, mechanical root capture, overtravel stops and a short wiping action. Do not let the leaves touch LED parts or unrelated PCB traces. Retain the opposite-face battery pogo contacts and show separate mechanically clamped terminations. Make the spring cartridge replaceable without breaking the PCB. The exact spring alloy, thickness, plating, force, fatigue and pad finish remain unqualified."
+    },
+    {
+      "id": "04-floating-metal",
+      "title": "Metal ring body with isolated polymer cassette",
+      "prompt": "Show a polished stainless-steel or titanium finger band and crown socket, with a clearly visible green insulating liner and the previous stage's removable spring-contact cartridge. The metal is structural and decorative only: electrically FLOATING, not ground and not VCC. Enclose the complete battery pocket, PCB edges, both contact leaves and all terminations in a continuous insulating insert. Show insulated screw sleeves/washers wherever metal fixings approach circuitry, a raised insulating rim and clearance between copper and the metal shell. Do not represent paint or anodizing alone as safety insulation. Include an assembled view and an exploded insert view; preserve the serviceable twist-lock concept. No skin-contacting conductive battery terminal."
+    },
+    {
+      "id": "05-contact-section",
+      "title": "Contact and metal-isolation section",
+      "prompt": "Create a clean explanatory cutaway of the metal-body concept, not a photorealistic opaque exterior. Show numbered callouts for: 1 floating metal shell, 2 continuous polymer battery/contact liner, 3 rear PCB positive pad with upward plated leaf contact, 4 front ground pad with downward plated leaf contact, 5 positive top-face battery pogo, 6 centred negative bottom-face battery pogo, 7 electrically separate captured terminations, 8 mechanical preload and overtravel stop. Give the two contact circuits contrasting colours. Show the coin-cell inset negative disk and insulated positive rim explicitly. Do not merge either circuit with the metal shell. Clearly communicate that normal spring pressure closes the PCB contacts, while bayonet rotation locks the carrier mechanically."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "generator": "Local FreeCAD concept renderer",
+  "generated_at": "2026-10-06T04:45:40.356341+00:00",
+  "nano_banana_status": "BLOCKED: no Gemini API authentication available",
+  "geometry_status": "Stage 1 references the existing CAD; later stages are illustrative overlays only",
+  "images": [
+    {
+      "file": "01-serviceable-pogo.png",
+      "stage": "01-serviceable-pogo",
+      "sha256": "a1e0bc25a48c4f987e0211d272dcfc40037dfe6197161681edeb567f040aaae6",
+      "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
+    },
+    {
+      "file": "02-copper-pressure.png",
+      "stage": "02-copper-pressure",
+      "sha256": "769a848a33668bd3c077d2c4ab0d2e2d6fa07020ca95570e3c6c6903e2eaad90",
+      "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
+    },
+    {
+      "file": "03-plated-springs.png",
+      "stage": "03-plated-springs",
+      "sha256": "92b39ae6446f957581c5769ddc99168ee2633fc9cbb542ddf7da78a2e9789f09",
+      "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
+    },
+    {
+      "file": "04-floating-metal.png",
+      "stage": "04-floating-metal",
+      "sha256": "0cc2ba44e37c76f45aa2f2767b7806ecb5db8ea8705ad575656ec69ce89e5da3",
+      "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
+    }
+  ]
+}

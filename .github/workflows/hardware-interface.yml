@@ -5,11 +5,13 @@ on:
     paths:
       - "hardware/v2.0/ring_3d/**"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
+      - "docs/design/contact-roadmap/**"
       - ".github/workflows/hardware-interface.yml"
   pull_request:
     paths:
       - "hardware/v2.0/ring_3d/**"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
+      - "docs/design/contact-roadmap/**"
       - ".github/workflows/hardware-interface.yml"
 
 permissions:
@@ -25,3 +27,5 @@ jobs:
           python-version: "3.11"
       - name: Check PCB interface, mechanical invariants and artifact provenance
         run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_design.py"
+      - name: Check contact roadmap, image provenance and offline Nano Banana client
+        run: python -m unittest discover -s docs/design/contact-roadmap -p "test_roadmap.py"

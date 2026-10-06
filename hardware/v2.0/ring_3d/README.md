@@ -9,6 +9,11 @@ contact deck; **turn the cassette/bezel, never the PCB**.
 ![Assembled CAD](generated/assembly.png)
 ![Exploded CAD](generated/exploded.png)
 
+The [contact and metal-body roadmap](../../../docs/design/contact-roadmap/README.md)
+explores solderless PCB pressure contacts and a floating metal shell with an
+insulating cassette. Those renders are concepts, not replacement manufacturing
+geometry or qualified electrical interfaces.
+
 ## Files and compatibility
 
 `generated/Lantern_Ring_v2.FCStd` is the native editable FreeCAD assembly.

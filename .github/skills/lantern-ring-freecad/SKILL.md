@@ -5,6 +5,11 @@ description: Rebuild and modify Lantern Ring v2 FreeCAD hardware, including the 
 
 # Lantern Ring FreeCAD reconstruction
 
+The contact/material ideation roadmap is `docs/design/contact-roadmap/README.md`.
+Its copper-foil, plated-leaf and metal-shell illustrations are not validated
+replacement geometry. Keep the metal shell floating and retain a continuous
+insulating contact/battery insert unless a separately reviewed design changes it.
+
 Use this skill for Lantern Ring enclosure, PCB fit, battery contacts, FreeCAD
 regeneration, printing or mechanical review. Work from
 `hardware/v2.0/ring_3d/README.md`, `parameters.json`, `design.py` and

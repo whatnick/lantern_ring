@@ -13,6 +13,9 @@ as linked in the root README. Preserve historical designs and their assets.
 - `firmware/Arduino-TV-B-Gone`: legacy firmware; keep unrelated behaviour unchanged.
 - `software/materialator`: independent STL volume/metal-weight experiment.
 - `docs/design`: electrical proposals and repository review notes.
+- `docs/design/contact-roadmap`: concept renders, Nano Banana prompts/client and
+  metal/contact ideation; not manufacturing CAD. Preserve image provenance and
+  distinguish local FreeCAD output from AI-generated images.
 
 ## Mechanical work
 
