@@ -1,8 +1,10 @@
 # Contact and metal-body design roadmap
 
-**Status: ideation, not a revised manufacturing release.** The current
-[v2 CAD](../../../hardware/v2.0/ring_3d/README.md) remains unchanged.
-This roadmap explores eliminating the two soldered PCB connections while
+**Status: ideation, not a revised manufacturing release.** The illustrations
+now reference the [compact v2 CAD](../../../hardware/v2.0/ring_3d/README.md):
+24.9 mm socket, 23.4 mm bezel, 11 mm band, short 0965 SMT pogo pins and a direct
+rear-VCC solder connection. They do not reinstate the oversized 36.4 mm crown.
+This roadmap explores eliminating the permanent PCB connections while
 retaining opposite-face CR2032 pogo contacts and the removable bayonet cassette.
 An outer ring body can be metal; the battery/contact insert still needs insulation.
 
@@ -32,7 +34,8 @@ access remains unverified.
 This is the control design: the PCB rides in a profiled contact deck; a wide-key
 three-lug cassette turns 30 degrees counterclockwise and is retained with an
 anti-unlock screw. Two battery pogo pins connect through a soldered insulated
-loom. Battery changes need no soldering. The exploded picture is explanatory,
+ground lead, with the positive pin base soldered directly to rear VCC. Battery
+changes need no soldering. The exploded picture is explanatory,
 not the literal removal sequence: remove bezel/PCB/deck before lifting the cell.
 
 ### 02 - Copper tape and compression pads
@@ -61,8 +64,8 @@ carrier tooling. Bare copper oxide, sweat and repeated sliding are reasons to
 treat tape as an experiment, not the final wearable contact material.
 
 The conductor-to-pogo interface must also be solved: a captive clamp/spring
-socket would eliminate the pin-tail solder joint, but loose tape touching a
-solder tail is not an acceptable terminal. Four pressure/clamp interfaces are
+socket would replace the SMT base solder joint, but loose tape touching a
+pin base is not an acceptable terminal. Four pressure/clamp interfaces are
 not automatically more reliable than four permanent solder joints.
 
 ### 03 - Replaceable plated spring contacts

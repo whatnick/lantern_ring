@@ -27,7 +27,8 @@ class NativeDocumentTests(unittest.TestCase):
             parameters.FingerDiameter = original + 1.0
             self.doc.recompute()
             self.assertNotAlmostEqual(before, self.doc.RingBase.Shape.Volume, places=3)
-            centre_z = -(original + 1.0) / 2 - 1.5
+            p = json.loads(object_config(parameters))
+            centre_z = -(original + 1.0) / 2 - p["band_wall"] / 2
             point = App.Vector(original / 2 + 0.2, 0, centre_z)
             self.assertFalse(self.doc.RingBase.Shape.isInside(point, 1e-6, False))
             self.doc.RingBase.Shape.check(True)

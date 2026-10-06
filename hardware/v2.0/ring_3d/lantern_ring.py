@@ -5,6 +5,7 @@ from functools import lru_cache
 import itertools
 import json
 import math
+import os
 from pathlib import Path
 import sys
 
@@ -27,7 +28,7 @@ COLORS = {
     "Battery": (0.72, 0.75, 0.78),
     "PositivePogo": (0.92, 0.72, 0.25),
     "NegativePogo": (0.92, 0.72, 0.25),
-    "PositiveLead": (0.78, 0.12, 0.10),
+    "PositiveLead": (0.72, 0.75, 0.78),
     "NegativeLead": (0.12, 0.12, 0.14),
     "LEDs": (0.83, 0.94, 0.78),
 }
@@ -65,7 +66,7 @@ def screw_positions(p):
 
 
 def pogo(p, flange, point, downward=False):
-    """Manufacturer envelope; flange datum is the base of the pin, excluding tail."""
+    """Conservative 0965 SMT envelope; flange datum is the solder-mount plane."""
     x, y = point
     flange_top = flange + p["pin_flange_thickness"]
     body_top = flange + p["pin_body_length"]
@@ -73,8 +74,6 @@ def pogo(p, flange, point, downward=False):
     result = cylinder(p["pin_flange_diameter"] / 2, flange, flange_top, x, y)
     result = result.fuse(cylinder(p["pin_body_diameter"] / 2, flange_top, body_top, x, y))
     result = result.fuse(cylinder(p["pin_tip_diameter"] / 2, body_top, tip_top, x, y))
-    result = result.fuse(cylinder(p["pin_tail_diameter"] / 2,
-                                  flange - p["pin_tail_length"], flange, x, y))
     if downward:
         result.rotate(App.Vector(x, y, flange), App.Vector(1, 0, 0), 180)
     return result.removeSplitter()
@@ -101,7 +100,8 @@ def unrotated_geometry(p, pcb):
     wire_y = p["wire_channel_y"]
     wire_r = p["wire_channel_diameter"] / 2
 
-    band_centre = App.Vector(0, -p["band_width"] / 2, -p["finger_diameter"] / 2 - 1.5)
+    band_centre = App.Vector(0, -p["band_width"] / 2,
+                             -p["finger_diameter"] / 2 - p["band_wall"] / 2)
     outer = Part.makeCylinder(p["finger_diameter"] / 2 + p["band_wall"],
                               p["band_width"], band_centre, App.Vector(0, 1, 0))
     inner = Part.makeCylinder(p["finger_diameter"] / 2,
@@ -121,7 +121,7 @@ def unrotated_geometry(p, pcb):
                                track_bottom, track_top, start, entry_width + p["lock_angle"]))
     latch_z = p["lug_bottom"] + p["lug_height"] / 2
     base = base.cut(radial_hole(p["lock_angle"], p["lug_outer_radius"] - 0.1,
-                                p["body_radius"] + 1, latch_z, 1.1))
+                                p["body_radius"] + 1, latch_z, 0.55))
 
     carrier = cylinder(p["carrier_radius"], p["carrier_bottom"], pcb_top)
     carrier = carrier.cut(cylinder(cell_radius, p["battery_bottom"], p["deck_bottom"]))
@@ -130,7 +130,7 @@ def unrotated_geometry(p, pcb):
         carrier = carrier.fuse(cylinder(p["screw_post_radius"], p["deck_bottom"] - 0.5, pcb_top, x, y))
         carrier = carrier.cut(cylinder(p["screw_pilot_diameter"] / 2,
                                        p["deck_bottom"] - 3, pcb_top + 1, x, y))
-    carrier = carrier.fuse(cylinder(1.2, p["battery_bottom"] - 0.1, pcb_top, wire_x, wire_y))
+    carrier = carrier.fuse(cylinder(0.35, p["carrier_bottom"], pcb_top, wire_x, wire_y))
     carrier = carrier.cut(cylinder(wire_r, p["carrier_bottom"] - 1, pcb_top + 1, wire_x, wire_y))
     neg_shoulder = s["negative_flange"] + p["pin_flange_thickness"]
     carrier = carrier.cut(cylinder(p["pin_bore_diameter"] / 2,
@@ -139,13 +139,15 @@ def unrotated_geometry(p, pcb):
                                    p["carrier_bottom"] - 0.1, neg_shoulder))
     # Underside channel encloses the negative lead above the base's insulating floor.
     carrier = carrier.cut(box(3.0, wire_y + wire_r,
-                              p["carrier_bottom"] - 0.1, 3.6, wire_x - 1.5, -wire_r))
+                              p["carrier_bottom"] - 0.1, s["negative_flange"], wire_x - 1.5, -wire_r))
+    carrier = carrier.cut(box(2.3, 2.3, s["negative_flange"] - 0.25,
+                              s["negative_flange"] + 0.01, -1.15, -1.15))
     for angle, width in zip(p["lug_angles"], p["lug_widths"]):
         carrier = carrier.fuse(sector(p["lug_inner_radius"], p["lug_outer_radius"],
                                       p["lug_bottom"], p["lug_bottom"] + p["lug_height"],
                                       angle - width / 2, width))
     carrier = carrier.cut(radial_hole(0, p["carrier_radius"] - 0.9,
-                                      p["lug_outer_radius"] + 0.1, latch_z, 0.85))
+                                      p["lug_outer_radius"] + 0.1, latch_z, 0.4))
 
     deck = cylinder(p["deck_radius"], p["deck_bottom"], pcb_top)
     deck = deck.cut(cylinder(10.5, p["deck_floor_top"], p["pcb_bottom"] - 0.6))
@@ -162,16 +164,14 @@ def unrotated_geometry(p, pcb):
     for x, y in screw_positions(p):
         deck = deck.cut(cylinder(p["screw_post_radius"] + 0.2,
                                  p["deck_bottom"] - 1, pcb_top + 1, x, y))
-    deck = deck.cut(cylinder(1.45, p["deck_bottom"] - 1, pcb_top + 1, wire_x, wire_y))
+    deck = deck.cut(cylinder(0.6, p["deck_bottom"] - 1, pcb_top + 1, wire_x, wire_y))
 
-    bezel = cylinder(p["carrier_radius"], pcb_top, s["assembly_top"])
+    bezel = cylinder(p["screw_radius"] + p["screw_post_radius"], pcb_top, s["assembly_top"])
     bezel = bezel.cut(polygon_solid(offset_polygon(pcb["outline"], -0.45),
                                     pcb_top - 0.1, s["assembly_top"] + 1))
     for x, y in screw_positions(p):
         bezel = bezel.cut(cylinder(p["screw_clearance_diameter"] / 2,
                                    pcb_top - 0.1, s["assembly_top"] + 1, x, y))
-        bezel = bezel.cut(cylinder(1.7, s["assembly_top"] - 1.2,
-                                   s["assembly_top"] + 1, x, y))
     bezel = bezel.cut(box(p["wire_channel_diameter"], wire_y - pcb["ground"][1] + 0.8,
                           pcb_top - 0.01, pcb_top + 0.9, wire_x - wire_r, pcb["ground"][1] - 0.4))
     battery = cylinder(p["battery_radius"], p["battery_bottom"], s["battery_top"])
@@ -182,23 +182,18 @@ def unrotated_geometry(p, pcb):
         led = box(3.2, 1.6, pcb_top, pcb_top + 1.1, x - 1.6, y - 0.8)
         led.rotate(App.Vector(x, y, 0), Z, component["angle"])
         leds.append(led)
-    positive_lead = lead([
-        (positive_x, positive_y, s["positive_flange"] + 1.4),
-        (positive_x + 1.5, positive_y, s["positive_flange"] + 1.4),
-        (positive_x + 1.5, positive_y, p["pcb_bottom"] - 0.6),
-        (positive_x, positive_y, p["pcb_bottom"] - 0.6),
-        (positive_x, positive_y, p["pcb_bottom"]),
-    ], p["wire_diameter"] / 2)
+    positive_lead = cylinder(p["pin_flange_diameter"] / 2,
+                             s["positive_flange"], p["pcb_bottom"], positive_x, positive_y)
     negative_lead = lead([
-        (0, 0, 2.8),
-        (wire_x, wire_y, 2.8),
-        (wire_x, wire_y, pcb_top + 0.45),
-        (wire_x, pcb["ground"][1], pcb_top + 0.45),
+        (0, 0, s["negative_flange"] - 0.2),
+        (wire_x, wire_y, s["negative_flange"] - 0.2),
+        (wire_x, wire_y, pcb_top + 0.3),
+        (wire_x, pcb["ground"][1], pcb_top + 0.3),
         (wire_x, pcb["ground"][1], pcb_top),
     ], p["wire_diameter"] / 2)
     return {
         "RingBase": base,
-        "Carrier": carrier.removeSplitter(),
+        "Carrier": carrier,
         "ContactDeck": deck.removeSplitter(),
         "Bezel": bezel.removeSplitter(),
         "PCB": board,
@@ -259,6 +254,8 @@ def create_document(p, pcb):
     references = doc.addObject("App::DocumentObjectGroup", "ReferenceParts")
     for name in COLORS:
         obj = doc.addObject("Part::FeaturePython", name)
+        if name == "PositiveLead":
+            obj.Label = "Positive solder land"
         obj.addProperty("App::PropertyLink", "Parameters", "Design").Parameters = parameters
         obj.addProperty("App::PropertyString", "PartName", "Design").PartName = name
         obj.setEditorMode("PartName", 1)
@@ -310,7 +307,8 @@ def validate_geometry(p, pcb, parts):
             raise ValueError("Twist interferes at {} degrees".format(angle))
     checks.append("Twist: {} poses, 0..{} degrees".format(poses + 1, p["lock_angle"]))
     for angle in (120, 240):
-        if base.common(posed(raw["Carrier"], angle, 3)).Volume < 1e-3:
+        entry_lift = p["socket_top"] - p["lug_bottom"] - p["lug_height"] / 2
+        if base.common(posed(raw["Carrier"], angle, entry_lift)).Volume < 1e-3:
             raise ValueError("Wide lug does not reject {} degree mis-key".format(angle))
     checks.append("Wide lug rejects both incorrect 120/240 degree insertion orientations")
     if base.common(posed(raw["Carrier"], p["lock_angle"], 1)).Volume < 1e-3:
@@ -333,6 +331,15 @@ def validate_geometry(p, pcb, parts):
         if raw["Carrier"].common(posed(raw["Battery"], 0, lift)).Volume > 1e-5:
             raise ValueError("Battery is trapped in the carrier at lift {}".format(lift))
     checks.append("Battery extraction: 17 poses, 0..16 mm after deck removal")
+    crown = Part.makeCompound([raw[name] for name in ("Carrier", "ContactDeck", "Bezel")])
+    if max(crown.BoundBox.XLength, crown.BoundBox.YLength) > 24.9 + 1e-6:
+        raise ValueError("Actual crown geometry exceeds the legacy-derived width budget")
+    if crown.BoundBox.ZMax > 12.2204 + 1e-6:
+        raise ValueError("Actual crown geometry exceeds the compact height budget")
+    if (abs(raw["Battery"].BoundBox.XLength - 20) > 1e-6
+            or abs(raw["Battery"].BoundBox.ZLength - 3.2) > 1e-6):
+        raise ValueError("Do not scale the CR2032 to fit the crown")
+    checks.append("Actual solids preserve compact 24.9 mm maximum width / 12.2204 mm top")
     return checks
 
 
@@ -405,6 +412,83 @@ def preview_png(parts, p, output):
         raise ValueError("Could not save CAD preview {}".format(output))
 
 
+def legacy_comparison(p, parts, output):
+    import importlib.util
+    if importlib.util.find_spec("PySide6"):
+        from PySide6 import QtCore, QtGui
+    else:
+        from PySide2 import QtCore, QtGui
+    legacy_dir = HERE.parents[1] / "v1.0" / "ring_3d"
+    native = legacy_dir / "Lantern_Ring_Assembly.FCStd"
+    body = legacy_dir / "Lantern_Ring_Assembly-ring_body_185.stl"
+    doc = App.openDocument(str(native))
+    setting, band = doc.Tube001, doc.Tube019
+    reference = {
+        "setting_diameter": 2 * setting.OuterRadius.Value,
+        "setting_height_above_pcb": setting.Height.Value,
+        "band_width": band.Height.Value,
+        "band_wall": band.OuterRadius.Value - band.InnerRadius.Value,
+        "finger_diameter": 2 * band.InnerRadius.Value,
+        "band_centre_z": (band.Shape.BoundBox.ZMin + band.Shape.BoundBox.ZMax) / 2,
+    }
+    App.closeDocument(doc.Name)
+    if reference != {"setting_diameter": 22.0, "setting_height_above_pcb": 5.0,
+                     "band_width": 11.0, "band_wall": 1.0,
+                     "finger_diameter": 18.5, "band_centre_z": -14.0}:
+        raise ValueError("Legacy CAD reference changed; remeasure before resizing")
+    reference["files_sha256"] = {path.relative_to(HERE.parents[2]).as_posix(): artifact_hash(path)
+                                  for path in (native, body)}
+    old = Mesh.Mesh(str(body))
+    reference["body_width"] = old.BoundBox.XLength
+    reference["body_height"] = old.BoundBox.ZLength
+    os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+    application = QtGui.QGuiApplication.instance() or QtGui.QGuiApplication(["ring-comparison"])
+    if not QtGui.QFontDatabase().families() and os.name == "nt":
+        font = Path(os.environ.get("WINDIR", r"C:\Windows")) / "Fonts" / "arial.ttf"
+        if QtGui.QFontDatabase.addApplicationFont(str(font)) < 0:
+            raise ValueError("Cannot load dimension comparison font")
+    if not QtGui.QFontDatabase().families():
+        raise ValueError("Cannot label dimension comparison without fonts")
+    image = QtGui.QImage(900, 700, QtGui.QImage.Format_RGB32)
+    image.fill(QtGui.QColor("#f4f6f8"))
+    painter = QtGui.QPainter(image)
+    painter.setPen(QtCore.Qt.NoPen)
+    scale, baseline = 14, 410
+    scenes = [
+        (old, 230, (old.BoundBox.XMin + old.BoundBox.XMax) / 2,
+         reference["band_centre_z"], "#64727e"),
+    ]
+    for name in PRINT_PARTS:
+        scenes.append((mesh_for(parts[name], p), 670, 0,
+                       -p["finger_diameter"] / 2 - p["band_wall"] / 2, "#28724d"))
+    for mesh, centre_x, source_x, source_z, color in scenes:
+        painter.setBrush(QtGui.QColor(color))
+        for facet in mesh.Facets:
+            points = [QtCore.QPointF(centre_x + scale * (v[0] - source_x),
+                                    baseline - scale * (v[2] - source_z)) for v in facet.Points]
+            painter.drawPolygon(QtGui.QPolygonF(points))
+    painter.setPen(QtGui.QColor("#203040"))
+    painter.setFont(QtGui.QFont("Arial", 16))
+    painter.drawText(24, 32, "Legacy and compact v2: actual CAD silhouettes at the SAME scale")
+    painter.setFont(QtGui.QFont("Arial", 12))
+    labels = [
+        (60, 65, "Legacy 18.5 mm body STL"),
+        (490, 65, "Compact v2 printed assembly"),
+        (60, 600, "Setting: 22 mm diameter; 5 mm above PCB"),
+        (490, 600, "Socket: {:g} mm; bezel: {:g} mm diameter".format(
+            2 * p["body_radius"], 2 * (p["screw_radius"] + p["screw_post_radius"]))),
+        (60, 630, "Band: 11 mm wide, 1 mm wall; bore: 18.5 mm"),
+        (490, 630, "Band: 11 mm wide, 1 mm wall; bore: {:g} mm".format(p["finger_diameter"])),
+        (60, 675, "Front projection; bore centres aligned; 14 pixels/mm. NOT physical qualification."),
+    ]
+    for x, y, text in labels:
+        painter.drawText(x, y, text)
+    painter.end()
+    if not image.save(str(output / "legacy-comparison.png")):
+        raise ValueError("Cannot save measured legacy comparison")
+    return reference
+
+
 def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
@@ -413,6 +497,9 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
     doc = create_document(p, pcb)
     parts = {name: doc.getObject(name).Shape for name in COLORS}
     checks = validate_geometry(p, pcb, parts)
+    body_bounds = Part.makeCompound([parts[name] for name in PRINT_PARTS]).BoundBox
+    reference = legacy_comparison(p, parts, output)
+    checks.append("Legacy native CAD measured: 22 mm setting, 5 mm above PCB, 11 mm band")
     for name in PRINT_PARTS:
         parts[name].exportStep(str(output / (name + ".step")))
         loaded = Part.Shape()
@@ -482,6 +569,12 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         "parameters": p,
         "pcb_interface": pcb,
         "stack": s,
+        "legacy_reference": reference,
+        "printed_body_envelope": {
+            "width": body_bounds.XLength,
+            "depth": body_bounds.YLength,
+            "height": body_bounds.ZLength,
+        },
         "checks": checks,
         "physical_test_status": "NOT PRINTED: fit, wear, electrical continuity and battery safety require bench validation",
     }

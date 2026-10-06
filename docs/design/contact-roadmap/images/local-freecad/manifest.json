@@ -1,31 +1,37 @@
 {
   "generator": "Local FreeCAD concept renderer",
-  "generated_at": "2026-10-06T04:45:40.356341+00:00",
+  "generated_at": "2026-10-06T23:57:44.614305+00:00",
   "nano_banana_status": "BLOCKED: no Gemini API authentication available",
   "geometry_status": "Stage 1 references the existing CAD; later stages are illustrative overlays only",
+  "cad_source_sha256": {
+    "design.py": "9a4361b6cd2c780a649761360c82edb85abc56727014e6b6163da34f7b9105fb",
+    "lantern_ring.py": "5c71f6bab4fb9ba9d945131cec9214d9d43191102a6319364d6869b6c74f76a1",
+    "parameters.json": "ddba3fbd5683cfe57e6280cf0ddc5ac498bfeddc2c9ff71a6b10cbd101769b6c"
+  },
+  "renderer_sha256": "53794c0e849b932c7a625c2b3eb4f47035c4969c5af29301238d2381f980470c",
   "images": [
     {
       "file": "01-serviceable-pogo.png",
       "stage": "01-serviceable-pogo",
-      "sha256": "a1e0bc25a48c4f987e0211d272dcfc40037dfe6197161681edeb567f040aaae6",
+      "sha256": "abf3423b836cc07d316c2543c5d6c9dd60de341b83cfb0563b96fe63eb52afea",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     },
     {
       "file": "02-copper-pressure.png",
       "stage": "02-copper-pressure",
-      "sha256": "769a848a33668bd3c077d2c4ab0d2e2d6fa07020ca95570e3c6c6903e2eaad90",
+      "sha256": "7704a4eafa33326956732fb2ddcb99590255a73e740dbf4741da3e264915b297",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     },
     {
       "file": "03-plated-springs.png",
       "stage": "03-plated-springs",
-      "sha256": "92b39ae6446f957581c5769ddc99168ee2633fc9cbb542ddf7da78a2e9789f09",
+      "sha256": "038345363681f7ae4c486c7eb86d5b313a7d9f29861f087b6a935839047f8ba3",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     },
     {
       "file": "04-floating-metal.png",
       "stage": "04-floating-metal",
-      "sha256": "0cc2ba44e37c76f45aa2f2767b7806ecb5db8ea8705ad575656ec69ce89e5da3",
+      "sha256": "335980eb6aebdd877b53e81665d60b8cce21bebfc7a9e2f8d716b71b489080ff",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     }
   ]

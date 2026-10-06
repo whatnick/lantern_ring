@@ -29,7 +29,13 @@ envelope, or reuse the v1 octagon/contact assignments for another board.
 Use millimetres. CAD +Y is KiCad -Y. Battery + face is up; the central rear
 exposed mono PCB circle is VCC, and front TP1 is `/GND`. Two spring contacts
 touch opposite battery faces. Keep cell negative face isolated from its positive
-rim, insulate tails/wires and preserve preload below maximum stroke.
+rim, insulate SMT base joints/wires and preserve preload below maximum stroke.
+The compact build uses 0965 SMT pins: upper base directly soldered to rear VCC,
+one ground lead, three permanent joints. Measure the legacy native setting and
+band before envelope changes; preserve the 11 mm band width and 1 mm band wall.
+Keep `legacy-comparison.png` and measured reference hashes current. The short
+pins require measured +/-0.05 mm cell/finished-stack budgets; do not assume
+unmeasured prints meet them or describe the 24.9 mm socket as an exact 22 mm fit.
 The carrier, not the PCB, takes twist load. Preserve the asymmetric key, track
 shelves and mandatory anti-unlock screw.
 PCB printing clearance permits reversed insertion: align TP1 to the ground-wire

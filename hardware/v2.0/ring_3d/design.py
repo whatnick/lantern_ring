@@ -202,22 +202,22 @@ def validate_parameters(p, pcb):
         raise ValueError("Pogo tolerance stack loses preload or bottoms out")
     if p["battery_clearance"] < p["battery_radial_tolerance"]:
         raise ValueError("Battery pocket is smaller than the worst-case cell")
-    if s["positive_flange"] + p["pin_tail_length"] + p["wire_diameter"] > p["pcb_bottom"]:
-        raise ValueError("Positive pin tail / wire collides with the PCB")
-    if s["negative_flange"] - p["pin_tail_length"] <= p["carrier_bottom"]:
-        raise ValueError("Negative pin tail protrudes below the cassette")
+    if abs(p["pcb_bottom"] - s["positive_flange"] - 0.05) > 1e-6:
+        raise ValueError("Positive SMT pin must meet the rear PCB pad through its 0.05 mm solder land")
+    if s["negative_flange"] - p["wire_diameter"] <= p["carrier_bottom"]:
+        raise ValueError("Negative solder land protrudes below the cassette")
     if not (p["deck_bottom"] < s["positive_flange"] - p["pin_flange_thickness"]
-            < s["positive_flange"] <= p["deck_floor_top"]):
+            < p["deck_floor_top"] < s["positive_flange"]):
         raise ValueError("Positive pin flange is not captured by the contact deck")
     if p["deck_floor_top"] >= p["pcb_bottom"] - 0.6:
         raise ValueError("PCB support lip has no underside wiring clearance")
-    if p["body_radius"] - p["track_outer_radius"] < 1.2:
-        raise ValueError("Bayonet track leaves less than 1.2 mm outer wall")
+    if p["body_radius"] - p["track_outer_radius"] < 0.79:
+        raise ValueError("Bayonet track leaves less than 0.8 mm outer wall")
     if not (p["carrier_radius"] < p["socket_radius"] < p["lug_outer_radius"]
             < p["track_outer_radius"] < p["body_radius"]):
         raise ValueError("Invalid bayonet radial stack")
-    if p["carrier_radius"] - p["deck_pocket_radius"] < 1.2:
-        raise ValueError("Cassette wall is too thin")
+    if p["carrier_radius"] - p["battery_radius"] - p["battery_clearance"] < 0.49:
+        raise ValueError("Battery well wall is less than 0.5 mm")
     if p["deck_radius"] >= p["deck_pocket_radius"]:
         raise ValueError("Contact deck does not fit the carrier")
     if p["lug_inner_radius"] >= p["carrier_radius"]:
@@ -226,8 +226,8 @@ def validate_parameters(p, pcb):
         raise ValueError("Exactly three bayonet lugs are required")
     if p["lug_angles"] != [0.0, 120.0, 240.0]:
         raise ValueError("Only the three equally spaced bayonet positions are supported")
-    if p["screw_angles"] != [60.0, 180.0, 300.0]:
-        raise ValueError("Screw towers must remain between bayonet lugs")
+    if p["screw_angles"] != [0.0, 180.0]:
+        raise ValueError("Compact screw towers must flank the two PCB side flats")
     if p["lug_widths"][0] <= max(p["lug_widths"][1:]) + 2 * p["angular_clearance"]:
         raise ValueError("Wide bayonet lug no longer rejects incorrect orientation")
     if p["lock_angle"] + max(p["lug_widths"]) + 2 * p["angular_clearance"] >= 120:
@@ -252,4 +252,10 @@ def validate_parameters(p, pcb):
         raise ValueError("Negative tip could reach the positive battery rim")
     if max(math.hypot(*v) for v in pcb["outline"]) + p["pcb_clearance"] >= p["deck_radius"]:
         raise ValueError("PCB does not fit in the contact deck")
+    if p["body_radius"] > 12.45 or s["assembly_top"] > 12.221:
+        raise ValueError("Compact legacy-derived crown envelope exceeded")
+    if p["band_width"] != 11.0:
+        raise ValueError("Preserve the measured legacy 11 mm band width")
+    if p["band_wall"] != 1.0:
+        raise ValueError("Preserve the measured legacy 1 mm band wall")
     return s

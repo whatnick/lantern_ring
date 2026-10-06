@@ -47,6 +47,9 @@ class RoadmapTests(unittest.TestCase):
         self.assertEqual(len(self.prompts["stages"]), 5)
         self.assertEqual(self.prompts["model"], "gemini-3.1-flash-image-preview")
         self.assertIn("TWO independent contact circuits", self.prompts["common"])
+        for dimension in ("24.9 mm", "23.4 mm", "11 mm", "12.22 mm"):
+            self.assertIn(dimension, self.prompts["common"])
+        self.assertIn("No red wire", self.prompts["stages"][0]["prompt"])
         metal = next(s for s in self.prompts["stages"] if s["id"] == "04-floating-metal")
         self.assertIn("FLOATING", metal["prompt"])
         self.assertIn("anodizing", metal["prompt"])
@@ -57,6 +60,12 @@ class RoadmapTests(unittest.TestCase):
         manifest = json.loads((HERE / "images" / "local-freecad" / "manifest.json").read_text())
         self.assertEqual(len(manifest["images"]), 4)
         self.assertIn("BLOCKED", manifest["nano_banana_status"])
+        cad = HERE.parents[2] / "hardware" / "v2.0" / "ring_3d"
+        for name, expected in manifest["cad_source_sha256"].items():
+            self.assertEqual(hashlib.sha256((cad / name).read_text(encoding="utf-8").encode()).hexdigest(),
+                             expected, "Regenerate roadmap after changing CAD")
+        self.assertEqual(hashlib.sha256((HERE / "render_concepts.py").read_text(encoding="utf-8").encode()).hexdigest(),
+                         manifest["renderer_sha256"])
         for record in manifest["images"]:
             data = (HERE / "images" / "local-freecad" / record["file"]).read_bytes()
             check_png(data)

@@ -164,6 +164,9 @@ def generate(output=HERE / "images" / "local-freecad"):
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "nano_banana_status": "BLOCKED: no Gemini API authentication available",
         "geometry_status": "Stage 1 references the existing CAD; later stages are illustrative overlays only",
+        "cad_source_sha256": {name: L.source_hash(CAD / name)
+                               for name in ("design.py", "lantern_ring.py", "parameters.json")},
+        "renderer_sha256": L.source_hash(Path(__file__)),
         "images": records,
     }
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

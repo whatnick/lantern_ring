@@ -28,29 +28,41 @@ to replace measured geometry with a generic circle.
   and screw-retained Bezel. The **entire cassette rotates**, not bare PCB edges.
 - Three lugs at 0/120/240 degrees have widths 24/14/14 degrees. Slots add
   2 degrees per flank; 30-degree counterclockwise twist seats them under shelves.
-  The wide lug cannot enter either narrow slot. A radial M2 x 4 screw at the
+  The wide lug cannot enter either narrow slot. A radial M1 x 2 screw at the
   locked wide lug prevents accidental counterrotation; it is mandatory.
 - The PCB pocket is profiled, not a positive 180-degree orientation key at
   printing clearance. Align front TP1 to the bezel's ground-wire relief.
-- Default outer crown radius 18.2; socket 15.3; carrier 15.0; lug reach 16.6;
-  groove reach 16.95 mm. Preserve at least 1.2 mm remaining outer track wall,
+- Measure legacy `Tube001` setting (22 mm diameter / 5 mm above PCB) and
+  `Tube019` band (18.5 mm bore / 11 mm width) from the v1 native assembly.
+  Use README photos for proportions, not calibrated dimensions. Keep the
+  generated same-scale mesh/solid comparison and reference hashes current.
+- Compact outer socket radius 12.45; socket 10.85; carrier 10.65; lug reach 11.45;
+  groove reach 11.65 mm. Preserve at least 0.8 mm remaining outer track wall,
   radial running clearance and positive axial retention.
+  Upper bezel diameter is 23.4 mm; band width remains 11 mm and wall 1 mm. This is still
+  larger/taller than the original direct-contact body: do not claim exact fit
+  or scale the cell/PCB to hide the difference.
 - Cell is CR2032, **+ up**, nominal radius 10 and thickness 3.2 mm.
   Its positive top and case/rim must remain isolated from the inset negative
   bottom face. Negative tip is centred; upper positive tip is at the VCC XY.
-- Use two Mill-Max 0906-1-15-20-75-14-11-0 pins, opposite-facing, or rederive
-  **every** bore/shoulder/tail/stack dimension for a replacement. Free height
-  4.496, working compression 0.711, full stroke 1.397, barrel diameter 1.499,
-  flange 1.829 x 0.406, tail 0.432 x 1.753, tip diameter 1.067 mm.
-- Battery bottom/top Z = 8.0/11.2. Negative flange datum Z = 4.215;
-  positive flange datum Z = 14.985. PCB bottom/top = 17.8/19.4;
-  bezel top = 22.4 mm. A +/-0.55 mm conservative combined stack gives
-  0.161..1.261 mm compression: always retain preload and avoid bottoming out.
-- Insulated tails and leads fit below the PCB, outside the battery pocket.
+- Use two Mill-Max 0965-0-15-20-80-14-11-0 SMT pins, opposite-facing, or rederive
+  **every** bore/shoulder/mount/stack dimension for a replacement. Free height
+  2.54, working compression 0.3048, full stroke 0.6096, barrel diameter 1.626,
+  base 1.829 x 0.7112, no projecting tail, tip diameter 1.067 mm.
+- Battery bottom/top Z = 3.9352/7.1352. Negative flange datum Z = 1.7;
+  positive flange datum Z = 9.3704. PCB bottom/top = 9.4204/11.0204;
+  bezel top = 12.2204 mm. Pin length tolerance +/-0.1524 plus **measured**
+  +/-0.05 each cell/finished stack permits 0.0524..0.5572 mm compression.
+  Do not assume ordinary prints or unsorted cells meet those budgets.
+- Insulated ground lead fits below the PCB, outside the battery pocket.
   Nonconductive epoxy secures the pins without entering plungers. Black wire
-  passes through the side duct to front ground; red connects to rear VCC.
-  Four permanent joints for a bare-pin loom; no battery soldering. Do not claim
-  a solderless PCB interface. Store black service slack in the underside groove.
+  (jacket <=0.4 mm) passes through the side duct to front ground.
+  Upper SMT base solders directly to rear VCC through a 0.05 mm solder land:
+  three permanent joints, no red wire, no battery soldering. Do not claim a
+  solderless PCB interface. Store black service slack in the underside groove.
+  Two M1 x 4 bezel screws sit outside the battery extraction cylinder.
+  Qualify the 0.5 mm well wall, 0.8 mm track wall, M1 threads and 1 mm lugs with
+  a controlled PA12 process; these are not qualified coarse-FDM dimensions.
 - The 20 mm cell cannot pass through the smaller PCB pocket. Remove the bezel
   and lift PCB/deck together using wire slack before extracting the battery.
 
@@ -78,7 +90,7 @@ tip/face contact tests and native/export roundtrips. Pogo/lead termination
 overlap is intentional; no other collision is acceptable.
 
 FreeCAD 0.19 / OCC 7.5 pitfalls: importing `FreeCAD` must precede `Part`;
-refining the complex socket with `removeSplitter()` can damage curve-on-surface
+refining the complex socket/carrier with `removeSplitter()` can damage curve-on-surface
 geometry. Preserve its valid unrefined solid. STEP reader numerical checks use
 an explicit 1e-5 mm tolerance, with unchanged volume and pre-normalization
 topological validity. Weld duplicate mesh vertices, then require watertightness;
