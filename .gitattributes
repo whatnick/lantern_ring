@@ -1,0 +1,4 @@
+*.FCStd binary
+*.stl binary
+*.step text eol=lf whitespace=-trailing-space
+*.svg text eol=lf

@@ -1,0 +1,27 @@
+name: Hardware interface
+
+on:
+  push:
+    paths:
+      - "hardware/v2.0/ring_3d/**"
+      - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
+      - ".github/workflows/hardware-interface.yml"
+  pull_request:
+    paths:
+      - "hardware/v2.0/ring_3d/**"
+      - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
+      - ".github/workflows/hardware-interface.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  portable-design:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check PCB interface, mechanical invariants and artifact provenance
+        run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_design.py"

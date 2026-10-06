@@ -28,3 +28,11 @@ fp-info-cache
 
 # IDE files
 .vscode/
+
+# Python and FreeCAD local caches/backups (native models and exports are tracked)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.FCStd1
+*.FCStd.*
+*.kicad_prl

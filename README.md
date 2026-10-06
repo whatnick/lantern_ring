@@ -2,6 +2,21 @@
 
 **One ring to rule them all, in the light bind them**
 
+## v2 physical hardware
+
+[FreeCAD v2 twist-lock hardware](hardware/v2.0/ring_3d/README.md) provides a keyed
+30-degree bayonet PCB/battery cassette, opposite-face CR2032 pogo contacts,
+insulated wire routing and screw-retained battery access. Native FreeCAD, STEP
+and printable STL files are included with parametric regeneration scripts.
+Battery replacement needs no soldering; the PCB loom still needs permanent
+connections. This is an unprinted, electrically unqualified prototype for the
+mono-colour PCB, not a certified battery-powered product.
+
+![Lantern Ring v2 CAD](hardware/v2.0/ring_3d/generated/assembly.png)
+
+[Repository baseline review](docs/design/repository-review.md) distinguishes the
+existing board variants and unfinished experiments.
+
 ![Purple Ring](docs/ring_purple.jpg)
 ![Red Ring](docs/red_ring.jpg)
 ![Blue Ring](docs/ring_blue.jpg)
