@@ -180,7 +180,7 @@ together; do not hand-edit generated geometry.
 | Carrier | 1 | Insulated battery well, negative pogo seat, lead channel, lugs |
 | ContactDeck | 1 | Positive pogo seat and actual PCB pocket |
 | Bezel | 1 | PCB-edge clamp and open optical window |
-| Spring contact | 2 | Mill-Max **0965-0-15-20-80-14-11-0**, surface mount |
+| Spring contact | 2 | Mill-Max **0965-0-15-20-80-14-11-0**, surface mount ([alternatives](../../../docs/design/pogo-pin-comparison.md)) |
 | CR2032 | 1 | Primary 3 V cell, nominal 20 x 3.2 mm |
 | Insulated flexible wire | 1 | Fine-stranded wire, **jacket OD <=0.4 mm**, black |
 | Bezel screw | 2 | M1 x 4 mm plastic-compatible thread, head OD <=2 mm |
