@@ -14,7 +14,7 @@ import Mesh
 import MeshPart
 import Part
 
-from design import HERE, PCB_PATH, artifact_hash, load_parameters, offset_polygon, pcb_interface, source_hash, validate_parameters
+from design import HERE, PCB_PATH, artifact_hash, flexible_fit, load_parameters, offset_polygon, pcb_interface, source_hash, validate_parameters
 
 
 Z = App.Vector(0, 0, 1)
@@ -101,14 +101,32 @@ def unrotated_geometry(p, pcb):
     wire_r = p["wire_channel_diameter"] / 2
 
     band_centre = App.Vector(0, -p["band_width"] / 2,
-                             -p["finger_diameter"] / 2 - p["band_wall"] / 2)
-    outer = Part.makeCylinder(p["finger_diameter"] / 2 + p["band_wall"],
-                              p["band_width"], band_centre, App.Vector(0, 1, 0))
+                             p["bore_top"] - p["finger_diameter"] / 2)
     inner = Part.makeCylinder(p["finger_diameter"] / 2,
                               p["band_width"] + 2,
                               band_centre - App.Vector(0, 1, 0), App.Vector(0, 1, 0))
-    band = outer.cut(inner)
+    half_gap = math.radians(p["band_gap_angle"] / 2)
+    radius, wall = p["finger_diameter"] / 2, p["band_wall"]
+
+    def arc_point(r, angle):
+        return band_centre + App.Vector(r * math.sin(angle), 0, -r * math.cos(angle))
+
+    outer_right, outer_left = arc_point(radius + wall, half_gap), arc_point(radius + wall, -half_gap)
+    inner_right, inner_left = arc_point(radius, half_gap), arc_point(radius, -half_gap)
+    left_mid = arc_point(radius + wall / 2, -half_gap) + App.Vector(
+        wall / 2 * math.cos(half_gap), 0, -wall / 2 * math.sin(half_gap))
+    right_mid = arc_point(radius + wall / 2, half_gap) + App.Vector(
+        -wall / 2 * math.cos(half_gap), 0, -wall / 2 * math.sin(half_gap))
+    profile = Part.Wire([
+        Part.Arc(outer_right, arc_point(radius + wall, math.pi), outer_left).toShape(),
+        Part.Arc(outer_left, left_mid, inner_left).toShape(),
+        Part.Arc(inner_left, arc_point(radius, math.pi), inner_right).toShape(),
+        Part.Arc(inner_right, right_mid, outer_right).toShape(),
+    ])
+    band = Part.Face(profile).extrude(App.Vector(0, p["band_width"], 0))
     base = band.fuse(cylinder(p["body_radius"], 0, p["socket_top"]))
+    # Nest the crown onto the finger arc, retaining the insulating floor above it.
+    base = base.cut(inner)
     base = base.cut(cylinder(p["socket_radius"], p["carrier_bottom"], p["socket_top"] + 1))
     for angle, width in zip(p["lug_angles"], p["lug_widths"]):
         start = angle - width / 2 - p["angular_clearance"]
@@ -221,6 +239,7 @@ def object_config(parameters):
     p["finger_diameter"] = parameters.FingerDiameter.Value
     p["pcb_clearance"] = parameters.PCBClearance.Value
     p["lock_angle"] = parameters.LockAngle.Value
+    p["band_gap_angle"] = parameters.BandGapAngle.Value
     return json.dumps(p, sort_keys=True)
 
 
@@ -247,6 +266,7 @@ def create_document(p, pcb):
     parameters.addProperty("App::PropertyLength", "FingerDiameter", "Design").FingerDiameter = p["finger_diameter"]
     parameters.addProperty("App::PropertyLength", "PCBClearance", "Design").PCBClearance = p["pcb_clearance"]
     parameters.addProperty("App::PropertyAngle", "LockAngle", "Design").LockAngle = p["lock_angle"]
+    parameters.addProperty("App::PropertyAngle", "BandGapAngle", "Design").BandGapAngle = p["band_gap_angle"]
     parameters.addProperty("App::PropertyString", "BatteryPolarity", "Interface").BatteryPolarity = "CR2032 positive (+) face UP"
     parameters.addProperty("App::PropertyString", "GroundPad", "Interface").GroundPad = pcb["ground_reference"] + " front /GND"
     parameters.setEditorMode("PCBInterface", 1)
@@ -334,12 +354,23 @@ def validate_geometry(p, pcb, parts):
     crown = Part.makeCompound([raw[name] for name in ("Carrier", "ContactDeck", "Bezel")])
     if max(crown.BoundBox.XLength, crown.BoundBox.YLength) > 24.9 + 1e-6:
         raise ValueError("Actual crown geometry exceeds the legacy-derived width budget")
-    if crown.BoundBox.ZMax > 12.2204 + 1e-6:
+    if crown.BoundBox.ZMax > 11.2204 + 1e-6:
         raise ValueError("Actual crown geometry exceeds the compact height budget")
     if (abs(raw["Battery"].BoundBox.XLength - 20) > 1e-6
             or abs(raw["Battery"].BoundBox.ZLength - 3.2) > 1e-6):
         raise ValueError("Do not scale the CR2032 to fit the crown")
-    checks.append("Actual solids preserve compact 24.9 mm maximum width / 12.2204 mm top")
+    highest = max(shape.BoundBox.ZMax for shape in raw.values())
+    if highest - p["bore_top"] > 11.4204 + 1e-6:
+        raise ValueError("Actual LED/assembly envelope violates the lowered above-finger profile")
+    centre_z = p["bore_top"] - p["finger_diameter"] / 2
+    for y in (-p["band_width"] / 2 + 0.1, 0, p["band_width"] / 2 - 0.1):
+        if base.isInside(App.Vector(0, y, centre_z - p["finger_diameter"] / 2), 1e-6, True):
+            raise ValueError("Band bottom is not open across its full width")
+    floor_point = App.Vector(0, 0, (p["bore_top"] + p["carrier_bottom"]) / 2)
+    if not base.isInside(floor_point, 1e-6, False):
+        raise ValueError("Nested crown lost its insulating floor")
+    checks.append("Split band open across full width; nested crown retains 0.5 mm floor")
+    checks.append("Actual solids: 24.9 mm maximum width; LED-inclusive top 11.42 mm above finger")
     return checks
 
 
@@ -460,7 +491,7 @@ def legacy_comparison(p, parts, output):
     ]
     for name in PRINT_PARTS:
         scenes.append((mesh_for(parts[name], p), 670, 0,
-                       -p["finger_diameter"] / 2 - p["band_wall"] / 2, "#28724d"))
+                       p["bore_top"] - p["finger_diameter"] / 2, "#28724d"))
     for mesh, centre_x, source_x, source_z, color in scenes:
         painter.setBrush(QtGui.QColor(color))
         for facet in mesh.Facets:
@@ -478,7 +509,7 @@ def legacy_comparison(p, parts, output):
         (490, 600, "Socket: {:g} mm; bezel: {:g} mm diameter".format(
             2 * p["body_radius"], 2 * (p["screw_radius"] + p["screw_post_radius"]))),
         (60, 630, "Band: 11 mm wide, 1 mm wall; bore: 18.5 mm"),
-        (490, 630, "Band: 11 mm wide, 1 mm wall; bore: {:g} mm".format(p["finger_diameter"])),
+        (490, 630, "Split band: {:g} deg gap; bore: {:g} mm".format(p["band_gap_angle"], p["finger_diameter"])),
         (60, 675, "Front projection; bore centres aligned; 14 pixels/mm. NOT physical qualification."),
     ]
     for x, y, text in labels:
@@ -486,6 +517,50 @@ def legacy_comparison(p, parts, output):
     painter.end()
     if not image.save(str(output / "legacy-comparison.png")):
         raise ValueError("Cannot save measured legacy comparison")
+    fit = flexible_fit(p)
+    expanded = dict(p)
+    expanded["finger_diameter"] = fit["screening_bore"]
+    expanded["band_gap_angle"] = 360 - (360 - p["band_gap_angle"]) * (
+        (p["finger_diameter"] + p["band_wall"]) /
+        (expanded["finger_diameter"] + p["band_wall"]))
+    expanded_parts = unrotated_geometry(expanded, pcb_interface())
+    expanded_base = expanded_parts["RingBase"]
+    if not expanded_base.isValid() or len(expanded_base.Solids) != 1:
+        raise ValueError("Elastic-fit curvature illustration produced invalid geometry")
+    expanded_base.check(True)
+    mesh = mesh_for(expanded_base, expanded)
+    if not mesh.isSolid():
+        raise ValueError("Elastic-fit curvature illustration has an open mesh")
+    image.fill(QtGui.QColor("#f4f6f8"))
+    painter = QtGui.QPainter(image)
+    painter.setPen(QtCore.Qt.NoPen)
+    for source, centre_x, diameter, color in (
+        (mesh_for(parts["RingBase"], p), 230, p["finger_diameter"], "#28724d"),
+        (mesh, 670, expanded["finger_diameter"], "#5988ae"),
+    ):
+        painter.setBrush(QtGui.QColor(color))
+        centre_z = p["bore_top"] - diameter / 2
+        for facet in source.Facets:
+            points = [QtCore.QPointF(centre_x + scale * v[0],
+                                    baseline - scale * (v[2] - centre_z)) for v in facet.Points]
+            painter.drawPolygon(QtGui.QPolygonF(points))
+    painter.setPen(QtGui.QColor("#203040"))
+    painter.setFont(QtGui.QFont("Arial", 16))
+    painter.drawText(24, 32, "Open-band fit: constant neutral-axis arc length curvature screen")
+    painter.setFont(QtGui.QFont("Arial", 12))
+    for x, y, text in (
+        (60, 65, "Nominal: {:g} mm bore / {:g} deg opening".format(p["finger_diameter"], p["band_gap_angle"])),
+        (490, 65, "Screen: {:g} mm bore / {:.1f} deg opening".format(
+            expanded["finger_diameter"], expanded["band_gap_angle"])),
+        (24, 595, "Two rounded free arms provide material spring-back; the battery floor stays CLOSED."),
+        (24, 625, "Uniform-curvature strain: {:.3f}%. Not FEA, a fit rating, or a measured spring force.".format(
+            100 * fit["uniform_curvature_strain"])),
+        (24, 675, "UNQUALIFIED: root stresses, creep, fatigue, contact pressure and recovery need testing."),
+    ):
+        painter.drawText(x, y, text)
+    painter.end()
+    if not image.save(str(output / "flex-fit.png")):
+        raise ValueError("Cannot save elastic-fit curvature study")
     return reference
 
 
@@ -569,6 +644,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         "parameters": p,
         "pcb_interface": pcb,
         "stack": s,
+        "flexible_fit": flexible_fit(p),
         "legacy_reference": reference,
         "printed_body_envelope": {
             "width": body_bounds.XLength,

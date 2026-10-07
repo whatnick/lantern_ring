@@ -7,7 +7,7 @@ import unittest
 
 from design import (
     HERE, PCB_PATH, artifact_hash, load_parameters, offset_polygon, parse_sexpr,
-    pcb_interface, point_inside, source_hash, validate_parameters,
+    flexible_fit, pcb_interface, point_inside, source_hash, validate_parameters,
 )
 
 
@@ -75,16 +75,28 @@ class InterfaceTests(unittest.TestCase):
     def test_nominal_stack(self):
         result = validate_parameters(self.p, self.pcb)
         self.assertAlmostEqual(result["working_pin_height"], 2.2352)
-        self.assertAlmostEqual(result["negative_flange"], 1.7)
-        self.assertAlmostEqual(result["positive_flange"], 9.3704)
-        self.assertAlmostEqual(result["pcb_top"], 11.0204)
-        self.assertAlmostEqual(result["assembly_top"], 12.2204)
+        self.assertAlmostEqual(result["negative_flange"], 1.3)
+        self.assertAlmostEqual(result["positive_flange"], 8.9704)
+        self.assertAlmostEqual(result["pcb_top"], 10.6204)
+        self.assertAlmostEqual(result["assembly_top"], 11.2204)
+        self.assertAlmostEqual(result["highest_component"], 11.7204)
+        self.assertAlmostEqual(result["profile_above_finger"], 11.4204)
         self.assertEqual(self.p["band_width"], 11)
         self.assertEqual(self.p["band_wall"], 1)
         self.assertEqual(self.p["battery_radius"], 10)
         self.assertEqual(self.p["battery_thickness"], 3.2)
         self.assertLessEqual(2 * self.p["body_radius"], 24.9)
         self.assertAlmostEqual(self.p["pcb_bottom"] - result["positive_flange"], 0.05)
+
+    def test_open_band_fit_screen_is_not_a_qualified_size_range(self):
+        fit = flexible_fit(self.p)
+        self.assertAlmostEqual(fit["tip_gap"], 8.75)
+        self.assertEqual(fit["nominal_bore"], 18.5)
+        self.assertEqual(fit["screening_bore"], 19.5)
+        self.assertAlmostEqual(fit["uniform_curvature_strain"], 0.00250156348)
+        self.assertIn("UNQUALIFIED", fit["status"])
+        smaller = dict(self.p, fit_expansion=0.5)
+        self.assertLess(flexible_fit(smaller)["uniform_curvature_strain"], fit["uniform_curvature_strain"])
 
     def test_all_supported_finger_sizes(self):
         for diameter in (15.5, 16.5, 18.5, 19.5, 22.0):
@@ -101,7 +113,7 @@ class InterfaceTests(unittest.TestCase):
             "cell too large": {"battery_clearance": 0.05},
             "SMT land separated from PCB": {"pcb_bottom": 16.0},
             "pin protruding": {"carrier_bottom": 1.5},
-            "flange not captured": {"deck_floor_top": 8.5},
+            "flange not captured": {"deck_floor_top": 8.2},
             "no wiring clearance": {"deck_floor_top": 18.0},
             "thin bayonet": {"body_radius": 12.2},
             "radial collision": {"socket_radius": 10.5},
@@ -120,6 +132,12 @@ class InterfaceTests(unittest.TestCase):
             "oversized crown": {"body_radius": 18.2},
             "narrow band": {"band_width": 7},
             "thick band": {"band_wall": 2.2},
+            "closed band": {"band_gap_angle": 0},
+            "too short arms": {"band_gap_angle": 90},
+            "floor puncture": {"bore_top": 0.5},
+            "too much expansion": {"fit_expansion": 2},
+            "high bezel": {"bezel_height": 1.2},
+            "thin bezel": {"bezel_height": 0.3},
         }
         for label, changes in cases.items():
             with self.subTest(label=label), self.assertRaises(ValueError):
@@ -143,12 +161,13 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(reference["band_width"], self.p["band_width"])
         self.assertEqual(reference["band_wall"], self.p["band_wall"])
         self.assertAlmostEqual(report["printed_body_envelope"]["width"], 24.9)
-        self.assertAlmostEqual(report["printed_body_envelope"]["height"], 32.2204)
+        self.assertLess(report["printed_body_envelope"]["height"], 29.2)
+        self.assertEqual(report["flexible_fit"], flexible_fit(self.p))
         for name, expected in reference["files_sha256"].items():
             self.assertEqual(expected, artifact_hash(HERE.parents[2] / name))
         self.assertIn("NOT PRINTED", report["physical_test_status"])
         for filename in ("Lantern_Ring_v2.FCStd", "Lantern_Ring_v2.step",
-                         "assembly.png", "exploded.png", "legacy-comparison.png"):
+                         "assembly.png", "exploded.png", "legacy-comparison.png", "flex-fit.png"):
             self.assertGreater((report_path.parent / filename).stat().st_size, 100)
         for part in ("RingBase", "Carrier", "ContactDeck", "Bezel"):
             for extension in ("step", "stl"):

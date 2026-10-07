@@ -2,28 +2,32 @@
   "freecad_version": "0.19.24291 (Git)",
   "pcb_sha256": "706e186907747841e754971383fc7d508be92895194bbdc378ebfca553858ab6",
   "source_sha256": {
-    "design.py": "9a4361b6cd2c780a649761360c82edb85abc56727014e6b6163da34f7b9105fb",
-    "lantern_ring.py": "5c71f6bab4fb9ba9d945131cec9214d9d43191102a6319364d6869b6c74f76a1"
+    "design.py": "a6a79068a32e602e301e973a48edbb56734307ffa00152c276482e51e1ba79db",
+    "lantern_ring.py": "8e5f55430b27cb337b7f2cfbbde401127ec382ab01d6743f9daa2ee94902fd5d"
   },
   "artifact_sha256": {
-    "assembly.png": "fa85bf73fc2678416afdc05c196905acc5a1c6853d82655295779016370d049d",
-    "Bezel.step": "2e732c01fe9cc18f1883e0d47ebe392742db6bbdae224e052d8cc12b76cc69a2",
-    "Bezel.stl": "02168e8ef4b7124b00eed7833da3280efd228a8f045ce76091ffb5fdb426bfe5",
-    "Carrier.step": "f5a1ff3639988b32ca35e4f7213a7cfe13f9d3eff41368933ea896b6d69601a6",
-    "Carrier.stl": "816aca7937a88225012fea14ab048d7e013d534d4779a2145de63ff18f98a9a5",
-    "ContactDeck.step": "1f599497a7ffe6fb167f08ca1abaa1180cbe52748b86cf485b3cff5657f4863f",
-    "ContactDeck.stl": "d706671adf7b29a267dafb4f0189357955267922c655614ce37b9816239d8e98",
-    "exploded.png": "63b3b4d9165a7919ae8fc5b49315309bd9486dc306e90fe9c56e358148e8781f",
-    "Lantern_Ring_v2.FCStd": "ff09f732050c03a691fadfa0ecef6ecd43265484f3145ce040938e16f28c3ea4",
-    "Lantern_Ring_v2.step": "59adb125b1a665e703a8bb22db408205c9e315ab6bca3f79b57ba577db0af827",
-    "legacy-comparison.png": "7e18e41fceabffdb932600cf097a7bfbe6a157fbff6391a643edbb90b81e0fde",
-    "RingBase.step": "34ee85a1f6ec2f728e3c1d402a9126eccb64182643ce428344f0bc6cb36f241d",
-    "RingBase.stl": "90aa006a6ac11b6fb54ae45c7e3018e683fcaffb2350f1ba4ee172067504bda2"
+    "assembly.png": "e102ea986606f37900d06c105a87f32be1e3d6aa656d96b09b8eb557439ece94",
+    "Bezel.step": "9189bd5d0b04b284359b38e267b32952e6ebee37c7bc84ec47818ee5c46b43eb",
+    "Bezel.stl": "7bde2df55fceceb553aee5c39159f634531046169f3fac752f9777e1d89cb1b2",
+    "Carrier.step": "35b93f718683df8febec38c8191a4360263af1af2737b8bab3f40f447079066d",
+    "Carrier.stl": "930c08ec7d98bf6eeb2e671cb6276ad08e1a3395cb79bd5672d5785931ad17a1",
+    "ContactDeck.step": "7761449eb61488e64761d4bbe1a6234351437350e56a4eb589722c4a062342d2",
+    "ContactDeck.stl": "1cbd424bd3aab19d7fd622a70d26624d5edfde7d3d0c81d69f4c7997f4d136d0",
+    "exploded.png": "12366ebb6ab85c4ffaba8464dab95291cb485d8048fab234b576afddf9154633",
+    "flex-fit.png": "7b614e6f611e927f5d0f4cd56308e7a2ab8f63d0a6b719f7022a1bb2a0c67c04",
+    "Lantern_Ring_v2.FCStd": "d339114f26cbbd2957d1025b1ead79c1bd9985e7188309029a7a414c9f48ab47",
+    "Lantern_Ring_v2.step": "d42dc146124ae9c3f593fa4c24150487da7427d34c384a841fdba70d2a30896d",
+    "legacy-comparison.png": "c54c1d6e38f1ecad3161995243873211aac23c95e7145e66fda3827922c7404c",
+    "RingBase.step": "610b034e8656ea48a3be7daa022b5f6836a169dd7d1a12e44b8a9aaf6c0dcd73",
+    "RingBase.stl": "678b98b33a5013567edb38e26c7aef49127fe96d66a6859141c5fcacd80a8917"
   },
   "parameters": {
     "finger_diameter": 18.5,
     "band_width": 11.0,
     "band_wall": 1.0,
+    "band_gap_angle": 60.0,
+    "bore_top": 0.3,
+    "fit_expansion": 1.0,
     "body_radius": 12.45,
     "socket_radius": 10.85,
     "carrier_radius": 10.65,
@@ -33,7 +37,7 @@
     "battery_radius": 10.0,
     "battery_thickness": 3.2,
     "battery_clearance": 0.15,
-    "battery_bottom": 3.9352,
+    "battery_bottom": 3.5352,
     "battery_radial_tolerance": 0.1,
     "battery_height_tolerance": 0.05,
     "printed_stack_tolerance": 0.05,
@@ -49,10 +53,10 @@
     "pin_bore_diameter": 1.75,
     "pin_flange_bore_diameter": 2.1,
     "carrier_bottom": 0.8,
-    "deck_bottom": 8.0,
-    "deck_floor_top": 8.75,
-    "pcb_bottom": 9.4204,
-    "bezel_height": 1.2,
+    "deck_bottom": 7.6,
+    "deck_floor_top": 8.35,
+    "pcb_bottom": 9.0204,
+    "bezel_height": 0.6,
     "lug_inner_radius": 10.4,
     "lug_outer_radius": 11.45,
     "track_outer_radius": 11.65,
@@ -200,11 +204,20 @@
   },
   "stack": {
     "working_pin_height": 2.2352,
-    "battery_top": 7.1352,
-    "negative_flange": 1.7000000000000002,
-    "positive_flange": 9.3704,
-    "pcb_top": 11.0204,
-    "assembly_top": 12.2204
+    "battery_top": 6.735200000000001,
+    "negative_flange": 1.3000000000000003,
+    "positive_flange": 8.970400000000001,
+    "pcb_top": 10.6204,
+    "assembly_top": 11.2204,
+    "highest_component": 11.7204,
+    "profile_above_finger": 11.420399999999999
+  },
+  "flexible_fit": {
+    "nominal_bore": 18.5,
+    "screening_bore": 19.5,
+    "uniform_curvature_strain": 0.00250156347717323,
+    "tip_gap": 8.749999999999998,
+    "status": "UNQUALIFIED: uniform-curvature screen only; root strain, force, creep and fatigue require tests"
   },
   "legacy_reference": {
     "setting_diameter": 22.0,
@@ -223,7 +236,7 @@
   "printed_body_envelope": {
     "width": 24.9,
     "depth": 24.9,
-    "height": 32.2204
+    "height": 29.114147686898278
   },
   "checks": [
     "RingBase: valid single solid",
@@ -238,7 +251,8 @@
     "Pogo travel worst case: 0.052..0.557 mm; max 0.610 mm",
     "Both pogo tips touch the intended battery faces at nominal compression",
     "Battery extraction: 17 poses, 0..16 mm after deck removal",
-    "Actual solids preserve compact 24.9 mm maximum width / 12.2204 mm top",
+    "Split band open across full width; nested crown retains 0.5 mm floor",
+    "Actual solids: 24.9 mm maximum width; LED-inclusive top 11.42 mm above finger",
     "Legacy native CAD measured: 22 mm setting, 5 mm above PCB, 11 mm band",
     "RingBase STL watertight and STEP valid after re-import",
     "Carrier STL watertight and STEP valid after re-import",

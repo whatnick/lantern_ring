@@ -36,6 +36,12 @@ band before envelope changes; preserve the 11 mm band width and 1 mm band wall.
 Keep `legacy-comparison.png` and measured reference hashes current. The short
 pins require measured +/-0.05 mm cell/finished-stack budgets; do not assume
 unmeasured prints meet them or describe the 24.9 mm socket as an exact 22 mm fit.
+The finger band is now split into rounded PA12 arms with a 60-degree bottom
+gap; do not restore a rigid closed loop. Its elastic-fit study is a curvature
+screen, not a verified size range or force/creep model. Keep the battery well
+closed and a continuous >=0.5 mm floor above the nested finger bore. Measure
+the highest LED, not just the bezel, when checking above-finger profile.
+Metal versions need separately designed spring arms and continuous insulation.
 The carrier, not the PCB, takes twist load. Preserve the asymmetric key, track
 shelves and mandatory anti-unlock screw.
 PCB printing clearance permits reversed insertion: align TP1 to the ground-wire

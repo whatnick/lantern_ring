@@ -2,11 +2,17 @@
 
 **Status: ideation, not a revised manufacturing release.** The illustrations
 now reference the [compact v2 CAD](../../../hardware/v2.0/ring_3d/README.md):
-24.9 mm socket, 23.4 mm bezel, 11 mm band, short 0965 SMT pogo pins and a direct
+24.9 mm socket, 23.4 mm bezel, 11 mm-wide open-bottom PA12 band, a nested crown
+with an 11.42 mm LED-inclusive above-finger profile, short 0965 SMT pogo pins and a direct
 rear-VCC solder connection. They do not reinstate the oversized 36.4 mm crown.
 This roadmap explores eliminating the permanent PCB connections while
 retaining opposite-face CR2032 pogo contacts and the removable bayonet cassette.
 An outer ring body can be metal; the battery/contact insert still needs insulation.
+The baseline's split arms use material spring-back; their
+[1 mm expansion study](../../../hardware/v2.0/ring_3d/generated/flex-fit.png)
+is not a validated fit range. A metal concept must preserve the open-bottom
+intent but re-engineer arm thickness, spring force, fatigue and comfort for
+its actual alloy/process, not copy the PA12 section.
 
 **Nano Banana generation is blocked:** Gemini CLI is installed, but its
 headless authentication check returned code 41 (no configured authentication),

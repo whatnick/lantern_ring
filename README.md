@@ -7,13 +7,18 @@
 [FreeCAD v2 twist-lock hardware](hardware/v2.0/ring_3d/README.md) provides a keyed
 30-degree bayonet PCB/battery cassette, opposite-face CR2032 pogo contacts,
 one insulated ground lead and screw-retained battery access. The compact crown
-is 24.9 mm across, with the original 11 mm band width; a
+is 24.9 mm across, with the original 11 mm band width and a **rounded open-bottom
+elastic band**. The crown nests onto the finger arc; its LED-inclusive profile
+is **11.42 mm above the finger**. A
 [same-scale legacy comparison](hardware/v2.0/ring_3d/generated/legacy-comparison.png)
 documents the remaining height/diameter difference. Native FreeCAD, STEP
 and printable STL files are included with parametric regeneration scripts.
 Battery replacement needs no soldering; the direct positive pogo and ground
 lead still need three permanent joints. This is an unprinted, electrically unqualified prototype for the
 mono-colour PCB, not a certified battery-powered product.
+The [elastic-fit study](hardware/v2.0/ring_3d/generated/flex-fit.png) illustrates
+a 1 mm expansion target, not a qualified size range; PA12 spring-back, creep
+and comfortable fit still require physical testing.
 
 ![Lantern Ring v2 CAD](hardware/v2.0/ring_3d/generated/assembly.png)
 

@@ -28,7 +28,7 @@ class NativeDocumentTests(unittest.TestCase):
             self.doc.recompute()
             self.assertNotAlmostEqual(before, self.doc.RingBase.Shape.Volume, places=3)
             p = json.loads(object_config(parameters))
-            centre_z = -(original + 1.0) / 2 - p["band_wall"] / 2
+            centre_z = p["bore_top"] - (original + 1.0) / 2
             point = App.Vector(original / 2 + 0.2, 0, centre_z)
             self.assertFalse(self.doc.RingBase.Shape.isInside(point, 1e-6, False))
             self.doc.RingBase.Shape.check(True)
@@ -50,6 +50,30 @@ class NativeDocumentTests(unittest.TestCase):
             parameters.PCBClearance = original
             self.doc.recompute()
         self.assertAlmostEqual(before, self.doc.ContactDeck.Shape.Volume, places=5)
+
+    def test_band_is_open_with_rounded_tips_and_insulated_nested_crown(self):
+        p = json.loads(object_config(self.doc.Parameters))
+        base = self.doc.RingBase.Shape
+        centre_z = p["bore_top"] - p["finger_diameter"] / 2
+        for y in (-5.4, 0, 5.4):
+            self.assertFalse(base.isInside(App.Vector(0, y, centre_z - 9.25), 1e-6, True))
+            self.assertTrue(base.isInside(App.Vector(9.75, y, centre_z), 1e-6, False))
+        self.assertTrue(base.isInside(App.Vector(0, 0, 0.55), 1e-6, False))
+        self.assertFalse(base.isInside(App.Vector(0, 0, 0.2), 1e-6, False))
+
+    def test_gap_angle_recomputes_elastic_arms(self):
+        parameters = self.doc.Parameters
+        original = parameters.BandGapAngle.Value
+        before = self.doc.RingBase.Shape.Volume
+        try:
+            parameters.BandGapAngle = 70
+            self.doc.recompute()
+            self.assertLess(self.doc.RingBase.Shape.Volume, before)
+            self.doc.RingBase.Shape.check(True)
+        finally:
+            parameters.BandGapAngle = original
+            self.doc.recompute()
+        self.assertAlmostEqual(before, self.doc.RingBase.Shape.Volume, places=5)
 
     def test_twist_angle_recomputes_socket_and_whole_cassette(self):
         parameters = self.doc.Parameters

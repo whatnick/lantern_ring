@@ -47,8 +47,10 @@ class RoadmapTests(unittest.TestCase):
         self.assertEqual(len(self.prompts["stages"]), 5)
         self.assertEqual(self.prompts["model"], "gemini-3.1-flash-image-preview")
         self.assertIn("TWO independent contact circuits", self.prompts["common"])
-        for dimension in ("24.9 mm", "23.4 mm", "11 mm", "12.22 mm"):
+        for dimension in ("24.9 mm", "23.4 mm", "11 mm", "11.42 mm"):
             self.assertIn(dimension, self.prompts["common"])
+        self.assertIn("OPEN the band BOTTOM", self.prompts["common"])
+        self.assertIn("0.5 mm floor", self.prompts["common"])
         self.assertIn("No red wire", self.prompts["stages"][0]["prompt"])
         metal = next(s for s in self.prompts["stages"] if s["id"] == "04-floating-metal")
         self.assertIn("FLOATING", metal["prompt"])

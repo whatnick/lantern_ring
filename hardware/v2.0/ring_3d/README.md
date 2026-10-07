@@ -11,6 +11,8 @@ contact deck; **turn the cassette/bezel, never the PCB**.
 
 ![Same-scale comparison with the legacy ring](generated/legacy-comparison.png)
 
+![Open-band elastic-fit curvature study](generated/flex-fit.png)
+
 The [contact and metal-body roadmap](../../../docs/design/contact-roadmap/README.md)
 explores solderless PCB pressure contacts and a floating metal shell with an
 insulating cassette. Those renders are concepts, not replacement manufacturing
@@ -33,8 +35,13 @@ rear mask opening, rather than using a library bounding box that includes the
 outline stroke. IR, v1 multi-colour and the unfinished DotStar board need their
 own measured contact decks; they are not drop-in electrically compatible.
 
-Default dimensions: **18.5 mm finger bore, 11 mm band width, 24.9 mm maximum
-crown diameter and 12.2204 mm crown height above the insulating base plane**.
+Default dimensions: **18.5 mm unloaded finger bore, 11 mm band width, 24.9 mm
+maximum crown diameter and 11.2204 mm printed crown height above Z=0**.
+The LEDs extend to Z=11.7204. The bore apex is raised to Z=0.3, so the true
+**LED-inclusive profile above the finger is 11.4204 mm**, versus 12.7204 mm
+for the previous closed-band design. Removing surplus negative-contact clearance
+and reducing the bezel from 1.2 to 0.6 mm lowers the actual crown; the image
+has not just been repositioned or rescaled.
 The upper bezel is 23.4 mm across. These replace the oversized 36.4 mm diameter /
 22.4 mm stack; neither PCB nor cell has been scaled.
 Legacy 15.5/16.5/18.5/19.5 mm bore sizes can be regenerated.
@@ -55,17 +62,53 @@ printed solids at the **same scale**, with finger-bore centres aligned.
 | --- | ---: | ---: |
 | Setting / upper bezel diameter | 22 mm | 23.4 mm |
 | Maximum body width | ~23.14 mm | 24.9 mm |
-| Overall printed-body height | ~27.90 mm | 32.22 mm |
+| Overall printed-body height | ~27.90 mm | ~29.11 mm |
 | Band width / wall | 11 / 1 mm | 11 / 1 mm |
 
 This is **not an exact 22 mm replacement**: the keyed polymer tracks need a
 24.9 mm socket, 2.9 mm wider than the historical setting. The face lip is now
-2.8 mm above the PCB underside, rather than 5 mm. Two spring contacts still add
+2.2 mm above the PCB underside, rather than 5 mm. Two spring contacts still add
 4.4704 mm of working axial height around the unscaled 3.2 mm cell, so the
 complete enclosure remains taller than the old direct-contact body. The old
-5 mm face height and the new 12.2204 mm base-to-top stack have different datums
+5 mm face height and the new 11.2204 mm base-to-top stack have different datums
 and must not be presented as equivalent measurements. Matching the complete
 old envelope would require a different contact architecture, not uniform scaling.
+
+### Open-bottom material-spring fit
+
+The closed loop is replaced by **two continuous 1 mm-thick PA12 arms**, with a
+60-degree bottom opening and 0.5 mm-radius end caps across the band width.
+The unloaded tip gap is 8.75 mm. The top sits directly on the circular finger
+arc rather than on tall side bridges: the raised bore cuts into the crown
+underside, while a **continuous 0.5 mm floor separates skin from the contact
+well**. Only the finger band is open; the battery compartment is not.
+
+Elastic bending of these free arms supplies spring-back and fit preload; there
+is no additional metal spring or adjustment screw. Start with a nominal bore
+close to the measured finger size. A slightly smaller unloaded bore can supply
+preload only after fit/force testing; do not force an undersized print onto a
+finger or use elastic travel to compensate for a wrong ring size.
+
+`fit_expansion = 1.0` is a **screening target**, not a certified 18.5-19.5 mm
+size range. The illustration preserves neutral-axis arc length while widening
+the opening to about 74.6 degrees. The simple curvature estimate
+`strain = wall/2 * (1/R - 1/(R + expansion/2))`, with `R = (bore + wall)/2`,
+gives approximately **0.250%** outer-fibre strain. It omits root stress
+concentration, contact loads, nonlinear geometry, residual print stresses,
+anisotropy, creep and fatigue. It is not FEA or a spring-force prediction.
+The 0.5% screen ceiling is a conservative design input, **not a published
+PA12 cyclic allowable**.
+
+Use a controlled ductile PA12 process for this spring geometry. The
+[EOS PA 2200 material reference](https://store.eos.info/products/pa-2200-polyamide-12)
+is a material-selection starting point, not a guarantee of elastic recovery.
+Print an actual split-band coupon in the intended build orientation and finish,
+cycle it on 18.5/19.0/19.5 mm gauges, and measure force, permanent set and recovery
+before a worn trial. Repeat after warm/humid conditioning and sustained
+deflection. Stop if the roots whiten/crack, the band takes a set, or fit is
+painful/restricts circulation. No claimed skin compatibility or wear safety.
+Do not copy the same thickness into resin, PLA or a metal body: their spring
+stiffness and failure modes differ. Metal needs separately engineered arms.
 
 ## Rebuild and edit
 
@@ -88,7 +131,10 @@ checks when moving to another version.
 For GUI use, open and run `build.FCMacro` from this directory. It imports the
 local feature module and builds the assembly. The native file contains
 `Part::FeaturePython` parts linked to a `Parameters` object: change
-`FingerDiameter`, `PCBClearance` or `LockAngle` and recompute to update the solids.
+`FingerDiameter`, `PCBClearance`, `LockAngle` or `BandGapAngle` and recompute
+to update the solids. `bore_top` in the configuration is the bore-apex Z above
+the original crown base plane; the default Z=0.3 retains the 0.5 mm floor and
+meets the above-finger profile budget.
 `Configuration` holds the other dimensions as JSON. Run the macro once in a
 new FreeCAD session **before opening an existing FCStd for parametric editing**,
 so FreeCAD can restore `lantern_ring.RingFeature`. The saved geometry and STEP
@@ -103,7 +149,7 @@ together; do not hand-edit generated geometry.
 
 | Item | Quantity | Specification |
 | --- | ---: | --- |
-| RingBase | 1 | Band and keyed bayonet socket |
+| RingBase | 1 | Rounded split elastic band and nested keyed bayonet socket |
 | Carrier | 1 | Insulated battery well, negative pogo seat, lead channel, lugs |
 | ContactDeck | 1 | Positive pogo seat and actual PCB pocket |
 | Bezel | 1 | PCB-edge clamp and open optical window |
@@ -117,7 +163,7 @@ together; do not hand-edit generated geometry.
 Use a dimensionally controlled PA12 process for the compact parts, not brittle
 decorative resin. The battery well has a 0.5 mm wall and the outer track wall is
 0.8 mm: this is **not a drop-in coarse FDM print**. Qualify these small walls,
-the 1 mm lugs and the M1 threads on coupons before printing the ring.
+the 1 mm lugs, 0.6 mm bezel and M1 threads on coupons before printing the ring.
 RingBase needs appropriate supports under the crown and track
 roofs; its Z=0 STL position is not a promise of support-free printing. The deck
 and bezel are naturally base-down. Deburr/smooth skin-facing band edges and all
@@ -219,14 +265,18 @@ unintended assembled interference, non-solid printed parts, or nonwatertight
 STLs. It samples axial insertion, the complete twist, both incorrect key
 orientations, locked axial withdrawal, cell extraction, and both battery tip
 planes. STEP and STL files are re-imported, and FCStd is reopened/recomputed.
-STEP volume must agree within 0.01 mm^3. OCC 7.5 STEP curve-on-surface checks
+It also checks the full-width bottom opening, retained finger-side floor and
+the LED-inclusive above-finger height. STEP volume must agree within 0.01 mm^3.
+OCC 7.5 STEP curve-on-surface checks
 use an explicit 0.00001 mm numerical tolerance; this is not a print allowance.
 `generated/validation.json` records the parameters, PCB hash and check results.
 `test_freecad.py` restores the document in a fresh process and verifies that
-finger bore, PCB clearance and twist-angle edits really recompute. The CI job
+finger bore, bottom-opening angle, PCB clearance and twist-angle edits really
+recompute. The CI job
 runs the portable tests and provenance checks; it does not run FreeCAD itself.
 
-**Still required on the bench:** printer fit coupons/full first article, screw
+**Still required on the bench:** split-arm force/recovery, root strain, creep/
+fatigue and gauge-fit testing; printer fit coupons/full first article; screw
 pullout, adhesive retention, lock wear/drop resistance, pin force/travel across
 actual cell tolerances, wire-slack service trial, contact resistance under load,
 LED current and temperature, and short/reverse-insertion checks with a

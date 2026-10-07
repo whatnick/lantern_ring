@@ -188,6 +188,22 @@ def stack(p, pcb):
         "positive_flange": battery_top + working,
         "pcb_top": pcb_top,
         "assembly_top": pcb_top + p["bezel_height"],
+        "highest_component": pcb_top + max(1.1, p["bezel_height"]),
+        "profile_above_finger": pcb_top + max(1.1, p["bezel_height"]) - p["bore_top"],
+    }
+
+
+def flexible_fit(p):
+    """Uniform-curvature strain screen, not a force, creep or fatigue model."""
+    neutral_radius = (p["finger_diameter"] + p["band_wall"]) / 2
+    expanded_radius = neutral_radius + p["fit_expansion"] / 2
+    strain = p["band_wall"] / 2 * (1 / neutral_radius - 1 / expanded_radius)
+    return {
+        "nominal_bore": p["finger_diameter"],
+        "screening_bore": p["finger_diameter"] + p["fit_expansion"],
+        "uniform_curvature_strain": strain,
+        "tip_gap": 2 * neutral_radius * math.sin(math.radians(p["band_gap_angle"] / 2)) - p["band_wall"],
+        "status": "UNQUALIFIED: uniform-curvature screen only; root strain, force, creep and fatigue require tests",
     }
 
 
@@ -252,10 +268,20 @@ def validate_parameters(p, pcb):
         raise ValueError("Negative tip could reach the positive battery rim")
     if max(math.hypot(*v) for v in pcb["outline"]) + p["pcb_clearance"] >= p["deck_radius"]:
         raise ValueError("PCB does not fit in the contact deck")
-    if p["body_radius"] > 12.45 or s["assembly_top"] > 12.221:
+    if p["body_radius"] > 12.45 or s["assembly_top"] > 11.221:
         raise ValueError("Compact legacy-derived crown envelope exceeded")
     if p["band_width"] != 11.0:
         raise ValueError("Preserve the measured legacy 11 mm band width")
     if p["band_wall"] != 1.0:
         raise ValueError("Preserve the measured legacy 1 mm band wall")
+    if not 45 <= p["band_gap_angle"] <= 80:
+        raise ValueError("Split band needs a 45..80 degree bottom opening")
+    if p["carrier_bottom"] - p["bore_top"] < 0.5 - 1e-6:
+        raise ValueError("Nested finger bore leaves less than 0.5 mm insulating floor")
+    if s["profile_above_finger"] > 11.421:
+        raise ValueError("Lowered top exceeds the 11.42 mm above-finger budget")
+    if p["bezel_height"] < 0.6:
+        raise ValueError("Bezel clamp is thinner than 0.6 mm")
+    if p["fit_expansion"] > 1.0 or flexible_fit(p)["uniform_curvature_strain"] > 0.005:
+        raise ValueError("Elastic fit screen exceeds the unqualified 1 mm / 0.5 percent strain budget")
     return s

@@ -42,6 +42,18 @@ to replace measured geometry with a generic circle.
   Upper bezel diameter is 23.4 mm; band width remains 11 mm and wall 1 mm. This is still
   larger/taller than the original direct-contact body: do not claim exact fit
   or scale the cell/PCB to hide the difference.
+- The band is OPEN at the bottom: two 1 mm PA12 arms, 60-degree missing sector,
+  0.5 mm-radius caps and unloaded tip gap 8.75 mm. Build from continuous arcs
+  and end-cap arcs, not tangent unions that leave nonwatertight mesh seams.
+  Raise the bore apex to Z=0.3 and cut it from the crown underside: the band
+  centre is `0.3 - bore/2`. Preserve the continuous 0.5 mm insulating floor.
+  Opening is in the finger band only, never through the battery compartment.
+  `BandGapAngle` is an editable native property.
+- Material elasticity supplies fit spring-back, not an extra mechanical spring.
+  `fit_expansion=1` is an unqualified screen. Preserve neutral-axis arc length
+  for the illustration; `wall/2 * (1/R - 1/(R + expansion/2))` gives 0.250%
+  nominal strain, not root strain or allowable fatigue. No qualified size range,
+  spring force or wearable safety claim without PA12 coupon/force/creep tests.
 - Cell is CR2032, **+ up**, nominal radius 10 and thickness 3.2 mm.
   Its positive top and case/rim must remain isolated from the inset negative
   bottom face. Negative tip is centred; upper positive tip is at the VCC XY.
@@ -49,9 +61,10 @@ to replace measured geometry with a generic circle.
   **every** bore/shoulder/mount/stack dimension for a replacement. Free height
   2.54, working compression 0.3048, full stroke 0.6096, barrel diameter 1.626,
   base 1.829 x 0.7112, no projecting tail, tip diameter 1.067 mm.
-- Battery bottom/top Z = 3.9352/7.1352. Negative flange datum Z = 1.7;
-  positive flange datum Z = 9.3704. PCB bottom/top = 9.4204/11.0204;
-  bezel top = 12.2204 mm. Pin length tolerance +/-0.1524 plus **measured**
+- Battery bottom/top Z = 3.5352/6.7352. Negative flange datum Z = 1.3;
+  positive flange datum Z = 8.9704. PCB bottom/top = 9.0204/10.6204;
+  bezel top = 11.2204 mm. Include the LEDs at Z=11.7204: true above-finger
+  profile is 11.4204 mm, not just bezel height. Pin length tolerance +/-0.1524 plus **measured**
   +/-0.05 each cell/finished stack permits 0.0524..0.5572 mm compression.
   Do not assume ordinary prints or unsorted cells meet those budgets.
 - Insulated ground lead fits below the PCB, outside the battery pocket.
@@ -77,7 +90,7 @@ python -m unittest discover -s hardware\v2.0\ring_3d -p "test_design.py"
 ```
 
 For GUI regeneration run `build.FCMacro`. Import the local `lantern_ring`
-module before restoring the FeaturePython document for editing. The three
+module before restoring the FeaturePython document for editing. The four
 exposed dimension overrides on `Parameters` recompute all affected shapes;
 the full configuration is JSON. Transfer final GUI settings back to
 `parameters.json` and regenerate **all** exports. Saved PCB geometry is a
@@ -88,6 +101,9 @@ Keep solid BOP checks, pairwise unintended-interference checks, insertion/twist
 pose sweeps, incorrect-key rejection, locked pullout rejection, cell extraction,
 tip/face contact tests and native/export roundtrips. Pogo/lead termination
 overlap is intentional; no other collision is acceptable.
+Check the open bottom across the entire band width, the retained finger-side
+floor and highest-LED profile. Regenerate `flex-fit.png` with its unqualified
+curvature-screen labels, never present it as deformation FEA.
 
 FreeCAD 0.19 / OCC 7.5 pitfalls: importing `FreeCAD` must precede `Part`;
 refining the complex socket/carrier with `removeSplitter()` can damage curve-on-surface
@@ -103,7 +119,8 @@ per-part watertight STL, preview PNGs and the validation report. Ordinary Python
 tests must pass and the report must match PCB/source hashes. Maintain assembly,
 contact BOM, sourcing link and prototype limitations in the hardware README.
 
-Virtual validation is not bench qualification. Require first-print fit,
+Virtual validation is not bench qualification. Require split-arm force/recovery,
+root strain, sustained-deflection creep and fatigue tests as well as first-print fit,
 adhesive/screw retention, wear/drop tests, wire-slack battery replacement,
 loaded continuity/contact resistance, current/temperature and reverse/short
 checks before wearing or release. No charging of a primary CR2032; adult
