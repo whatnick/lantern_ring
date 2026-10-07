@@ -1,0 +1,113 @@
+{
+  "target_board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
+  "target_sha256": "f844ee0df92d4f6f85eaed4eaf02b5c35ee97af6636cb68fc87b3dc8dcbfeee1",
+  "parameters_sha256": "54a2c3a6b15d2e99d89c92e54dcbb459f40ac96239274487ba0813d241f7d407",
+  "target_thickness_mm": 1.6,
+  "pogo_pitch_mm": 3.05,
+  "pogo_uv": {
+    "TP1": {
+      "uv": [
+        -3.05,
+        0.0
+      ],
+      "net": "PB0",
+      "function": "MOSI"
+    },
+    "TP2": {
+      "uv": [
+        -3.05,
+        3.05
+      ],
+      "net": "PB1",
+      "function": "MISO"
+    },
+    "TP3": {
+      "uv": [
+        -0.0,
+        0.0
+      ],
+      "net": "PB2",
+      "function": "SCK"
+    },
+    "TP4": {
+      "uv": [
+        -0.0,
+        3.05
+      ],
+      "net": "PB3",
+      "function": "PB3"
+    },
+    "TP5": {
+      "uv": [
+        3.05,
+        0.0
+      ],
+      "net": "PB4",
+      "function": "PB4"
+    },
+    "TP6": {
+      "uv": [
+        3.05,
+        3.05
+      ],
+      "net": "PB5",
+      "function": "RESET"
+    },
+    "TP9": {
+      "uv": [
+        -0.1016,
+        -4.5466
+      ],
+      "net": "VCC",
+      "function": "VCC"
+    }
+  },
+  "isp_pins": {
+    "1": "PB1",
+    "2": "VCC",
+    "3": "PB2",
+    "4": "PB0",
+    "5": "PB5",
+    "6": "GND"
+  },
+  "anvil": {
+    "window_uv": [
+      -8.093,
+      -11.842,
+      7.889,
+      1.546
+    ],
+    "support_contact_mm": {
+      "left_u": 0.645,
+      "right_u": 0.899,
+      "top_v": 2.357,
+      "bar_gap_v": 1.243
+    },
+    "gnd_pad_mm": [
+      6.0,
+      1.241
+    ],
+    "gnd_pad_target_xy": [
+      [
+        133.55,
+        139.55
+      ],
+      [
+        118.588,
+        119.829
+      ]
+    ],
+    "pocket_clearance_mm": 0.15
+  },
+  "unmeasured": [
+    "clip_kit",
+    "pogo"
+  ],
+  "outputs": [
+    "probe/ring_ir_prog_probe.kicad_pcb",
+    "probe/ring_ir_prog_probe.kicad_sch",
+    "anvil/ring_ir_prog_anvil.kicad_pcb",
+    "anvil/ring_ir_prog_anvil.kicad_sch",
+    "fence/ring_ir_prog_fence.kicad_pcb"
+  ]
+}

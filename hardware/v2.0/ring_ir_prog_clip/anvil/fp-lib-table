@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ring_ir_prog_clip")(type "KiCad")(uri "${KIPRJMOD}/../ring_ir_prog_clip.pretty")(options "")(descr "Programming clip footprints"))
+)

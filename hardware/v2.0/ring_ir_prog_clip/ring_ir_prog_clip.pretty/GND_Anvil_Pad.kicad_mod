@@ -1,0 +1,12 @@
+(footprint "GND_Anvil_Pad"
+	(version 20240108)
+	(generator "ring_ir_prog_clip")
+	(layer "F.Cu")
+	(descr "Exposed flat GND contact under the ring_pcb_IR front GND bar. Generated from the target board")
+	(tags "anvil contact ground")
+	(attr smd)
+	(fp_text reference "REF**" (at 0 -1.12) (layer "F.Fab") (effects (font (size 0.5 0.5) (thickness 0.08))))
+	(fp_text value "GND_Anvil_Pad" (at 0 1.12) (layer "F.Fab") (effects (font (size 0.5 0.5) (thickness 0.08))))
+	(fp_rect (start -3.1 -0.72) (end 3.1 0.72) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))
+	(pad "1" smd rect (at 0 0) (size 6.0 1.241) (layers "F.Cu" "F.Mask"))
+)

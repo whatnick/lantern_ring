@@ -1,0 +1,54 @@
+{
+  "dut": {
+    "board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
+    "origin_test_point": "TP3",
+    "probe_test_points": ["TP1", "TP2", "TP3", "TP4", "TP5", "TP6", "TP9"],
+    "ground_test_point": "TP8",
+    "expected_nets": {
+      "TP1": "PB0", "TP2": "PB1", "TP3": "PB2", "TP4": "PB3",
+      "TP5": "PB4", "TP6": "PB5", "TP9": "VCC", "TP8": "GND"
+    }
+  },
+  "isp_header": {
+    "standard": "Atmel AVR ISP-6 (2x3, 2.54 mm)",
+    "pins": {"1": "PB1", "2": "VCC", "3": "PB2", "4": "PB0", "5": "PB5", "6": "GND"},
+    "functions": {"PB0": "MOSI", "PB1": "MISO", "PB2": "SCK", "PB5": "RESET"},
+    "row_a_offset": 7.0
+  },
+  "pogo": {
+    "series": "P75 class (1.02 mm barrel, about 16.5 mm long, about 2.6 mm travel)",
+    "tip": "B1 spear or LM2 cone for bare 1.0 mm square HASL/ENIG pads",
+    "barrel_diameter": 1.02,
+    "drill": 1.15,
+    "pad_diameter": 1.9,
+    "working_travel_fraction": 0.66,
+    "measured": false
+  },
+  "probe_board": {
+    "u_min": -7.0, "u_max": 7.0, "v_min": -7.5, "v_max": 21.5,
+    "corner_radius": 1.0,
+    "track_width": 0.25,
+    "outer_route_u": 4.4,
+    "gnd_lead_pad": [5.6, 7.0]
+  },
+  "clip_kit": {
+    "listing": "https://www.aliexpress.com/item/1005006153573416.html",
+    "reference": "https://www.adafruit.com/product/5434",
+    "mount_hole_drill": 2.2,
+    "mount_holes_uv": [[-3.5, 15.5], [3.5, 18.5]],
+    "measured": false,
+    "note": "Seller publishes no drawing. Hole positions are placeholders until the jaw is measured."
+  },
+  "anvil": {
+    "outline_margin": 2.5,
+    "tail_length": 7.0,
+    "corner_radius": 1.0,
+    "window_margin": 0.25,
+    "window_corner_radius": 0.5,
+    "pocket_clearance": 0.15,
+    "gnd_pad_inset": 0.3,
+    "gnd_pad_half_width": 3.0,
+    "gnd_track_width": 0.5,
+    "min_rail_contact": 0.5
+  }
+}

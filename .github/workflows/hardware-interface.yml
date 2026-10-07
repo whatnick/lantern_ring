@@ -4,12 +4,16 @@ on:
   push:
     paths:
       - "hardware/v2.0/ring_3d/**"
+      - "hardware/v2.0/ring_ir_prog_clip/**"
+      - "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
       - "docs/design/contact-roadmap/**"
       - ".github/workflows/hardware-interface.yml"
   pull_request:
     paths:
       - "hardware/v2.0/ring_3d/**"
+      - "hardware/v2.0/ring_ir_prog_clip/**"
+      - "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
       - "docs/design/contact-roadmap/**"
       - ".github/workflows/hardware-interface.yml"
@@ -29,3 +33,5 @@ jobs:
         run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_design.py"
       - name: Check contact roadmap, image provenance and offline Nano Banana client
         run: python -m unittest discover -s docs/design/contact-roadmap -p "test_roadmap.py"
+      - name: Check IR programming clip against the IR ring board
+        run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_prog_clip.py"

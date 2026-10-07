@@ -10,6 +10,10 @@ Its copper-foil, plated-leaf and metal-shell illustrations are not validated
 replacement geometry. Keep the metal shell floating and retain a continuous
 insulating contact/battery insert unless a separately reviewed design changes it.
 
+The ATtiny85 IR board's programming fixture is a KiCad generator, not FreeCAD:
+see `hardware/v2.0/ring_ir_prog_clip/README.md`. Do not reuse the mono-board
+contact map for it.
+
 Use this skill for Lantern Ring enclosure, PCB fit, battery contacts, FreeCAD
 regeneration, printing or mechanical review. Work from
 `hardware/v2.0/ring_3d/README.md`, `parameters.json`, `design.py` and

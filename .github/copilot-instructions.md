@@ -10,6 +10,8 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v2.0/ring_pcb_IR`: separate ATtiny85/IR design, not the mono contact map.
 - `hardware/v2.0/ring_pcb_dotstar`: incomplete APA102 experiment, not production.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
+- `hardware/v2.0/ring_ir_prog_clip`: KiCad 10 generated pogo-pin ISP clip PCBs
+  (probe/anvil/fence) for `ring_pcb_IR`; geometry is derived from the IR board.
 - `firmware/Arduino-TV-B-Gone`: legacy firmware; keep unrelated behaviour unchanged.
 - `software/materialator`: independent STL volume/metal-weight experiment.
 - `docs/design`: electrical proposals and repository review notes.
@@ -71,6 +73,15 @@ task requires changes. After an electrical change, run the installed
 fabrication data only from the revised board. Avoid committing editor-local
 `.kicad_prl` changes caused by validation tools. Keep baseline warnings distinct
 from new errors and do not claim the DotStar experiment is routed.
+
+The IR programming clip is generated: edit `ring_ir_prog_clip/parameters.json`
+or `generate.py`, never its `.kicad_pcb`/`.kicad_sch`/`fab` outputs. Rebuild
+with `& hardware\v2.0\ring_ir_prog_clip\build.ps1 -Fab` (zero ERC/DRC violations
+of any severity) and run
+`python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p test_prog_clip.py`.
+If the IR board's test pads change, regenerate the clip. Keep `measured: false`
+until kit holes and pogo pins are physically measured, and program with the
+CR2032 removed.
 
 Never solder directly to or charge a primary CR2032. No physical design is
 release-ready until contact load/current/temperature, cell safety and mechanical
