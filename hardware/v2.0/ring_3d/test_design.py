@@ -7,7 +7,7 @@ import unittest
 
 from design import (
     HERE, PCB_PATH, artifact_hash, load_parameters, offset_polygon, parse_sexpr,
-    flexible_fit, pcb_interface, point_inside, source_hash, validate_parameters,
+    flexible_fit, pcb_interface, point_inside, shoulder, source_hash, validate_parameters,
 )
 
 
@@ -98,11 +98,28 @@ class InterfaceTests(unittest.TestCase):
         smaller = dict(self.p, fit_expansion=0.5)
         self.assertLess(flexible_fit(smaller)["uniform_curvature_strain"], fit["uniform_curvature_strain"])
 
+    def test_hollow_shoulders_stiffen_root_and_shorten_free_arm(self):
+        meet = shoulder(self.p)
+        self.assertAlmostEqual(meet["depth"], 4.0853, places=3)
+        self.assertAlmostEqual(meet["meet_angle_from_top"], 61.666, places=2)
+        fit = flexible_fit(self.p)
+        self.assertAlmostEqual(fit["free_arm_angle"], 150 - meet["meet_angle_from_top"])
+        self.assertGreater(fit["free_arm_strain"], fit["uniform_curvature_strain"])
+        self.assertLessEqual(fit["free_arm_strain"], 0.005)
+        for angle in (30, 45):
+            validate_parameters(dict(self.p, shoulder_angle=angle), self.pcb)
+        steeper = shoulder(dict(self.p, shoulder_angle=30))
+        self.assertGreater(steeper["meet_angle_from_top"], meet["meet_angle_from_top"])
+
     def test_all_supported_finger_sizes(self):
         for diameter in (15.5, 16.5, 18.5, 19.5, 22.0):
             with self.subTest(diameter=diameter):
-                p = dict(self.p, finger_diameter=diameter)
+                # Shoulders stiffen a larger share of small bands, so they get a smaller expansion screen.
+                expansion = 1.0 if diameter >= 18.5 else 0.7
+                p = dict(self.p, finger_diameter=diameter, fit_expansion=expansion)
                 validate_parameters(p, self.pcb)
+        with self.assertRaises(ValueError):
+            validate_parameters(dict(self.p, finger_diameter=15.5), self.pcb)
 
     def test_invalid_designs_fail_explicitly(self):
         cases = {
@@ -138,6 +155,12 @@ class InterfaceTests(unittest.TestCase):
             "too much expansion": {"fit_expansion": 2},
             "high bezel": {"bezel_height": 1.2},
             "thin bezel": {"bezel_height": 0.3},
+            "shallow shoulder": {"shoulder_angle": 25},
+            "flat shoulder": {"shoulder_angle": 50},
+            "thin shoulder": {"shoulder_wall": 0.5},
+            "untapered band": {"band_tip_width": 11},
+            "needle tips": {"band_tip_width": 4},
+            "sharp-edged profile": {"band_edge_radius": 0.6},
         }
         for label, changes in cases.items():
             with self.subTest(label=label), self.assertRaises(ValueError):

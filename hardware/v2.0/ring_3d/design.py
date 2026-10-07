@@ -193,17 +193,48 @@ def stack(p, pcb):
     }
 
 
+def shoulder(p):
+    """Where the conical shoulder's outer face meets the band's outer surface.
+
+    The face leaves the crown underside (Z=0) at ``body_radius`` and descends
+    toward the finger at ``shoulder_angle`` from the crown axis.
+    """
+    centre_z = p["bore_top"] - p["finger_diameter"] / 2
+    outer = p["finger_diameter"] / 2 + p["band_wall"]
+    slope = math.tan(math.radians(p["shoulder_angle"]))
+    a = 1 + slope ** 2
+    b = 2 * centre_z - 2 * p["body_radius"] * slope
+    c = p["body_radius"] ** 2 + centre_z ** 2 - outer ** 2
+    disc = b * b - 4 * a * c
+    if disc <= 0:
+        raise ValueError("Shoulder wall misses the band")
+    depth = (-b - math.sqrt(disc)) / (2 * a)
+    x = p["body_radius"] - slope * depth
+    return {
+        "depth": depth,
+        "meet_x": x,
+        "meet_z": -depth,
+        "centre_z": centre_z,
+        "meet_angle_from_top": math.degrees(math.atan2(x, -depth - centre_z)),
+    }
+
+
 def flexible_fit(p):
-    """Uniform-curvature strain screen, not a force, creep or fatigue model."""
+    """Curvature strain screens, not a force, creep or fatigue model."""
     neutral_radius = (p["finger_diameter"] + p["band_wall"]) / 2
     expanded_radius = neutral_radius + p["fit_expansion"] / 2
     strain = p["band_wall"] / 2 * (1 / neutral_radius - 1 / expanded_radius)
+    arm = 180 - p["band_gap_angle"] / 2
+    free_arm = arm - shoulder(p)["meet_angle_from_top"]
     return {
         "nominal_bore": p["finger_diameter"],
         "screening_bore": p["finger_diameter"] + p["fit_expansion"],
         "uniform_curvature_strain": strain,
+        "free_arm_angle": free_arm,
+        # Shoulders stiffen the root, so the same tip rotation is taken by the free arm.
+        "free_arm_strain": strain * arm / free_arm,
         "tip_gap": 2 * neutral_radius * math.sin(math.radians(p["band_gap_angle"] / 2)) - p["band_wall"],
-        "status": "UNQUALIFIED: uniform-curvature screen only; root strain, force, creep and fatigue require tests",
+        "status": "UNQUALIFIED: curvature screens only; root strain, force, creep and fatigue require tests",
     }
 
 
@@ -282,6 +313,18 @@ def validate_parameters(p, pcb):
         raise ValueError("Lowered top exceeds the 11.42 mm above-finger budget")
     if p["bezel_height"] < 0.6:
         raise ValueError("Bezel clamp is thinner than 0.6 mm")
-    if p["fit_expansion"] > 1.0 or flexible_fit(p)["uniform_curvature_strain"] > 0.005:
+    if not 30 <= p["shoulder_angle"] <= 45:
+        raise ValueError("Shoulder walls must lean 30..45 degrees from the crown axis")
+    if not 0.8 <= p["shoulder_wall"] <= 1.5:
+        raise ValueError("Shoulder walls need 0.8..1.5 mm thickness")
+    if not 5.0 <= p["band_tip_width"] <= p["band_width"] - 2:
+        raise ValueError("Band must taper from 11 mm to a 5..9 mm tip width")
+    if not p["band_edge_radius"] < p["band_wall"] / 2:
+        raise ValueError("Comfort-fit edge radius must be below half the band wall")
+    meet = shoulder(p)
+    if meet["meet_z"] >= 0 or meet["meet_angle_from_top"] >= 180 - p["band_gap_angle"] / 2 - 45:
+        raise ValueError("Shoulder walls leave less than 45 degrees of free spring arm")
+    fit = flexible_fit(p)
+    if p["fit_expansion"] > 1.0 or fit["free_arm_strain"] > 0.005:
         raise ValueError("Elastic fit screen exceeds the unqualified 1 mm / 0.5 percent strain budget")
     return s

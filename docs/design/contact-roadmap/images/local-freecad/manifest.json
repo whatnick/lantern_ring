@@ -1,37 +1,37 @@
 {
   "generator": "Local FreeCAD concept renderer",
-  "generated_at": "2026-10-07T03:16:03.128588+00:00",
+  "generated_at": "2026-10-07T06:17:41.492847+00:00",
   "nano_banana_status": "BLOCKED: no Gemini API authentication available",
   "geometry_status": "Stage 1 references the existing CAD; later stages are illustrative overlays only",
   "cad_source_sha256": {
-    "design.py": "a6a79068a32e602e301e973a48edbb56734307ffa00152c276482e51e1ba79db",
-    "lantern_ring.py": "8e5f55430b27cb337b7f2cfbbde401127ec382ab01d6743f9daa2ee94902fd5d",
-    "parameters.json": "75d924e074545d3578b5bd10179ab8f9d778c79253d3da3be75f5abbd62c63f2"
+    "design.py": "d2f49434280f38132015b3ec53b6956f750dbd9a8e40b20973175b8ae03d7d17",
+    "lantern_ring.py": "68140c0e34832a5a99ecf20d1781444c7a589664a2cf788058c65904705f5aa7",
+    "parameters.json": "6560f35e3984399a46ff55b46b0a071d4d8f917c9d18778ac05257f62ffd2c3d"
   },
   "renderer_sha256": "53794c0e849b932c7a625c2b3eb4f47035c4969c5af29301238d2381f980470c",
   "images": [
     {
       "file": "01-serviceable-pogo.png",
       "stage": "01-serviceable-pogo",
-      "sha256": "10fad6dce7f38f2f9d25ea14087ff466dd92abc50e2e43df2b528986d1d9a4d6",
+      "sha256": "43e7304244b322b86626f3f956b27ad52e5d422d861cffd2ca75bd7b5fc42395",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     },
     {
       "file": "02-copper-pressure.png",
       "stage": "02-copper-pressure",
-      "sha256": "db9fa70025f144a48dac6c302fdf9c2db622a580a7e4873410c272f79e0ea38b",
+      "sha256": "a5481a2cf20df9fd9a2ea0bdcc207a2445738ee00bb0568284f58747590c4fbe",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     },
     {
       "file": "03-plated-springs.png",
       "stage": "03-plated-springs",
-      "sha256": "054b9b354273846a29945371f2668ec2417498ea55ec1691c59575f6baa46fdb",
+      "sha256": "a972173633299b5484d5c4c18b90301940473dc0048656aebdd8dd9cb1437fdb",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     },
     {
       "file": "04-floating-metal.png",
       "stage": "04-floating-metal",
-      "sha256": "a52c091f117cf55566fc6f390a4f6e54f4ff5a437ce554f76d8e2d7e5010726f",
+      "sha256": "b067617cda56eb5e0a498c9cc6bd3731337ea57abbfde5231205096f3904233f",
       "status": "Local FreeCAD illustrative geometry; NOT Nano Banana; NOT validated assembly"
     }
   ]

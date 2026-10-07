@@ -49,10 +49,21 @@ to replace measured geometry with a generic circle.
   centre is `0.3 - bore/2`. Preserve the continuous 0.5 mm insulating floor.
   Opening is in the finger band only, never through the battery compartment.
   `BandGapAngle` is an editable native property.
+- Hollow 1 mm conical shoulder walls (`shoulder_angle` 30-45 deg from the crown
+  axis, default 40) run from the 12.45 mm crown rim to the band, like the legacy
+  slanted side plates; keep the front-to-back pockets open (material, powder
+  removal). `design.shoulder()` gives the meet point (61.7 deg from crest).
+- Lower shank tapers on one plane per side from 11 mm at the crest to
+  `band_tip_width` 6 mm, then `makeFillet(band_edge_radius=0.35)` on all band
+  edges for a comfort-fit profile. A kinked taper makes the fillet invalid. OCC
+  fillets here are C0 BSplines: use `bop_check()` (tolerates only C0 flags) and
+  `exact_bounds()` (BoundBox is loose on BSplines) rather than relaxing checks.
 - Material elasticity supplies fit spring-back, not an extra mechanical spring.
   `fit_expansion=1` is an unqualified screen. Preserve neutral-axis arc length
   for the illustration; `wall/2 * (1/R - 1/(R + expansion/2))` gives 0.250%
-  nominal strain, not root strain or allowable fatigue. No qualified size range,
+  nominal strain, not root strain or allowable fatigue. Shoulders stiffen the
+  root: `free_arm_strain` scales it by arm/free-arm angle (0.425%), with a 0.5%
+  ceiling; 15.5/16.5 mm bores need `fit_expansion` 0.7. No qualified size range,
   spring force or wearable safety claim without PA12 coupon/force/creep tests.
 - Cell is CR2032, **+ up**, nominal radius 10 and thickness 3.2 mm.
   Its positive top and case/rim must remain isolated from the inset negative

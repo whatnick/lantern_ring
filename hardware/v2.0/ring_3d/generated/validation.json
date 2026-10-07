@@ -2,30 +2,34 @@
   "freecad_version": "0.19.24291 (Git)",
   "pcb_sha256": "706e186907747841e754971383fc7d508be92895194bbdc378ebfca553858ab6",
   "source_sha256": {
-    "design.py": "a6a79068a32e602e301e973a48edbb56734307ffa00152c276482e51e1ba79db",
-    "lantern_ring.py": "8e5f55430b27cb337b7f2cfbbde401127ec382ab01d6743f9daa2ee94902fd5d"
+    "design.py": "d2f49434280f38132015b3ec53b6956f750dbd9a8e40b20973175b8ae03d7d17",
+    "lantern_ring.py": "68140c0e34832a5a99ecf20d1781444c7a589664a2cf788058c65904705f5aa7"
   },
   "artifact_sha256": {
-    "assembly.png": "e102ea986606f37900d06c105a87f32be1e3d6aa656d96b09b8eb557439ece94",
-    "Bezel.step": "9189bd5d0b04b284359b38e267b32952e6ebee37c7bc84ec47818ee5c46b43eb",
+    "assembly.png": "21b1baae3be1d52c2666773dbc40f778da2780031ef8b2814506b7fbe5fe48f7",
+    "Bezel.step": "8952fc98ca562a42500db4b1ab368e92f29676fd6b24a1a5ed8286497b66d436",
     "Bezel.stl": "7bde2df55fceceb553aee5c39159f634531046169f3fac752f9777e1d89cb1b2",
-    "Carrier.step": "35b93f718683df8febec38c8191a4360263af1af2737b8bab3f40f447079066d",
+    "Carrier.step": "4ef5d89662c7acb17345ec23b138e2237f2c35b692b7b8519b0d55915161e12a",
     "Carrier.stl": "930c08ec7d98bf6eeb2e671cb6276ad08e1a3395cb79bd5672d5785931ad17a1",
-    "ContactDeck.step": "7761449eb61488e64761d4bbe1a6234351437350e56a4eb589722c4a062342d2",
+    "ContactDeck.step": "bb7e7d6278a1d866cd496b12c37d2eb7169312ac26bed0e251c0c97ca6ddf1de",
     "ContactDeck.stl": "1cbd424bd3aab19d7fd622a70d26624d5edfde7d3d0c81d69f4c7997f4d136d0",
-    "exploded.png": "12366ebb6ab85c4ffaba8464dab95291cb485d8048fab234b576afddf9154633",
-    "flex-fit.png": "7b614e6f611e927f5d0f4cd56308e7a2ab8f63d0a6b719f7022a1bb2a0c67c04",
-    "Lantern_Ring_v2.FCStd": "d339114f26cbbd2957d1025b1ead79c1bd9985e7188309029a7a414c9f48ab47",
-    "Lantern_Ring_v2.step": "d42dc146124ae9c3f593fa4c24150487da7427d34c384a841fdba70d2a30896d",
-    "legacy-comparison.png": "c54c1d6e38f1ecad3161995243873211aac23c95e7145e66fda3827922c7404c",
-    "RingBase.step": "610b034e8656ea48a3be7daa022b5f6836a169dd7d1a12e44b8a9aaf6c0dcd73",
-    "RingBase.stl": "678b98b33a5013567edb38e26c7aef49127fe96d66a6859141c5fcacd80a8917"
+    "exploded.png": "221f8321eecfe3a2c09a2a3ea4421142856495edc41bee973a5fac9c90e12298",
+    "flex-fit.png": "48c5e57aa053b7aad2ff9f1ee51c0ede837a06270eb708b44cc35750408e2a33",
+    "Lantern_Ring_v2.FCStd": "eaa6d8034f8e6e4eec48737085b5dd4713da16488c718411fb6fcb89e24b6a86",
+    "Lantern_Ring_v2.step": "6a9b6985c06587506560ff625b482fac7a96996efcc4e7f7ea90e58d7a6abf0e",
+    "legacy-comparison.png": "b7203ab6c73fd4867b0ecc3fb6c20f279c433f13c4d678260e927e4b69626b64",
+    "RingBase.step": "e8d3899149e56d67752b98ab29385bcff5143bf0bfd2822b62a60d960a0df7eb",
+    "RingBase.stl": "913ca415b471c65be897dc377e79685511580b6c7166940b06448dbd5aab19d9"
   },
   "parameters": {
     "finger_diameter": 18.5,
     "band_width": 11.0,
     "band_wall": 1.0,
     "band_gap_angle": 60.0,
+    "band_tip_width": 6.0,
+    "band_edge_radius": 0.35,
+    "shoulder_angle": 40.0,
+    "shoulder_wall": 1.0,
     "bore_top": 0.3,
     "fit_expansion": 1.0,
     "body_radius": 12.45,
@@ -216,8 +220,10 @@
     "nominal_bore": 18.5,
     "screening_bore": 19.5,
     "uniform_curvature_strain": 0.00250156347717323,
+    "free_arm_angle": 88.33368700158212,
+    "free_arm_strain": 0.004247920972315621,
     "tip_gap": 8.749999999999998,
-    "status": "UNQUALIFIED: uniform-curvature screen only; root strain, force, creep and fatigue require tests"
+    "status": "UNQUALIFIED: curvature screens only; root strain, force, creep and fatigue require tests"
   },
   "legacy_reference": {
     "setting_diameter": 22.0,
@@ -234,9 +240,9 @@
     "body_height": 27.899181365966797
   },
   "printed_body_envelope": {
-    "width": 24.9,
-    "depth": 24.9,
-    "height": 29.114147686898278
+    "width": 24.900000000000006,
+    "depth": 24.900000000000006,
+    "height": 29.114145761183366
   },
   "checks": [
     "RingBase: valid single solid",
@@ -252,6 +258,7 @@
     "Both pogo tips touch the intended battery faces at nominal compression",
     "Battery extraction: 17 poses, 0..16 mm after deck removal",
     "Split band open across full width; nested crown retains 0.5 mm floor",
+    "Hollow 40 deg shoulder walls meet band 61.7 deg from crest; band tapers 11->6 mm",
     "Actual solids: 24.9 mm maximum width; LED-inclusive top 11.42 mm above finger",
     "Legacy native CAD measured: 22 mm setting, 5 mm above PCB, 11 mm band",
     "RingBase STL watertight and STEP valid after re-import",

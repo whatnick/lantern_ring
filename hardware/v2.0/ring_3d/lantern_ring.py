@@ -14,7 +14,7 @@ import Mesh
 import MeshPart
 import Part
 
-from design import HERE, PCB_PATH, artifact_hash, flexible_fit, load_parameters, offset_polygon, pcb_interface, source_hash, validate_parameters
+from design import HERE, PCB_PATH, artifact_hash, flexible_fit, load_parameters, offset_polygon, pcb_interface, shoulder, source_hash, validate_parameters
 
 
 Z = App.Vector(0, 0, 1)
@@ -58,6 +58,40 @@ def radial_hole(angle, inner, outer, z, radius):
     angle = math.radians(angle)
     direction = App.Vector(math.cos(angle), math.sin(angle), 0)
     return Part.makeCylinder(radius, outer - inner, direction * inner + App.Vector(0, 0, z), direction)
+
+
+def bop_check(shape):
+    """Strict BOP check; tolerates only C0 continuity on OCC fillet BSplines.
+
+    Rounding the tapered comfort-fit band yields C0 BSpline fillet faces. Every
+    other topology/geometry error still fails, and watertight-mesh plus STEP
+    round-trip gates independently verify the result.
+    """
+    try:
+        shape.check(True)
+    except ValueError as error:
+        lines = [line for line in str(error).splitlines()[1:] if line.strip()]
+        if not lines or any("GeomAbs_C0" not in line for line in lines):
+            raise
+        if any(face.Surface.__class__.__name__ != "BSplineSurface"
+               for face in shape.Faces if face.Surface.Continuity == "C0"):
+            raise
+
+
+def exact_bounds(shape, reach=100.0):
+    """Exact extents via distance to far planes; BoundBox is loose on BSpline fillets."""
+    def extent(axis, sign):
+        normal = App.Vector(*[sign if i == axis else 0 for i in range(3)])
+        u = App.Vector(*[1 if i == (axis + 1) % 3 else 0 for i in range(3)])
+        v = App.Vector(*[1 if i == (axis + 2) % 3 else 0 for i in range(3)])
+        corner = normal * reach - u * reach - v * reach
+        plane = Part.Face(Part.makePolygon([corner, corner + u * 2 * reach,
+                                            corner + (u + v) * 2 * reach,
+                                            corner + v * 2 * reach, corner]))
+        return sign * (reach - shape.distToShape(plane)[0])
+    low = [extent(axis, -1) for axis in range(3)]
+    high = [extent(axis, 1) for axis in range(3)]
+    return App.BoundBox(low[0], low[1], low[2], high[0], high[1], high[2])
 
 
 def screw_positions(p):
@@ -124,7 +158,31 @@ def unrotated_geometry(p, pcb):
         Part.Arc(inner_right, right_mid, outer_right).toShape(),
     ])
     band = Part.Face(profile).extrude(App.Vector(0, p["band_width"], 0))
-    base = band.fuse(cylinder(p["body_radius"], 0, p["socket_top"]))
+    meet = shoulder(p)
+    # Tapered shank: one plane per side from the 11 mm crest to the narrow open tips,
+    # keeping a single smooth edge loop that OCC can round.
+    tip_z = band_centre.z - (radius + wall / 2) * math.cos(half_gap)
+    top_z = p["bore_top"] + wall
+    root_y, tip_y = p["band_width"] / 2, p["band_tip_width"] / 2
+    k = (root_y - tip_y) / (top_z - tip_z)
+    taper_points = [(-root_y - 5 * k, top_z + 5), (root_y + 5 * k, top_z + 5),
+                    (tip_y - 5 * k, tip_z - 5), (-tip_y + 5 * k, tip_z - 5),
+                    (-root_y - 5 * k, top_z + 5)]
+    taper = Part.Face(Part.makePolygon([App.Vector(-20, y, z) for y, z in taper_points]))
+    taper = taper.extrude(App.Vector(40, 0, 0))
+    band = band.common(taper)
+    # Comfort-fit profile: round both long edges on each tapered side.
+    band = band.makeFillet(p["band_edge_radius"], band.Edges)
+    # Hollow 30..45 degree conical shoulders brace the crown overhang onto the band.
+    slope = math.tan(math.radians(p["shoulder_angle"]))
+    horizontal = p["shoulder_wall"] / math.cos(math.radians(p["shoulder_angle"]))
+    bottom_radius = p["body_radius"] - slope * meet["depth"]
+    outer_cone = Part.makeCone(bottom_radius, p["body_radius"], meet["depth"],
+                               App.Vector(0, 0, -meet["depth"]))
+    inner_cone = Part.makeCone(bottom_radius - horizontal, p["body_radius"] - horizontal,
+                               meet["depth"] + 0.02, App.Vector(0, 0, -meet["depth"] - 0.01))
+    shoulders = outer_cone.cut(inner_cone).common(taper)
+    base = band.fuse(shoulders).fuse(cylinder(p["body_radius"], 0, p["socket_top"]))
     # Nest the crown onto the finger arc, retaining the insulating floor above it.
     base = base.cut(inner)
     base = base.cut(cylinder(p["socket_radius"], p["carrier_bottom"], p["socket_top"] + 1))
@@ -302,7 +360,7 @@ def validate_geometry(p, pcb, parts):
         shape = parts[name]
         if not shape.isValid() or len(shape.Solids) != 1 or shape.Volume <= 0:
             raise ValueError("{} is not a single valid solid".format(name))
-        shape.check(True)
+        bop_check(shape)
         checks.append("{}: valid single solid".format(name))
     for a, b in itertools.combinations(parts, 2):
         if {a, b} in ({"PositivePogo", "PositiveLead"}, {"NegativePogo", "NegativeLead"}):
@@ -370,6 +428,27 @@ def validate_geometry(p, pcb, parts):
     if not base.isInside(floor_point, 1e-6, False):
         raise ValueError("Nested crown lost its insulating floor")
     checks.append("Split band open across full width; nested crown retains 0.5 mm floor")
+    meet = shoulder(p)
+    slope = math.tan(math.radians(p["shoulder_angle"]))
+    horizontal = p["shoulder_wall"] / math.cos(math.radians(p["shoulder_angle"]))
+    for side in (-1, 1):
+        z = -meet["depth"] / 2
+        wall_x = p["body_radius"] - slope * meet["depth"] / 2 - horizontal / 2
+        if not base.isInside(App.Vector(side * wall_x, 0, z), 1e-6, False):
+            raise ValueError("Conical shoulder wall is missing")
+        pocket_x = (p["body_radius"] - slope - horizontal
+                    + math.sqrt((p["finger_diameter"] / 2 + p["band_wall"]) ** 2 - (-1 - centre_z) ** 2)) / 2
+        if base.isInside(App.Vector(side * pocket_x, 0, -1), 1e-6, True):
+            raise ValueError("Shoulder pocket is filled; walls must stay hollow to save material")
+    half_gap = math.radians(p["band_gap_angle"] / 2)
+    neutral = p["finger_diameter"] / 2 + p["band_wall"] / 2
+    tip = App.Vector(neutral * math.sin(half_gap + math.radians(4)), 0,
+                     centre_z - neutral * math.cos(half_gap + math.radians(4)))
+    if (not base.isInside(tip + App.Vector(0, p["band_tip_width"] / 2 - 0.8, 0), 1e-6, False)
+            or base.isInside(tip + App.Vector(0, p["band_tip_width"] / 2 + 0.6, 0), 1e-6, True)):
+        raise ValueError("Band does not taper toward the open tips")
+    checks.append("Hollow {:g} deg shoulder walls meet band {:.1f} deg from crest; band tapers {:g}->{:g} mm".format(
+        p["shoulder_angle"], meet["meet_angle_from_top"], p["band_width"], p["band_tip_width"]))
     checks.append("Actual solids: 24.9 mm maximum width; LED-inclusive top 11.42 mm above finger")
     return checks
 
@@ -509,7 +588,8 @@ def legacy_comparison(p, parts, output):
         (490, 600, "Socket: {:g} mm; bezel: {:g} mm diameter".format(
             2 * p["body_radius"], 2 * (p["screw_radius"] + p["screw_post_radius"]))),
         (60, 630, "Band: 11 mm wide, 1 mm wall; bore: 18.5 mm"),
-        (490, 630, "Split band: {:g} deg gap; bore: {:g} mm".format(p["band_gap_angle"], p["finger_diameter"])),
+        (490, 630, "Gap {:g} deg; shoulders {:g} deg; taper {:g}-{:g} mm".format(
+            p["band_gap_angle"], p["shoulder_angle"], p["band_width"], p["band_tip_width"])),
         (60, 675, "Front projection; bore centres aligned; 14 pixels/mm. NOT physical qualification."),
     ]
     for x, y, text in labels:
@@ -527,7 +607,7 @@ def legacy_comparison(p, parts, output):
     expanded_base = expanded_parts["RingBase"]
     if not expanded_base.isValid() or len(expanded_base.Solids) != 1:
         raise ValueError("Elastic-fit curvature illustration produced invalid geometry")
-    expanded_base.check(True)
+    bop_check(expanded_base)
     mesh = mesh_for(expanded_base, expanded)
     if not mesh.isSolid():
         raise ValueError("Elastic-fit curvature illustration has an open mesh")
@@ -552,9 +632,10 @@ def legacy_comparison(p, parts, output):
         (60, 65, "Nominal: {:g} mm bore / {:g} deg opening".format(p["finger_diameter"], p["band_gap_angle"])),
         (490, 65, "Screen: {:g} mm bore / {:.1f} deg opening".format(
             expanded["finger_diameter"], expanded["band_gap_angle"])),
-        (24, 595, "Two rounded free arms provide material spring-back; the battery floor stays CLOSED."),
-        (24, 625, "Uniform-curvature strain: {:.3f}%. Not FEA, a fit rating, or a measured spring force.".format(
-            100 * fit["uniform_curvature_strain"])),
+        (24, 595, "Hollow {:g} deg shoulders brace the crown; {:g}->{:g} mm tapered arms spring back.".format(
+            p["shoulder_angle"], p["band_width"], p["band_tip_width"])),
+        (24, 625, "Strain screen: {:.3f}% uniform, {:.3f}% free-arm ({:.0f} deg arms). Not FEA or a force.".format(
+            100 * fit["uniform_curvature_strain"], 100 * fit["free_arm_strain"], fit["free_arm_angle"])),
         (24, 675, "UNQUALIFIED: root stresses, creep, fatigue, contact pressure and recovery need testing."),
     ):
         painter.drawText(x, y, text)
@@ -572,7 +653,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
     doc = create_document(p, pcb)
     parts = {name: doc.getObject(name).Shape for name in COLORS}
     checks = validate_geometry(p, pcb, parts)
-    body_bounds = Part.makeCompound([parts[name] for name in PRINT_PARTS]).BoundBox
+    body_bounds = exact_bounds(Part.makeCompound([parts[name] for name in PRINT_PARTS]))
     reference = legacy_comparison(p, parts, output)
     checks.append("Legacy native CAD measured: 22 mm setting, 5 mm above PCB, 11 mm band")
     for name in PRINT_PARTS:
@@ -585,7 +666,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         # OCC 7.5's STEP reader resets edge tolerances to 1e-7 mm. A 1e-5 mm
         # check tolerance accommodates numeric curve conversion, not fit errors.
         loaded.fixTolerance(1e-5)
-        loaded.check(True)
+        bop_check(loaded)
         shape = parts[name].copy()
         # Manufacturing meshes lie on the bed in their insertion orientation.
         if name != "RingBase":
@@ -607,7 +688,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         raise ValueError("Assembly STEP roundtrip failed")
     loaded_assembly.fixTolerance(1e-5)
     for solid in loaded_assembly.Solids:
-        solid.check(True)
+        bop_check(solid)
     checks.append("Assembly STEP re-import preserves every solid and total volume")
     preview_png(parts, p, output / "assembly.png")
     explode = {}

@@ -3,7 +3,7 @@
 import json
 import unittest
 
-from lantern_ring import App, HERE, PRINT_PARTS, RingFeature, object_config, validate_geometry
+from lantern_ring import App, bop_check, HERE, PRINT_PARTS, RingFeature, object_config, validate_geometry
 
 
 class NativeDocumentTests(unittest.TestCase):
@@ -31,7 +31,7 @@ class NativeDocumentTests(unittest.TestCase):
             centre_z = p["bore_top"] - (original + 1.0) / 2
             point = App.Vector(original / 2 + 0.2, 0, centre_z)
             self.assertFalse(self.doc.RingBase.Shape.isInside(point, 1e-6, False))
-            self.doc.RingBase.Shape.check(True)
+            bop_check(self.doc.RingBase.Shape)
         finally:
             parameters.FingerDiameter = original
             self.doc.recompute()
@@ -57,7 +57,11 @@ class NativeDocumentTests(unittest.TestCase):
         centre_z = p["bore_top"] - p["finger_diameter"] / 2
         for y in (-5.4, 0, 5.4):
             self.assertFalse(base.isInside(App.Vector(0, y, centre_z - 9.25), 1e-6, True))
+        # Tapered shank: about 8.25 mm wide at the bore centre height, 11 mm at the crest.
+        for y in (-3.6, 0, 3.6):
             self.assertTrue(base.isInside(App.Vector(9.75, y, centre_z), 1e-6, False))
+        for y in (-4.6, 4.6):
+            self.assertFalse(base.isInside(App.Vector(9.75, y, centre_z), 1e-6, True))
         self.assertTrue(base.isInside(App.Vector(0, 0, 0.55), 1e-6, False))
         self.assertFalse(base.isInside(App.Vector(0, 0, 0.2), 1e-6, False))
 
@@ -69,7 +73,7 @@ class NativeDocumentTests(unittest.TestCase):
             parameters.BandGapAngle = 70
             self.doc.recompute()
             self.assertLess(self.doc.RingBase.Shape.Volume, before)
-            self.doc.RingBase.Shape.check(True)
+            bop_check(self.doc.RingBase.Shape)
         finally:
             parameters.BandGapAngle = original
             self.doc.recompute()

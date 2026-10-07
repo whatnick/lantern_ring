@@ -37,7 +37,9 @@ Keep `legacy-comparison.png` and measured reference hashes current. The short
 pins require measured +/-0.05 mm cell/finished-stack budgets; do not assume
 unmeasured prints meet them or describe the 24.9 mm socket as an exact 22 mm fit.
 The finger band is now split into rounded PA12 arms with a 60-degree bottom
-gap; do not restore a rigid closed loop. Its elastic-fit study is a curvature
+gap; do not restore a rigid closed loop. Hollow 30-45 degree conical shoulder
+walls brace the crown onto the band, and the shank tapers from 11 mm to 6 mm
+with comfort-fit rounded edges; keep the pockets hollow. Its elastic-fit study is a curvature
 screen, not a verified size range or force/creep model. Keep the battery well
 closed and a continuous >=0.5 mm floor above the nested finger bore. Measure
 the highest LED, not just the bezel, when checking above-finger profile.

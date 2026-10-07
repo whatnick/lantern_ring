@@ -44,7 +44,8 @@ and reducing the bezel from 1.2 to 0.6 mm lowers the actual crown; the image
 has not just been repositioned or rescaled.
 The upper bezel is 23.4 mm across. These replace the oversized 36.4 mm diameter /
 22.4 mm stack; neither PCB nor cell has been scaled.
-Legacy 15.5/16.5/18.5/19.5 mm bore sizes can be regenerated.
+Legacy 15.5/16.5/18.5/19.5 mm bore sizes can be regenerated; 15.5/16.5 mm
+bores must reduce `fit_expansion` to 0.7 mm to stay within the free-arm strain screen.
 
 ### Measured legacy envelope and remaining difference
 
@@ -63,7 +64,8 @@ printed solids at the **same scale**, with finger-bore centres aligned.
 | Setting / upper bezel diameter | 22 mm | 23.4 mm |
 | Maximum body width | ~23.14 mm | 24.9 mm |
 | Overall printed-body height | ~27.90 mm | ~29.11 mm |
-| Band width / wall | 11 / 1 mm | 11 / 1 mm |
+| Band width / wall | 11 / 1 mm | 11 tapering to 6 / 1 mm |
+| Crown-to-band bracing | ~12-17 deg near-vertical plates, hollow | 40 deg hollow conical shoulders |
 
 This is **not an exact 22 mm replacement**: the keyed polymer tracks need a
 24.9 mm socket, 2.9 mm wider than the historical setting. The face lip is now
@@ -78,10 +80,33 @@ old envelope would require a different contact architecture, not uniform scaling
 
 The closed loop is replaced by **two continuous 1 mm-thick PA12 arms**, with a
 60-degree bottom opening and 0.5 mm-radius end caps across the band width.
-The unloaded tip gap is 8.75 mm. The top sits directly on the circular finger
-arc rather than on tall side bridges: the raised bore cuts into the crown
-underside, while a **continuous 0.5 mm floor separates skin from the contact
-well**. Only the finger band is open; the battery compartment is not.
+The unloaded tip gap is 8.75 mm. The top sits low on the circular finger
+arc: the raised bore cuts into the crown underside, while a **continuous 0.5 mm
+floor separates skin from the contact well**. Only the finger band is open; the
+battery compartment is not.
+
+### Braced shoulders and tapered comfort-fit band
+
+Like the legacy body's slanted side plates, **hollow 1 mm conical shoulder walls**
+brace the 24.9 mm crown overhang onto the band. Each wall leaves the crown
+underside at its 12.45 mm rim and descends **40 degrees from the crown axis**
+(`shoulder_angle`, validated 30-45 degrees), meeting the band 4.09 mm below the
+crown, 61.7 degrees from its crest. The walls lean less steeply than the old
+~12-17-degree plates, so they meet the band higher, keeping long free spring
+arms. At 50 degrees from horizontal, they print without supports. The
+triangular pockets between walls and band remain open front-to-back, saving
+material and allowing powder removal.
+
+Following common ring-profile practice (see
+[MOH London ring profiles](https://www.mohlondon.com/guidance/design-basics/ring-profiles)),
+the shank tapers on its lower side: one plane per side narrows the band from the
+legacy **11 mm crest to 6 mm at the open tips** (`band_tip_width`). The long
+edges are rounded to a **0.35 mm comfort-fit radius** (`band_edge_radius`).
+The narrower, lower arms also make bending stress more uniform along the spring.
+Net RingBase volume falls from 1194.3 to 1164.8 mm^3 (-2.5%), despite the
+added bracing. OCC produces C0-continuity BSpline fillet faces; the validator
+accepts only those flags, while every other BOP error, watertight-mesh check
+and STEP round trip remains strict.
 
 Elastic bending of these free arms supplies spring-back and fit preload; there
 is no additional metal spring or adjustment screw. Start with a nominal bore
@@ -93,7 +118,9 @@ finger or use elastic travel to compensate for a wrong ring size.
 size range. The illustration preserves neutral-axis arc length while widening
 the opening to about 74.6 degrees. The simple curvature estimate
 `strain = wall/2 * (1/R - 1/(R + expansion/2))`, with `R = (bore + wall)/2`,
-gives approximately **0.250%** outer-fibre strain. It omits root stress
+gives approximately **0.250%** outer-fibre strain. The shoulders stiffen the
+root, so a second screen assumes only the 88.3-degree free arm takes the same
+tip rotation: `0.250% x 150 / 88.3 =` **0.425% free-arm strain**. Both omit root stress
 concentration, contact loads, nonlinear geometry, residual print stresses,
 anisotropy, creep and fatigue. It is not FEA or a spring-force prediction.
 The 0.5% screen ceiling is a conservative design input, **not a published
@@ -149,7 +176,7 @@ together; do not hand-edit generated geometry.
 
 | Item | Quantity | Specification |
 | --- | ---: | --- |
-| RingBase | 1 | Rounded split elastic band and nested keyed bayonet socket |
+| RingBase | 1 | Braced, tapered comfort-fit split band and nested keyed bayonet socket |
 | Carrier | 1 | Insulated battery well, negative pogo seat, lead channel, lugs |
 | ContactDeck | 1 | Positive pogo seat and actual PCB pocket |
 | Bezel | 1 | PCB-edge clamp and open optical window |
