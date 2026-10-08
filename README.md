@@ -46,7 +46,10 @@ prompts. These concepts do not replace the current manufacturing CAD.
 solder-free pogo-pin ISP clip for the ATtiny85 `ring_pcb_IR`. It is a probe,
 anvil and fence PCB set for an Adafruit 5434-style hinged clip kit. Its pin
 spacing comes from the IR board's rear test pads, and it has a standard AVR
-ISP-6 header. It passes KiCad ERC/DRC but has not yet been built or measured.
+ISP-6 header. It passes KiCad ERC/DRC and a FreeCAD virtual fit against
+estimated clip dimensions. It has not yet been built or measured.
+
+![IR programming clip, virtual FreeCAD fit](hardware/v2.0/ring_ir_prog_clip/generated/fit/clipped_iso.png)
 | 1. Serviceable pogo | 2. Copper pressure | 3. Plated springs | 4. Floating metal |
 | --- | --- | --- | --- |
 | ![Baseline serviceable pogo assembly](docs/design/contact-roadmap/images/local-freecad/01-serviceable-pogo.png) | ![Copper foil and silicone pressure-contact concept](docs/design/contact-roadmap/images/local-freecad/02-copper-pressure.png) | ![Plated spring cartridge concept](docs/design/contact-roadmap/images/local-freecad/03-plated-springs.png) | ![Floating metal ring body with polymer insert](docs/design/contact-roadmap/images/local-freecad/04-floating-metal.png) |

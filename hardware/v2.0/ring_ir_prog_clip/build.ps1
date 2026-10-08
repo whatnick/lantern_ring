@@ -1,6 +1,8 @@
 param(
     [string]$KiCadBin = 'C:\Program Files\KiCad\10.0\bin',
-    [switch]$Fab
+    [string]$FreeCADPython,
+    [switch]$Fab,
+    [switch]$SkipFit
 )
 $ErrorActionPreference = 'Stop'
 $here = $PSScriptRoot
@@ -47,3 +49,13 @@ Get-ChildItem $here -Recurse -Include *.kicad_prl, *-backups, fp-info-cache | Re
 
 & $py (Join-Path $here 'check_reports.py')
 if ($LASTEXITCODE) { throw 'ERC/DRC report check failed' }
+
+if (-not $SkipFit) {
+    if (-not $FreeCADPython) {
+        $candidates = Get-ChildItem "$env:ProgramFiles\FreeCAD*\bin\python.exe" -ErrorAction SilentlyContinue
+        if (-not $candidates) { throw 'FreeCAD Python not found. Pass -FreeCADPython or -SkipFit.' }
+        $FreeCADPython = ($candidates | Sort-Object FullName -Descending | Select-Object -First 1).FullName
+    }
+    & $FreeCADPython (Join-Path $here 'fit_check.py')
+    if ($LASTEXITCODE) { throw 'FreeCAD fit check failed' }
+}

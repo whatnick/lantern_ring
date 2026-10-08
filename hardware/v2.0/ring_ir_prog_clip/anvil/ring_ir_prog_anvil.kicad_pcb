@@ -87,16 +87,90 @@
 			(outputdirectory "")
 		)
 	)
+	(footprint "ring_ir_prog_clip:GND_Anvil_Pad"
+		(layer "F.Cu")
+		(uuid "d2344b12-b85c-47ae-bf1b-6bfa4ca6b235")
+		(at 150 103.4097)
+		(descr "Exposed flat GND contact under the ring_pcb_IR front GND bar. Generated from the target board")
+		(tags "anvil contact ground")
+		(property "Reference" "P8"
+			(at 0 -1.12 0)
+			(layer "F.Fab")
+			(uuid "d4666000-afd5-431e-bb6c-f124555999ce")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "GND anvil (TP8 bar)"
+			(at 0 1.12 0)
+			(layer "F.Fab")
+			(uuid "b2e13bc7-9318-42d8-a2da-a9e4ed071a14")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ac3abf6-fcc0-4863-861d-b18cff4f34bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a6726e4f-fc8e-4162-ab50-d6143c1735a0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/950b689b-031c-5eea-b9ec-a0dc87acb87e")
+		(sheetfile "ring_ir_prog_anvil.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -3.1 -0.72)
+			(end 3.1 0.72)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "c2363cff-b6e5-47cf-bd7f-951b66aed99d")
+		)
+		(pad "1" smd rect
+			(at 0 0)
+			(size 6 1.241)
+			(layers "F.Cu" "F.Mask")
+			(net "/GND")
+			(uuid "d1734ee5-c954-450f-8bd1-1eb4e9982d96")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 		(layer "F.Cu")
-		(uuid "6c81c921-5f3e-432d-9b3b-8ac3b2315510")
-		(at 150 110.8514)
+		(uuid "ed460f5c-30ad-4c21-8f68-4f02e55c44fc")
+		(at 150 108.9514)
 		(descr "THT pad as test Point, diameter 1.5mm, hole diameter 0.7mm")
 		(tags "test point THT pad")
 		(property "Reference" "J1"
 			(at 0 -1.648 0)
 			(layer "F.SilkS")
-			(uuid "4034f5ac-a7fb-4709-9d81-4de64087d3da")
+			(uuid "3c33eb1c-bb10-4669-9aa3-9308329bcd17")
 			(effects
 				(font
 					(size 1 1)
@@ -107,7 +181,7 @@
 		(property "Value" "GND_lead_to_probe"
 			(at 0 1.75 0)
 			(layer "F.Fab")
-			(uuid "a89a0414-5238-4622-9c2b-fd009d0f8dae")
+			(uuid "f5ba9653-c4be-4740-addc-bb29ca6439de")
 			(effects
 				(font
 					(size 1 1)
@@ -120,7 +194,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ac261662-f8ce-45e0-920b-9a0d1913c796")
+			(uuid "a62b380a-cf76-4fe2-9637-f6b7eda129d2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -133,7 +207,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5c1c359a-e8db-4454-9b08-2df8916de3eb")
+			(uuid "3cb68057-e255-453c-85f5-0c7a4b29aed9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -154,7 +228,7 @@
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "c3c103c9-5bef-494e-88e5-3b51918d8189")
+			(uuid "0bff88ca-8c0a-427e-9cd8-214ab62b8ada")
 		)
 		(fp_circle
 			(center 0 0)
@@ -165,12 +239,12 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "ff062061-2846-47c6-94c8-727caa39d715")
+			(uuid "27fd1ce8-7d54-4146-aa54-5798612d6e0c")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 -1.65 0)
 			(layer "F.Fab")
-			(uuid "f3f24893-9d94-499e-a390-61cc14099427")
+			(uuid "a854be90-d29a-43e2-afdb-2339711da598")
 			(effects
 				(font
 					(size 1 1)
@@ -185,125 +259,29 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/GND")
-			(uuid "98d85bb9-721f-43f1-836f-9e0f908f3ca5")
+			(uuid "bfdb27f8-e1e1-4a26-bf4a-5c5b4f7fd913")
 		)
 		(embedded_fonts no)
 	)
-	(footprint "ring_ir_prog_clip:GND_Anvil_Pad"
-		(layer "F.Cu")
-		(uuid "96fe104e-0966-4349-9ef8-e82641cc4eef")
-		(at 150 103.4097)
-		(descr "Exposed flat GND contact under the ring_pcb_IR front GND bar. Generated from the target board")
-		(tags "anvil contact ground")
-		(property "Reference" "P8"
-			(at 0 -1.12 0)
-			(layer "F.Fab")
-			(uuid "20ab9e22-7164-48ea-b269-106f1678a07e")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "GND anvil (TP8 bar)"
-			(at 0 1.12 0)
-			(layer "F.Fab")
-			(uuid "cece6db1-3356-46eb-b69f-299c2bfc570e")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "841fbd4e-8b47-4234-8348-af7db41d906c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bebd85e2-c896-46e6-9c3b-c26f0ecaa789")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/950b689b-031c-5eea-b9ec-a0dc87acb87e")
-		(sheetfile "ring_ir_prog_anvil.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -3.1 -0.72)
-			(end 3.1 0.72)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "b529fc17-f085-4864-8443-ae01f241ac96")
-		)
-		(pad "1" smd rect
-			(at 0 0)
-			(size 6 1.241)
-			(layers "F.Cu" "F.Mask")
-			(net "/GND")
-			(uuid "759d84de-ee9a-424f-988d-7a190357590c")
-		)
-		(embedded_fonts no)
-	)
-	(gr_arc
-		(start 138.7624 84.3014)
-		(mid 139.055293 83.594293)
-		(end 139.7624 83.3014)
+	(gr_line
+		(start 138.7624 83.3014)
+		(end 161.2884 83.3014)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "605bdc68-d15c-41fa-b15a-b2a052797084")
+		(uuid "15942887-833e-48ac-9efe-d4cd4170a100")
 	)
 	(gr_line
-		(start 138.7624 113.3514)
-		(end 138.7624 84.3014)
+		(start 138.7624 105.4514)
+		(end 138.7624 83.3014)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "6bb864ea-34c4-4667-bf51-bc24b9ec0536")
-	)
-	(gr_line
-		(start 139.7624 83.3014)
-		(end 160.2884 83.3014)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Edge.Cuts")
-		(uuid "650b51bf-b0f0-4b99-b6f5-ad51f3f52585")
-	)
-	(gr_arc
-		(start 139.7624 114.3514)
-		(mid 139.055293 114.058506)
-		(end 138.7624 113.3514)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Edge.Cuts")
-		(uuid "1877a8e6-9e99-49aa-aab5-6a9796e14805")
+		(uuid "8fe2e7c9-9fdc-4d2c-9f4d-be016995704c")
 	)
 	(gr_arc
 		(start 141.9074 88.6584)
@@ -314,7 +292,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "18faf074-3569-4d1d-89f5-c9120a047edc")
+		(uuid "fc6ccb83-9862-49c8-8feb-f43c467741a7")
 	)
 	(gr_line
 		(start 141.9074 101.0464)
@@ -324,7 +302,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "f735db88-3cd0-470d-a74a-7bf63c3f0169")
+		(uuid "7288c1cf-4510-4689-83c1-c6a8b99b3fdf")
 	)
 	(gr_line
 		(start 142.4074 88.1584)
@@ -334,7 +312,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "96436289-6288-42b7-95d0-491763a40fcf")
+		(uuid "d0cbf970-c975-41ea-81cb-8c3df0f0718b")
 	)
 	(gr_arc
 		(start 142.4074 101.5464)
@@ -345,7 +323,47 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "a2d7a540-8d82-4b8f-bf06-f1aa9a91e87f")
+		(uuid "e1810af5-3794-40e3-8d83-572ef94184e6")
+	)
+	(gr_line
+		(start 148.6 105.4514)
+		(end 138.7624 105.4514)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "ad9a01e7-a73f-4aad-abcb-b35f18373612")
+	)
+	(gr_line
+		(start 148.6 112.4514)
+		(end 148.6 105.4514)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "2c745ab7-35bc-49a9-ac1b-1df8bd7a591c")
+	)
+	(gr_line
+		(start 151.4 105.4514)
+		(end 151.4 112.4514)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "837c6d60-8dd0-4e11-b15d-6cf0e38d7d84")
+	)
+	(gr_line
+		(start 151.4 112.4514)
+		(end 148.6 112.4514)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "fab08f64-9b16-4116-adca-9d002d32f094")
 	)
 	(gr_arc
 		(start 157.3894 88.1584)
@@ -356,7 +374,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "6956b4d1-595b-42d9-9cfb-267ea4232647")
+		(uuid "e8537b37-a95a-4a6a-8840-c81ae3310ab7")
 	)
 	(gr_line
 		(start 157.3894 101.5464)
@@ -366,7 +384,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "9e04eabe-de34-4f09-b5ff-b05aa2d10acb")
+		(uuid "7552dcbc-3a8b-4066-be92-8e5a94fbeaf6")
 	)
 	(gr_line
 		(start 157.8894 88.6584)
@@ -376,7 +394,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "cf3c4198-a4fc-4be8-99f5-8e3e3eb0cd79")
+		(uuid "0287025f-0740-45ef-ba23-03e49fc36798")
 	)
 	(gr_arc
 		(start 157.8894 101.0464)
@@ -387,49 +405,27 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "69fbe42d-0a17-4920-bab2-6b4c422a6650")
-	)
-	(gr_arc
-		(start 160.2884 83.3014)
-		(mid 160.995506 83.594293)
-		(end 161.2884 84.3014)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Edge.Cuts")
-		(uuid "3cd3ae61-02b8-4118-b676-217d7e25812b")
+		(uuid "f71176ae-0174-403b-9b07-8c2f03a356d6")
 	)
 	(gr_line
-		(start 160.2884 114.3514)
-		(end 139.7624 114.3514)
+		(start 161.2884 83.3014)
+		(end 161.2884 105.4514)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "679dbd8e-b425-4558-b4b8-07caf1db94fa")
+		(uuid "113b762b-e8ab-42b5-a032-f01e018be432")
 	)
 	(gr_line
-		(start 161.2884 84.3014)
-		(end 161.2884 113.3514)
+		(start 161.2884 105.4514)
+		(end 151.4 105.4514)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "eb29b737-dd63-4db4-9af6-a4e66b0a30ad")
-	)
-	(gr_arc
-		(start 161.2884 113.3514)
-		(mid 160.995506 114.058506)
-		(end 160.2884 114.3514)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Edge.Cuts")
-		(uuid "a28a5271-0c5c-4232-a1d3-bb943b1b7abd")
+		(uuid "39e3754c-c3e8-4f49-b404-3360761851f4")
 	)
 	(gr_line
 		(start 141.2624 90.8814)
@@ -439,7 +435,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "9b872d4c-a65b-40bb-89fa-38de32eaa298")
+		(uuid "40e668de-b5a5-49d4-aff4-3873be9be159")
 	)
 	(gr_line
 		(start 141.2624 99.7714)
@@ -449,7 +445,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "732838ec-ea72-4be5-96ac-25f8e1cc3106")
+		(uuid "85f5cb19-dfb9-42d4-b6f4-aa7463d65430")
 	)
 	(gr_line
 		(start 145.5804 86.5634)
@@ -459,7 +455,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "4d2791fe-1a8e-40cf-a646-830941a9b708")
+		(uuid "f5f0e99c-a84a-4741-95ba-f464b8e4f3ad")
 	)
 	(gr_line
 		(start 145.5804 104.0894)
@@ -469,7 +465,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "c8cfd945-d65f-49ff-b2b5-93390434b975")
+		(uuid "5a7a22c5-18ad-4db2-97b6-462c970c5de9")
 	)
 	(gr_line
 		(start 149.8984 104.8514)
@@ -479,7 +475,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "082533aa-510c-4cf5-83e1-d32625ec3eb3")
+		(uuid "4d491d6e-e0d9-40c5-a2ac-fd587ef7155a")
 	)
 	(gr_line
 		(start 150.0254 85.8014)
@@ -489,7 +485,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "d85ecb1c-3f99-410b-887c-a1120ab5a509")
+		(uuid "0af89caa-befa-4e3b-8042-be5e3fef7eff")
 	)
 	(gr_line
 		(start 154.470399 86.5634)
@@ -499,7 +495,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "6ef42afe-fdbc-4cb4-a76c-ef272a68d8e0")
+		(uuid "6cac0af8-136c-4c0f-ab8d-761997726789")
 	)
 	(gr_line
 		(start 154.470399 104.0894)
@@ -509,7 +505,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "b70df901-f8e7-41d7-b9f4-08239f145c9a")
+		(uuid "c3719df6-ee03-4c46-a1f4-9ba32ca519e6")
 	)
 	(gr_line
 		(start 158.7884 90.8814)
@@ -519,7 +515,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "6f0861b0-aa1f-4ea3-81d3-c2f530e47e3c")
+		(uuid "3d5ce67b-bb62-4d3c-a47a-0d6dc7b7d6c4")
 	)
 	(gr_line
 		(start 158.7884 99.7714)
@@ -529,12 +525,12 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "9844783f-1911-483a-9924-71eefa4b63c3")
+		(uuid "8e8a9927-f886-4568-a3e7-8157cd6f7c17")
 	)
 	(gr_text "RING LEDS DOWN"
 		(at 150 84.4014 0)
 		(layer "F.SilkS")
-		(uuid "b391136e-f412-4322-be96-877c20a5d028")
+		(uuid "af698888-7a45-4bcf-8fab-960ec5ed4634")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -543,9 +539,9 @@
 		)
 	)
 	(gr_text "GND"
-		(at 152.2 110.8514 0)
+		(at 150 110.7514 0)
 		(layer "F.SilkS")
-		(uuid "73cb24ef-e31d-49d6-81fd-75089f7deb49")
+		(uuid "147c4469-eaf2-4066-b525-23be575b6b1f")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -553,10 +549,10 @@
 			)
 		)
 	)
-	(gr_text "IR ANVIL - TAPE TO LOWER JAW"
-		(at 150 113.1514 0)
+	(gr_text "IR ANVIL - TAPE TO RISER"
+		(at 150 84.4014 0)
 		(layer "B.SilkS")
-		(uuid "4efb3849-98f7-4430-b986-e7829e73b221")
+		(uuid "6c78ff3a-ac04-420f-9db4-50c39fbf68d3")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -567,11 +563,11 @@
 	)
 	(segment
 		(start 150 103.4097)
-		(end 150 110.8514)
+		(end 150 108.9514)
 		(width 0.5)
 		(layer "F.Cu")
 		(net "/GND")
-		(uuid "6f87c752-a63d-48e8-a598-c42fb12d8ba1")
+		(uuid "d2cea3da-a8fd-4c6a-9d64-7422afbad98d")
 	)
 	(embedded_fonts no)
 )

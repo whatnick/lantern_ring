@@ -19,6 +19,7 @@ SOURCES = [
     "fence/ring_ir_prog_fence.kicad_pcb",
     "ring_ir_prog_clip.pretty/Pogo_P75_THT.kicad_mod",
     "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod",
+    "ring_ir_prog_clip.pretty/M2_Slot_Clip_Jaw.kicad_mod",
 ]
 
 

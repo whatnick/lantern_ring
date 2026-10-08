@@ -1,0 +1,12 @@
+(footprint "M2_Slot_Clip_Jaw"
+	(version 20240108)
+	(generator "ring_ir_prog_clip")
+	(layer "F.Cu")
+	(descr "Unplated M2 slot; length absorbs the unmeasured clip-jaw hole spacing. Generated from parameters.json")
+	(tags "mounting slot M2")
+	(attr exclude_from_pos_files exclude_from_bom)
+	(fp_text reference "REF**" (at 0 -2) (layer "F.Fab") hide (effects (font (size 0.5 0.5) (thickness 0.08))))
+	(fp_text value "M2_Slot_Clip_Jaw" (at 0 2) (layer "F.Fab") hide (effects (font (size 0.5 0.5) (thickness 0.08))))
+	(fp_rect (start -1.95 -1.35) (end 1.95 1.35) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))
+	(pad "" np_thru_hole oval (at 0 0) (size 3.4 2.2) (drill oval 3.4 2.2) (layers "*.Cu" "*.Mask"))
+)

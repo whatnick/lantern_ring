@@ -13,15 +13,16 @@
   ],
   "target_sha256": "f844ee0df92d4f6f85eaed4eaf02b5c35ee97af6636cb68fc87b3dc8dcbfeee1",
   "sources_sha256": {
-    "parameters.json": "54a2c3a6b15d2e99d89c92e54dcbb459f40ac96239274487ba0813d241f7d407",
-    "generate.py": "090f8b96aa9406c89a9e34824a60d2893cb1aee4e398448be40ee4b45dc83e3d",
-    "probe/ring_ir_prog_probe.kicad_pcb": "d546b6b4bda83ec7a3d45ad7ecab08b2899e819aa3ceab13759f9c7d29dd96bb",
+    "parameters.json": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
+    "generate.py": "c0e21b5c01dd302b941cf336c36b6086b02668cffd6cfc2de7a2dd4f5fb89bc7",
+    "probe/ring_ir_prog_probe.kicad_pcb": "f83159d95392526394b5c6b2e46605e017239c6c0e782d4b415035d72165b692",
     "probe/ring_ir_prog_probe.kicad_sch": "3900d01b4b432242089f18a262f2d5e184c43b71e47efb2affd323b95207087a",
-    "anvil/ring_ir_prog_anvil.kicad_pcb": "ff92b654c53fd55693df98119801fda2560d219204ab6d8ce0e2ad6736bb9e14",
+    "anvil/ring_ir_prog_anvil.kicad_pcb": "d57538e18cfafbec2984d3b4a3c1cd5755d6c9ff30245cfdb3850ccf0aac9bc8",
     "anvil/ring_ir_prog_anvil.kicad_sch": "c5943dc7f5fd71f18aeed33a439ba201b517637be213c1a6d61b4b6446e077fa",
-    "fence/ring_ir_prog_fence.kicad_pcb": "2331e7fa881fbf1afa8b0fbd6454866cd06bee7f4e128fc14533420db7090fa8",
+    "fence/ring_ir_prog_fence.kicad_pcb": "7e34651f71629dc8c570b3628ee17d26395f78973cb40128c70167e78acacfdd",
     "ring_ir_prog_clip.pretty/Pogo_P75_THT.kicad_mod": "1e343698ca4433dfaedd8374cd3334877793862bbc6a19e90ebd4b1d5904bb36",
-    "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod": "f18827e3439cabc31ec586f458c751416d9a6e53fa4fc38d7869a6a9a0a128ec"
+    "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod": "f18827e3439cabc31ec586f458c751416d9a6e53fa4fc38d7869a6a9a0a128ec",
+    "ring_ir_prog_clip.pretty/M2_Slot_Clip_Jaw.kicad_mod": "b4d1ce56fa9179c7522e187434a628bb8d1163978b41a931c62501f87fa5d196"
   },
   "scope": "KiCad ERC/DRC and generated geometry only; no physical fit, contact or programming test"
 }

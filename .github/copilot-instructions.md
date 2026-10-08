@@ -12,6 +12,7 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
 - `hardware/v2.0/ring_ir_prog_clip`: KiCad 10 generated pogo-pin ISP clip PCBs
   (probe/anvil/fence) for `ring_pcb_IR`; geometry is derived from the IR board.
+  `fit_check.py` (FreeCAD) fits them in the estimated clip jaw.
 - `firmware/Arduino-TV-B-Gone`: legacy firmware; keep unrelated behaviour unchanged.
 - `software/materialator`: independent STL volume/metal-weight experiment.
 - `docs/design`: electrical proposals and repository review notes.
@@ -77,11 +78,12 @@ from new errors and do not claim the DotStar experiment is routed.
 The IR programming clip is generated: edit `ring_ir_prog_clip/parameters.json`
 or `generate.py`, never its `.kicad_pcb`/`.kicad_sch`/`fab` outputs. Rebuild
 with `& hardware\v2.0\ring_ir_prog_clip\build.ps1 -Fab` (zero ERC/DRC violations
-of any severity) and run
+of any severity, then the FreeCAD fit in `generated/fit/` must pass) and run
 `python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p test_prog_clip.py`.
-If the IR board's test pads change, regenerate the clip. Keep `measured: false`
-until kit holes and pogo pins are physically measured, and program with the
-CR2032 removed.
+If the IR board's test pads change, regenerate the clip. Clip jaw dimensions in
+`clip_kit.geometry` are photo/datasheet estimates: keep `measured: false` until
+the jaw and pogo pins are measured, never describe the fit as physical, and
+program with the CR2032 removed.
 
 Never solder directly to or charge a primary CR2032. No physical design is
 release-ready until contact load/current/temperature, cell safety and mechanical

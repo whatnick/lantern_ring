@@ -252,6 +252,38 @@ class ClipTest(unittest.TestCase):
             self.assertEqual(expected, digest(os.path.join(HERE, *name.split("/"))), name)
         self.assertIn("no physical fit", result["scope"])
 
+    def test_header_in_front_of_pins_and_slots_behind_jaw_tip(self):
+        pogo_v = [self.probe["P" + r[2:]]["pads"]["1"][0][1] for r in self.params["dut"]["probe_test_points"]]
+        header_v = [p[0][1] for p in self.probe["J1"]["pads"].values()]
+        # Header clears the pogo courtyards in front of the grid; the jaw tip sits behind it.
+        self.assertLess(max(header_v) + 0.85, min(pogo_v) - 0.95)
+        tip = ORIGIN[1] + self.params["clip_kit"]["upper_tip_v"]
+        self.assertGreater(tip - max(pogo_v) - self.params["pogo"]["barrel_diameter"] / 2, 0.2)
+        for ref in ("H1", "H2"):
+            self.assertGreater(self.probe[ref]["at"][1], tip)
+
+    def test_freecad_fit_report(self):
+        path = os.path.join(HERE, "generated", "fit", "fit_validation.json")
+        with open(path, encoding="utf-8") as handle:
+            fit = json.load(handle)
+
+        def digest(name):
+            with open(os.path.join(HERE, *name.split("/")), "rb") as handle:
+                return hashlib.sha256(handle.read().replace(b"\r\n", b"\n")).hexdigest()
+
+        for name, expected in fit["inputs_sha256"].items():
+            self.assertEqual(expected, digest(name), name)
+        self.assertEqual(fit["status"], "pass", fit["failures"])
+        self.assertEqual(fit["interference"], [])
+        self.assertGreater(fit["interference_pairs_checked"], 20)
+        self.assertTrue(all(v <= 1e-3 for v in fit["contacts_mm"].values()), fit["contacts_mm"])
+        self.assertTrue(0.3 <= fit["pin_compression_fraction"] <= 0.8)
+        self.assertTrue(all(p["offset_mm"] <= 0.05 for p in fit["pins"].values()))
+        self.assertEqual(fit["clip_dimensions_measured"], self.params["clip_kit"]["measured"])
+        self.assertIn("no physical fit", fit["scope"])
+        for image in ("clipped_iso.png", "clipped_section.png", "clipped_exploded.png"):
+            self.assertIn(image, fit["outputs"])
+
 
 if __name__ == "__main__":
     unittest.main()

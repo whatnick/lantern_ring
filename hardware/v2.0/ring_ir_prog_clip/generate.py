@@ -73,7 +73,7 @@ def read_target(params):
         elif fp.GetLayer() == pcbnew.F_Cu:
             box = fp.GetCourtyard(pcbnew.F_CrtYd).BBox()
             courtyards.append((ref, mm(box.GetLeft()), mm(box.GetTop()),
-                               mm(box.GetRight()), mm(box.GetBottom())))
+                               mm(box.GetRight()), mm(box.GetBottom()), fp.GetFPIDAsString()))
     outline = None
     for drawing in board.GetDrawings():
         if drawing.GetLayer() == pcbnew.Edge_Cuts and drawing.GetShape() == pcbnew.SHAPE_T_POLY:
@@ -156,7 +156,22 @@ def write_footprints(params, gnd_pad):
 )
 """.format(w=round(w, 3), h=round(h, 3), cx=round(w / 2 + 0.1, 3), cy=round(h / 2 + 0.1, 3),
            ty=round(h / 2 + 0.5, 3))
-    for name, text in (("Pogo_P75_THT", pogo_fp), ("GND_Anvil_Pad", anvil_fp)):
+    slot = params["clip_kit"]["mount_slot"]
+    sl, sw = slot["u_outer"] - slot["u_inner"] + slot["width"], slot["width"]
+    slot_fp = """(footprint "M2_Slot_Clip_Jaw"
+\t(version 20240108)
+\t(generator "ring_ir_prog_clip")
+\t(layer "F.Cu")
+\t(descr "Unplated M2 slot; length absorbs the unmeasured clip-jaw hole spacing. Generated from parameters.json")
+\t(tags "mounting slot M2")
+\t(attr exclude_from_pos_files exclude_from_bom)
+\t(fp_text reference "REF**" (at 0 -2) (layer "F.Fab") hide (effects (font (size 0.5 0.5) (thickness 0.08))))
+\t(fp_text value "M2_Slot_Clip_Jaw" (at 0 2) (layer "F.Fab") hide (effects (font (size 0.5 0.5) (thickness 0.08))))
+\t(fp_rect (start -{cx} -{cy}) (end {cx} {cy}) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))
+\t(pad "" np_thru_hole oval (at 0 0) (size {sl} {sw}) (drill oval {sl} {sw}) (layers "*.Cu" "*.Mask"))
+)
+""".format(sl=round(sl, 3), sw=sw, cx=round(sl / 2 + 0.25, 3), cy=round(sw / 2 + 0.25, 3))
+    for name, text in (("Pogo_P75_THT", pogo_fp), ("GND_Anvil_Pad", anvil_fp), ("M2_Slot_Clip_Jaw", slot_fp)):
         with open(os.path.join(LIB_DIR, name + ".kicad_mod"), "w", encoding="utf-8", newline="\n") as handle:
             handle.write(text)
 
@@ -413,13 +428,33 @@ def pad_uv(pad):
 
 # --------------------------------------------------------------- probe board
 
+def probe_layout(params):
+    """Clip-derived probe dimensions shared by the KiCad build and the FreeCAD fit check."""
+    pb, isp, kit = params["probe_board"], params["isp_header"], params["clip_kit"]
+    g = kit["geometry"]
+    tip = kit["upper_tip_v"]
+    # Header in front of the pogo grid: odd row (a) nearest the pins, even row (b) outboard.
+    a = -isp["row_a_offset"]
+    b = a - 2.54
+    slot = kit["mount_slot"]
+    hole_v = tip + g["hole_setback_from_upper_tip"]
+    centre = (slot["u_inner"] + slot["u_outer"]) / 2
+    return {
+        "a": a, "b": b, "upper_tip_v": tip, "lower_tip_v": tip - g["upper_tip_setback"],
+        "u_min": pb["u_min"], "u_max": pb["u_max"], "v_min": pb["v_min"],
+        "v_max": round(tip + g["upper_tip_section_end"] - g["upper_tip_setback"] - pb["step_margin"], 4),
+        "slots": [(-centre, hole_v), (centre, hole_v)],
+        "slot_size": (slot["u_outer"] - slot["u_inner"] + slot["width"], slot["width"]),
+    }
+
+
 def build_probe(target, params, pogo_uv):
     name = "ring_ir_prog_probe"
     folder = os.path.join(HERE, "probe")
     os.makedirs(folder, exist_ok=True)
     pb, isp, kit = params["probe_board"], params["isp_header"], params["clip_kit"]
-    a = isp["row_a_offset"]
-    b = a + 2.54
+    lay = probe_layout(params)
+    a, b = lay["a"], lay["b"]
     nets = {ref: target["pads"][ref]["net"] for ref in params["dut"]["probe_test_points"]}
     parts = []
     isp_nets = set(isp["pins"].values())
@@ -443,29 +478,31 @@ def build_probe(target, params, pogo_uv):
 
     board = new_board(name)
     netmap = make_nets(board, sorted(isp_nets))
-    add_rounded_rect(board, pcbnew.Edge_Cuts, pb["u_min"], pb["v_min"], pb["u_max"], pb["v_max"], pb["corner_radius"])
+    u_min, v_min, u_max, v_max = lay["u_min"], lay["v_min"], lay["u_max"], lay["v_max"]
+    add_rounded_rect(board, pcbnew.Edge_Cuts, u_min, v_min, u_max, v_max, pb["corner_radius"])
     for part in parts[:-2]:
         fp = place(board, part, load_fp(LIB_NAME, "Pogo_P75_THT"), *pogo_uv[part["target"]],
                    sheetfile=name + ".kicad_sch")
         assign_nets(board, fp, part["nets"], netmap)
-    # Even row (VCC, MOSI, GND) faces the pogo grid; odd row (MISO, SCK, RESET) is outboard.
-    want = {"1": (-2.54, b), "2": (-2.54, a), "3": (0.0, b)}
+    # Header sits in front of the pogo grid so the jaw tip can sit just behind it.
+    # Odd row (MISO, SCK, RESET) faces the pogo grid; even row (VCC, MOSI, GND) is outboard.
+    want = {"1": (-2.54, a), "2": (-2.54, b), "3": (0.0, a)}
     for angle in (0, 90, 180, 270):
         fp = load_fp("Connector_PinHeader_2.54mm", "PinHeader_2x03_P2.54mm_Vertical")
         fp.SetOrientationDegrees(angle)
-        fp.SetPosition(pt(-2.54, b))
+        fp.SetPosition(pt(-2.54, a))
         got = {p.GetNumber(): pad_uv(p) for p in fp.Pads()}
         if all(abs(got[k][0] - w[0]) < 1e-3 and abs(got[k][1] - w[1]) < 1e-3 for k, w in want.items()):
             break
     else:
         raise SystemExit("could not orient ISP header")
-    fp = place(board, header, fp, -2.54, b, angle, sheetfile=name + ".kicad_sch")
+    fp = place(board, header, fp, -2.54, a, angle, sheetfile=name + ".kicad_sch")
     assign_nets(board, fp, header["nets"], netmap)
     fp = place(board, lead, load_fp("TestPoint", "TestPoint_THTPad_D1.5mm_Drill0.7mm"),
                *pb["gnd_lead_pad"], sheetfile=name + ".kicad_sch")
     assign_nets(board, fp, lead["nets"], netmap)
-    for i, (u, v) in enumerate(kit["mount_holes_uv"]):
-        hole = load_fp("MountingHole", "MountingHole_2.2mm_M2")
+    for i, (u, v) in enumerate(lay["slots"]):
+        hole = load_fp(LIB_NAME, "M2_Slot_Clip_Jaw")
         hole.SetBoardOnly(True)
         hole.SetReference("H%d" % (i + 1))
         hole.Reference().SetVisible(False)
@@ -479,34 +516,37 @@ def build_probe(target, params, pogo_uv):
     top, bot = pcbnew.F_Cu, pcbnew.B_Cu
     mi, ms, rs, sk, vc = p["PB1"], p["PB0"], p["PB5"], p["PB2"], p["VCC"]
     o = pb["outer_route_u"]
-    add_track(board, netmap["PB1"], top, [mi, (-o, mi[1] + (o - abs(mi[0]))), (-o, b - 1.0),
-                                          (-o + 1.0, b), (-2.54, b)], w)
-    add_track(board, netmap["PB5"], top, [rs, (o, rs[1] + (o - abs(rs[0]))), (o, b - 1.0),
-                                          (o - 1.0, b), (2.54, b)], w)
-    add_track(board, netmap["PB2"], bot, [sk, (s, s), (s, 3 * s), (1.27, 3 * s + s - 1.27),
-                                          (1.27, b - 1.27), (0.0, b)], w)
-    add_track(board, netmap["PB0"], bot, [ms, (-s, s), (-s, 3 * s), (-1.27, 3 * s + s - 1.27),
-                                          (-1.27, a - 1.27), (0.0, a)], w)
-    add_track(board, netmap["VCC"], bot, [vc, (-3.6, vc[1]), (-4.6, vc[1] + 1.0), (-4.6, a - 1.0),
-                                          (-3.6, a), (-2.54, a)], w)
-    add_track(board, netmap["GND"], bot, [(2.54, a), tuple(pb["gnd_lead_pad"])], w)
+    add_track(board, netmap["PB1"], top, [mi, (-o, mi[1] - (o - abs(mi[0]))), (-o, a + 1.0),
+                                          (-o + 1.0, a), (-2.54, a)], w)
+    add_track(board, netmap["PB5"], top, [rs, (o, rs[1] - (o - abs(rs[0]))), (o, a + 1.0),
+                                          (o - 1.0, a), (2.54, a)], w)
+    add_track(board, netmap["PB2"], bot, [sk, (s, -s), (s, a + 1.27), (0.0, a)], w)
+    # MOSI and VCC pass header pin 1 in the channel at u = -1.27, on opposite layers.
+    add_track(board, netmap["PB0"], bot, [ms, (-s, -s), (-s, vc[1] - 1.05), (-1.27, vc[1] - 1.05 - (s - 1.27)),
+                                          (-1.27, b + 1.27), (0.0, b)], w)
+    add_track(board, netmap["VCC"], top, [vc, (-1.27, vc[1] - (1.27 + vc[0])), (-1.27, b + 1.27), (-2.54, b)], w)
+    add_track(board, netmap["GND"], bot, [(2.54, b), tuple(pb["gnd_lead_pad"])], w)
 
     fsilk, bsilk, ffab = pcbnew.F_SilkS, pcbnew.B_SilkS, pcbnew.F_Fab
-    add_text(board, fsilk, "1", -2.54, b + 2.1, 0.8, 0.12)
-    add_text(board, fsilk, "ISP", 1.27, b + 2.1, 0.8, 0.12)
+    add_text(board, fsilk, "1", -4.6, a, 0.8, 0.12)
+    add_text(board, fsilk, "ISP", 0.0, b - 1.9, 0.8, 0.12)
     add_text(board, fsilk, "PB4", p["PB4"][0] + 2.1, p["PB4"][1] - 1.5, 0.8, 0.12)
     add_text(board, fsilk, "PB3", p["PB3"][0], p["PB3"][1] + 1.75, 0.8, 0.12)
     add_text(board, fsilk, "GND", pb["gnd_lead_pad"][0], pb["gnd_lead_pad"][1] + 1.5, 0.8, 0.12)
-    add_text(board, fsilk, "RING IR ISP", 0.0, 12.9, 0.9, 0.14)
-    add_text(board, bsilk, "PINS DOWN", 0.0, 12.9, 0.9, 0.14, mirror=True)
+    add_text(board, fsilk, "RING IR ISP", 0.0, lay["upper_tip_v"] + 1.5, 0.8, 0.12)
+    add_text(board, bsilk, "PINS DOWN", 0.0, lay["upper_tip_v"] + 1.5, 0.8, 0.12, mirror=True)
+    # Fab marks: nominal upper-jaw tip and the hinge side of the jaw sandwich.
+    tip = lay["upper_tip_v"]
+    add_line(board, ffab, (u_min + 0.3, tip), (u_max - 0.3, tip), 0.1)
+    add_text(board, ffab, "UPPER JAW TIP (EST)", 0.0, tip + 0.6, 0.5, 0.08)
     if not kit["measured"]:
-        add_text(board, ffab, "KIT HOLES UNMEASURED", 0.0, 20.3, 0.6, 0.09)
-    # Rear silkscreen marks where the target outline falls under the pins.
+        add_text(board, ffab, "KIT JAW UNMEASURED", 0.0, v_min + 1.0, 0.5, 0.08)
+    # Rear fab layer marks where the target outline falls under the pins.
     outline = [to_uv(target, params, x, y) for x, y in target["outline"]]
     edge = [(u, v) for u, v in outline]
     for i, q in enumerate(edge):
         r = edge[(i + 1) % len(edge)]
-        if all(pb["u_min"] + 0.6 <= c[0] <= pb["u_max"] - 0.6 and pb["v_min"] + 0.6 <= c[1] <= pb["v_max"] - 0.6
+        if all(u_min + 0.6 <= c[0] <= u_max - 0.6 and v_min + 0.6 <= c[1] <= v_max - 0.6
                for c in (q, r)):
             add_line(board, pcbnew.B_Fab, q, r, 0.1)
     path = os.path.join(folder, name + ".kicad_pcb")
@@ -522,7 +562,8 @@ def anvil_geometry(target, params):
     us = [q[0] for q in outline]
     vs = [q[1] for q in outline]
     m = an["outline_margin"]
-    frame = (min(us) - m, min(vs) - m, max(us) + m, max(vs) + m)
+    # The hinge side is trimmed so the clip-jaw M2 nuts clear the anvil and fence.
+    frame = (min(us) - m, min(vs) - m, max(us) + m, max(vs) + an["hinge_margin"])
     cys = [to_uv(target, params, c[1], c[2]) + to_uv(target, params, c[3], c[4]) for c in target["courtyards"]]
     wm = an["window_margin"]
     window = (min(min(c[0], c[2]) for c in cys) - wm, min(min(c[1], c[3]) for c in cys) - wm,
@@ -568,7 +609,9 @@ def build_anvil(target, params, geo):
     write_project(os.path.join(folder, name + ".kicad_pro"), name)
     board = new_board(name)
     netmap = make_nets(board, ["GND"])
-    add_rounded_rect(board, pcbnew.Edge_Cuts, u0, v0, u1, tail, an["corner_radius"])
+    t = an["tail_half_width"]
+    add_polygon(board, pcbnew.Edge_Cuts, [(u0, v0), (u1, v0), (u1, v1), (t, v1), (t, tail),
+                                          (-t, tail), (-t, v1), (u0, v1)], 0.1)
     w0, wv0, w1, wv1 = geo["window"]
     add_rounded_rect(board, pcbnew.Edge_Cuts, w0, wv0, w1, wv1, an["window_corner_radius"])
     pad = geo["pad"]
@@ -579,9 +622,9 @@ def build_anvil(target, params, geo):
     assign_nets(board, fp, parts[1]["nets"], netmap)
     add_track(board, netmap["GND"], pcbnew.F_Cu, [pad["uv"], lead_uv], an["gnd_track_width"])
     add_polygon(board, pcbnew.F_Fab, geo["outline"], 0.1)
-    add_text(board, pcbnew.F_SilkS, "GND", 2.2, lead_uv[1], 0.8, 0.12)
+    add_text(board, pcbnew.F_SilkS, "GND", 0.0, lead_uv[1] + 1.8, 0.8, 0.12)
     add_text(board, pcbnew.F_SilkS, "RING LEDS DOWN", 0.0, v0 + 1.1, 0.8, 0.12)
-    add_text(board, pcbnew.B_SilkS, "IR ANVIL - TAPE TO LOWER JAW", 0.0, tail - 1.2, 0.8, 0.12, mirror=True)
+    add_text(board, pcbnew.B_SilkS, "IR ANVIL - TAPE TO RISER", 0.0, v0 + 1.1, 0.8, 0.12, mirror=True)
     path = os.path.join(folder, name + ".kicad_pcb")
     board.Save(path)
     return path, sch
@@ -597,8 +640,7 @@ def build_fence(params, geo):
     u0, v0, u1, v1 = geo["frame"]
     add_rounded_rect(board, pcbnew.Edge_Cuts, u0, v0, u1, v1, an["corner_radius"])
     add_polygon(board, pcbnew.Edge_Cuts, geo["pocket"], 0.1)
-    add_text(board, pcbnew.F_SilkS, "TP1-6 HINGE SIDE", 0.0, v1 - 1.1, 0.8, 0.12)
-    add_text(board, pcbnew.F_SilkS, "LEDS DOWN", 0.0, v0 + 1.1, 0.8, 0.12)
+    add_text(board, pcbnew.F_SilkS, "LEDS DOWN, TP1-6 HINGE", 0.0, v0 + 1.1, 0.8, 0.12)
     path = os.path.join(folder, name + ".kicad_pcb")
     board.Save(path)
     return path
@@ -620,6 +662,42 @@ def check_pogo_grid(pogo_uv, nets):
     if abs(vcc[0]) > 0.3 or not (-5.0 < vcc[1] < -4.0):
         raise SystemExit("VCC pogo moved: %s" % (vcc,))
     return s
+
+
+def fit_inputs(target, params, pogo_uv, geo):
+    """Plain (u, v) geometry for the FreeCAD fit check, which cannot import pcbnew."""
+    lay = probe_layout(params)
+    r = lambda pts: [[round(c, 4) for c in q] for q in pts]
+    an = params["anvil"]
+    u0, v0, u1, v1 = geo["frame"]
+    t = an["tail_half_width"]
+    tail = v1 + an["tail_length"]
+    comps = []
+    for ref, x0, y0, x1, y1, fpid in target["courtyards"]:
+        a, b = to_uv(target, params, x0, y0), to_uv(target, params, x1, y1)
+        comps.append({"ref": ref, "footprint": fpid,
+                      "uv": [round(min(a[0], b[0]), 4), round(min(a[1], b[1]), 4),
+                             round(max(a[0], b[0]), 4), round(max(a[1], b[1]), 4)]})
+    pads = {ref: {"uv": list(to_uv(target, params, q["x"], q["y"])), "size": q["size"],
+                  "layer": q["layer"], "net": q["net"]} for ref, q in target["pads"].items()}
+    holes = [{"uv": list(pogo_uv[ref]), "d": params["pogo"]["drill"], "kind": "pogo", "ref": ref}
+             for ref in sorted(pogo_uv)]
+    for i, col in enumerate((-2.54, 0.0, 2.54)):
+        for row in (lay["a"], lay["b"]):
+            holes.append({"uv": [col, row], "d": 1.0, "kind": "header"})
+    holes.append({"uv": list(params["probe_board"]["gnd_lead_pad"]), "d": 0.7, "kind": "lead"})
+    return {
+        "probe": dict(lay, corner_radius=params["probe_board"]["corner_radius"], holes=holes,
+                      header_origin=[0.0, (lay["a"] + lay["b"]) / 2]),
+        "anvil": {"outline": r([(u0, v0), (u1, v0), (u1, v1), (t, v1), (t, tail), (-t, tail), (-t, v1), (u0, v1)]),
+                  "window": [round(c, 4) for c in geo["window"]],
+                  "pad_uv": [round(c, 4) for c in geo["pad"]["uv"]],
+                  "pad_size": [round(geo["pad"]["w"], 4), round(geo["pad"]["h"], 4)],
+                  "lead_uv": [0.0, v1 + an["tail_length"] / 2]},
+        "fence": {"frame": [round(c, 4) for c in geo["frame"]], "pocket": r(geo["pocket"])},
+        "ring": {"outline": r(geo["outline"]), "thickness": target["thickness"],
+                 "components": comps, "pads": pads},
+    }
 
 
 def main():
@@ -661,6 +739,7 @@ def main():
                                   [round(c, 3) for c in geo["pad"]["y_range"]]],
             "pocket_clearance_mm": an["pocket_clearance"],
         },
+        "fit_inputs": fit_inputs(target, params, pogo_uv, geo),
         "unmeasured": [k for k, v in (("clip_kit", params["clip_kit"]["measured"]),
                                       ("pogo", params["pogo"]["measured"])) if not v],
         "outputs": [rel(p) for p in (probe_pcb, probe_sch, anvil_pcb, anvil_sch, fence_pcb)],

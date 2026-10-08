@@ -87,515 +87,16 @@
 			(outputdirectory "")
 		)
 	)
-	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
-		(layer "F.Cu")
-		(uuid "0f1fd48d-e44a-4d11-bbaa-134414e68eab")
-		(at 150 100)
-		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
-		(tags "pogo spring probe test")
-		(property "Reference" "P3"
-			(at 0 -1.45 0)
-			(layer "F.Fab")
-			(uuid "9f2b1838-a649-471d-abc4-c944703dfbd6")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "Pogo TP3 PB2"
-			(at 0 1.45 0)
-			(layer "F.Fab")
-			(uuid "a5bb128f-fba0-4e64-bf86-5b017473e660")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "51163970-9700-4013-8ed1-7486299414fe")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8282e79c-0bb5-4310-a66a-1caa2cebb232")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/c0793599-4bc9-5a4c-9bb1-71caf81cf00d")
-		(sheetfile "ring_ir_prog_probe.kicad_sch")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "9f2d5588-c44a-475e-9993-e7915c520ce9")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "ce92ae49-5748-445a-b755-e88c0e982b33")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 0.51 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "3b208006-be8c-4863-89e2-05ff7532b51f")
-		)
-		(pad "1" thru_hole circle
-			(at 0 0)
-			(size 1.9 1.9)
-			(drill 1.15)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "/PB2")
-			(uuid "0c5323f4-f4ad-41e4-b0cf-e59d02f7ca3a")
-		)
-		(embedded_fonts no)
-	)
-	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
-		(layer "F.Cu")
-		(uuid "1e4f348a-07b4-4340-9f71-93ac539db913")
-		(at 150 103.05)
-		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
-		(tags "pogo spring probe test")
-		(property "Reference" "P4"
-			(at 0 -1.45 0)
-			(layer "F.Fab")
-			(uuid "3fa4704d-28f8-4762-9aae-fd77ada67d19")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "Pogo TP4 PB3"
-			(at 0 1.45 0)
-			(layer "F.Fab")
-			(uuid "78cc1b07-89f4-4762-8fe7-c0854f40c591")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "46ad07b2-cf82-47c2-bd25-64bbb8a3d6b4")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "79068a5e-24c7-4cec-a896-6ff01d65369f")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/18e260a0-95a8-5d9b-83d7-4159e300e5d3")
-		(sheetfile "ring_ir_prog_probe.kicad_sch")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "df6fc6bd-f014-4cab-b11d-d25da88c78cc")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "9d4f0f13-a773-4fd4-9307-365455c3aa3c")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 0.51 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "afe45401-fe2f-40ba-aed0-27bef1389cbf")
-		)
-		(pad "1" thru_hole circle
-			(at 0 0)
-			(size 1.9 1.9)
-			(drill 1.15)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "unconnected-(P4-Pad1)")
-			(uuid "0f302036-92d4-4b93-80b9-e28e1cb92594")
-		)
-		(embedded_fonts no)
-	)
-	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
-		(layer "F.Cu")
-		(uuid "1e930fe7-d9f6-4efd-ad0d-28a8bc80d12e")
-		(at 146.95 100)
-		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
-		(tags "pogo spring probe test")
-		(property "Reference" "P1"
-			(at 0 -1.45 0)
-			(layer "F.Fab")
-			(uuid "72c250c0-353f-47f2-bb15-bc1e74708ff9")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "Pogo TP1 PB0"
-			(at 0 1.45 0)
-			(layer "F.Fab")
-			(uuid "876ebc06-55da-464b-9cb0-66c33ce934f4")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dea0d238-9a1e-42e5-86ae-05121f1fae43")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "686746a3-451c-4d37-83c1-8c5779900854")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/d6023c6a-3e65-573d-a23c-37a781ed0b60")
-		(sheetfile "ring_ir_prog_probe.kicad_sch")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "ca9d6e6a-b510-469b-8140-0a376b16179b")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "a88ba50a-358f-4657-ac2a-bae2615e85aa")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 0.51 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "eec8bc5d-2e15-418e-9963-65e72caed858")
-		)
-		(pad "1" thru_hole circle
-			(at 0 0)
-			(size 1.9 1.9)
-			(drill 1.15)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "/PB0")
-			(uuid "7fb833bb-203a-4b9a-9e5d-aa859c966868")
-		)
-		(embedded_fonts no)
-	)
-	(footprint "MountingHole:MountingHole_2.2mm_M2"
-		(layer "F.Cu")
-		(uuid "55db7a83-35ea-40de-bc20-6b306ecf80dd")
-		(at 153.5 118.5)
-		(descr "Mounting Hole 2.2mm, M2, no annular, generated by kicad-footprint-generator mountinghole.py")
-		(tags "mountinghole M2")
-		(property "Reference" "H2"
-			(at 0 -3.15 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "30cd0bce-8ea5-4585-ba39-397df243d3a1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "MountingHole_2.2mm_M2"
-			(at 0 3.15 0)
-			(layer "F.Fab")
-			(uuid "a6ce1af7-5859-4fb8-bfc4-9a9e17354555")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "954d9c85-53bc-4d2f-b260-157a53d65b72")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "00142cc0-b213-4514-8d65-b1d7feebacc8")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "d97df42a-dff8-4dd9-9915-bda348c56dc2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(attr board_only exclude_from_pos_files exclude_from_bom)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 2.2 0)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(fill no)
-			(layer "Cmts.User")
-			(uuid "22980dc1-f2ba-4a97-930c-8b836747f4df")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 2.45 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "7aa7da69-d3e4-4011-aa68-47a999bf1064")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(uuid "0fcc5ef9-0902-46db-81d3-d61ed51c1076")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(pad "" np_thru_hole circle
-			(at 0 0)
-			(size 2.2 2.2)
-			(drill 2.2)
-			(layers "*.Cu" "*.Mask")
-			(uuid "2c41ced9-2f0e-4bed-8aa9-6b654a6528c3")
-		)
-		(embedded_fonts no)
-	)
-	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
-		(layer "F.Cu")
-		(uuid "7d76a37b-216f-4cc9-91ac-4472f44bc106")
-		(at 146.95 103.05)
-		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
-		(tags "pogo spring probe test")
-		(property "Reference" "P2"
-			(at 0 -1.45 0)
-			(layer "F.Fab")
-			(uuid "1321702d-541d-4df4-bfa0-022ccd6c3a4d")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "Pogo TP2 PB1"
-			(at 0 1.45 0)
-			(layer "F.Fab")
-			(uuid "2f917417-ef5a-4c2b-aacd-504783b156fc")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d731d616-390f-4a25-acef-4449d41c6552")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "163470df-4fda-4986-a2bf-eb622f37d2b4")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/86179f5b-d450-5db0-9d6e-c3e26e8e174d")
-		(sheetfile "ring_ir_prog_probe.kicad_sch")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "b121baec-f077-4c55-990e-b407332b2342")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "5b3cb03d-2d25-40b9-a205-ae5bee5df336")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 0.51 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "ee18323b-9713-4988-b38c-25d23db64aca")
-		)
-		(pad "1" thru_hole circle
-			(at 0 0)
-			(size 1.9 1.9)
-			(drill 1.15)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "/PB1")
-			(uuid "f5bb8744-ce9a-47ac-8231-7b7964777f8b")
-		)
-		(embedded_fonts no)
-	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
 		(layer "F.Cu")
-		(uuid "80bd9b2e-c9c7-4ff1-8b19-cd7de49c2291")
-		(at 147.46 109.539999 90)
+		(uuid "173d0420-8053-40a6-958d-585320f9954f")
+		(at 147.46 92.4 90)
 		(descr "Through hole straight pin header, 2x03, 2.54mm pitch, double rows")
 		(tags "Through hole pin header THT 2x03 2.54mm double row")
 		(property "Reference" "J1"
 			(at 1.27 -2.38 90)
 			(layer "F.SilkS")
-			(uuid "af205341-194b-42d0-96eb-0d914bc3dbc8")
+			(uuid "97343ef6-c865-4298-b729-d707f3cbc970")
 			(effects
 				(font
 					(size 1 1)
@@ -606,7 +107,7 @@
 		(property "Value" "AVR_ISP_6"
 			(at 1.27 7.46 90)
 			(layer "F.Fab")
-			(uuid "e2f506d2-91b0-446a-9bbc-b07f621569bd")
+			(uuid "909454c3-7e9b-4fb8-92d5-c4f2e6575e22")
 			(effects
 				(font
 					(size 1 1)
@@ -618,7 +119,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "90359a5d-0cbc-4793-a7ce-8d4560ea8f1e")
+			(uuid "ccb75451-b1d3-45ca-90cd-0666dc2c0807")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -629,7 +130,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "efd5bf6c-9e19-4751-b003-d6f85d1e6743")
+			(uuid "c5d7041e-fe98-4489-965c-6a22e3efd8f5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -640,7 +141,7 @@
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "6fedf1e2-050d-4449-b840-563141118c5f")
+			(uuid "5dbc5a8d-7230-406c-9de5-881ae2ef2d06")
 			(effects
 				(font
 					(size 1 1)
@@ -660,7 +161,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "211573f0-3993-406c-953a-b4a23e554910")
+			(uuid "0f8e311d-5fc5-44d9-b0db-1fb01844e1eb")
 		)
 		(fp_line
 			(start 1.27 -1.38)
@@ -670,7 +171,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "7c637e07-0d4a-4091-ac04-ccca13f7bde4")
+			(uuid "eb0e3e3f-daec-45f6-a40d-fc2c7974cd65")
 		)
 		(fp_line
 			(start -1.38 -1.38)
@@ -680,7 +181,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "e3959905-d3a0-4f15-993e-bb7156f60c3e")
+			(uuid "8ca0058e-eff3-4947-82b7-98c44a51e19e")
 		)
 		(fp_line
 			(start -1.38 0)
@@ -690,7 +191,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "0cba3d93-74e8-48a5-93fc-3ff5ecb6201c")
+			(uuid "92212fa1-988f-4fba-9ff6-f39f316d315c")
 		)
 		(fp_line
 			(start 1.27 1.27)
@@ -700,7 +201,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "624c4e1e-f7e7-492c-b8ad-c299d4b17318")
+			(uuid "517bdb6c-5660-4c61-9794-51ae90ae0e48")
 		)
 		(fp_line
 			(start -1.38 1.27)
@@ -710,7 +211,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "cfb4f392-180a-425b-94a5-85b99252c157")
+			(uuid "a0463698-859f-4902-98e8-f2b2135c6a46")
 		)
 		(fp_line
 			(start -1.38 1.27)
@@ -720,7 +221,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "47dbd5ce-a803-49c9-81f6-22e01b765765")
+			(uuid "dd2e0602-e2f4-4ab3-8eb8-585b5a06ee65")
 		)
 		(fp_line
 			(start -1.38 6.46)
@@ -730,7 +231,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "7834a3e3-6c5d-4c77-86ff-f472986c7c2c")
+			(uuid "c1cbae46-81a3-4b99-899b-b2aa8cf16766")
 		)
 		(fp_rect
 			(start -1.77 -1.77)
@@ -741,7 +242,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "f3b5ccc6-ad97-4f7f-83c5-b284ad38bf21")
+			(uuid "b7989c3d-2e4f-4d24-9490-1196d967d3f6")
 		)
 		(fp_line
 			(start 3.81 -1.27)
@@ -751,7 +252,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "11a4dd18-2651-4da0-995c-f7af30401875")
+			(uuid "05a07afd-d907-46ce-9caa-966d73593ded")
 		)
 		(fp_line
 			(start 0 -1.27)
@@ -761,7 +262,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "e6a64305-4dcf-411c-8751-113a01369567")
+			(uuid "4832b5e3-30c6-4168-952f-a5e4ddaba6a3")
 		)
 		(fp_line
 			(start -1.27 0)
@@ -771,7 +272,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "6685c1a4-efec-44cf-a51b-c7798613231c")
+			(uuid "9e874167-4f47-4782-8697-c3f31161e8b0")
 		)
 		(fp_line
 			(start 3.81 6.35)
@@ -781,7 +282,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "fc95e797-9d3d-4300-a3c6-ee46b8cabacd")
+			(uuid "871d0041-c613-4e29-8640-a93542dd0722")
 		)
 		(fp_line
 			(start -1.27 6.35)
@@ -791,12 +292,12 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "ad3e29d7-4fe9-41d4-b1a1-da8d6f379195")
+			(uuid "8319d54c-7dea-4b40-8f35-640b10b58df6")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 1.27 2.54 180)
 			(layer "F.Fab")
-			(uuid "b6a38df3-5319-4d9a-9700-11c2b20f9dc4")
+			(uuid "6449ad7e-c28e-46c3-84e4-6f5ee7eb46c6")
 			(effects
 				(font
 					(size 1 1)
@@ -811,7 +312,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/PB1")
-			(uuid "f8dd867f-6090-4ce5-bbd4-a0edc79f52bb")
+			(uuid "d75355de-caf6-4058-9bbc-958baeb3e783")
 		)
 		(pad "2" thru_hole circle
 			(at 2.54 0 90)
@@ -820,7 +321,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/VCC")
-			(uuid "6ea4efdc-d34d-462e-8d01-34f5a69e16cf")
+			(uuid "201cb5fe-3ccc-44b2-a6e2-e2b18bd10abf")
 		)
 		(pad "3" thru_hole circle
 			(at 0 2.54 90)
@@ -829,7 +330,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/PB2")
-			(uuid "82c4d708-d7cf-4d8a-a2a7-2b9b0f985f9e")
+			(uuid "1edf143d-3d7a-474c-9480-64812323f60a")
 		)
 		(pad "4" thru_hole circle
 			(at 2.54 2.54 90)
@@ -838,7 +339,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/PB0")
-			(uuid "34e6d01a-4866-4939-849d-2ba8df64836e")
+			(uuid "342f89eb-b51f-4ebf-8fcf-7f2fdf96977c")
 		)
 		(pad "5" thru_hole circle
 			(at 0 5.08 90)
@@ -847,7 +348,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/PB5")
-			(uuid "0d7e7673-684a-44f6-ace7-a07e8150c7f7")
+			(uuid "60980025-116a-4e21-b173-702ac38ed84a")
 		)
 		(pad "6" thru_hole circle
 			(at 2.54 5.08 90)
@@ -856,7 +357,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/GND")
-			(uuid "d60b0d6c-2601-4115-aff4-eee679b60e22")
+			(uuid "327c40f1-1269-4a54-b568-2f496d3fa3a5")
 		)
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x03_P2.54mm_Vertical.step"
@@ -871,114 +372,16 @@
 			)
 		)
 	)
-	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
-		(layer "F.Cu")
-		(uuid "870adb62-1251-4ffd-a6ea-5c902810e47e")
-		(at 153.05 100)
-		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
-		(tags "pogo spring probe test")
-		(property "Reference" "P5"
-			(at 0 -1.45 0)
-			(layer "F.Fab")
-			(uuid "4571b32f-76e7-4ba2-b015-68500382b8a2")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "Pogo TP5 PB4"
-			(at 0 1.45 0)
-			(layer "F.Fab")
-			(uuid "f00ad598-56c6-4117-9cb8-1a5cbc664816")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e9599d2c-cc36-486a-a052-129c8bc21bfe")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d7a93bc4-d2a7-4f5a-b997-d3cd667f6898")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/49123620-4f03-52da-8a44-191069b662be")
-		(sheetfile "ring_ir_prog_probe.kicad_sch")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "d10f62b5-0e55-4cdf-a7ef-13cd68dc5416")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "ca0825fa-ce5e-4b78-b5c6-8a61df1dfe65")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 0.51 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "49b17ac7-cb7e-40bd-8819-8310c01b28b1")
-		)
-		(pad "1" thru_hole circle
-			(at 0 0)
-			(size 1.9 1.9)
-			(drill 1.15)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "unconnected-(P5-Pad1)")
-			(uuid "473b232d-d35b-42be-af64-3001c29dbcae")
-		)
-		(embedded_fonts no)
-	)
 	(footprint "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 		(layer "F.Cu")
-		(uuid "ac60649b-70ea-4d2a-b9ef-7d1390abf5f8")
-		(at 155.6 107)
+		(uuid "1deedabf-1b35-4a0c-ae83-b11f004eff36")
+		(at 155.6 89.86)
 		(descr "THT pad as test Point, diameter 1.5mm, hole diameter 0.7mm")
 		(tags "test point THT pad")
 		(property "Reference" "J2"
 			(at 0 -1.648 0)
 			(layer "F.SilkS")
-			(uuid "b7fde77a-22b1-4830-b249-21ae42a1f992")
+			(uuid "bb72a84f-6009-4fa3-b2cb-704fa62b3332")
 			(effects
 				(font
 					(size 1 1)
@@ -989,7 +392,7 @@
 		(property "Value" "GND_lead_to_anvil"
 			(at 0 1.75 0)
 			(layer "F.Fab")
-			(uuid "ddb7fd9a-c911-44e5-af5f-19b1f52ff389")
+			(uuid "abf447e0-c364-4a07-859c-5fbb6c0da40d")
 			(effects
 				(font
 					(size 1 1)
@@ -1002,7 +405,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "85aed98d-6b5a-474b-bc83-a819cf7f4737")
+			(uuid "239b951b-a709-4545-9ca1-50ce18be201c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1015,7 +418,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8ea1f556-46cf-49cd-a08e-17bd8cb33fa8")
+			(uuid "7245cb36-48a6-4674-88b0-6ce672edbde0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1036,7 +439,7 @@
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "b3e53637-ca48-47d2-b452-fc7a8e068904")
+			(uuid "be510359-62fb-4350-98dc-a895e74684e7")
 		)
 		(fp_circle
 			(center 0 0)
@@ -1047,12 +450,12 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "103f589a-222d-4c0d-9323-911df5c75491")
+			(uuid "35d9cf7e-efd0-43d8-b0e1-ee74826ee2ae")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 -1.65 0)
 			(layer "F.Fab")
-			(uuid "090bfd18-983c-4904-ace4-a863dd1570ee")
+			(uuid "78d5061f-2c68-4f70-8020-374b657488bc")
 			(effects
 				(font
 					(size 1 1)
@@ -1067,118 +470,20 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/GND")
-			(uuid "28a988d8-339c-4d55-9a5d-959c26414112")
+			(uuid "c62be5f0-72d7-46c2-be01-114a22740ac1")
 		)
 		(embedded_fonts no)
 	)
 	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
 		(layer "F.Cu")
-		(uuid "bc3af087-15ca-4ba2-81b1-88a8748d58c2")
-		(at 153.05 103.05)
-		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
-		(tags "pogo spring probe test")
-		(property "Reference" "P6"
-			(at 0 -1.45 0)
-			(layer "F.Fab")
-			(uuid "0af0de24-e9a1-4ba5-bfee-6164d2b7ee07")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Value" "Pogo TP6 PB5"
-			(at 0 1.45 0)
-			(layer "F.Fab")
-			(uuid "34b78900-c522-4609-8151-4178bf6f0ef9")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ac1101a7-9066-41b0-b950-0aeb1c951294")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "23b3b93b-bd1b-4533-b4b7-2fdb9ea09322")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(path "/98b9d582-0827-5c3d-9742-ee89b645587f")
-		(sheetfile "ring_ir_prog_probe.kicad_sch")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "c912f73d-9153-413a-9ade-490a071d2f9c")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 1.05 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "b59f6e4c-86d9-461e-94ad-d46970963ce5")
-		)
-		(fp_circle
-			(center 0 0)
-			(end 0.51 0)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "269df689-8cc1-4cdb-8373-972904426e44")
-		)
-		(pad "1" thru_hole circle
-			(at 0 0)
-			(size 1.9 1.9)
-			(drill 1.15)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "/PB5")
-			(uuid "1c9664bb-eac3-4bea-8670-6e75dbba9425")
-		)
-		(embedded_fonts no)
-	)
-	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
-		(layer "F.Cu")
-		(uuid "c3dd951a-d0f1-4955-a2c0-8eb01f08944f")
+		(uuid "4203b467-cd3a-4473-a143-59c7ae0bd38e")
 		(at 149.8984 95.4534)
 		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
 		(tags "pogo spring probe test")
 		(property "Reference" "P9"
 			(at 0 -1.45 0)
 			(layer "F.Fab")
-			(uuid "cae2bd23-7054-41ff-9a59-a47d29df4716")
+			(uuid "27abb48d-6162-4d9c-8054-da1b2d7dcf08")
 			(effects
 				(font
 					(size 0.5 0.5)
@@ -1189,7 +494,7 @@
 		(property "Value" "Pogo TP9 VCC"
 			(at 0 1.45 0)
 			(layer "F.Fab")
-			(uuid "aeea8c78-9b2a-4442-96a1-a68469b5a2bd")
+			(uuid "e45f62a8-dbcf-40ca-ba5a-f587966d5aa7")
 			(effects
 				(font
 					(size 0.5 0.5)
@@ -1201,7 +506,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "7a600df9-c187-4e38-8b7a-11e78a7fb22f")
+			(uuid "23c88b16-10a6-44b5-83f7-5a9867a215a3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1212,7 +517,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2cf4db67-be73-4cee-9863-bcad5e086d61")
+			(uuid "6b9bb2a5-7f0d-48f8-9c8c-ad7e06eb012b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1232,7 +537,7 @@
 			)
 			(fill no)
 			(layer "B.CrtYd")
-			(uuid "499cbd7f-09fc-4370-b70f-b6edaed798a1")
+			(uuid "5d37d43b-8269-44fd-a8e8-eb2214357895")
 		)
 		(fp_circle
 			(center 0 0)
@@ -1243,7 +548,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "1c17fe7b-e30a-4c57-b445-c87450fea848")
+			(uuid "11257d53-5a17-4be5-8ecd-a730d24082ec")
 		)
 		(fp_circle
 			(center 0 0)
@@ -1254,7 +559,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "d86507e8-b825-44c6-a4a9-0472ee7cbf90")
+			(uuid "6ef6f90f-5058-4baa-88c2-1880fa0714ae")
 		)
 		(pad "1" thru_hole circle
 			(at 0 0)
@@ -1263,36 +568,35 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/VCC")
-			(uuid "90a1053d-5521-4b06-88ed-9e6e8dd0b738")
+			(uuid "bec45c81-2c08-4b0f-980f-b13ef7310ed7")
 		)
 		(embedded_fonts no)
 	)
-	(footprint "MountingHole:MountingHole_2.2mm_M2"
+	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
 		(layer "F.Cu")
-		(uuid "ccdbe59f-f116-4ec3-8c9a-6303fdb32157")
-		(at 146.5 115.5)
-		(descr "Mounting Hole 2.2mm, M2, no annular, generated by kicad-footprint-generator mountinghole.py")
-		(tags "mountinghole M2")
-		(property "Reference" "H1"
-			(at 0 -3.15 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "dc6c2ba2-52a5-48fe-a1da-6a7b2cda62e9")
+		(uuid "5a21b1da-3bf4-472f-9601-c2875f436020")
+		(at 146.95 100)
+		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
+		(tags "pogo spring probe test")
+		(property "Reference" "P1"
+			(at 0 -1.45 0)
+			(layer "F.Fab")
+			(uuid "1117a898-9dfb-4856-885e-fa573bf51be5")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.5 0.5)
+					(thickness 0.08)
 				)
 			)
 		)
-		(property "Value" "MountingHole_2.2mm_M2"
-			(at 0 3.15 0)
+		(property "Value" "Pogo TP1 PB0"
+			(at 0 1.45 0)
 			(layer "F.Fab")
-			(uuid "56a5b7d9-0322-4d6e-b7ac-546b1d534b60")
+			(uuid "0e89d27b-f4e8-4dba-8b70-4fabc43ebd3f")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.5 0.5)
+					(thickness 0.08)
 				)
 			)
 		)
@@ -1300,7 +604,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8ec90f95-0ad4-48ac-a056-10520639e46a")
+			(uuid "020ff0b3-0557-4174-b8f8-a79929ca55f3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1311,152 +615,782 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3475d159-4f17-4427-9c7a-47079677e8cc")
+			(uuid "012b0b16-a1e1-462c-813e-ca6aa184b069")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "658caad2-7640-4145-aca1-c10df8466c80")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(path "/d6023c6a-3e65-573d-a23c-37a781ed0b60")
+		(sheetfile "ring_ir_prog_probe.kicad_sch")
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
-			(end 2.2 0)
+			(end 1.05 0)
 			(stroke
-				(width 0.15)
+				(width 0.05)
 				(type solid)
 			)
 			(fill no)
-			(layer "Cmts.User")
-			(uuid "f8e19336-33d7-46c0-b632-db8a33d85336")
+			(layer "B.CrtYd")
+			(uuid "4a2df0d3-c5fa-47c8-8cc8-ea36b94a4552")
 		)
 		(fp_circle
 			(center 0 0)
-			(end 2.45 0)
+			(end 1.05 0)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "1da0ec6d-a3a0-4e4f-a96f-0851ad4a3ee1")
+			(uuid "c4b77c8c-3f4d-42ec-8f67-764688a3230d")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+		(fp_circle
+			(center 0 0)
+			(end 0.51 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
 			(layer "F.Fab")
-			(uuid "9ad8e61f-caa7-469f-a7e8-981ca4505187")
+			(uuid "bff1429a-253b-448d-bbf2-02f57e755aaf")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.9 1.9)
+			(drill 1.15)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "/PB0")
+			(uuid "b6c91518-3fc7-4773-87dc-7eac16a821ac")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:M2_Slot_Clip_Jaw"
+		(layer "F.Cu")
+		(uuid "695c1432-8521-4534-95ae-25ae1fb31748")
+		(at 154.5 108.1)
+		(descr "Unplated M2 slot; length absorbs the unmeasured clip-jaw hole spacing. Generated from parameters.json")
+		(tags "mounting slot M2")
+		(property "Reference" "H2"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b5fba02b-31f6-419d-ac68-27d6ca3a913c")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.5 0.5)
+					(thickness 0.08)
 				)
 			)
 		)
-		(pad "" np_thru_hole circle
+		(property "Value" "M2_Slot_Clip_Jaw"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f32911bb-a953-4ddc-b237-8c2e6e648edc")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b168f63d-fe21-4be8-8d9a-3adebddc357a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c3e5d810-2100-4945-a273-d8ea28fb8ad9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -1.95 -1.35)
+			(end 1.95 1.35)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "06fec75d-8e84-4066-b57a-4dd0300af731")
+		)
+		(pad "" np_thru_hole oval
 			(at 0 0)
-			(size 2.2 2.2)
-			(drill 2.2)
+			(size 3.4 2.2)
+			(drill oval 3.4 2.2)
 			(layers "*.Cu" "*.Mask")
-			(uuid "c76cf70d-262b-44d9-bd12-36469446ff8f")
+			(uuid "08eb5c51-89af-4476-a1b2-467f68071bc2")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
+		(layer "F.Cu")
+		(uuid "a9afdeea-30a4-42b8-afa3-946dc417185f")
+		(at 150 103.05)
+		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
+		(tags "pogo spring probe test")
+		(property "Reference" "P4"
+			(at 0 -1.45 0)
+			(layer "F.Fab")
+			(uuid "2d9a4ec4-3477-4a07-90a7-9f957718cf2a")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "Pogo TP4 PB3"
+			(at 0 1.45 0)
+			(layer "F.Fab")
+			(uuid "00dbe356-3646-465a-a365-87e185ded1b6")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed2c4f66-9b69-437d-a7fb-2556d9bdf9d5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "90c38a2d-02c5-447d-9402-4fc752e231ce")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/18e260a0-95a8-5d9b-83d7-4159e300e5d3")
+		(sheetfile "ring_ir_prog_probe.kicad_sch")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "ed48ff35-8660-4a80-a232-cab67a8143ff")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "f1c93e6b-385b-4667-b5ad-467c1933804b")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.51 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "f8c4c087-682a-497c-b9cb-6ee134f4556b")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.9 1.9)
+			(drill 1.15)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "unconnected-(P4-Pad1)")
+			(uuid "31efaf72-9452-4b97-8ffb-54a8d72673dc")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:M2_Slot_Clip_Jaw"
+		(layer "F.Cu")
+		(uuid "c0da353b-cee4-48fc-bad7-684812436df4")
+		(at 145.5 108.1)
+		(descr "Unplated M2 slot; length absorbs the unmeasured clip-jaw hole spacing. Generated from parameters.json")
+		(tags "mounting slot M2")
+		(property "Reference" "H1"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "124f7e79-9f02-4aeb-99a9-7dbcf322e06d")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "M2_Slot_Clip_Jaw"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce19f2bc-ccfe-4ea4-84f1-27c002e81131")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d4ddc48b-9274-4b27-be39-9104078860b3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c52ace09-c42d-4857-9215-a1889f01af37")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -1.95 -1.35)
+			(end 1.95 1.35)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "043f8cc7-2733-401e-983b-c1207be85a3f")
+		)
+		(pad "" np_thru_hole oval
+			(at 0 0)
+			(size 3.4 2.2)
+			(drill oval 3.4 2.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "dce79991-cc3c-427d-8d6b-ca3779c8f60a")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
+		(layer "F.Cu")
+		(uuid "c563c2b0-26af-4d9b-a910-6ceb434c6494")
+		(at 150 100)
+		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
+		(tags "pogo spring probe test")
+		(property "Reference" "P3"
+			(at 0 -1.45 0)
+			(layer "F.Fab")
+			(uuid "eb30bd99-e274-42cf-86cc-8b967805d3fd")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "Pogo TP3 PB2"
+			(at 0 1.45 0)
+			(layer "F.Fab")
+			(uuid "24e2c6c3-621a-452b-a7b3-4e9ebd16ed97")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf4204d7-5234-4360-8762-6670d035c4be")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0ac3a615-2cff-4ac9-bb87-c334fe9f6024")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/c0793599-4bc9-5a4c-9bb1-71caf81cf00d")
+		(sheetfile "ring_ir_prog_probe.kicad_sch")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "e4c5ccce-12f5-4f79-8815-338082a460dd")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "587fa0ce-1616-4888-967d-4e99fc25df34")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.51 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "35aa0e31-c1bd-4866-b975-507d0c4ef54f")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.9 1.9)
+			(drill 1.15)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "/PB2")
+			(uuid "1b16974c-7c20-45fb-bda8-090da7ba03e8")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
+		(layer "F.Cu")
+		(uuid "cc864a59-b4f0-4213-980d-6cc390c96019")
+		(at 153.05 100)
+		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
+		(tags "pogo spring probe test")
+		(property "Reference" "P5"
+			(at 0 -1.45 0)
+			(layer "F.Fab")
+			(uuid "8eaf533d-b07e-444f-9a06-1f5952d0ea32")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "Pogo TP5 PB4"
+			(at 0 1.45 0)
+			(layer "F.Fab")
+			(uuid "e28b0757-2908-4b7f-bb0e-df30bd6eb162")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad0da8ec-f60d-45f9-8c12-6a65c026af7d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1eea0219-7d3e-436f-b081-e27e0b097ee5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/49123620-4f03-52da-8a44-191069b662be")
+		(sheetfile "ring_ir_prog_probe.kicad_sch")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "65f60821-ec8c-4c54-833c-248e4c74dfd2")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "82bc7fc8-7d51-450d-ad7a-6a32e1cd5f70")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.51 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "3bfa0492-13fe-42c5-a051-382764e49c57")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.9 1.9)
+			(drill 1.15)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "unconnected-(P5-Pad1)")
+			(uuid "3c67a056-a17d-4184-adc0-fe501999da02")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
+		(layer "F.Cu")
+		(uuid "d32b6957-2184-4869-99f1-ea05f02a109b")
+		(at 153.05 103.05)
+		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
+		(tags "pogo spring probe test")
+		(property "Reference" "P6"
+			(at 0 -1.45 0)
+			(layer "F.Fab")
+			(uuid "6b3e8175-eba9-4677-9c6a-35853e8d2996")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "Pogo TP6 PB5"
+			(at 0 1.45 0)
+			(layer "F.Fab")
+			(uuid "53467478-4c39-4310-aebd-8598110c3247")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "33ecafad-1991-4f6b-bb56-9d05619dac1f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "82a26202-fee6-4f91-9a98-573bf0dc4bea")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/98b9d582-0827-5c3d-9742-ee89b645587f")
+		(sheetfile "ring_ir_prog_probe.kicad_sch")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "afca83d8-5631-4b4c-940a-d83813f32e2a")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "442a0d47-8e12-43a0-903e-050bb13eabb8")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.51 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "f0922af9-aea4-496f-b0e5-48ddfde080e8")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.9 1.9)
+			(drill 1.15)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "/PB5")
+			(uuid "4dd92528-de42-4b97-982c-3fe3153fa31b")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:Pogo_P75_THT"
+		(layer "F.Cu")
+		(uuid "ec67a412-aef0-45c3-bb11-7e07cb8cc855")
+		(at 146.95 103.05)
+		(descr "P75-class spring probe, 1.02 mm barrel in 1.15 mm plated hole. Generated from parameters.json")
+		(tags "pogo spring probe test")
+		(property "Reference" "P2"
+			(at 0 -1.45 0)
+			(layer "F.Fab")
+			(uuid "6e7d7bda-5131-4609-ab94-efe4608aabc4")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "Pogo TP2 PB1"
+			(at 0 1.45 0)
+			(layer "F.Fab")
+			(uuid "1eebdf11-e943-426d-a8a8-fb0ab6d40b37")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8563625e-b9d2-451e-8758-b8289966f69b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fff4d47b-6751-4356-81c9-e987bb2989c2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/86179f5b-d450-5db0-9d6e-c3e26e8e174d")
+		(sheetfile "ring_ir_prog_probe.kicad_sch")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "80f15281-ee7e-4c1b-ae0a-36fbf8038588")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1.05 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "48425ed2-31ba-460f-a0f8-60d1303dba19")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.51 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "35cdff7a-3462-4e47-ab51-d4e1d85d40e2")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.9 1.9)
+			(drill 1.15)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "/PB1")
+			(uuid "63f3a0e1-d5e4-450c-a93a-aa2011e568f3")
 		)
 		(embedded_fonts no)
 	)
 	(gr_arc
-		(start 143 93.5)
-		(mid 143.292893 92.792893)
-		(end 144 92.5)
+		(start 142.25 88)
+		(mid 142.542893 87.292893)
+		(end 143.25 87)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "fdb14c0f-0b18-4be4-99b6-0d4e7696b00f")
+		(uuid "017bf476-705d-4d74-802b-293f9b21c274")
 	)
 	(gr_line
-		(start 143 120.5)
-		(end 143 93.5)
+		(start 142.25 108.7)
+		(end 142.25 88)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "1844b9b5-853f-40da-86a0-66931edd2489")
+		(uuid "fe0582bd-8595-4ee0-992b-d457419cd5ab")
 	)
 	(gr_line
-		(start 144 92.5)
-		(end 156 92.5)
+		(start 143.25 87)
+		(end 156.75 87)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "dda9c867-8f75-4072-aef9-e0949f3e29e1")
+		(uuid "19f4c6e5-665f-4a9b-967c-f812289341bd")
 	)
 	(gr_arc
-		(start 144 121.5)
-		(mid 143.292893 121.207106)
-		(end 143 120.5)
+		(start 143.25 109.7)
+		(mid 142.542893 109.407106)
+		(end 142.25 108.7)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "eb35f7ea-9221-4020-8b21-b6f4b945b029")
+		(uuid "768f144e-8a02-4292-ad46-7a6ea773c957")
 	)
 	(gr_arc
-		(start 156 92.5)
-		(mid 156.707106 92.792893)
-		(end 157 93.5)
+		(start 156.75 87)
+		(mid 157.457106 87.292893)
+		(end 157.75 88)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "0612d419-b526-488e-ba0d-be69dfd97101")
+		(uuid "6fcb6781-1ac9-424d-9f85-20038762d5fd")
 	)
 	(gr_line
-		(start 156 121.5)
-		(end 144 121.5)
+		(start 156.75 109.7)
+		(end 143.25 109.7)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "a5d9f79e-77b8-44db-a4bf-ccc6d39a021d")
+		(uuid "af836fa9-b81c-4688-bb83-c7686918d568")
 	)
 	(gr_line
-		(start 157 93.5)
-		(end 157 120.5)
+		(start 157.75 88)
+		(end 157.75 108.7)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "65ca7a99-0fe9-440f-9891-63705f35356f")
+		(uuid "4f7be618-b233-48c7-95b0-b81087e66bc6")
 	)
 	(gr_arc
-		(start 157 120.5)
-		(mid 156.707106 121.207106)
-		(end 156 121.5)
+		(start 157.75 108.7)
+		(mid 157.457106 109.407106)
+		(end 156.75 109.7)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "4405f7a2-40fe-47be-bc6a-1bd3fab5cb2e")
+		(uuid "78f32dda-d09f-474d-a9bf-912ac0e9c058")
 	)
 	(gr_line
 		(start 145.5804 104.0894)
@@ -1466,7 +1400,7 @@
 			(type default)
 		)
 		(layer "B.Fab")
-		(uuid "203e607b-acb3-40f9-8fe2-1bf6e12fb40f")
+		(uuid "9485668e-32e7-4007-81b3-fc06c911d995")
 	)
 	(gr_line
 		(start 149.8984 104.8514)
@@ -1476,12 +1410,33 @@
 			(type default)
 		)
 		(layer "B.Fab")
-		(uuid "02e81f2f-be8f-460d-a644-fc91266b5200")
+		(uuid "b4f5be0e-8346-475b-8f4c-9c9f85da3904")
+	)
+	(gr_line
+		(start 142.55 104.6)
+		(end 157.45 104.6)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "6bb2ba67-9f1a-4265-aa88-3704186eae2f")
 	)
 	(gr_text "1"
-		(at 147.46 111.64 0)
+		(at 145.4 92.4 0)
 		(layer "F.SilkS")
-		(uuid "3ac91462-eff1-47d8-85a9-25e20c9cc475")
+		(uuid "b03ccca5-b413-468a-b835-ba50f48a974c")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(gr_text "ISP"
+		(at 150 87.96 0)
+		(layer "F.SilkS")
+		(uuid "945928f9-9e19-4d9e-88ae-7325a1bb5c97")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -1492,7 +1447,7 @@
 	(gr_text "PB3"
 		(at 150 104.8 0)
 		(layer "F.SilkS")
-		(uuid "5c4e0e3c-ae47-406d-9429-4b8026d544a5")
+		(uuid "d6110ad0-6d83-485b-a6bd-6ce6d9dfaba6")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -1500,10 +1455,10 @@
 			)
 		)
 	)
-	(gr_text "ISP"
-		(at 151.27 111.64 0)
+	(gr_text "RING IR ISP"
+		(at 150 106.1 0)
 		(layer "F.SilkS")
-		(uuid "2c38c55a-1872-4f8d-a196-3c935e5cbc88")
+		(uuid "51a932df-7ad6-4c3d-b5c3-3ebf1c10baee")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -1514,7 +1469,7 @@
 	(gr_text "PB4"
 		(at 155.15 98.5 0)
 		(layer "F.SilkS")
-		(uuid "a10b7687-f218-49d3-9b08-89beb21f41d2")
+		(uuid "26027353-8de2-40ee-a220-64fb0433d005")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -1523,9 +1478,9 @@
 		)
 	)
 	(gr_text "GND"
-		(at 155.6 108.5 0)
+		(at 155.6 91.36 0)
 		(layer "F.SilkS")
-		(uuid "3e1e8805-48c7-470d-a2e7-ee5a40b767f5")
+		(uuid "9b5a4104-243b-49d9-ba27-63f54985cc59")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -1533,231 +1488,199 @@
 			)
 		)
 	)
-	(gr_text "RING IR ISP"
-		(at 150 112.9 0)
-		(layer "F.SilkS")
-		(uuid "14329616-a48c-452b-ab76-fc59aa9a887c")
-		(effects
-			(font
-				(size 0.9 0.9)
-				(thickness 0.14)
-			)
-		)
-	)
 	(gr_text "PINS DOWN"
-		(at 150 112.9 0)
+		(at 150 106.1 0)
 		(layer "B.SilkS")
-		(uuid "37c00ff6-cdcb-425c-80d1-f00d20c78f7f")
+		(uuid "ae4ac007-c19f-4e5b-befb-f16aea805c69")
 		(effects
 			(font
-				(size 0.9 0.9)
-				(thickness 0.14)
+				(size 0.8 0.8)
+				(thickness 0.12)
 			)
 			(justify mirror)
 		)
 	)
-	(gr_text "KIT HOLES UNMEASURED"
-		(at 150 120.3 0)
+	(gr_text "KIT JAW UNMEASURED"
+		(at 150 88 0)
 		(layer "F.Fab")
-		(uuid "cc6ae7be-a1ef-4749-bc25-b78a406886a1")
+		(uuid "e24d1b8d-a972-4ee5-9be9-7229c40dfef2")
 		(effects
 			(font
-				(size 0.6 0.6)
-				(thickness 0.09)
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(gr_text "UPPER JAW TIP (EST)"
+		(at 150 105.2 0)
+		(layer "F.Fab")
+		(uuid "eceb2c26-b881-4b7b-82a3-7c3f86cea642")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
 			)
 		)
 	)
 	(segment
-		(start 152.54 107)
-		(end 155.6 107)
+		(start 152.54 89.86)
+		(end 155.6 89.86)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/GND")
-		(uuid "e235afd6-b4c7-4d44-bb6b-4718a302f6b8")
+		(uuid "274393ba-d64e-4961-b4a2-501fa75cafd6")
 	)
 	(segment
-		(start 148.475 104.575)
-		(end 148.73 104.83)
+		(start 148.475 98.475)
+		(end 148.475 94.4034)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB0")
-		(uuid "2b1db341-8221-400c-89b2-fca7d3be37d7")
+		(uuid "01cdab12-5ad5-4f0f-985c-b3d06592d506")
 	)
 	(segment
-		(start 148.73 105.73)
-		(end 150 107)
+		(start 148.73 94.1484)
+		(end 148.73 91.13)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB0")
-		(uuid "3b8b17f3-366e-4e50-837e-9a29b13478c5")
-	)
-	(segment
-		(start 148.73 104.83)
-		(end 148.73 105.73)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PB0")
-		(uuid "933e96ea-40d5-42d2-a81b-31ac74bcc725")
+		(uuid "10de29f0-9f97-4507-8c90-c04289f40957")
 	)
 	(segment
 		(start 146.95 100)
-		(end 148.475 101.525)
+		(end 148.475 98.475)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB0")
-		(uuid "b9a13a3d-f926-4722-bbad-0f1d8bfe50eb")
+		(uuid "3cde99c7-3b99-4c56-a745-8d731aa514ff")
 	)
 	(segment
-		(start 148.475 101.525)
-		(end 148.475 104.575)
+		(start 148.73 91.13)
+		(end 150 89.86)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB0")
-		(uuid "c77255a4-674f-4cc2-a1cc-2f7f5349e305")
+		(uuid "583c61aa-23a4-49ab-acab-8ec6be674609")
 	)
 	(segment
-		(start 146.6 109.539999)
-		(end 147.46 109.539999)
+		(start 148.475 94.4034)
+		(end 148.73 94.1484)
 		(width 0.25)
-		(layer "F.Cu")
-		(net "/PB1")
-		(uuid "0e2c657a-867d-4706-9d9e-e6b6b1933c8f")
+		(layer "B.Cu")
+		(net "/PB0")
+		(uuid "6f590c94-0b0a-4da3-9fbc-ca361cc34e30")
 	)
 	(segment
 		(start 146.95 103.05)
-		(end 145.6 104.4)
+		(end 145.6 101.7)
 		(width 0.25)
 		(layer "F.Cu")
 		(net "/PB1")
-		(uuid "614331cd-4277-47f2-ab6b-e4912a09afb8")
+		(uuid "049dc6da-27b6-4c8e-9c1c-8a29229fbe22")
 	)
 	(segment
-		(start 145.6 108.539999)
-		(end 146.6 109.539999)
+		(start 145.6 101.7)
+		(end 145.6 93.4)
 		(width 0.25)
 		(layer "F.Cu")
 		(net "/PB1")
-		(uuid "a1bc2459-40e3-41c5-b5bb-13bf3f5efe67")
+		(uuid "2a4a2c26-b66d-4a8a-8c40-4d26c8820811")
 	)
 	(segment
-		(start 145.6 104.4)
-		(end 145.6 108.539999)
+		(start 146.6 92.4)
+		(end 147.46 92.4)
 		(width 0.25)
 		(layer "F.Cu")
 		(net "/PB1")
-		(uuid "bbc4198b-cd5f-4252-8a71-d9240c80b3c0")
+		(uuid "4cb7a821-ca4b-47f4-9257-ab9f8ca60736")
 	)
 	(segment
-		(start 151.27 108.27)
-		(end 150 109.539999)
+		(start 145.6 93.4)
+		(end 146.6 92.4)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PB1")
+		(uuid "5fcc20f9-f916-42d3-8413-2ad36604db5f")
+	)
+	(segment
+		(start 151.525 98.475)
+		(end 151.525 93.67)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB2")
-		(uuid "0425447f-0003-4c0d-862e-7d576171803a")
-	)
-	(segment
-		(start 151.525 104.575)
-		(end 151.27 104.83)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PB2")
-		(uuid "1b60c4a9-3e60-4882-b684-ecf32dc58b07")
-	)
-	(segment
-		(start 151.525 101.525)
-		(end 151.525 104.575)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PB2")
-		(uuid "93fb091b-ec23-4ce0-9a40-702b8b94ed04")
+		(uuid "38e47026-6e5b-413d-bae5-47b8fd8b0135")
 	)
 	(segment
 		(start 150 100)
-		(end 151.525 101.525)
+		(end 151.525 98.475)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB2")
-		(uuid "c5ea4b69-b0e8-4b51-95c9-a3f9498d7c69")
+		(uuid "8cbcd3c7-4f60-4fcd-8b96-3e8e0aa806bc")
 	)
 	(segment
-		(start 151.27 104.83)
-		(end 151.27 108.27)
+		(start 151.525 93.67)
+		(end 150 92.4)
 		(width 0.25)
 		(layer "B.Cu")
 		(net "/PB2")
-		(uuid "fb518968-57dd-47a3-b83a-44e0c277f2e2")
-	)
-	(segment
-		(start 154.4 108.539999)
-		(end 153.4 109.539999)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PB5")
-		(uuid "3ac67932-d02d-491e-8923-449147f7099c")
-	)
-	(segment
-		(start 154.4 104.4)
-		(end 154.4 108.539999)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PB5")
-		(uuid "5aa307d9-2340-4e71-aff0-eabef06f095a")
-	)
-	(segment
-		(start 153.4 109.539999)
-		(end 152.54 109.539999)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PB5")
-		(uuid "9d04debf-1af7-4db6-9cf4-8a64e19e54d8")
+		(uuid "9533c037-75bd-4f77-8a8a-8327cfe523ef")
 	)
 	(segment
 		(start 153.05 103.05)
-		(end 154.4 104.4)
+		(end 154.4 101.7)
 		(width 0.25)
 		(layer "F.Cu")
 		(net "/PB5")
-		(uuid "a07240a6-1019-486b-842e-4a853d02fc1f")
+		(uuid "27cc30e9-05d7-413a-a258-0efbd082953e")
+	)
+	(segment
+		(start 153.4 92.4)
+		(end 152.54 92.4)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PB5")
+		(uuid "88b9f0fe-b696-4ed5-b5ff-966aa168c3b6")
+	)
+	(segment
+		(start 154.4 101.7)
+		(end 154.4 93.4)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PB5")
+		(uuid "cbdfe1a6-bd92-4e79-903f-584a8f19b24b")
+	)
+	(segment
+		(start 154.4 93.4)
+		(end 153.4 92.4)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PB5")
+		(uuid "e0051e41-4993-460b-9119-3ec2bf4701d1")
+	)
+	(segment
+		(start 148.73 91.13)
+		(end 147.46 89.86)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/VCC")
+		(uuid "77e89dbc-9302-4d7b-a4b5-d270e62c23eb")
+	)
+	(segment
+		(start 148.73 94.285)
+		(end 148.73 91.13)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/VCC")
+		(uuid "ad13fa0b-f3d1-489a-b8c8-db19f9c2b4fc")
 	)
 	(segment
 		(start 149.8984 95.4534)
-		(end 146.4 95.4534)
+		(end 148.73 94.285)
 		(width 0.25)
-		(layer "B.Cu")
+		(layer "F.Cu")
 		(net "/VCC")
-		(uuid "45bb2153-40ad-4796-83fa-f07bfca7c4d7")
-	)
-	(segment
-		(start 146.4 95.4534)
-		(end 145.4 96.4534)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/VCC")
-		(uuid "55fb91f9-a1f0-4d3e-8b96-ddee0ea85803")
-	)
-	(segment
-		(start 145.4 96.4534)
-		(end 145.4 106)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/VCC")
-		(uuid "ac0ec763-c132-45bf-b2c6-40deb4e65789")
-	)
-	(segment
-		(start 145.4 106)
-		(end 146.4 107)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/VCC")
-		(uuid "c1cda491-5741-49eb-85bd-5872f26fc83d")
-	)
-	(segment
-		(start 146.4 107)
-		(end 147.46 107)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/VCC")
-		(uuid "ce121cc0-4053-4ac3-9727-073eb9de65ce")
+		(uuid "dbe56359-8534-494a-bf8c-e4382b131f70")
 	)
 	(embedded_fonts no)
 )

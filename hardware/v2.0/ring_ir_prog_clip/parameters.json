@@ -2,18 +2,47 @@
   "dut": {
     "board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
     "origin_test_point": "TP3",
-    "probe_test_points": ["TP1", "TP2", "TP3", "TP4", "TP5", "TP6", "TP9"],
+    "probe_test_points": [
+      "TP1",
+      "TP2",
+      "TP3",
+      "TP4",
+      "TP5",
+      "TP6",
+      "TP9"
+    ],
     "ground_test_point": "TP8",
     "expected_nets": {
-      "TP1": "PB0", "TP2": "PB1", "TP3": "PB2", "TP4": "PB3",
-      "TP5": "PB4", "TP6": "PB5", "TP9": "VCC", "TP8": "GND"
+      "TP1": "PB0",
+      "TP2": "PB1",
+      "TP3": "PB2",
+      "TP4": "PB3",
+      "TP5": "PB4",
+      "TP6": "PB5",
+      "TP9": "VCC",
+      "TP8": "GND"
     }
   },
   "isp_header": {
     "standard": "Atmel AVR ISP-6 (2x3, 2.54 mm)",
-    "pins": {"1": "PB1", "2": "VCC", "3": "PB2", "4": "PB0", "5": "PB5", "6": "GND"},
-    "functions": {"PB0": "MOSI", "PB1": "MISO", "PB2": "SCK", "PB5": "RESET"},
-    "row_a_offset": 7.0
+    "pins": {
+      "1": "PB1",
+      "2": "VCC",
+      "3": "PB2",
+      "4": "PB0",
+      "5": "PB5",
+      "6": "GND"
+    },
+    "functions": {
+      "PB0": "MOSI",
+      "PB1": "MISO",
+      "PB2": "SCK",
+      "PB5": "RESET"
+    },
+    "row_a_offset": 7.6,
+    "row_note": "odd row (MISO, SCK, RESET) at v = -row_a_offset, even row 2.54 mm further out, in front of the pogo grid",
+    "tail_below_board": 3.05,
+    "body_height": 2.5
   },
   "pogo": {
     "series": "P75 class (1.02 mm barrel, about 16.5 mm long, about 2.6 mm travel)",
@@ -22,22 +51,83 @@
     "drill": 1.15,
     "pad_diameter": 1.9,
     "working_travel_fraction": 0.66,
-    "measured": false
+    "measured": false,
+    "length": 16.5,
+    "plunger_diameter": 0.74,
+    "head_diameter": 0.9,
+    "plunger_exposed_free": 4.0,
+    "rated_travel": 2.5,
+    "head_note": "B1/LM2 heads must pass the 1.15 mm guide hole; 1.3-1.5 mm heads need the guide drilled out"
   },
   "probe_board": {
-    "u_min": -7.0, "u_max": 7.0, "v_min": -7.5, "v_max": 21.5,
+    "u_min": -7.75,
+    "u_max": 7.75,
+    "v_min": -13.0,
+    "v_max_note": "computed: upper jaw tip + tip section length - step_margin",
+    "step_margin": 0.1,
     "corner_radius": 1.0,
     "track_width": 0.25,
     "outer_route_u": 4.4,
-    "gnd_lead_pad": [5.6, 7.0]
+    "gnd_lead_pad": [
+      5.6,
+      -10.14
+    ],
+    "copies": 2,
+    "copies_note": "second unpopulated copy is the lower pin guide under the jaw"
   },
   "clip_kit": {
     "listing": "https://www.aliexpress.com/item/1005006153573416.html",
     "reference": "https://www.adafruit.com/product/5434",
-    "mount_hole_drill": 2.2,
-    "mount_holes_uv": [[-3.5, 15.5], [3.5, 18.5]],
     "measured": false,
-    "note": "Seller publishes no drawing. Hole positions are placeholders until the jaw is measured."
+    "note": "Seller publishes no drawing. Values are estimates from the Adafruit 5434 datasheet drawing and scaled photos; measure the real jaw and update before ordering boards.",
+    "sources": {
+      "datasheet": "Adafruit 5434 C17220-001 datasheet p8 (62.5 mm overall, 6 mm tip) and p13 (P75 pin)",
+      "side_photo": "Adafruit 5434 side photo, scaled by US quarter (24.26 mm) and 62.5 mm length, agree within ~3%",
+      "front_photo": "Adafruit 5434 front photo, scaled by 2.54 mm header pitch",
+      "listing_photo": "AliExpress 1005006153573416 image 6: hinge ~47% of length, two M2 holes across the upper jaw tip"
+    },
+    "uncertainty": 1.0,
+    "geometry": {
+      "frame": "x from lower jaw tip toward hinge, z up from lower jaw top at the tip",
+      "length": 62.5,
+      "width": 15.5,
+      "lower_tip_thickness": 4.4,
+      "lower_tip_length": 12.7,
+      "lower_throat_thickness": 7.3,
+      "upper_tip_setback": 7.5,
+      "upper_tip_thickness": 4.4,
+      "upper_tip_section_end": 12.7,
+      "upper_mid_thickness": 7.0,
+      "upper_mid_end": 21.0,
+      "ramp_length": 1.3,
+      "parallel_gap_tip": 9.8,
+      "throat_gap": 5.6,
+      "hinge_x": 27.5,
+      "spring_x": 56.5,
+      "u_block_x": [
+        41.5,
+        62.0
+      ],
+      "hole_setback_from_upper_tip": 3.5,
+      "hole_spacing": 9.0,
+      "hole_drill": 2.2
+    },
+    "upper_tip_v": 4.6,
+    "mount_slot": {
+      "u_inner": 3.9,
+      "u_outer": 5.1,
+      "width": 2.2
+    },
+    "screw": "M2x10 pan head + M2 nut (kit screws are 12-16 mm; too long for the 9.2 mm grip)",
+    "screw_length": 10.0,
+    "screw_head": [
+      3.8,
+      1.3
+    ],
+    "nut": [
+      4.0,
+      1.6
+    ]
   },
   "anvil": {
     "outline_margin": 2.5,
@@ -49,6 +139,25 @@
     "gnd_pad_inset": 0.3,
     "gnd_pad_half_width": 3.0,
     "gnd_track_width": 0.5,
-    "min_rail_contact": 0.5
+    "min_rail_contact": 0.5,
+    "hinge_margin": 0.6,
+    "tail_half_width": 1.4
+  },
+  "riser": {
+    "material": "PLA/PETG print",
+    "thickness_note": "computed: parallel_gap_tip - anvil - ring - guide",
+    "hook_depth": 3.0,
+    "hook_thickness": 1.5,
+    "throat_margin": 0.3,
+    "margin": 1.0
+  },
+  "component_heights_mm": {
+    "Resistor_SMD:R_0603_1608Metric": 0.55,
+    "Capacitor_SMD:C_0603_1608Metric": 0.95,
+    "LED_SMD:LED_0603_1608Metric": 0.8,
+    "Package_TO_SOT_SMD:SOT-23": 1.25,
+    "Package_TO_SOT_SMD:SOT-363_SC-70-6": 1.1,
+    "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm": 1.0,
+    "note": "datasheet maximum package heights; the ring STEP has no 3D models"
   }
 }
