@@ -12,6 +12,8 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
   `ring_3d/animation` renders the Blender 5 assembly GIF/MP4 via `render.ps1`;
   rerun it after geometry changes. Its colours are illustrative only.
+  `animation/render_corps.ps1` (`corps_swap.py`) renders the crown-swap
+  animation and the all-corps hero still from the same meshes.
   `ring_3d/crowns.py` builds the low-profile Lantern Corps crowns (bezel + lens +
   logo relief) from `ring_3d/logos/logos.json`; change crowns there, regenerate,
   and keep `test_crowns.py` green. Do not reintroduce tall v1-style emblems.

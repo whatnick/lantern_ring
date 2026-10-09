@@ -198,6 +198,22 @@ Colours are illustrative: the lower body is shown as emerald metal and the
 crown as frosted translucent plastic. `animation/build/` holds the
 intermediate meshes, `.blend` file and frames, and is not committed.
 
+### Lantern Corps crown swap and hero still
+
+![Lantern Corps crown swap](generated/lantern_corps_swap.gif)
+
+[Crown swap MP4](generated/lantern_corps_swap.mp4): on a brushed-steel surface,
+each crown lifts off, the light goes dark, the next corps crown drops in and the
+LEDs relight in that corps colour, with a caption naming the corps and light.
+
+![All eight Lantern Corps rings on their side on steel, caps facing the viewer](generated/crowns/hero.png)
+
+`animation/corps_swap.py` (Blender 5, reusing the `animate.py` helpers) builds
+both; `animation/render_corps.ps1` renders the animation (about 20 minutes at
+1280x720), the 2400x800 hero still and the MP4/GIF. Run `render.ps1` (or
+`export_parts.py`) first so the crown meshes exist. `-Preview` renders a draft.
+Corps ring-body tints are illustrative; only the crowns are generated geometry.
+
 ## Lantern Corps crowns (low-profile top piece)
 
 ![Lantern Corps crown lineup](generated/crowns/lineup.png)

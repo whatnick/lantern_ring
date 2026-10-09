@@ -36,6 +36,13 @@ rendered by `hardware/v2.0/ring_3d/animation/render.ps1`.
 Low-profile [Lantern Corps crowns](hardware/v2.0/ring_3d/README.md#lantern-corps-crowns-low-profile-top-piece):
 swappable translucent top pieces that sit 2.3 mm above the PCB (the v1 emblem stood 6.5 mm).
 
+![All eight Lantern Corps rings on their side on a steel surface, glowing caps facing the viewer](hardware/v2.0/ring_3d/generated/crowns/hero.png)
+
+![Crown swap animation: each Lantern Corps crown is swapped in and the ring relights in that corps colour](hardware/v2.0/ring_3d/generated/lantern_corps_swap.gif)
+
+Crown swap animation ([MP4](hardware/v2.0/ring_3d/generated/lantern_corps_swap.mp4)),
+rendered by `hardware/v2.0/ring_3d/animation/render_corps.ps1`.
+
 | Assembled: low crown, braced open tapered band | Exploded: bayonet cassette and pogo stack |
 | --- | --- |
 | ![Lantern Ring v2 assembled CAD with the crown nested on the finger arc and a 60-degree open-bottom band](hardware/v2.0/ring_3d/generated/assembly.png) | ![Lantern Ring v2 exploded CAD showing ring base, CR2032, pogo pins, PCB carrier and bezel](hardware/v2.0/ring_3d/generated/exploded.png) |
