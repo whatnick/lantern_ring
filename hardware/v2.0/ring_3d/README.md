@@ -9,6 +9,12 @@ contact deck; **turn the cassette/bezel, never the PCB**.
 ![Assembled CAD](generated/assembly.png)
 ![Exploded CAD](generated/exploded.png)
 
+![Assembly animation](generated/lantern_ring_v2_assembly.gif)
+
+[Assembly animation MP4](generated/lantern_ring_v2_assembly.mp4): the exploded
+stack drops into the carrier, the cassette inserts and twist-locks 30 degrees,
+the v1 Green Lantern (willpower) emblem seats on top and the LEDs light up.
+
 ![Same-scale comparison with the legacy ring](generated/legacy-comparison.png)
 
 ![Open-band elastic-fit curvature study](generated/flex-fit.png)
@@ -171,6 +177,26 @@ manufacturing files: copy intended settings into `parameters.json` and rebuild.
 The PCB interface stored in FCStd is a snapshot. Regenerate from the KiCad file
 after any PCB change. Commit source, native CAD, exports and `validation.json`
 together; do not hand-edit generated geometry.
+
+### Assembly animation (Blender 5)
+
+`animation/render.ps1` exports every part from the FreeCAD model in its
+assembled pose (`export_parts.py`), builds and renders the scene in Blender 5
+(`animate.py`, EEVEE) and encodes `generated/lantern_ring_v2_assembly.mp4`
+and `.gif` with ffmpeg:
+
+```powershell
+& hardware\v2.0\ring_3d\animation\render.ps1            # 1280x720, about 8 minutes
+& hardware\v2.0\ring_3d\animation\render.ps1 -Preview   # 640x360 draft
+# Single frames for review, written to animation\build\stills:
+& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' -b -P hardware\v2.0\ring_3d\animation\animate.py -- --preview --stills 1 100 200
+```
+
+The emblem is `hardware/v1.0/ring_3d/Lantern_Ring_Assembly-will_logo.stl`,
+re-centred on the v2 axis and seated on the tallest LED. It is a visual
+reference, not part of the validated v2 print set. Colours are illustrative:
+the lower body is shown as emerald metal. `animation/build/` holds the
+intermediate meshes, `.blend` file and frames, and is not committed.
 
 ## Printed parts and purchased parts
 

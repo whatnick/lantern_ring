@@ -10,6 +10,8 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v2.0/ring_pcb_IR`: separate ATtiny85/IR design, not the mono contact map.
 - `hardware/v2.0/ring_pcb_dotstar`: incomplete APA102 experiment, not production.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
+  `ring_3d/animation` renders the Blender 5 assembly GIF/MP4 via `render.ps1`;
+  rerun it after geometry changes. Its emblem and colours are illustrative only.
 - `hardware/v2.0/ring_ir_prog_clip`: KiCad 10 generated pogo-pin ISP clip PCBs
   (probe/anvil/fence) for `ring_pcb_IR`; geometry is derived from the IR board.
   `fit_check.py` (FreeCAD) fits them in the estimated clip jaw.
