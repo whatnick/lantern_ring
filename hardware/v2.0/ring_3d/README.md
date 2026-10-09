@@ -12,8 +12,8 @@ contact deck; **turn the cassette/bezel, never the PCB**.
 ![Assembly animation](generated/lantern_ring_v2_assembly.gif)
 
 [Assembly animation MP4](generated/lantern_ring_v2_assembly.mp4): the exploded
-stack drops into the carrier, the cassette inserts and twist-locks 30 degrees,
-the v1 Green Lantern (willpower) emblem seats on top and the LEDs light up.
+stack drops into the carrier, the cassette inserts and twist-locks 30 degrees
+under the Green Lantern (willpower) crown, and the LEDs light the crown lens.
 
 ![Same-scale comparison with the legacy ring](generated/legacy-comparison.png)
 
@@ -181,22 +181,68 @@ together; do not hand-edit generated geometry.
 ### Assembly animation (Blender 5)
 
 `animation/render.ps1` exports every part from the FreeCAD model in its
-assembled pose (`export_parts.py`), builds and renders the scene in Blender 5
-(`animate.py`, EEVEE) and encodes `generated/lantern_ring_v2_assembly.mp4`
-and `.gif` with ffmpeg:
+assembled pose (`export_parts.py`, which also meshes the crown STEPs, so run
+`crowns.py` first), builds and renders the scene in Blender 5 (`animate.py`,
+EEVEE), encodes `generated/lantern_ring_v2_assembly.mp4` and `.gif` with ffmpeg
+and renders the `generated/crowns/lineup.png` crown lineup:
 
 ```powershell
-& hardware\v2.0\ring_3d\animation\render.ps1            # 1280x720, about 8 minutes
+& hardware\v2.0\ring_3d\animation\render.ps1            # 1280x720, about 10 minutes
 & hardware\v2.0\ring_3d\animation\render.ps1 -Preview   # 640x360 draft
 # Single frames for review, written to animation\build\stills:
 & 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' -b -P hardware\v2.0\ring_3d\animation\animate.py -- --preview --stills 1 100 200
 ```
 
-The emblem is `hardware/v1.0/ring_3d/Lantern_Ring_Assembly-will_logo.stl`,
-re-centred on the v2 axis and seated on the tallest LED. It is a visual
-reference, not part of the validated v2 print set. Colours are illustrative:
-the lower body is shown as emerald metal. `animation/build/` holds the
+The animation uses the Will (Green Lantern) crown in place of the plain bezel.
+Colours are illustrative: the lower body is shown as emerald metal and the
+crown as frosted translucent plastic. `animation/build/` holds the
 intermediate meshes, `.blend` file and frames, and is not committed.
+
+## Lantern Corps crowns (low-profile top piece)
+
+![Lantern Corps crown lineup](generated/crowns/lineup.png)
+
+The v1 emblem stood a 2 mm logo on 5 mm risers: 6.5 mm above the setting.
+`crowns.py` replaces it with a **crown**: the validated bezel (same PCB-edge
+clamp, M1 x 4 screws and ground-lead relief), a skirt that clears the LEDs by
+0.2 mm, a 0.4 mm diffuser lens and a 0.6 mm raised logo. The crown top is
+**2.3 mm above the PCB and 1.2 mm above the tallest LED** (12.62 mm profile
+above the finger). Each crown is printed in one piece from translucent material
+and is swapped by removing the two bezel screws.
+
+Logos are traced from the per-corps sketches in
+`hardware/v1.0/ring_3d/Lantern_Ring_Assembly.FCStd` into tool-neutral
+`logos/logos.json` (closed even-odd loops in mm, centred on the ring axis) and
+`logos/<corps>.svg`. They are pre-rotated by the 30-degree lock angle so they
+read in the v1 orientation once locked, and clipped to the 23.4 mm bezel.
+
+| Crown | Corps | Light | Volume (mm³) |
+| --- | --- | --- | ---: |
+| `will` | Green Lantern Corps | willpower | 497 |
+| `fear` | Sinestro Corps | fear | 499 |
+| `rage` | Red Lantern Corps | rage | 477 |
+| `avarice` | Orange Lantern (Agent Orange) | avarice | 509 |
+| `hope` | Blue Lantern Corps | hope | 520 |
+| `compassion` | Indigo Tribe | compassion | 476 |
+| `love` | Star Sapphires | love | 474 |
+| `life` | White / Black Lantern | life and death | 491 |
+
+`generated/crowns/Crown_<corps>.step` is in the cassette insertion frame (rotate
++30 degrees about Z for the locked pose; OCC 7.5 cannot round-trip the
+rotated faceted solid). `Crown_<corps>.stl` is oriented **logo face down** for
+printing: the relief prints first and the lens bridges it. `crowns.json`
+records the validation (single valid solid, no interference with the locked
+cassette, LED clearance, bezel diameter) and source hashes; `test_crowns.py`
+checks it in CI.
+
+```powershell
+& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\crowns.py            # rebuild crowns
+& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\crowns.py --extract  # re-trace logos from v1
+python -m unittest discover -s hardware/v2.0/ring_3d -p "test_crowns.py"
+```
+
+**Not printed yet.** Lens light spread, 0.6 mm relief legibility and the 2.2 mm
+counterbores that notch the crown rim need a test print.
 
 ## Printed parts and purchased parts
 
@@ -206,6 +252,7 @@ intermediate meshes, `.blend` file and frames, and is not committed.
 | Carrier | 1 | Insulated battery well, negative pogo seat, lead channel, lugs |
 | ContactDeck | 1 | Positive pogo seat and actual PCB pocket |
 | Bezel | 1 | PCB-edge clamp and open optical window |
+| Crown (optional) | 1 | Replaces Bezel: translucent Lantern Corps logo top piece, see [crowns](#lantern-corps-crowns-low-profile-top-piece) |
 | Spring contact | 2 | Mill-Max **0965-0-15-20-80-14-11-0**, surface mount ([alternatives](../../../docs/design/pogo-pin-comparison.md)) |
 | CR2032 | 1 | Primary 3 V cell, nominal 20 x 3.2 mm |
 | Insulated flexible wire | 1 | Fine-stranded wire, **jacket OD <=0.4 mm**, black |

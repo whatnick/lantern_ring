@@ -11,7 +11,10 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v2.0/ring_pcb_dotstar`: incomplete APA102 experiment, not production.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
   `ring_3d/animation` renders the Blender 5 assembly GIF/MP4 via `render.ps1`;
-  rerun it after geometry changes. Its emblem and colours are illustrative only.
+  rerun it after geometry changes. Its colours are illustrative only.
+  `ring_3d/crowns.py` builds the low-profile Lantern Corps crowns (bezel + lens +
+  logo relief) from `ring_3d/logos/logos.json`; change crowns there, regenerate,
+  and keep `test_crowns.py` green. Do not reintroduce tall v1-style emblems.
 - `hardware/v2.0/ring_ir_prog_clip`: KiCad 10 generated pogo-pin ISP clip PCBs
   (probe/anvil/fence) for `ring_pcb_IR`; geometry is derived from the IR board.
   `fit_check.py` (FreeCAD) fits them in the estimated clip jaw.

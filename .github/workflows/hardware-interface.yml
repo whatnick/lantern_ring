@@ -31,6 +31,8 @@ jobs:
           python-version: "3.11"
       - name: Check PCB interface, mechanical invariants and artifact provenance
         run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_design.py"
+      - name: Check Lantern Corps crowns, logo sources and artifact provenance
+        run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_crowns.py"
       - name: Check contact roadmap, image provenance and offline Nano Banana client
         run: python -m unittest discover -s docs/design/contact-roadmap -p "test_roadmap.py"
       - name: Check IR programming clip against the IR ring board

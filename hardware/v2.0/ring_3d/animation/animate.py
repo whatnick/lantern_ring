@@ -2,6 +2,7 @@
 
 Run headless after export_parts.py:
     blender -b -P animate.py -- [--preview] [--frames START END]
+    blender -b -P animate.py -- --lineup      # all Lantern Corps crowns
 Frames go to build/frames; render.ps1 encodes the MP4/GIF.
 """
 
@@ -11,7 +12,6 @@ import math
 from pathlib import Path
 import sys
 
-import bmesh
 import bpy
 
 HERE = Path(__file__).resolve().parent
@@ -26,12 +26,18 @@ GROUPS = {
     "carrier": (("Carrier", "Battery", "NegativePogo", "NegativeLead"), 10, None),
     "deck": (("ContactDeck", "PositivePogo", "PositiveLead"), 24, (24, 48)),
     "pcb": (("PCB", "LEDs"), 35, (40, 64)),
-    "bezel": (("Bezel",), 44, (56, 80)),
+    "crown": (("Crown_will",), 44, (56, 80)),
 }
 INSERT = (88, 112)
 TWIST = (112, 128)
-EMBLEM_LIFT, EMBLEM_DROP = 56, (128, 150)
-GLOW = (156, 166, 174)
+GLOW = (140, 152, 164)
+LINEUP = HERE.parent / "generated" / "crowns" / "lineup.png"
+# Lantern Corps light colours (linear RGB) for the crown lineup.
+CORPS_COLORS = {
+    "will": (0.03, 1.0, 0.22), "fear": (1.0, 0.80, 0.02), "rage": (1.0, 0.03, 0.02),
+    "avarice": (1.0, 0.28, 0.01), "hope": (0.04, 0.30, 1.0), "compassion": (0.18, 0.04, 0.80),
+    "love": (0.75, 0.10, 1.0), "life": (0.85, 0.85, 0.85),
+}
 PARTS = {}
 
 MATERIALS = {
@@ -39,7 +45,6 @@ MATERIALS = {
     "RingBase": ((0.02, 0.42, 0.10), 0.85, 0.28),
     "Carrier": ((0.08, 0.42, 0.20), 0.0, 0.45),
     "ContactDeck": ((0.78, 0.60, 0.28), 0.0, 0.5),
-    "Bezel": ((0.05, 0.55, 0.22), 0.0, 0.55),
     "PCB": ((0.04, 0.20, 0.08), 0.0, 0.4),
     "Battery": ((0.80, 0.80, 0.82), 1.0, 0.22),
     "PositivePogo": ((1.0, 0.76, 0.34), 1.0, 0.2),
@@ -57,6 +62,7 @@ def args():
     parser.add_argument("--frames", nargs=2, type=int, default=(1, END))
     parser.add_argument("--no-render", action="store_true", help="only save the .blend")
     parser.add_argument("--stills", nargs="+", type=int, help="render single frames to build/stills")
+    parser.add_argument("--lineup", action="store_true", help="render all corps crowns to " + str(LINEUP))
     return parser.parse_args(argv)
 
 
@@ -92,16 +98,15 @@ def import_part(name):
     return obj
 
 
-def clean_mesh(obj):
-    """The v1 emblem STL has duplicate vertices and mixed normals."""
-    mesh = bmesh.new()
-    mesh.from_mesh(obj.data)
-    bmesh.ops.remove_doubles(mesh, verts=mesh.verts, dist=0.002 * MM)
-    bmesh.ops.recalc_face_normals(mesh, faces=mesh.faces)
-    mesh.to_mesh(obj.data)
-    mesh.free()
-    for polygon in obj.data.polygons:
-        polygon.use_smooth = False
+def crown_material(key):
+    """Translucent print-in-place diffuser plastic in the corps colour."""
+    color = CORPS_COLORS[key]
+    # Frosted (rough) so the key light does not wash the lit green out to cyan.
+    mat, bsdf = principled("Crown_" + key, tuple(0.55 * c for c in color), 0.0, 0.7)
+    bsdf.inputs["Transmission Weight"].default_value = 0.25
+    bsdf.inputs["Specular IOR Level"].default_value = 0.1
+    bsdf.inputs["Emission Color"].default_value = (*color, 1.0)
+    return mat, bsdf
 
 
 def key(obj, frame, lift=None, angle=None):
@@ -118,7 +123,11 @@ def build_parts(info):
     for group, (names, lift, drop) in GROUPS.items():
         for name in names:
             obj = import_part(name)
-            obj.data.materials.append(principled(name, *MATERIALS[name])[0])
+            if name.startswith("Crown_"):
+                mat, crown_bsdf = crown_material(name[len("Crown_"):])
+            else:
+                mat = principled(name, *MATERIALS[name])[0]
+            obj.data.materials.append(mat)
             key(obj, 1, lift, 0)
             if drop:
                 key(obj, drop[0], lift)
@@ -133,30 +142,23 @@ def build_parts(info):
     leds = PARTS["LEDs"]
     mat, bsdf = principled("LED", *MATERIALS["LEDs"])
     bsdf.inputs["Emission Color"].default_value = LANTERN_GREEN
-    keyframe_emission(bsdf, [(GLOW[0], 0.0), (GLOW[1], 30.0), (GLOW[2], 18.0)])
+    # The crown lens diffuses the LEDs; strong LED emission saturates it to cyan.
+    keyframe_emission(bsdf, [(GLOW[0], 0.0), (GLOW[1], 4.0), (GLOW[2], 2.5)])
     leds.data.materials.clear()
     leds.data.materials.append(mat)
 
-    emblem = import_part("Emblem")
-    clean_mesh(emblem)
-    mat, bsdf = principled("Emblem", (0.02, 0.55, 0.12), 0.0, 0.25)
-    bsdf.inputs["Transmission Weight"].default_value = 0.2
-    bsdf.inputs["Emission Color"].default_value = LANTERN_GREEN
-    keyframe_emission(bsdf, [(GLOW[0], 0.0), (GLOW[1], 2.0), (GLOW[2], 1.1)])
-    emblem.data.materials.append(mat)
-    # Emblem bars stay across the finger (X) regardless of the cassette lock angle.
-    key(emblem, 1, EMBLEM_LIFT, 0)
-    key(emblem, EMBLEM_DROP[0], EMBLEM_LIFT)
-    key(emblem, EMBLEM_DROP[1], 0)
+    # The LEDs light the crown lens and logo from below.
+    keyframe_emission(crown_bsdf, [(GLOW[0], 0.0), (GLOW[1], 0.7), (GLOW[2], 0.4)])
 
     glow = bpy.data.lights.new("LEDGlow", "POINT")
     glow.color = LANTERN_GREEN[:3]
     glow.shadow_soft_size = 4 * MM
-    for frame, energy in ((1, 0.0), (GLOW[0], 0.0), (GLOW[1], 0.25), (GLOW[2], 0.15)):
+    for frame, energy in ((1, 0.0), (GLOW[0], 0.0), (GLOW[1], 0.025), (GLOW[2], 0.015)):
         glow.energy = energy
         glow.keyframe_insert("energy", frame=frame)
     light = bpy.data.objects.new("LEDGlow", glow)
-    light.location = (0, 0, (info["stack"]["highest_component"] + 1.5) * MM)
+    # Above the low-profile crown so the green spill lights the band, not a hotspot.
+    light.location = (0, 0, (info["stack"]["highest_component"] + 9) * MM)
     bpy.context.collection.objects.link(light)
 
 
@@ -227,7 +229,7 @@ def compositor_glow(scene):
         layers = tree.nodes.new("CompositorNodeRLayers")
         glare = tree.nodes.new("CompositorNodeGlare")
         output = tree.nodes.new("NodeGroupOutput")
-        for name, value in (("Type", "Bloom"), ("Threshold", 4.0), ("Strength", 0.4), ("Size", 0.5)):
+        for name, value in (("Type", "Bloom"), ("Threshold", 0.9), ("Strength", 0.4), ("Size", 0.5)):
             if name in glare.inputs:
                 glare.inputs[name].default_value = value
         tree.links.new(layers.outputs["Image"], glare.inputs["Image"])
@@ -240,13 +242,53 @@ def compositor_glow(scene):
         return False
 
 
+def lineup(info):
+    """Two rows of crowns, logo up in the locked pose, each glowing in its corps colour."""
+    keys = list(info["crowns"])
+    spacing = 30
+    for index, key in enumerate(keys):
+        obj = import_part("Crown_" + key)
+        obj.data.materials.append(crown_material(key)[0])
+        obj.data.materials[0].node_tree.nodes["Principled BSDF"].inputs[
+            "Emission Strength"].default_value = 0.08
+        row, col = divmod(index, 4)
+        obj.rotation_euler.z = math.radians(info["lock_angle"])
+        obj.location = ((col - 1.5) * spacing * MM, (0.5 - row) * spacing * MM,
+                        -info["stack"]["assembly_top"] * MM)
+    target = bpy.data.objects.new("Target", None)
+    bpy.context.collection.objects.link(target)
+    cam_data = bpy.data.cameras.new("Camera")
+    cam_data.lens = 60
+    cam_data.clip_start, cam_data.clip_end = 0.02, 2
+    cam = bpy.data.objects.new("Camera", cam_data)
+    elevation = math.radians(48)
+    cam.location = (0, -0.24 * math.cos(elevation), 0.24 * math.sin(elevation))
+    cam.constraints.new("TRACK_TO").target = target
+    bpy.context.collection.objects.link(cam)
+    bpy.context.scene.camera = cam
+    # Low grazing key so the 0.6 mm logo relief casts readable shadows.
+    area_light("Key", (0.22, -0.06, 0.05), 0.9, 0.06)
+    area_light("Fill", (-0.16, -0.08, 0.10), 0.12, 0.25, (0.85, 0.9, 1.0))
+    area_light("Rim", (0.0, 0.20, 0.12), 0.4, 0.15)
+    world = bpy.data.worlds.new("Studio")
+    world.use_nodes = True
+    world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.012, 0.014, 0.018, 1)
+    bpy.context.scene.world = world
+    bpy.ops.mesh.primitive_plane_add(size=2, location=(0, 0, -0.02 * MM))
+    floor, _ = principled("Floor", (0.02, 0.025, 0.03), 0.0, 0.18)
+    bpy.context.object.data.materials.append(floor)
+
+
 def main():
     options = args()
     bpy.ops.wm.read_factory_settings(use_empty=True)
     info = json.loads((MESHES / "scene.json").read_text(encoding="utf-8"))
     scene = bpy.context.scene
-    build_parts(info)
-    stage(info)
+    if options.lineup:
+        lineup(info)
+    else:
+        build_parts(info)
+        stage(info)
     scene.frame_start, scene.frame_end = options.frames
     scene.render.fps = FPS
     for engine in ("BLENDER_EEVEE", "BLENDER_EEVEE_NEXT"):
@@ -262,6 +304,11 @@ def main():
     scene.view_settings.view_transform = "Standard"
     glow = compositor_glow(scene)
     build = HERE / "build"
+    if options.lineup:
+        scene.render.resolution_x, scene.render.resolution_y = (1600, 800)
+        scene.render.filepath = str(LINEUP)
+        bpy.ops.render.render(write_still=True)
+        return
     scene.render.filepath = str(build / "frames" / "frame_")
     bpy.ops.wm.save_as_mainfile(filepath=str(build / "lantern_ring_v2_assembly.blend"))
     print("Scene ready: engine {}, compositor glow {}".format(scene.render.engine, glow))

@@ -4,8 +4,9 @@ param(
     [switch]$Preview,
     [switch]$SkipExport
 )
-# Exports the v2 parts from FreeCAD, renders the Blender 5 assembly animation and
-# encodes lantern_ring_v2_assembly.mp4/.gif into generated/.
+# Exports the v2 parts and crowns (run crowns.py first), renders the Blender 5 assembly
+# animation, encodes lantern_ring_v2_assembly.mp4/.gif into generated/ and renders
+# generated/crowns/lineup.png.
 $ErrorActionPreference = "Stop"
 $here = $PSScriptRoot
 $build = Join-Path $here "build"
@@ -20,6 +21,8 @@ $blenderArgs = @("-b", "-P", (Join-Path $here "animate.py"), "--")
 if ($Preview) { $blenderArgs += "--preview" }
 & $Blender @blenderArgs
 if ($LASTEXITCODE) { throw "Blender render failed" }
+& $Blender -b -P (Join-Path $here "animate.py") -- --lineup
+if ($LASTEXITCODE) { throw "Crown lineup render failed" }
 
 $frames = Join-Path $build "frames\frame_%04d.png"
 $mp4 = Join-Path $out "lantern_ring_v2_assembly.mp4"
