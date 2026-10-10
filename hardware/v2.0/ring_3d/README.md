@@ -26,15 +26,11 @@ geometry or qualified electrical interfaces.
 
 ## Files and compatibility
 
-`generated/Lantern_Ring_v2.FCStd` is the native editable FreeCAD assembly.
-`Lantern_Ring_v2.step` includes printed parts and reference PCB, LED envelopes,
-CR2032, pogo pins, the positive solder land and nominal insulated ground wire
-route. Individual STEP files retain
-assembly coordinates; individual STLs are in insertion orientation with their
-lowest point on Z=0. `parameters.json` and `design.py` are the portable design
-specification; `lantern_ring.py` is the FreeCAD implementation.
+The project includes an editable FreeCAD assembly, STEP reference geometry and
+printable STL files. See [development.md](development.md) for source references
+and regeneration instructions.
 
-The supported board is **`../ring_mono/ring_mono.kicad_pcb` only**:
+The supported board is the **v2 mono-colour PCB only**:
 17.78 x 19.05 mm, 1.6 mm thick, with a ten-vertex asymmetric outline. This is not
 the v1 17.78 mm octagon. The generator reads actual Edge.Cuts, pad nets and the
 rear mask opening, rather than using a library bounding box that includes the
@@ -50,15 +46,14 @@ and reducing the bezel from 1.2 to 0.6 mm lowers the actual crown; the image
 has not just been repositioned or rescaled.
 The upper bezel is 23.4 mm across. These replace the oversized 36.4 mm diameter /
 22.4 mm stack; neither PCB nor cell has been scaled.
-Legacy 15.5/16.5/18.5/19.5 mm bore sizes can be regenerated; 15.5/16.5 mm
-bores must reduce `fit_expansion` to 0.7 mm to stay within the free-arm strain screen.
+Legacy 15.5/16.5/18.5/19.5 mm bore sizes can be regenerated; the 15.5/16.5 mm
+bores need a reduced expansion target to stay within the free-arm strain screen.
 
 ### Measured legacy envelope and remaining difference
 
-The reference is `hardware/v1.0/ring_3d/Lantern_Ring_Assembly.FCStd`:
-`Tube001` (`setting`) has outer radius 11 mm and height 5 mm above the PCB
-datum; `Tube019` (`ring_loop_185`) has a 9.25 mm bore radius, 10.25 mm outer radius
-and 11 mm width. The compact band restores that **1 mm wall**, too.
+The legacy ring setting has an 11 mm outer radius and is 5 mm high above the PCB
+datum; its 18.5 mm band has a 9.25 mm bore radius, 10.25 mm outer radius and
+11 mm width. The compact band restores that **1 mm wall**, too.
 The legacy 18.5 mm body STL is approximately 23.14 mm wide and 27.90 mm high.
 README photographs corroborate the shallow crown/broad-band proportions, but
 are not calibrated rulers. The generator measures these native objects and
@@ -96,7 +91,7 @@ battery compartment is not.
 Like the legacy body's slanted side plates, **hollow 1 mm conical shoulder walls**
 brace the 24.9 mm crown overhang onto the band. Each wall leaves the crown
 underside at its 12.45 mm rim and descends **40 degrees from the crown axis**
-(`shoulder_angle`, validated 30-45 degrees), meeting the band 4.09 mm below the
+(validated 30-45 degrees), meeting the band 4.09 mm below the
 crown, 61.7 degrees from its crest. The walls lean less steeply than the old
 ~12-17-degree plates, so they meet the band higher, keeping long free spring
 arms. At 50 degrees from horizontal, they print without supports. The
@@ -106,8 +101,8 @@ material and allowing powder removal.
 Following common ring-profile practice (see
 [MOH London ring profiles](https://www.mohlondon.com/guidance/design-basics/ring-profiles)),
 the shank tapers on its lower side: one plane per side narrows the band from the
-legacy **11 mm crest to 6 mm at the open tips** (`band_tip_width`). The long
-edges are rounded to a **0.35 mm comfort-fit radius** (`band_edge_radius`).
+legacy **11 mm crest to 6 mm at the open tips**. The long edges are rounded to
+a **0.35 mm comfort-fit radius**.
 The narrower, lower arms also make bending stress more uniform along the spring.
 Net RingBase volume falls from 1194.3 to 1164.8 mm^3 (-2.5%), despite the
 added bracing. OCC produces C0-continuity BSpline fillet faces; the validator
@@ -120,13 +115,13 @@ close to the measured finger size. A slightly smaller unloaded bore can supply
 preload only after fit/force testing; do not force an undersized print onto a
 finger or use elastic travel to compensate for a wrong ring size.
 
-`fit_expansion = 1.0` is a **screening target**, not a certified 18.5-19.5 mm
+The 1.0 mm expansion is a **screening target**, not a certified 18.5-19.5 mm
 size range. The illustration preserves neutral-axis arc length while widening
 the opening to about 74.6 degrees. The simple curvature estimate
-`strain = wall/2 * (1/R - 1/(R + expansion/2))`, with `R = (bore + wall)/2`,
+strain = wall/2 * (1/R - 1/(R + expansion/2)), with R = (bore + wall)/2,
 gives approximately **0.250%** outer-fibre strain. The shoulders stiffen the
 root, so a second screen assumes only the 88.3-degree free arm takes the same
-tip rotation: `0.250% x 150 / 88.3 =` **0.425% free-arm strain**. Both omit root stress
+tip rotation: 0.250% x 150 / 88.3 = **0.425% free-arm strain**. Both omit root stress
 concentration, contact loads, nonlinear geometry, residual print stresses,
 anisotropy, creep and fatigue. It is not FEA or a spring-force prediction.
 The 0.5% screen ceiling is a conservative design input, **not a published
@@ -143,60 +138,17 @@ painful/restricts circulation. No claimed skin compatibility or wear safety.
 Do not copy the same thickness into resin, PLA or a metal body: their spring
 stiffness and failure modes differ. Metal needs separately engineered arms.
 
-## Rebuild and edit
+## Development
 
-On Windows, from the repository root:
-
-```powershell
-python -m unittest discover -s hardware\v2.0\ring_3d -p "test_design.py"
-& hardware\v2.0\ring_3d\build.ps1
-# If auto-discovery chooses the wrong FreeCAD installation:
-& hardware\v2.0\ring_3d\build.ps1 -FreeCADPython 'C:\Program Files\FreeCAD 0.19\bin\python.exe'
-& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\test_freecad.py
-```
-
-FreeCAD's **bundled Python**, not ordinary Python, must run the CAD generator.
-No pip packages are needed: previews use FreeCAD's bundled NumPy and Qt.
-The tool-neutral tests use ordinary Python 3.8+.
-The initial artifacts were generated with FreeCAD 0.19 / OCC 7.5; rerun all
-checks when moving to another version.
-
-For GUI use, open and run `build.FCMacro` from this directory. It imports the
-local feature module and builds the assembly. The native file contains
-`Part::FeaturePython` parts linked to a `Parameters` object: change
-`FingerDiameter`, `PCBClearance`, `LockAngle` or `BandGapAngle` and recompute
-to update the solids. `bore_top` in the configuration is the bore-apex Z above
-the original crown base plane; the default Z=0.3 retains the 0.5 mm floor and
-meets the above-finger profile budget.
-`Configuration` holds the other dimensions as JSON. Run the macro once in a
-new FreeCAD session **before opening an existing FCStd for parametric editing**,
-so FreeCAD can restore `lantern_ring.RingFeature`. The saved geometry and STEP
-remain viewable without the Python module. GUI edits do not update exported
-manufacturing files: copy intended settings into `parameters.json` and rebuild.
-
-The PCB interface stored in FCStd is a snapshot. Regenerate from the KiCad file
-after any PCB change. Commit source, native CAD, exports and `validation.json`
-together; do not hand-edit generated geometry.
+The assembly is parametric and its source, validation, test and regeneration
+workflow are documented in [development.md](development.md).
 
 ### Assembly animation (Blender 5)
 
-`animation/render.ps1` exports every part from the FreeCAD model in its
-assembled pose (`export_parts.py`, which also meshes the crown STEPs, so run
-`crowns.py` first), builds and renders the scene in Blender 5 (`animate.py`,
-EEVEE), encodes `generated/lantern_ring_v2_assembly.mp4` and `.gif` with ffmpeg
-and renders the `generated/crowns/lineup.png` crown lineup:
-
-```powershell
-& hardware\v2.0\ring_3d\animation\render.ps1            # 1280x720, about 10 minutes
-& hardware\v2.0\ring_3d\animation\render.ps1 -Preview   # 640x360 draft
-# Single frames for review, written to animation\build\stills:
-& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' -b -P hardware\v2.0\ring_3d\animation\animate.py -- --preview --stills 1 100 200
-```
-
 The animation uses the Will (Green Lantern) crown in place of the plain bezel.
 Colours are illustrative: the lower body is shown as emerald metal and the
-crown as frosted translucent plastic. `animation/build/` holds the
-intermediate meshes, `.blend` file and frames, and is not committed.
+crown as frosted translucent plastic. Intermediate scene files and frames are development artifacts and are not
+distributed.
 
 ### Lantern Corps crown swap and hero still
 
@@ -208,10 +160,6 @@ LEDs relight in that corps colour, with a caption naming the corps and light.
 
 ![All eight Lantern Corps rings on their side on steel, caps facing the viewer](generated/crowns/hero.png)
 
-`animation/corps_swap.py` (Blender 5, reusing the `animate.py` helpers) builds
-both; `animation/render_corps.ps1` renders the animation (about 20 minutes at
-1280x720), the 2400x800 hero still and the MP4/GIF. Run `render.ps1` (or
-`export_parts.py`) first so the crown meshes exist. `-Preview` renders a draft.
 Corps ring-body tints are illustrative; only the crowns are generated geometry.
 
 ## Lantern Corps crowns (low-profile top piece)
@@ -219,18 +167,17 @@ Corps ring-body tints are illustrative; only the crowns are generated geometry.
 ![Lantern Corps crown lineup](generated/crowns/lineup.png)
 
 The v1 emblem stood a 2 mm logo on 5 mm risers: 6.5 mm above the setting.
-`crowns.py` replaces it with a **crown**: the validated bezel (same PCB-edge
+The replacement **crown** is the validated bezel (same PCB-edge
 clamp, M1 x 4 screws and ground-lead relief), a skirt that clears the LEDs by
 0.2 mm, a 0.4 mm diffuser lens and a 0.6 mm raised logo. The crown top is
 **2.3 mm above the PCB and 1.2 mm above the tallest LED** (12.62 mm profile
 above the finger). Each crown is printed in one piece from translucent material
 and is swapped by removing the two bezel screws.
 
-Logos are traced from the per-corps sketches in
-`hardware/v1.0/ring_3d/Lantern_Ring_Assembly.FCStd` into tool-neutral
-`logos/logos.json` (closed even-odd loops in mm, centred on the ring axis) and
-`logos/<corps>.svg`. They are pre-rotated by the 30-degree lock angle so they
-read in the v1 orientation once locked, and clipped to the 23.4 mm bezel.
+Logos are traced from the per-corps sketches in the v1 FreeCAD assembly into
+tool-neutral closed even-odd outlines, centred on the ring axis. They are
+pre-rotated by the 30-degree lock angle so they read in the v1 orientation once
+locked, and clipped to the 23.4 mm bezel.
 
 | Crown | Corps | Light | Volume (mm³) |
 | --- | --- | --- | ---: |
@@ -243,19 +190,10 @@ read in the v1 orientation once locked, and clipped to the 23.4 mm bezel.
 | `love` | Star Sapphires | love | 474 |
 | `life` | White / Black Lantern | life and death | 491 |
 
-`generated/crowns/Crown_<corps>.step` is in the cassette insertion frame (rotate
-+30 degrees about Z for the locked pose; OCC 7.5 cannot round-trip the
-rotated faceted solid). `Crown_<corps>.stl` is oriented **logo face down** for
-printing: the relief prints first and the lens bridges it. `crowns.json`
-records the validation (single valid solid, no interference with the locked
-cassette, LED clearance, bezel diameter) and source hashes; `test_crowns.py`
-checks it in CI.
-
-```powershell
-& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\crowns.py            # rebuild crowns
-& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\crowns.py --extract  # re-trace logos from v1
-python -m unittest discover -s hardware/v2.0/ring_3d -p "test_crowns.py"
-```
+The STEP crowns are supplied in the cassette insertion frame, and the printable
+STLs are oriented **logo face down**: the relief prints first and the lens
+bridges it. Their geometry and regeneration workflow are documented in
+[development.md](development.md).
 
 **Not printed yet.** Lens light spread, 0.6 mm relief legibility and the 2.2 mm
 counterbores that notch the crown rim need a test print.
@@ -290,8 +228,8 @@ Nominal clearances: 0.20 mm carrier/socket radial, 0.25 mm PCB per edge,
 each lug flank. Measure a first print and calibrate for the printer; do not force
 an interference fit against the PCB or battery. Ream small holes as necessary.
 The carrier's two side pillars extend down to the RingBase top at the socket
-shoulder (Z=4.0 mm) and bear on its annular wall; keep `carrier_pillar_bottom`
-matched to `socket_top` when changing the stack.
+shoulder (Z=4.0 mm) and bear on its annular wall. Keep the pillar bottom and
+socket top at the same height when changing the stack.
 The 1.75 mm barrel bore must remain smaller than the 1.829 mm flange: do not
 drill through the retaining shoulder. Epoxy is required to retain the pins under
 spring load; printed shoulders alone do not secure both directions. The upper deck rests
@@ -379,7 +317,7 @@ must lift: a 20 mm battery cannot pass through the smaller PCB pocket.
 
 ## Validation and release gates
 
-The generator fails on invalid parameter stacks, failed FreeCAD booleans,
+The CAD validation fails on invalid parameter stacks, failed FreeCAD booleans,
 unintended assembled interference, non-solid printed parts, or nonwatertight
 STLs. It samples axial insertion, the complete twist, both incorrect key
 orientations, locked axial withdrawal, cell extraction, and both battery tip
@@ -388,11 +326,9 @@ It also checks the full-width bottom opening, retained finger-side floor and
 the LED-inclusive above-finger height. STEP volume must agree within 0.01 mm^3.
 OCC 7.5 STEP curve-on-surface checks
 use an explicit 0.00001 mm numerical tolerance; this is not a print allowance.
-`generated/validation.json` records the parameters, PCB hash and check results.
-`test_freecad.py` restores the document in a fresh process and verifies that
-finger bore, bottom-opening angle, PCB clearance and twist-angle edits really
-recompute. The CI job
-runs the portable tests and provenance checks; it does not run FreeCAD itself.
+Validation and release checks are summarized in the development documentation.
+Automated checks cover geometry and source provenance; the CI job does not run
+FreeCAD itself.
 
 **Still required on the bench:** split-arm force/recovery, root strain, creep/
 fatigue and gauge-fit testing; printer fit coupons/full first article; screw

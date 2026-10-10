@@ -13,7 +13,7 @@ with its generic guide PCBs replaced by the boards here.
 > passes against a clip model built from **photo and datasheet estimates**,
 > because the seller publishes no drawing. The clip has not been built or
 > physically fitted, and it has not programmed a ring. The clip dimensions and
-> pogo-pin dimensions are unmeasured (`"measured": false` in `parameters.json`).
+> pogo-pin dimensions are unmeasured.
 
 ![Clipped prototype, virtual FreeCAD fit](generated/fit/clipped_iso.png)
 
@@ -55,15 +55,15 @@ goes into the clip **LEDs down**:
 - **Fence board** (22.5 × 22.2 mm). Stacked on the anvil. Its pocket is the
   ring outline plus 0.15 mm, so the ring drops in at a fixed position. Its
   rear edge stops 0.6 mm past the ring so the M2 nuts clear it.
-- **Riser** (printed, `generated/fit/Riser.stl`). Lifts the anvil 5.0 mm, so
+- **Riser** (printed). Lifts the anvil 5.0 mm, so
   the stack matches the 9.8 mm parallel jaw gap and the jaws close parallel.
   A hook drops in front of the lower-jaw tip to stop the stack sliding.
 - **GND lead.** A short 30 AWG wire runs from probe J2 to anvil J1. GND is only
   on the ring's front, so it cannot be reached from the pogo side.
 
-The geometry comes from `ring_pcb_IR.kicad_pcb`, not hand-entered:
-pad positions, nets, outline, the front mask opening and courtyards. The
-generator stops if a target net, layer or the 3.05 mm grid changes.
+The probe layout matches the IR board's test-pad positions, electrical nets,
+outline and component clearances. See [development.md](development.md) for
+engineering source and regeneration details.
 
 ### Pin map
 
@@ -88,8 +88,8 @@ GND reaches the other bar.
 The AliExpress listing has photos only. Dimensions come from the Adafruit 5434
 datasheet (`C17220-001`, same clip family) and from its photos scaled by a US
 quarter and the 2.54 mm header pitch. The two scales agree within about 3%.
-They are recorded in `clip_kit.geometry` with ±1.0 mm uncertainty. Frame: x
-from the lower-jaw tip toward the hinge; heights from the lower-jaw top.
+The estimates carry ±1.0 mm uncertainty. Frame: x from the lower-jaw tip
+toward the hinge; heights from the lower-jaw top.
 
 | Dimension | Estimate | Source |
 | --- | --- | --- |
@@ -107,8 +107,7 @@ from the lower-jaw tip toward the hinge; heights from the lower-jaw top.
 
 ## FreeCAD fit check
 
-`fit_check.py` runs under FreeCAD's Python and builds a parametric assembly of
-the following parts:
+The virtual fit check builds a parametric assembly of the following parts:
 
 - the clip jaws, hinge, spring and U-block;
 - the riser;
@@ -119,10 +118,9 @@ the following parts:
 - the header;
 - the M2 screws and nuts.
 
-It reads `parameters.json` and `generated/geometry.json`. It runs boolean
-interference on every part pair (33 pairs touch) and checks measured contacts
-and clearances. It then sweeps each clip estimate by ±1 mm. The results go to
-`generated/fit/fit_validation.json`, `clip_fit.FCStd` and `clip_fit.step`.
+It runs boolean interference checks on each part pair (33 pairs touch) and
+checks contacts and clearances, then sweeps each clip estimate by ±1 mm.
+Detailed fit-check information is in [development.md](development.md).
 
 | Clamped (section at u = 0) | Exploded stack |
 | --- | --- |
@@ -166,19 +164,17 @@ lower-jaw tip; the riser carries that load.
 | 1 | 2×3 2.54 mm pin header | Through-hole, on the top probe board |
 | 1 | DIY pogo clip kit | Jaws, spring, M2 nuts |
 | 2 | M2 × 10 pan-head screw | The kit's 12–16 mm screws are longer than the 9.2 mm grip and hit the riser |
-| 1 | Printed riser | `generated/fit/Riser.stl`, PLA or PETG, 100% infill |
+| 1 | Printed riser | PLA or PETG, 100% infill |
 | – | 30 AWG wire, VHB or double-sided tape | GND lead; holds the anvil/fence to the riser and the riser to the lower jaw |
 
 ## Before ordering: measure first
 
-1. Measure the jaw with calipers and update `clip_kit.geometry`. Start with the
+1. Measure the jaw with calipers and update the design settings. Start with the
    dimensions the sweep flags: the hole setback, the upper-tip setback and tip
    section length, the lower-tip length, the hole spacing, and the parallel
-   gap with the clip closed on a 9.8 mm stack. Then set `clip_kit.measured` to
-   `true`.
-2. Measure the pogo pins: barrel diameter, length, travel and tip. Update
-   `pogo.*`, keeping `drill` about 0.1–0.15 mm larger than the barrel, then set
-   `pogo.measured` to `true`.
+   gap with the clip closed on a 9.8 mm stack.
+2. Measure the pogo pins: barrel diameter, length, travel and tip. Update the
+   design settings, keeping the drill about 0.1–0.15 mm larger than the barrel.
 3. Rebuild. The FreeCAD fit and the sweep must pass. The pins should reach
    the ring at about two-thirds of their travel when the clip is closed.
 
@@ -195,9 +191,8 @@ lower-jaw tip; the riser carries that load.
    the anvil to the riser and the fence onto the anvil. Solder the other end
    of the GND lead to anvil J1.
 5. Insert a ring LEDs down into the fence and close the clip. The guide comes
-   down flat onto the ring and fence. Nudge the anvil stack until
-   `avrdude -c usbasp -p t85` reads the signature (`0x1e930b`) every time, then
-   tape it down.
+   down flat onto the ring and fence. Nudge the anvil stack until the programmer
+   reads the ATtiny85 signature consistently, then tape it down.
 
 ## Safety
 
@@ -207,38 +202,7 @@ lower-jaw tip; the riser carries that load.
   current limited.
 - Always insert LEDs down. Face-up insertion lets pins hit components.
 
-## Regenerate
+## Development
 
-Requires KiCad 10 and FreeCAD (0.19 or newer; Windows paths shown):
-
-```powershell
-& hardware\v2.0\ring_ir_prog_clip\build.ps1 -Fab
-python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p test_prog_clip.py
-```
-
-`build.ps1` does the following:
-
-1. Runs `generate.py` with KiCad's Python.
-2. Upgrades the schematics and runs ERC and DRC with schematic parity.
-3. Exports PDFs, PNG renders and STEP.
-4. With `-Fab`, exports Gerbers and Excellon drill files into `fab/`.
-5. Runs `check_reports.py`, which fails on any violation and writes
-   `generated/validation.json` with source hashes.
-6. Runs `fit_check.py` with FreeCAD's Python (skip with `-SkipFit`). It fails
-   on any interference, open contact or margin below its limit. It writes
-   `generated/fit/`.
-
-The portable unit test parses the KiCad files directly, without `pcbnew`. It
-checks the following:
-
-- pogo positions and nets against the target board;
-- the ISP-6 pinout;
-- the anvil GND pad sits inside the exposed GND bar;
-- the window clears every front courtyard;
-- the pocket clearance;
-- the header in front of the pins and the slots behind the jaw tip;
-- the FreeCAD fit report, including its input hashes;
-- the provenance hashes.
-
-Do not hand-edit the generated `.kicad_pcb`, `.kicad_sch` or `fab/` files.
-Change `parameters.json` or `generate.py` and rebuild.
+KiCad/FreeCAD regeneration, validation and source-file details are in
+[development.md](development.md).
