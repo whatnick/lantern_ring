@@ -203,7 +203,8 @@ def unrotated_geometry(p, pcb):
     carrier = carrier.cut(cylinder(cell_radius, p["battery_bottom"], p["deck_bottom"]))
     carrier = carrier.cut(cylinder(p["deck_pocket_radius"], p["deck_bottom"], pcb_top + 1))
     for x, y in screw_positions(p):
-        carrier = carrier.fuse(cylinder(p["screw_post_radius"], p["deck_bottom"] - 0.5, pcb_top, x, y))
+        carrier = carrier.fuse(cylinder(p["screw_post_radius"],
+                                        p["carrier_pillar_bottom"], pcb_top, x, y))
         carrier = carrier.cut(cylinder(p["screw_pilot_diameter"] / 2,
                                        p["deck_bottom"] - 3, pcb_top + 1, x, y))
     carrier = carrier.fuse(cylinder(0.35, p["carrier_bottom"], pcb_top, wire_x, wire_y))
@@ -392,6 +393,10 @@ def validate_geometry(p, pcb, parts):
     if base.common(posed(raw["Carrier"], p["lock_angle"], 1)).Volume < 1e-3:
         raise ValueError("Locked bayonet can be pulled out axially")
     checks.append("Locked cassette cannot lift 1 mm through retaining shelves")
+    carrier_seat_gap = base.distToShape(posed(raw["Carrier"], p["lock_angle"]))[0]
+    if carrier_seat_gap > 1e-5:
+        raise ValueError("Carrier side pillars do not seat on the RingBase")
+    checks.append("Carrier side pillars seat on the RingBase at the locked height")
     s = validate_parameters(p, pcb)
     checks.append("Pogo travel worst case: {:.3f}..{:.3f} mm; max {:.3f} mm".format(
         p["pin_compression"] - p["printed_stack_tolerance"] - p["pin_height_tolerance"] - p["battery_height_tolerance"],

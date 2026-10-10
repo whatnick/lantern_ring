@@ -2,23 +2,23 @@
   "freecad_version": "0.19.24291 (Git)",
   "pcb_sha256": "706e186907747841e754971383fc7d508be92895194bbdc378ebfca553858ab6",
   "source_sha256": {
-    "design.py": "d2f49434280f38132015b3ec53b6956f750dbd9a8e40b20973175b8ae03d7d17",
-    "lantern_ring.py": "68140c0e34832a5a99ecf20d1781444c7a589664a2cf788058c65904705f5aa7"
+    "design.py": "6e7c76bb57bb0227a691ebfb70b8c2dc78b7d6a64fe9b9b013c79978c5e314c0",
+    "lantern_ring.py": "5e00a134ce47864af94f05dcfac7a3901eded992335deef6d79f1ef46cdeb243"
   },
   "artifact_sha256": {
-    "assembly.png": "21b1baae3be1d52c2666773dbc40f778da2780031ef8b2814506b7fbe5fe48f7",
-    "Bezel.step": "8952fc98ca562a42500db4b1ab368e92f29676fd6b24a1a5ed8286497b66d436",
+    "assembly.png": "29934b6186e30d18dc8f5c3b7ed6b23323a34194aef899d4915d7730013ba5eb",
+    "Bezel.step": "508b83078ffebdb2a2e6cafc0be77c76f062e1c31e4c07fc503b26295e9ae53b",
     "Bezel.stl": "7bde2df55fceceb553aee5c39159f634531046169f3fac752f9777e1d89cb1b2",
-    "Carrier.step": "4ef5d89662c7acb17345ec23b138e2237f2c35b692b7b8519b0d55915161e12a",
-    "Carrier.stl": "930c08ec7d98bf6eeb2e671cb6276ad08e1a3395cb79bd5672d5785931ad17a1",
-    "ContactDeck.step": "bb7e7d6278a1d866cd496b12c37d2eb7169312ac26bed0e251c0c97ca6ddf1de",
+    "Carrier.step": "cd7e1a28ae2f985e4c0d9b37d935f6d1e73a9fb9026162a49708200c76db61b6",
+    "Carrier.stl": "ed7195131cec5f383275b2eab4e04cbe5337af2e8a826565604df785eeef43a9",
+    "ContactDeck.step": "f1e1b3ec3d276d4608d5af031c236c54bd8795eccc4f10a2c219939d26e4c79e",
     "ContactDeck.stl": "1cbd424bd3aab19d7fd622a70d26624d5edfde7d3d0c81d69f4c7997f4d136d0",
-    "exploded.png": "221f8321eecfe3a2c09a2a3ea4421142856495edc41bee973a5fac9c90e12298",
+    "exploded.png": "c9c1adfc4386171adb250a6e22215c06c1c53f428ac29c6c03c4553f7f923b58",
     "flex-fit.png": "48c5e57aa053b7aad2ff9f1ee51c0ede837a06270eb708b44cc35750408e2a33",
-    "Lantern_Ring_v2.FCStd": "eaa6d8034f8e6e4eec48737085b5dd4713da16488c718411fb6fcb89e24b6a86",
-    "Lantern_Ring_v2.step": "6a9b6985c06587506560ff625b482fac7a96996efcc4e7f7ea90e58d7a6abf0e",
-    "legacy-comparison.png": "b7203ab6c73fd4867b0ecc3fb6c20f279c433f13c4d678260e927e4b69626b64",
-    "RingBase.step": "e8d3899149e56d67752b98ab29385bcff5143bf0bfd2822b62a60d960a0df7eb",
+    "Lantern_Ring_v2.FCStd": "03b1873bda3f05308b7202d119c47691940fe705fb3e1519cfd1cbb5693f5fd6",
+    "Lantern_Ring_v2.step": "5d10c38f69b9d3ee78838fd594e493b2cba10d2696d34eb6b647acb1613b2b97",
+    "legacy-comparison.png": "6536cd902c96799ce883eb4dd25c8b433d18d9ed1a9a2b1b66ec420f8b642e35",
+    "RingBase.step": "44b226536c3f879302b9f0d89b38862abf74924686283b91e0b0eec51589bc50",
     "RingBase.stl": "913ca415b471c65be897dc377e79685511580b6c7166940b06448dbd5aab19d9"
   },
   "parameters": {
@@ -80,6 +80,7 @@
     "angular_clearance": 2.0,
     "lock_angle": 30.0,
     "socket_top": 4.0,
+    "carrier_pillar_bottom": 4.0,
     "screw_radius": 10.95,
     "screw_angles": [
       0.0,
@@ -254,6 +255,7 @@
     "Twist: 31 poses, 0..30.0 degrees",
     "Wide lug rejects both incorrect 120/240 degree insertion orientations",
     "Locked cassette cannot lift 1 mm through retaining shelves",
+    "Carrier side pillars seat on the RingBase at the locked height",
     "Pogo travel worst case: 0.052..0.557 mm; max 0.610 mm",
     "Both pogo tips touch the intended battery faces at nominal compression",
     "Battery extraction: 17 poses, 0..16 mm after deck removal",

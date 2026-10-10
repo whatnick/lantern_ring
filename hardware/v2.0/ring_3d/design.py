@@ -263,6 +263,11 @@ def validate_parameters(p, pcb):
     if not (p["carrier_radius"] < p["socket_radius"] < p["lug_outer_radius"]
             < p["track_outer_radius"] < p["body_radius"]):
         raise ValueError("Invalid bayonet radial stack")
+    if abs(p["carrier_pillar_bottom"] - p["socket_top"]) > 1e-6:
+        raise ValueError("Carrier side pillars must seat at the RingBase socket top")
+    if not (p["screw_radius"] - p["screw_post_radius"] < p["body_radius"]
+            and p["screw_radius"] + p["screw_post_radius"] > p["socket_radius"]):
+        raise ValueError("Carrier side pillars must overlap the RingBase top wall")
     if p["carrier_radius"] - p["battery_radius"] - p["battery_clearance"] < 0.49:
         raise ValueError("Battery well wall is less than 0.5 mm")
     if p["deck_radius"] >= p["deck_pocket_radius"]:

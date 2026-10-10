@@ -85,6 +85,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(self.p["band_wall"], 1)
         self.assertEqual(self.p["battery_radius"], 10)
         self.assertEqual(self.p["battery_thickness"], 3.2)
+        self.assertEqual(self.p["carrier_pillar_bottom"], self.p["socket_top"])
         self.assertLessEqual(2 * self.p["body_radius"], 24.9)
         self.assertAlmostEqual(self.p["pcb_bottom"] - result["positive_flange"], 0.05)
 
@@ -135,6 +136,8 @@ class InterfaceTests(unittest.TestCase):
             "thin bayonet": {"body_radius": 12.2},
             "radial collision": {"socket_radius": 10.5},
             "thin carrier": {"carrier_radius": 10.4},
+            "pillars miss base": {"carrier_pillar_bottom": 3.9},
+            "pillars miss base wall": {"screw_radius": 13.5},
             "deck interference": {"deck_radius": 13.7},
             "disconnected lugs": {"lug_inner_radius": 15.1},
             "bad key": {"lug_widths": [16, 14, 14]},

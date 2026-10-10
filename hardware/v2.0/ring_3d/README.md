@@ -265,7 +265,7 @@ counterbores that notch the crown rim need a test print.
 | Item | Quantity | Specification |
 | --- | ---: | --- |
 | RingBase | 1 | Braced, tapered comfort-fit split band and nested keyed bayonet socket |
-| Carrier | 1 | Insulated battery well, negative pogo seat, lead channel, lugs |
+| Carrier | 1 | Insulated battery well, negative pogo seat, lead channel, lugs, side pillars seated on the RingBase |
 | ContactDeck | 1 | Positive pogo seat and actual PCB pocket |
 | Bezel | 1 | PCB-edge clamp and open optical window |
 | Crown (optional) | 1 | Replaces Bezel: translucent Lantern Corps logo top piece, see [crowns](#lantern-corps-crowns-low-profile-top-piece) |
@@ -289,6 +289,9 @@ Nominal clearances: 0.20 mm carrier/socket radial, 0.25 mm PCB per edge,
 0.15 mm cell radial, 0.20 mm lug/track axial, 2 degrees at
 each lug flank. Measure a first print and calibrate for the printer; do not force
 an interference fit against the PCB or battery. Ream small holes as necessary.
+The carrier's two side pillars extend down to the RingBase top at the socket
+shoulder (Z=4.0 mm) and bear on its annular wall; keep `carrier_pillar_bottom`
+matched to `socket_top` when changing the stack.
 The 1.75 mm barrel bore must remain smaller than the 1.829 mm flange: do not
 drill through the retaining shoulder. Epoxy is required to retain the pins under
 spring load; printed shoulders alone do not secure both directions. The upper deck rests

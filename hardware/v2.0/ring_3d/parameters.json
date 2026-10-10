@@ -49,6 +49,7 @@
   "angular_clearance": 2.0,
   "lock_angle": 30.0,
   "socket_top": 4.0,
+  "carrier_pillar_bottom": 4.0,
   "screw_radius": 10.95,
   "screw_angles": [0.0, 180.0],
   "screw_pilot_diameter": 0.8,
