@@ -65,6 +65,13 @@ estimated clip dimensions. It has not yet been built or measured.
 
 ![IR programming clip, virtual FreeCAD fit](hardware/v2.0/ring_ir_prog_clip/generated/fit/clipped_iso.png)
 
+The [Elecrow 3D-print feasibility assessment](docs/design/elecrow-3d-print-feasibility.md)
+covers fit risks for the ring's non-PCB components.
+
+The [Lantern Ring pricing and market feasibility analysis](docs/design/product-market-analysis.md)
+documents the unit-cost assumptions, price tests, event-market scenarios and
+commercial readiness gates.
+
 Engineering source references and regeneration instructions are in
 [development.md](development.md).
 | 1. Serviceable pogo | 2. Copper pressure | 3. Plated springs | 4. Floating metal |
