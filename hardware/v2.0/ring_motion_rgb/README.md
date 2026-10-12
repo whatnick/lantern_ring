@@ -55,7 +55,8 @@ of the exposed rear battery contact. Rules are 0.15 mm track/clearance and
 - add firmware, BOM fields, and manufacturing checks before release.
 
 The current DRC reports only the unrouted connections (expected before
-routing) and two TP1/TP2 footprint-library mismatch warnings. Placement DRC
+routing) and two TP1/TP2 footprint-library mismatch warnings, plus an
+isolated-copper warning for the In2.Cu ground fill until GND vias connect it. Placement DRC
 shows no pad overlaps, but the LED, QFN and 0402 parts are tightly packed. A
 FreeCAD STEP fit check found no PCB intersections with the
 RingBase, Carrier, ContactDeck, Bezel, or eight crown variants. The minimum
