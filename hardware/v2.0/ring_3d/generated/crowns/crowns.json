@@ -3,7 +3,7 @@
   "pcb_sha256": "706e186907747841e754971383fc7d508be92895194bbdc378ebfca553858ab6",
   "source_sha256": {
     "crowns.py": "cd72141a907b8691c9539f637418ad0fe7b0baa3313e78c6a169cbf48e2fd789",
-    "design.py": "6e7c76bb57bb0227a691ebfb70b8c2dc78b7d6a64fe9b9b013c79978c5e314c0",
+    "design.py": "4e1730fccb54e82024f2814d8c31fb3e5e88f3c612afe7381251407fff108768",
     "lantern_ring.py": "5e00a134ce47864af94f05dcfac7a3901eded992335deef6d79f1ef46cdeb243"
   },
   "logos_sha256": "d20cdad58efa4ce802d267a9ef6a18ae71c048acdd3b5f56317b9c011e382407",
@@ -192,21 +192,21 @@
     }
   },
   "artifact_sha256": {
-    "Crown_avarice.step": "f8a2de4eb63003984d3a1114f25b199c02ccccd81f7ca0a88e75d2c3b65c1d0a",
+    "Crown_avarice.step": "902e01055d91f1b1cd5ccf0f49b4837b0837fd253ac1fe801c9efed6e75080f9",
     "Crown_avarice.stl": "5c6bf162aabd124ed3ac3f6cdd7cc003c2454628acd94d5fc6cd9da773b5ef59",
-    "Crown_compassion.step": "190371e9b83f0452946512dec6ff5ec74aca15a697340a245d461de014589208",
+    "Crown_compassion.step": "09ac8ecc3cd91e159e8685b87c46d1c7724ccdcadf559d52f10e48ec42a7f4c4",
     "Crown_compassion.stl": "dfd3b6e9ad97b3f1b47e66e53364ce3765e73d74c1bfaaed850d1adaa925492a",
-    "Crown_fear.step": "cc67c48744c0ba34cb28b47d9d6b421e12fe54f05525c0fc75db6d614a65cb66",
+    "Crown_fear.step": "c41027b2cb0eee703c6fab53bbbde4a2c6edd89099ce6777936549c0699e78d8",
     "Crown_fear.stl": "03b0479fbd4dc5c7aac08cf822efc81a82963f8417afb72120302b5e91239c8c",
-    "Crown_hope.step": "9fa22d4736b439f38f6b115d8e870219015326c31237b4963db3b66b95280ed7",
+    "Crown_hope.step": "8cedc36c074e788fa1118ab56ec84b077351c1f9637c061235ecb81c3c8e6581",
     "Crown_hope.stl": "72e6712cfa0bba3c754ced8e8829826e6ed22aaa3faea3a5a5e2e891402c7d41",
-    "Crown_life.step": "3651de8bbe41cacaa0329e4321588f08af2ee2f534c4acab17f4297e1f459b53",
+    "Crown_life.step": "57ab76aaf06202d30049f5ff3c98a43e0fd6d46d34d79515b277ad2ec90edb9c",
     "Crown_life.stl": "98900504772fb3b380c51838e82a209186d924bb792b76abc253846d948d2649",
-    "Crown_love.step": "5f04d081f89110af0aadca35afe12695b970caa6d9ac8e4fa842a1cdf266c23a",
+    "Crown_love.step": "6b105da36ef7e412ac296ebdcf6746daa50e430fce905c8a2b04ec9260942660",
     "Crown_love.stl": "249b2fdcd6dd92820adac5a1fcbb4b0dcc9922394c2a07f94adc47ff51affb6b",
-    "Crown_rage.step": "342fb805ca20583ae00fa8a835e5ce69c8f2da2b2808e2bea295b6f3e395447f",
+    "Crown_rage.step": "2f5b36d6b5e27dbf05c801bc6101d7cf2ad2d9663a94b4af5c96a00221fde748",
     "Crown_rage.stl": "736ace74500299831df54529f3ad948ee4cbe69cfd2e800a64ed637c31cd2b7f",
-    "Crown_will.step": "0a6f2238b433b02ce8057b67ecca171fb16687296d2e746f9c6843d648375f9f",
+    "Crown_will.step": "ee965e996860c54b2c2022c82766aa96d37290c3cf77e5ca1ac772682f674dd6",
     "Crown_will.stl": "9bad4bd1945e9e2ceeaa8492b086493c9b3f4e507d00c69065b385d85a08d194"
   },
   "physical_test_status": "NOT PRINTED: lens light, relief legibility and M1 counterbores need a test print"

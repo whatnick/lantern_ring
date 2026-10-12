@@ -96,19 +96,34 @@ def pcb_interface(path=PCB_PATH):
     def local(point):
         return (point[0] - origin[0], origin[1] - point[1])
 
+    def pad_net(pad):
+        net = child(pad, "net")
+        return net[-1]
+
+    def zone_net(zone):
+        net_name = children(zone, "net_name")
+        if net_name:
+            return net_name[0][1]
+        matches = children(zone, "net")
+        return matches[0][-1] if matches else ""
+
     ground = []
     components = []
     for fp in children(board, "footprint"):
         texts = children(fp, "fp_text")
-        refs = [t[2] for t in texts if t[1] == "reference"]
+        refs = {t[2] for t in texts if t[1] == "reference"}
+        refs.update(
+            prop[2] for prop in children(fp, "property")
+            if prop[1] == "Reference"
+        )
         if len(refs) != 1:
             raise ValueError("Expected one footprint reference")
-        ref = refs[0]
+        ref = refs.pop()
         at = xy(child(fp, "at"))
         if ref.startswith("TP"):
             pads = children(fp, "pad")
             if (child(fp, "layer")[1] == "F.Cu" and len(pads) == 1
-                    and child(pads[0], "net")[2] == "/GND"):
+                    and pad_net(pads[0]) == "/GND"):
                 ground.append((ref, local(at)))
         elif ref.startswith("D"):
             angle = float(child(fp, "at")[3]) if len(child(fp, "at")) > 3 else 0.0
@@ -121,12 +136,16 @@ def pcb_interface(path=PCB_PATH):
     positive = local(xy(child(rear[0], "center")))
     positive_radius = math.dist(xy(child(rear[0], "center")), xy(child(rear[0], "end")))
     rear_zones = [z for z in children(board, "zone")
-                  if child(z, "layer")[1] == "B.Cu" and child(z, "net_name")[1] == "VCC"]
+                  if child(z, "layer")[1] == "B.Cu" and zone_net(z) == "VCC"]
     if len(rear_zones) != 1:
         raise ValueError("Expected one rear VCC plane")
     positive_fill = [local(xy(v)) for v in child(child(rear_zones[0], "filled_polygon"), "pts")[1:]]
     if not point_inside(positive, positive_fill):
         raise ValueError("Rear contact is not inside the filled VCC plane")
+    ground_datum = next(
+        (entry for entry in ground if entry[0] == "TP1"),
+        max(ground, key=lambda entry: entry[1][1]),
+    )
     return {
         "source": str(Path(path).relative_to(HERE.parent.parent.parent)),
         "origin": origin,
@@ -136,8 +155,8 @@ def pcb_interface(path=PCB_PATH):
         "thickness": float(child(child(board, "general"), "thickness")[1]),
         "positive": positive,
         "positive_radius": positive_radius,
-        "ground_reference": max(ground, key=lambda g: g[1][1])[0],
-        "ground": max(ground, key=lambda g: g[1][1])[1],
+        "ground_reference": ground_datum[0],
+        "ground": ground_datum[1],
         "components": components,
     }
 

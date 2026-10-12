@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "pcb_step": "lantern-ring-motion-rgb.step",
+  "printed_parts_checked": [
+    "RingBase",
+    "Carrier",
+    "ContactDeck",
+    "Bezel"
+  ],
+  "crown_variants_checked": 8,
+  "component_solids_checked": 9,
+  "qfn_body_proxy_used": true,
+  "qfn_proxy_mm": [
+    4.0,
+    4.0,
+    1.0
+  ],
+  "maximum_component_top_z_mm": 11.7253,
+  "minimum_component_to_crown_clearance_mm": 0.1951,
+  "ring_interferences": [],
+  "crown_interferences": []
+}

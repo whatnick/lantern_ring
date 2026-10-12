@@ -1,0 +1,189 @@
+ERC report (2026-10-12T14:15:17, Encoding UTF8)
+Report includes: Errors, Warnings, Exclusions
+
+***** Sheet /
+[label_dangling]: Label not connected
+    ; error
+    @(131.19 mm, 67.00 mm): Global Label 'PB5'
+[label_dangling]: Label not connected
+    ; error
+    @(131.19 mm, 132.00 mm): Global Label 'PWM_R'
+[pin_not_connected]: Pin not connected
+    ; error
+    @(133.00 mm, 158.00 mm): Pin 2 [???, ?]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(135.00 mm, 67.00 mm): Pin 1 [???, ?]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(135.00 mm, 132.00 mm): Pin 2 [???, ?]
+[label_dangling]: Label not connected
+    ; error
+    @(136.81 mm, 158.00 mm): Global Label 'LED_R'
+[label_dangling]: Label not connected
+    ; error
+    @(138.81 mm, 67.00 mm): Global Label 'VCC'
+[label_dangling]: Label not connected
+    ; error
+    @(138.81 mm, 132.00 mm): Global Label 'LIMIT_R'
+[pin_not_connected]: Pin not connected
+    ; error
+    @(155.00 mm, 65.00 mm): Pin 1 [???, ?]
+[label_dangling]: Label not connected
+    ; error
+    @(155.00 mm, 68.81 mm): Global Label '/GND'
+[label_dangling]: Label not connected
+    ; error
+    @(159.19 mm, 158.00 mm): Global Label 'LIMIT_G'
+[label_dangling]: Label not connected
+    ; error
+    @(161.19 mm, 132.00 mm): Global Label 'PWM_G'
+[pin_not_connected]: Pin not connected
+    ; error
+    @(163.00 mm, 158.00 mm): Pin 2 [???, ?]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(165.00 mm, 132.00 mm): Pin 1 [???, ?]
+[label_dangling]: Label not connected
+    ; error
+    @(166.81 mm, 158.00 mm): Global Label 'LED_G'
+[label_dangling]: Label not connected
+    ; error
+    @(191.19 mm, 132.00 mm): Global Label 'PWM_B'
+[pin_not_connected]: Pin not connected
+    ; error
+    @(192.00 mm, 65.00 mm): Pin 1 [???, ?]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(193.00 mm, 158.00 mm): Pin 1 [???, ?]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(195.00 mm, 132.00 mm): Pin 1 [???, ?]
+[label_dangling]: Label not connected
+    ; error
+    @(196.81 mm, 158.00 mm): Global Label 'LED_B'
+[label_dangling]: Label not connected
+    ; error
+    @(198.81 mm, 132.00 mm): Global Label 'LIMIT_B'
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(55.00 mm, 185.00 mm): Symbol #FLG01 Hidden pin 1 [pwr_flag, Power output, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(55.00 mm, 185.00 mm): Symbol #FLG01 [PWR_FLAG]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(65.00 mm, 165.00 mm): Symbol P1 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(65.00 mm, 165.00 mm): Symbol P1 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(70.00 mm, 185.00 mm): Symbol #FLG02 Hidden pin 1 [pwr_flag, Power output, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(70.00 mm, 185.00 mm): Symbol #FLG02 [PWR_FLAG]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(78.74 mm, 105.41 mm): Symbol U1 [ATtiny84A-MU]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.00 mm, 165.00 mm): Symbol P2 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(80.00 mm, 165.00 mm): Symbol P2 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(95.00 mm, 165.00 mm): Symbol P3 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(95.00 mm, 165.00 mm): Symbol P3 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(110.00 mm, 165.00 mm): Symbol P4 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(110.00 mm, 165.00 mm): Symbol P4 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(125.00 mm, 165.00 mm): Symbol P5 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(125.00 mm, 165.00 mm): Symbol P5 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(133.00 mm, 158.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(135.00 mm, 67.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(135.00 mm, 132.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(140.00 mm, 165.00 mm): Symbol P6 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(140.00 mm, 165.00 mm): Symbol P6 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(155.00 mm, 65.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(155.00 mm, 165.00 mm): Symbol P9 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(155.00 mm, 165.00 mm): Symbol P9 [TestPoint]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(163.00 mm, 158.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(165.00 mm, 132.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(167.38 mm, 142.46 mm): Symbol D1 Pin 1 [R, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(170.00 mm, 165.00 mm): Symbol TP8 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(170.00 mm, 165.00 mm): Symbol TP8 [TestPoint]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(175.00 mm, 145.00 mm): Symbol D1 [RGB_LED_CC]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(180.38 mm, 78.65 mm): Symbol U2 Pin 1 [GND, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(185.00 mm, 165.00 mm): Symbol TP1 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(185.00 mm, 165.00 mm): Symbol TP1 [TestPoint]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(188.00 mm, 85.00 mm): Symbol U2 [LIS2DW12TR]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(192.00 mm, 65.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(193.00 mm, 158.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(195.00 mm, 132.00 mm): Pin 1 [???, ?]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(200.00 mm, 165.00 mm): Symbol TP2 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'Lantern'
+    ; warning
+    @(200.00 mm, 165.00 mm): Symbol TP2 [TestPoint]
+
+ ** ERC messages: 59  Errors 21  Warnings 38
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

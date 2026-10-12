@@ -2,23 +2,23 @@
   "freecad_version": "0.19.24291 (Git)",
   "pcb_sha256": "706e186907747841e754971383fc7d508be92895194bbdc378ebfca553858ab6",
   "source_sha256": {
-    "design.py": "6e7c76bb57bb0227a691ebfb70b8c2dc78b7d6a64fe9b9b013c79978c5e314c0",
+    "design.py": "4e1730fccb54e82024f2814d8c31fb3e5e88f3c612afe7381251407fff108768",
     "lantern_ring.py": "5e00a134ce47864af94f05dcfac7a3901eded992335deef6d79f1ef46cdeb243"
   },
   "artifact_sha256": {
     "assembly.png": "29934b6186e30d18dc8f5c3b7ed6b23323a34194aef899d4915d7730013ba5eb",
-    "Bezel.step": "508b83078ffebdb2a2e6cafc0be77c76f062e1c31e4c07fc503b26295e9ae53b",
+    "Bezel.step": "c8e01c49dbc70938db89831728e5773cd8429985cbbcba58d5b3d2cd14041b15",
     "Bezel.stl": "7bde2df55fceceb553aee5c39159f634531046169f3fac752f9777e1d89cb1b2",
-    "Carrier.step": "cd7e1a28ae2f985e4c0d9b37d935f6d1e73a9fb9026162a49708200c76db61b6",
+    "Carrier.step": "81234574a8edda7da3d70d4599cb50805ae5f1b157b93d0f5b9da9fb6ce785c1",
     "Carrier.stl": "ed7195131cec5f383275b2eab4e04cbe5337af2e8a826565604df785eeef43a9",
-    "ContactDeck.step": "f1e1b3ec3d276d4608d5af031c236c54bd8795eccc4f10a2c219939d26e4c79e",
+    "ContactDeck.step": "efa29d38140e36e1737bd41bff227ae7346c48033d9d6bc422c195a7fa49b958",
     "ContactDeck.stl": "1cbd424bd3aab19d7fd622a70d26624d5edfde7d3d0c81d69f4c7997f4d136d0",
     "exploded.png": "c9c1adfc4386171adb250a6e22215c06c1c53f428ac29c6c03c4553f7f923b58",
     "flex-fit.png": "48c5e57aa053b7aad2ff9f1ee51c0ede837a06270eb708b44cc35750408e2a33",
-    "Lantern_Ring_v2.FCStd": "03b1873bda3f05308b7202d119c47691940fe705fb3e1519cfd1cbb5693f5fd6",
-    "Lantern_Ring_v2.step": "5d10c38f69b9d3ee78838fd594e493b2cba10d2696d34eb6b647acb1613b2b97",
+    "Lantern_Ring_v2.FCStd": "1c9767bf617616c6b2555f96016ec6f27fd2b8dd6e1380e82a02270d357e2ea8",
+    "Lantern_Ring_v2.step": "a59da48e54c29a1432016bc44a192bde441dee614ea4d1156e488f6fe8fa6e88",
     "legacy-comparison.png": "6536cd902c96799ce883eb4dd25c8b433d18d9ed1a9a2b1b66ec420f8b642e35",
-    "RingBase.step": "44b226536c3f879302b9f0d89b38862abf74924686283b91e0b0eec51589bc50",
+    "RingBase.step": "2273cf7780c2fb5f5661be8fbe5a38b25df3fea787e361b5477ad305c8234b8b",
     "RingBase.stl": "913ca415b471c65be897dc377e79685511580b6c7166940b06448dbd5aab19d9"
   },
   "parameters": {

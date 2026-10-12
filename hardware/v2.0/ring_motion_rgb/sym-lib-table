@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Lantern") (type "KiCad") (uri "${KIPRJMOD}/ring_motion_rgb.kicad_sym") (options "") (descr "Motion/RGB board project symbols"))
+)

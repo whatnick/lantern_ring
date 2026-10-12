@@ -1,0 +1,136 @@
+** Drc report for ring_motion_rgb.kicad_pcb **
+** Created on 2026-10-12T12:40:31 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 2 DRC violations **
+[lib_footprint_mismatch]: Footprint 'TestPoint_Pad_1.5x1.5mm' does not match copy in library 'TestPoint'
+    Local override; warning
+    @(136.8806 mm, 75.6920 mm): Footprint TP1
+[lib_footprint_mismatch]: Footprint 'TestPoint_Pad_1.5x1.5mm' does not match copy in library 'TestPoint'
+    Local override; warning
+    @(136.8806 mm, 90.4240 mm): Footprint TP2
+
+** Found 28 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.1435 mm, 86.9350 mm): Pad 1 [VCC] of U2 on F.Cu
+    @(133.1560 mm, 86.9225 mm): Pad 11 [VCC] of U2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.1435 mm, 87.9350 mm): Pad 3 [VCC] of U2 on F.Cu
+    @(132.1435 mm, 86.9350 mm): Pad 1 [VCC] of U2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.1435 mm, 87.9350 mm): Pad 3 [VCC] of U2 on F.Cu
+    @(130.6060 mm, 88.1650 mm): Pad 1 [VCC] of C2 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.1560 mm, 86.9225 mm): Pad 11 [VCC] of U2 on F.Cu
+    @(137.0330 mm, 83.3120 mm): Pad 1 [VCC] of P9 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(137.0330 mm, 83.3120 mm): Pad 1 [VCC] of P9 on B.Cu
+    @(138.4260 mm, 79.3850 mm): Pad 1 [VCC] of C1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(143.3060 mm, 85.1100 mm): Pad 9 [VCC] of U1 on F.Cu
+    @(137.0330 mm, 83.3120 mm): Pad 1 [VCC] of P9 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(143.3160 mm, 87.3850 mm): Pad 2 [VCC] of R4 on F.Cu
+    @(143.3060 mm, 85.1100 mm): Pad 9 [VCC] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(142.8060 mm, 85.1100 mm): Pad 8 [/GND] of U1 on F.Cu
+    @(133.0960 mm, 73.6600 mm): Zone [/GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.0960 mm, 73.6600 mm): Zone [/GND] on F.Cu, priority 0
+    @(133.0960 mm, 73.6600 mm): Zone [/GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(137.4160 mm, 80.6850 mm): Pad 1 [LIMIT_B] of R3 on F.Cu
+    @(141.7560 mm, 78.4850 mm): Pad 2 [LIMIT_B] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(136.3960 mm, 80.6850 mm): Pad 2 [LED_B] of R3 on F.Cu
+    @(138.6560 mm, 82.4850 mm): Pad 4 [LED_B] of D1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.0560 mm, 78.4850 mm): Pad 2 [LIMIT_R] of J1 on F.Cu
+    @(132.2960 mm, 82.5850 mm): Pad 1 [LIMIT_R] of R1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.3160 mm, 82.5850 mm): Pad 2 [LED_R] of R1 on F.Cu
+    @(135.1560 mm, 82.4850 mm): Pad 1 [LED_R] of D1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(140.8810 mm, 82.6850 mm): Pad 2 [PWM_B] of U1 on F.Cu
+    @(143.0560 mm, 78.4850 mm): Pad 1 [PWM_B] of J3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.8814 mm, 90.9086 mm): Pad 1 [PB5] of P6 on B.Cu
+    @(142.2960 mm, 87.3850 mm): Pad 1 [PB5] of R4 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(142.2960 mm, 87.3850 mm): Pad 1 [PB5] of R4 on F.Cu
+    @(144.7310 mm, 83.1850 mm): Pad 13 [PB5] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(136.9314 mm, 87.8586 mm): Pad 1 [PB2] of P3 on B.Cu
+    @(140.8810 mm, 82.1850 mm): Pad 1 [PB2] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.1435 mm, 87.4350 mm): Pad 2 [ACC_SCL] of U2 on F.Cu
+    @(140.8810 mm, 83.1850 mm): Pad 3 [ACC_SCL] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(134.7560 mm, 78.4850 mm): Pad 1 [PWM_G] of J2 on F.Cu
+    @(140.8810 mm, 83.6850 mm): Pad 4 [PWM_G] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(130.7560 mm, 78.4850 mm): Pad 1 [PWM_R] of J1 on F.Cu
+    @(140.8810 mm, 84.1850 mm): Pad 5 [PWM_R] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(136.9314 mm, 90.9086 mm): Pad 1 [PB3] of P4 on B.Cu
+    @(144.7310 mm, 84.1850 mm): Pad 11 [PB3] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.8814 mm, 87.8586 mm): Pad 1 [PB4] of P5 on B.Cu
+    @(144.7310 mm, 83.6850 mm): Pad 12 [PB4] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.6685 mm, 88.4350 mm): Pad 7 [ACC_INT] of U2 on F.Cu
+    @(144.7310 mm, 82.6850 mm): Pad 14 [ACC_INT] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.6560 mm, 88.4475 mm): Pad 5 [ACC_SDA] of U2 on F.Cu
+    @(144.7310 mm, 82.1850 mm): Pad 15 [ACC_SDA] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(139.9814 mm, 90.9086 mm): Pad 1 [PB1] of P2 on B.Cu
+    @(143.8060 mm, 81.2600 mm): Pad 16 [PB1] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(139.9814 mm, 87.8586 mm): Pad 1 [PB0] of P1 on B.Cu
+    @(141.8060 mm, 81.2600 mm): Pad 20 [PB0] of U1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.3160 mm, 84.6850 mm): Pad 2 [LED_G] of R2 on F.Cu
+    @(138.6560 mm, 83.8850 mm): Pad 3 [LED_G] of D1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.2960 mm, 84.6850 mm): Pad 1 [LIMIT_G] of R2 on F.Cu
+    @(136.0560 mm, 78.4850 mm): Pad 2 [LIMIT_G] of J2 on F.Cu
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **
