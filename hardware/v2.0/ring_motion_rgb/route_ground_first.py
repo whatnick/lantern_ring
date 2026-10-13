@@ -30,7 +30,8 @@ def other_net_clear(board, pos, net, ignore):
             if box.Contains(pos):
                 return False
     for tr in board.GetTracks():
-        if tr.GetNetCode() == net:
+        is_via = tr.Type() == pcbnew.PCB_VIA_T
+        if tr.GetNetCode() == net and not is_via:
             continue
         if math.hypot(tr.GetStart().x - pos.x, tr.GetStart().y - pos.y) < MM(VIA_D + CLEAR + 0.1):
             return False
