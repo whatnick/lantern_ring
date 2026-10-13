@@ -44,9 +44,13 @@ of the exposed rear battery contact. Rules are 0.15 mm track/clearance and
 0.5/0.25 mm vias. In particular:
 
 - route the MCU, RGB channels, and sensor bus; refill zones and achieve zero
-  DRC errors/unconnected items. FreeRouting 2.5.0 (JVM jar) leaves about 10
-  connections or dangling vias unresolved, so the placement is meant for manual
-  routing and review;
+  DRC errors/unconnected items. `route_ground_first.py` drops every front-side
+  GND and VCC SMD pad to the In2.Cu/B.Cu planes with vias, then exports a DSN
+  so FreeRouting 2.5.0 (JVM jar) routes the signals around them. That run
+  connects all GND and leaves 3 unrouted nets (PB2, PB3, PB5 clip aliases), with
+  some narrow-neck, hole-spacing and dangling-via DRC errors. The result is
+  saved as `ring_motion_rgb_autoroute_draft.kicad_pcb` for manual cleanup; the
+  main `.kicad_pcb` stays unrouted;
 - qualify the RGB LED's optical output and current for the transparent crown;
 - confirm the LIS2DW12 and ATtiny84A-MU pinouts against the official
   datasheets and vendor package drawings;
