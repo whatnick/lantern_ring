@@ -31,21 +31,21 @@ printable STL files. See [development.md](development.md) for source references
 and regeneration instructions.
 
 The supported board is the **v2 mono-colour PCB only**:
-17.78 x 19.05 mm, 1.6 mm thick, with a ten-vertex asymmetric outline. This is not
+17.78 x 19.05 mm, 0.8 mm thick, with a ten-vertex asymmetric outline. This is not
 the v1 17.78 mm octagon. The generator reads actual Edge.Cuts, pad nets and the
 rear mask opening, rather than using a library bounding box that includes the
 outline stroke. IR, v1 multi-colour and the unfinished DotStar board need their
 own measured contact decks; they are not drop-in electrically compatible.
 
-Default dimensions: **18.5 mm unloaded finger bore, 11 mm band width, 24.9 mm
-maximum crown diameter and 11.2204 mm printed crown height above Z=0**.
-The LEDs extend to Z=11.7204. The bore apex is raised to Z=0.3, so the true
-**LED-inclusive profile above the finger is 11.4204 mm**, versus 12.7204 mm
-for the previous closed-band design. Removing surplus negative-contact clearance
-and reducing the bezel from 1.2 to 0.6 mm lowers the actual crown; the image
-has not just been repositioned or rescaled.
-The upper bezel is 23.4 mm across. These replace the oversized 36.4 mm diameter /
-22.4 mm stack; neither PCB nor cell has been scaled.
+Default dimensions: **18.5 mm unloaded finger bore, 11 mm band width, 27.5 mm
+maximum crown diameter and 11.5204 mm printed cassette height above Z=0**.
+The LEDs extend to Z=11.5204. The bore apex is raised to Z=0.3, so the true
+**LED-inclusive profile above the finger is 11.2204 mm** (the same figure as the
+bezel/plate top minus the bore datum). Every printed wall is now at least 1 mm
+(see [Print-wall rule](#print-wall-rule-elecrow-dfm)), which is why the cassette
+is 1.1 mm taller and 2.6 mm wider than the earlier 0.5-0.8 mm-wall revision;
+the committed mono PCB is also 0.8 mm thick, not 1.6 mm.
+The upper bezel is 27.1 mm across. Neither PCB nor cell has been scaled.
 Legacy 15.5/16.5/18.5/19.5 mm bore sizes can be regenerated; the 15.5/16.5 mm
 bores need a reduced expansion target to stay within the free-arm strain screen.
 
@@ -62,37 +62,37 @@ printed solids at the **same scale**, with finger-bore centres aligned.
 
 | Measured default 18.5 mm body | Legacy | Compact v2 |
 | --- | ---: | ---: |
-| Setting / upper bezel diameter | 22 mm | 23.4 mm |
-| Maximum body width | ~23.14 mm | 24.9 mm |
-| Overall printed-body height | ~27.90 mm | ~29.11 mm |
-| Band width / wall | 11 / 1 mm | 11 tapering to 6 / 1 mm |
+| Setting / upper bezel diameter | 22 mm | 27.1 mm |
+| Maximum body width | ~23.14 mm | 27.5 mm |
+| Overall printed-body height | ~27.90 mm | ~29.51 mm |
+| Band width / wall | 11 / 1 mm | 11 tapering to 6 / 1.1 mm |
 | Crown-to-band bracing | ~12-17 deg near-vertical plates, hollow | 40 deg hollow conical shoulders |
 
 This is **not an exact 22 mm replacement**: the keyed polymer tracks need a
-24.9 mm socket, 2.9 mm wider than the historical setting. The face lip is now
+27.5 mm socket, 5.5 mm wider than the historical setting. The face lip is now
 2.2 mm above the PCB underside, rather than 5 mm. Two spring contacts still add
 4.4704 mm of working axial height around the unscaled 3.2 mm cell, so the
 complete enclosure remains taller than the old direct-contact body. The old
-5 mm face height and the new 11.2204 mm base-to-top stack have different datums
+5 mm face height and the new 11.5204 mm base-to-top stack have different datums
 and must not be presented as equivalent measurements. Matching the complete
 old envelope would require a different contact architecture, not uniform scaling.
 
 ### Open-bottom material-spring fit
 
-The closed loop is replaced by **two continuous 1 mm-thick PA12 arms**, with a
+The closed loop is replaced by **two continuous 1.1 mm-thick PA12 arms**, with a
 60-degree bottom opening and 0.5 mm-radius end caps across the band width.
-The unloaded tip gap is 8.75 mm. The top sits low on the circular finger
+The unloaded tip gap is 8.7 mm. The top sits low on the circular finger
 arc: the raised bore cuts into the crown underside, while a **continuous 0.5 mm
 floor separates skin from the contact well**. Only the finger band is open; the
 battery compartment is not.
 
 ### Braced shoulders and tapered comfort-fit band
 
-Like the legacy body's slanted side plates, **hollow 1 mm conical shoulder walls**
-brace the 24.9 mm crown overhang onto the band. Each wall leaves the crown
-underside at its 12.45 mm rim and descends **40 degrees from the crown axis**
-(validated 30-45 degrees), meeting the band 4.09 mm below the
-crown, 61.7 degrees from its crest. The walls lean less steeply than the old
+Like the legacy body's slanted side plates, **hollow 1.2 mm conical shoulder walls**
+brace the 27.5 mm crown overhang onto the band. Each wall leaves the crown
+underside at its 13.75 mm rim and descends **40 degrees from the crown axis**
+(validated 30-45 degrees), meeting the band 4.99 mm below the
+crown, 67.5 degrees from its crest. The walls lean less steeply than the old
 ~12-17-degree plates, so they meet the band higher, keeping long free spring
 arms. At 50 degrees from horizontal, they print without supports. The
 triangular pockets between walls and band remain open front-to-back, saving
@@ -119,9 +119,9 @@ The 1.0 mm expansion is a **screening target**, not a certified 18.5-19.5 mm
 size range. The illustration preserves neutral-axis arc length while widening
 the opening to about 74.6 degrees. The simple curvature estimate
 strain = wall/2 * (1/R - 1/(R + expansion/2)), with R = (bore + wall)/2,
-gives approximately **0.250%** outer-fibre strain. The shoulders stiffen the
-root, so a second screen assumes only the 88.3-degree free arm takes the same
-tip rotation: 0.250% x 150 / 88.3 = **0.425% free-arm strain**. Both omit root stress
+gives approximately **0.272%** outer-fibre strain. The shoulders stiffen the
+root, so a second screen assumes only the 82.5-degree free arm takes the same
+tip rotation: 0.272% x 150 / 82.5 = **0.495% free-arm strain**. Both omit root stress
 concentration, contact loads, nonlinear geometry, residual print stresses,
 anisotropy, creep and fatigue. It is not FEA or a spring-force prediction.
 The 0.5% screen ceiling is a conservative design input, **not a published
@@ -169,34 +169,36 @@ Corps ring-body tints are illustrative; only the crowns are generated geometry.
 The v1 emblem stood a 2 mm logo on 5 mm risers: 6.5 mm above the setting.
 The replacement **crown** is the validated bezel (same PCB-edge
 clamp, M1 x 4 screws and ground-lead relief), a skirt that clears the LEDs by
-0.2 mm, a 0.4 mm diffuser lens and a 0.6 mm raised logo. The crown top is
-**2.3 mm above the PCB and 1.2 mm above the tallest LED** (12.62 mm profile
+0.2 mm, a 1.05 mm diffuser lens and a 0.6 mm raised logo. The crown top is
+**2.95 mm above the PCB and 1.85 mm above the tallest LED** (13.07 mm profile
 above the finger). Each crown is printed in one piece from translucent material
 and is swapped by removing the two bezel screws.
 
 Logos are traced from the per-corps sketches in the v1 FreeCAD assembly into
 tool-neutral closed even-odd outlines, centred on the ring axis. They are
 pre-rotated by the 30-degree lock angle so they read in the v1 orientation once
-locked, and clipped to the 23.4 mm bezel.
+locked, and clipped to the 27.1 mm bezel. Strokes are grown 0.1 mm per side
+(0.3 mm for `life`) so thin traced lines survive printing; raised detail is
+held to 0.4 mm minimum width while all structure (plate, skirt, lens) is >= 1 mm.
 
 | Crown | Corps | Light | Volume (mm³) |
 | --- | --- | --- | ---: |
-| `will` | Green Lantern Corps | willpower | 497 |
-| `fear` | Sinestro Corps | fear | 499 |
-| `rage` | Red Lantern Corps | rage | 477 |
-| `avarice` | Orange Lantern (Agent Orange) | avarice | 509 |
-| `hope` | Blue Lantern Corps | hope | 520 |
-| `compassion` | Indigo Tribe | compassion | 476 |
-| `love` | Star Sapphires | love | 474 |
-| `life` | White / Black Lantern | life and death | 491 |
+| `will` | Green Lantern Corps | willpower | 1119 |
+| `fear` | Sinestro Corps | fear | 1127 |
+| `rage` | Red Lantern Corps | rage | 1109 |
+| `avarice` | Orange Lantern (Agent Orange) | avarice | 1143 |
+| `hope` | Blue Lantern Corps | hope | 1148 |
+| `compassion` | Indigo Tribe | compassion | 1108 |
+| `love` | Star Sapphires | love | 1103 |
+| `life` | White / Black Lantern | life and death | 1120 |
 
 The STEP crowns are supplied in the cassette insertion frame, and the printable
 STLs are oriented **logo face down**: the relief prints first and the lens
 bridges it. Their geometry and regeneration workflow are documented in
 [development.md](development.md).
 
-**Not printed yet.** Lens light spread, 0.6 mm relief legibility and the 2.2 mm
-counterbores that notch the crown rim need a test print.
+**Not printed yet.** Lens light spread, 0.6 mm relief legibility and the open
+M1 head slots that notch the crown rim need a test print.
 
 ## Printed parts and purchased parts
 
@@ -211,13 +213,12 @@ counterbores that notch the crown rim need a test print.
 | CR2032 | 1 | Primary 3 V cell, nominal 20 x 3.2 mm |
 | Insulated flexible wire | 1 | Fine-stranded wire, **jacket OD <=0.4 mm**, black |
 | Bezel screw | 2 | M1 x 4 mm plastic-compatible thread, head OD <=2 mm |
-| Anti-unlock screw | 1 | M1 x 2 mm plastic-compatible thread, low-profile head |
 | Pin-retaining adhesive | Small amount | Nonconductive, electronics-compatible epoxy |
 
 Use a dimensionally controlled PA12 process for the compact parts, not brittle
-decorative resin. The battery well has a 0.5 mm wall and the outer track wall is
-0.8 mm: this is **not a drop-in coarse FDM print**. Qualify these small walls,
-the 1 mm lugs, 0.6 mm bezel and M1 threads on coupons before printing the ring.
+decorative resin. Every printed wall is at least 1 mm nominal (battery well
+1.1 mm, track outer wall >= 1.05 mm) after Elecrow rejected the earlier 0.5-0.8 mm
+walls. Still qualify the 1.2 mm lugs, 1.1 mm bezel and M1 threads on coupons before printing the ring.
 RingBase needs appropriate supports under the crown and track
 roofs; its Z=0 STL position is not a promise of support-free printing. The deck
 and bezel are naturally base-down. Deburr/smooth skin-facing band edges and all
@@ -228,7 +229,7 @@ Nominal clearances: 0.20 mm carrier/socket radial, 0.25 mm PCB per edge,
 each lug flank. Measure a first print and calibrate for the printer; do not force
 an interference fit against the PCB or battery. Ream small holes as necessary.
 The carrier's two side pillars extend down to the RingBase top at the socket
-shoulder (Z=4.0 mm) and bear on its annular wall. Keep the pillar bottom and
+shoulder (Z=4.7 mm) and bear on its annular wall. Keep the pillar bottom and
 socket top at the same height when changing the stack.
 The 1.75 mm barrel bore must remain smaller than the 1.829 mm flange: do not
 drill through the retaining shoulder. Epoxy is required to retain the pins under
@@ -284,7 +285,7 @@ the cell's negative face to its positive case.
 ## Assembly and service
 
 1. Dry-fit all four prints without a cell. Check the wide key, insertion,
-   counterclockwise turn, end stop and anti-unlock screw alignment.
+   counterclockwise turn and end stop.
 2. Install the lower pogo upward through the Carrier's underside counterbore;
    seat its flange and bond the barrel/flange without contaminating its travel.
    Solder the upper SMT pin base squarely to the PCB's rear VCC land, then
@@ -299,23 +300,41 @@ the cell's negative face to its positive case.
 5. Fit the bezel and two M1 x 4 screws into the carrier towers; tighten
    gently, without bending the PCB or stripping the plastic. They retain both
    PCB and deck. Check that the leads are not pinched.
-6. Align the wide lug with its wide slot, lower the cassette until seated,
-   turn counterclockwise 30 degrees, then install the M1 x 2 anti-unlock screw through
-   the radial crown hole into the wide lug's pilot. **The screw is mandatory**:
-   friction alone is not an anti-rotation latch.
+6. Align the wide lug with its wide slot, lower the cassette until seated and
+   turn counterclockwise 30 degrees to the end stop. **Open item:** the radial M1
+   anti-unlock screw was removed because its pilot left walls under 1 mm, so the
+   lock now relies on pogo preload against the lug shelf plus friction. Add a
+   removable detent (or a dab of removable adhesive) after fit testing.
 
 The **cassette** has positive orientation keying (24/14/14-degree lugs), not the
 bare PCB: printing clearance can accommodate a 180-degree reversed board in the
 profiled pocket. Align TP1 to the bezel relief and verify the contact loom;
 do not rely on the PCB outline alone to establish electrical orientation.
 
-To replace the cell, remove the anti-unlock screw, turn the cassette back
+To replace the cell, turn the cassette back
 30 degrees and lift it out. Remove the two bezel screws, lift the PCB/deck
 together with the available wire slack, and lift the old cell from the open
 well. Reassemble with a fresh cell; no contact joints are disturbed. The deck
 must lift: a 20 mm battery cannot pass through the smaller PCB pocket.
 
 ## Validation and release gates
+
+### Print-wall rule (Elecrow DFM)
+
+Elecrow rejected the first print files for walls under 1 mm (callouts of
+0.05-1.00 mm on RingBase, ContactDeck, Bezel and Carrier). Every printed wall is
+now at least 1 mm nominal, and `printcheck.py` enforces it on the exported STLs
+as a DRC-style gate (`python printcheck.py generated/*.stl`; numpy only). It
+checks watertight/manifold edges, positive volume, the build volume and local
+wall thickness by casting a ray inward from each triangle. It is stricter than
+the supplier's tool (it flagged 0.25 mm where Elecrow reported 0.79 mm on the old
+RingBase), so passing is conservative but not a supplier guarantee. The build
+fails if any STL breaks the rule, and `test_printcheck.py` runs it in CI.
+Raised crown logo detail is held to 0.4 mm width and reported separately.
+Where the rule forced changes: the underside cavity was filled solid, the wire
+post became an open groove, the radial anti-unlock screw hole was dropped, and
+the bezel/lens/band/shoulder walls were thickened.
+Removing the FR4-bezel idea for now: the crown needs an integral clamp plate.
 
 The CAD validation fails on invalid parameter stacks, failed FreeCAD booleans,
 unintended assembled interference, non-solid printed parts, or nonwatertight

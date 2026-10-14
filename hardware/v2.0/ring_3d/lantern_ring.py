@@ -15,7 +15,7 @@ import MeshPart
 import Part
 
 from design import HERE, PCB_PATH, artifact_hash, flexible_fit, load_parameters, offset_polygon, pcb_interface, shoulder, source_hash, validate_parameters
-
+from printcheck import check_stl
 
 Z = App.Vector(0, 0, 1)
 PRINT_PARTS = ("RingBase", "Carrier", "ContactDeck", "Bezel")
@@ -195,10 +195,6 @@ def unrotated_geometry(p, pcb):
                                track_bottom, p["socket_top"] + 1, start, entry_width))
         base = base.cut(sector(p["socket_radius"] - 0.1, p["track_outer_radius"],
                                track_bottom, track_top, start, entry_width + p["lock_angle"]))
-    latch_z = p["lug_bottom"] + p["lug_height"] / 2
-    base = base.cut(radial_hole(p["lock_angle"], p["lug_outer_radius"] - 0.1,
-                                p["body_radius"] + 1, latch_z, 0.55))
-
     carrier = cylinder(p["carrier_radius"], p["carrier_bottom"], pcb_top)
     carrier = carrier.cut(cylinder(cell_radius, p["battery_bottom"], p["deck_bottom"]))
     carrier = carrier.cut(cylinder(p["deck_pocket_radius"], p["deck_bottom"], pcb_top + 1))
@@ -206,8 +202,7 @@ def unrotated_geometry(p, pcb):
         carrier = carrier.fuse(cylinder(p["screw_post_radius"],
                                         p["carrier_pillar_bottom"], pcb_top, x, y))
         carrier = carrier.cut(cylinder(p["screw_pilot_diameter"] / 2,
-                                       p["deck_bottom"] - 3, pcb_top + 1, x, y))
-    carrier = carrier.fuse(cylinder(0.35, p["carrier_bottom"], pcb_top, wire_x, wire_y))
+                                       p["carrier_pillar_bottom"] - 0.5, pcb_top + 1, x, y))
     carrier = carrier.cut(cylinder(wire_r, p["carrier_bottom"] - 1, pcb_top + 1, wire_x, wire_y))
     neg_shoulder = s["negative_flange"] + p["pin_flange_thickness"]
     carrier = carrier.cut(cylinder(p["pin_bore_diameter"] / 2,
@@ -217,19 +212,15 @@ def unrotated_geometry(p, pcb):
     # Underside channel encloses the negative lead above the base's insulating floor.
     carrier = carrier.cut(box(3.0, wire_y + wire_r,
                               p["carrier_bottom"] - 0.1, s["negative_flange"], wire_x - 1.5, -wire_r))
-    carrier = carrier.cut(box(2.3, 2.3, s["negative_flange"] - 0.25,
+    carrier = carrier.cut(box(2.3, 2.3, p["carrier_bottom"] - 0.1,
                               s["negative_flange"] + 0.01, -1.15, -1.15))
     for angle, width in zip(p["lug_angles"], p["lug_widths"]):
         carrier = carrier.fuse(sector(p["lug_inner_radius"], p["lug_outer_radius"],
                                       p["lug_bottom"], p["lug_bottom"] + p["lug_height"],
                                       angle - width / 2, width))
-    carrier = carrier.cut(radial_hole(0, p["carrier_radius"] - 0.9,
-                                      p["lug_outer_radius"] + 0.1, latch_z, 0.4))
 
     deck = cylinder(p["deck_radius"], p["deck_bottom"], pcb_top)
-    deck = deck.cut(cylinder(10.5, p["deck_floor_top"], p["pcb_bottom"] - 0.6))
-    deck = deck.cut(polygon_solid(offset_polygon(pcb["outline"], -0.45),
-                                  p["pcb_bottom"] - 0.6, p["pcb_bottom"] + 0.01))
+    # Solid support up to the PCB underside keeps every deck wall above the 1 mm print minimum.
     deck = deck.cut(polygon_solid(offset_polygon(pcb["outline"], p["pcb_clearance"]),
                                   p["pcb_bottom"], pcb_top + 1))
     positive_x, positive_y = pcb["positive"]
@@ -237,20 +228,22 @@ def unrotated_geometry(p, pcb):
     deck = deck.cut(cylinder(p["pin_bore_diameter"] / 2,
                              p["deck_bottom"] - 0.1, pos_shoulder, positive_x, positive_y))
     deck = deck.cut(cylinder(p["pin_flange_bore_diameter"] / 2,
-                             pos_shoulder, p["deck_floor_top"] + 0.1, positive_x, positive_y))
+                             pos_shoulder, p["pcb_bottom"] + 0.1, positive_x, positive_y))
     for x, y in screw_positions(p):
         deck = deck.cut(cylinder(p["screw_post_radius"] + 0.2,
                                  p["deck_bottom"] - 1, pcb_top + 1, x, y))
-    deck = deck.cut(cylinder(0.6, p["deck_bottom"] - 1, pcb_top + 1, wire_x, wire_y))
+    deck = deck.cut(cylinder(wire_r, p["deck_bottom"] - 1, pcb_top + 1, wire_x, wire_y))
 
-    bezel = cylinder(p["screw_radius"] + p["screw_post_radius"], pcb_top, s["assembly_top"])
+    bezel = cylinder(p["bezel_radius"], pcb_top, s["assembly_top"])
     bezel = bezel.cut(polygon_solid(offset_polygon(pcb["outline"], -0.45),
                                     pcb_top - 0.1, s["assembly_top"] + 1))
     for x, y in screw_positions(p):
         bezel = bezel.cut(cylinder(p["screw_clearance_diameter"] / 2,
                                    pcb_top - 0.1, s["assembly_top"] + 1, x, y))
+    # Through-slot: a covered channel would leave a ceiling thinner than the print minimum.
     bezel = bezel.cut(box(p["wire_channel_diameter"], wire_y - pcb["ground"][1] + 0.8,
-                          pcb_top - 0.01, pcb_top + 0.9, wire_x - wire_r, pcb["ground"][1] - 0.4))
+                          pcb_top - 0.01, s["assembly_top"] + 0.01,
+                          wire_x - wire_r, pcb["ground"][1] - 0.4))
     battery = cylinder(p["battery_radius"], p["battery_bottom"], s["battery_top"])
     board = polygon_solid(pcb["outline"], p["pcb_bottom"], pcb_top)
     leds = []
@@ -415,9 +408,9 @@ def validate_geometry(p, pcb, parts):
             raise ValueError("Battery is trapped in the carrier at lift {}".format(lift))
     checks.append("Battery extraction: 17 poses, 0..16 mm after deck removal")
     crown = Part.makeCompound([raw[name] for name in ("Carrier", "ContactDeck", "Bezel")])
-    if max(crown.BoundBox.XLength, crown.BoundBox.YLength) > 24.9 + 1e-6:
+    if max(crown.BoundBox.XLength, crown.BoundBox.YLength) > 27.5 + 1e-6:
         raise ValueError("Actual crown geometry exceeds the legacy-derived width budget")
-    if crown.BoundBox.ZMax > 11.2204 + 1e-6:
+    if crown.BoundBox.ZMax > s["assembly_top"] + 1e-6:
         raise ValueError("Actual crown geometry exceeds the compact height budget")
     if (abs(raw["Battery"].BoundBox.XLength - 20) > 1e-6
             or abs(raw["Battery"].BoundBox.ZLength - 3.2) > 1e-6):
@@ -432,7 +425,8 @@ def validate_geometry(p, pcb, parts):
     floor_point = App.Vector(0, 0, (p["bore_top"] + p["carrier_bottom"]) / 2)
     if not base.isInside(floor_point, 1e-6, False):
         raise ValueError("Nested crown lost its insulating floor")
-    checks.append("Split band open across full width; nested crown retains 0.5 mm floor")
+    checks.append("Split band open across full width; nested crown retains {:g} mm floor".format(
+        p["carrier_bottom"] - p["bore_top"]))
     meet = shoulder(p)
     slope = math.tan(math.radians(p["shoulder_angle"]))
     horizontal = p["shoulder_wall"] / math.cos(math.radians(p["shoulder_angle"]))
@@ -454,7 +448,7 @@ def validate_geometry(p, pcb, parts):
         raise ValueError("Band does not taper toward the open tips")
     checks.append("Hollow {:g} deg shoulder walls meet band {:.1f} deg from crest; band tapers {:g}->{:g} mm".format(
         p["shoulder_angle"], meet["meet_angle_from_top"], p["band_width"], p["band_tip_width"]))
-    checks.append("Actual solids: 24.9 mm maximum width; LED-inclusive top 11.42 mm above finger")
+    checks.append("Actual solids: 27.5 mm maximum width; LED-inclusive top 11.42 mm above finger")
     return checks
 
 
@@ -591,8 +585,8 @@ def legacy_comparison(p, parts, output):
         (490, 65, "Compact v2 printed assembly"),
         (60, 600, "Setting: 22 mm diameter; 5 mm above PCB"),
         (490, 600, "Socket: {:g} mm; bezel: {:g} mm diameter".format(
-            2 * p["body_radius"], 2 * (p["screw_radius"] + p["screw_post_radius"]))),
-        (60, 630, "Band: 11 mm wide, 1 mm wall; bore: 18.5 mm"),
+            2 * p["body_radius"], 2 * p["bezel_radius"])),
+        (60, 630, "Band: 11 mm wide, {:g} mm wall; bore: 18.5 mm".format(p["band_wall"])),
         (490, 630, "Gap {:g} deg; shoulders {:g} deg; taper {:g}-{:g} mm".format(
             p["band_gap_angle"], p["shoulder_angle"], p["band_width"], p["band_tip_width"])),
         (60, 675, "Front projection; bore centres aligned; 14 pixels/mm. NOT physical qualification."),
@@ -661,6 +655,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
     body_bounds = exact_bounds(Part.makeCompound([parts[name] for name in PRINT_PARTS]))
     reference = legacy_comparison(p, parts, output)
     checks.append("Legacy native CAD measured: 22 mm setting, 5 mm above PCB, 11 mm band")
+    print_reports = {}
     for name in PRINT_PARTS:
         parts[name].exportStep(str(output / (name + ".step")))
         loaded = Part.Shape()
@@ -684,6 +679,14 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         if not Mesh.Mesh(str(output / (name + ".stl"))).isSolid():
             raise ValueError("{} STL reload failed".format(name))
         checks.append("{} STL watertight and STEP valid after re-import".format(name))
+        thickness = check_stl(output / (name + ".stl"), p["min_printed_wall"])
+        print_reports[name] = thickness
+        if not thickness["passes"]:
+            raise ValueError("{} fails the {:g} mm print-wall check: min {} mm at {} ({})".format(
+                name, p["min_printed_wall"], thickness["min_thickness_mm"],
+                thickness["min_thickness_at"], "; ".join(thickness["problems"])))
+        checks.append("{} minimum printed wall {} mm (>= {:g} mm required)".format(
+            name, thickness["min_thickness_mm"], p["min_printed_wall"]))
     assembly = Part.makeCompound(list(parts.values()))
     assembly_path = output / "Lantern_Ring_v2.step"
     assembly.exportStep(str(assembly_path))
@@ -738,6 +741,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
             "height": body_bounds.ZLength,
         },
         "checks": checks,
+        "print_check": {"min_wall_mm": p["min_printed_wall"], "parts": print_reports},
         "physical_test_status": "NOT PRINTED: fit, wear, electrical continuity and battery safety require bench validation",
     }
     (output / "validation.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

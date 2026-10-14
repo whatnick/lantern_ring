@@ -42,20 +42,21 @@ touch opposite battery faces. Keep cell negative face isolated from its positive
 rim, insulate SMT base joints/wires and preserve preload below maximum stroke.
 The compact build uses 0965 SMT pins: upper base directly soldered to rear VCC,
 one ground lead, three permanent joints. Measure the legacy native setting and
-band before envelope changes; preserve the 11 mm band width and 1 mm band wall.
+band before envelope changes; preserve the 11 mm band width; band wall is 1.1 mm.
 Keep `legacy-comparison.png` and measured reference hashes current. The short
 pins require measured +/-0.05 mm cell/finished-stack budgets; do not assume
-unmeasured prints meet them or describe the 24.9 mm socket as an exact 22 mm fit.
+unmeasured prints meet them or describe the 27.5 mm socket as an exact 22 mm fit.
 The finger band is now split into rounded PA12 arms with a 60-degree bottom
 gap; do not restore a rigid closed loop. Hollow 30-45 degree conical shoulder
 walls brace the crown onto the band, and the shank tapers from 11 mm to 6 mm
 with comfort-fit rounded edges; keep the pockets hollow. Its elastic-fit study is a curvature
 screen, not a verified size range or force/creep model. Keep the battery well
-closed and a continuous >=0.5 mm floor above the nested finger bore. Measure
+closed and a continuous >=1.05 mm floor above the nested finger bore. Measure
 the highest LED, not just the bezel, when checking above-finger profile.
 Metal versions need separately designed spring arms and continuous insulation.
 The carrier, not the PCB, takes twist load. Preserve the asymmetric key, track
-shelves and mandatory anti-unlock screw.
+shelves. Every printed wall must stay >= 1 mm (Elecrow rule, 1.05 mm nominal):
+run `python hardware\v2.0\ring_3d\printcheck.py` on STLs and keep `test_printcheck.py` passing.
 PCB printing clearance permits reversed insertion: align TP1 to the ground-wire
 relief instead of treating the board outline as an electrical orientation key.
 
@@ -65,6 +66,7 @@ FreeCAD's bundled Python, not the system interpreter:
 ```powershell
 & hardware\v2.0\ring_3d\build.ps1
 python -m unittest discover -s hardware\v2.0\ring_3d -p "test_design.py"
+python -m unittest discover -s hardware\v2.0\ring_3d -p "test_printcheck.py"   # needs numpy
 ```
 
 On Windows use backslash filesystem paths. Do not add dependencies unless

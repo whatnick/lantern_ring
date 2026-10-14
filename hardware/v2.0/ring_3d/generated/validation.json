@@ -1,47 +1,48 @@
 {
   "freecad_version": "0.19.24291 (Git)",
-  "pcb_sha256": "706e186907747841e754971383fc7d508be92895194bbdc378ebfca553858ab6",
+  "pcb_sha256": "c654e4aa105abfa6cf989eb2876a415812a02f522823408e27979c8d29b0eacb",
   "source_sha256": {
-    "design.py": "4e1730fccb54e82024f2814d8c31fb3e5e88f3c612afe7381251407fff108768",
-    "lantern_ring.py": "5e00a134ce47864af94f05dcfac7a3901eded992335deef6d79f1ef46cdeb243"
+    "design.py": "9a503eb48148d69dbae51bd6a2559087e28b8ad186547ce039ea0f79b05b0aa9",
+    "lantern_ring.py": "15de37952a25f678503ccecea867b01cebcd5e0ed52750466a725fd2aea49aef"
   },
   "artifact_sha256": {
-    "assembly.png": "29934b6186e30d18dc8f5c3b7ed6b23323a34194aef899d4915d7730013ba5eb",
-    "Bezel.step": "c8e01c49dbc70938db89831728e5773cd8429985cbbcba58d5b3d2cd14041b15",
-    "Bezel.stl": "7bde2df55fceceb553aee5c39159f634531046169f3fac752f9777e1d89cb1b2",
-    "Carrier.step": "81234574a8edda7da3d70d4599cb50805ae5f1b157b93d0f5b9da9fb6ce785c1",
-    "Carrier.stl": "ed7195131cec5f383275b2eab4e04cbe5337af2e8a826565604df785eeef43a9",
-    "ContactDeck.step": "efa29d38140e36e1737bd41bff227ae7346c48033d9d6bc422c195a7fa49b958",
-    "ContactDeck.stl": "1cbd424bd3aab19d7fd622a70d26624d5edfde7d3d0c81d69f4c7997f4d136d0",
-    "exploded.png": "c9c1adfc4386171adb250a6e22215c06c1c53f428ac29c6c03c4553f7f923b58",
-    "flex-fit.png": "48c5e57aa053b7aad2ff9f1ee51c0ede837a06270eb708b44cc35750408e2a33",
-    "Lantern_Ring_v2.FCStd": "1c9767bf617616c6b2555f96016ec6f27fd2b8dd6e1380e82a02270d357e2ea8",
-    "Lantern_Ring_v2.step": "a59da48e54c29a1432016bc44a192bde441dee614ea4d1156e488f6fe8fa6e88",
-    "legacy-comparison.png": "6536cd902c96799ce883eb4dd25c8b433d18d9ed1a9a2b1b66ec420f8b642e35",
-    "RingBase.step": "2273cf7780c2fb5f5661be8fbe5a38b25df3fea787e361b5477ad305c8234b8b",
-    "RingBase.stl": "913ca415b471c65be897dc377e79685511580b6c7166940b06448dbd5aab19d9"
+    "assembly.png": "8316e070f642631604edea0c4e0bbbe4abaf0e713c2f542fef6bb23b02c30da1",
+    "Bezel.step": "4619b77806317f5efcf428dcc993522a08e92a52774ba9053ea40a0863e6c4ac",
+    "Bezel.stl": "4d6a8b4274e44c7b9b45b9faef12093f9bb54258d98780000a01f60700d2d360",
+    "Carrier.step": "f1dfbd2ab82e74455f95a5f8aaef7c72e674dfd2ee0515c1447144b3cb141d94",
+    "Carrier.stl": "62e4528f571c8968c886bab4c2fc15f483ea684a4e0a68f8f68146117b816210",
+    "ContactDeck.step": "ee737007fe7986fae191c1915549fa14b7b9d42e5a9b4e5fb306a1643c37be36",
+    "ContactDeck.stl": "8113679314b8898d6d56c83fdffe1caa44d5bb8733a8cab4de8d0ee5288637fe",
+    "exploded.png": "deb52d6df5fdb8302443a116ca5a65e80def1527bb8e6be4385160ebd2a3de3d",
+    "flex-fit.png": "65a79b8ea82fac1196b79264c1504b631dcb5650943a0c006e5c77eae1698101",
+    "Lantern_Ring_v2.FCStd": "d722e749f3b5b296fe88f3917ceafc62d9f56c9cca82041f0d8d6085fda9e887",
+    "Lantern_Ring_v2.step": "d961ecbca172d5b75895d1a83786bb18c5acaee351d76cc7d908b94a60b2e47b",
+    "legacy-comparison.png": "31159026a09693bcfac6fa644b5d88ee6e0ef1c2d1745220cb5a97f7d38ec02f",
+    "RingBase.step": "5105d0c48e867b44198087ce0d50f9d8a35e6d4d572f64ee35911a4797923771",
+    "RingBase.stl": "053a8a87ee63c637e047c1d77902dd8404580ad38ae06dda53ff93046b3812d3"
   },
   "parameters": {
     "finger_diameter": 18.5,
     "band_width": 11.0,
-    "band_wall": 1.0,
+    "min_printed_wall": 1.0,
+    "band_wall": 1.1,
     "band_gap_angle": 60.0,
     "band_tip_width": 6.0,
     "band_edge_radius": 0.35,
     "shoulder_angle": 40.0,
-    "shoulder_wall": 1.0,
+    "shoulder_wall": 1.2,
     "bore_top": 0.3,
     "fit_expansion": 1.0,
-    "body_radius": 12.45,
-    "socket_radius": 10.85,
-    "carrier_radius": 10.65,
-    "deck_radius": 10.65,
-    "deck_pocket_radius": 11.0,
+    "body_radius": 13.75,
+    "socket_radius": 11.85,
+    "carrier_radius": 11.5,
+    "deck_radius": 11.3,
+    "deck_pocket_radius": 11.6,
     "pcb_clearance": 0.25,
     "battery_radius": 10.0,
     "battery_thickness": 3.2,
     "battery_clearance": 0.15,
-    "battery_bottom": 3.5352,
+    "battery_bottom": 4.1352,
     "battery_radial_tolerance": 0.1,
     "battery_height_tolerance": 0.05,
     "printed_stack_tolerance": 0.05,
@@ -56,16 +57,16 @@
     "pin_tip_diameter": 1.067,
     "pin_bore_diameter": 1.75,
     "pin_flange_bore_diameter": 2.1,
-    "carrier_bottom": 0.8,
-    "deck_bottom": 7.6,
-    "deck_floor_top": 8.35,
-    "pcb_bottom": 9.0204,
-    "bezel_height": 0.6,
-    "lug_inner_radius": 10.4,
-    "lug_outer_radius": 11.45,
-    "track_outer_radius": 11.65,
+    "carrier_bottom": 1.4,
+    "deck_bottom": 7.8,
+    "pcb_bottom": 9.6204,
+    "bezel_height": 1.1,
+    "bezel_radius": 13.55,
+    "lug_inner_radius": 11.25,
+    "lug_outer_radius": 12.45,
+    "track_outer_radius": 12.65,
     "lug_bottom": 2.2,
-    "lug_height": 1.0,
+    "lug_height": 1.2,
     "track_clearance": 0.2,
     "lug_angles": [
       0.0,
@@ -79,19 +80,19 @@
     ],
     "angular_clearance": 2.0,
     "lock_angle": 30.0,
-    "socket_top": 4.0,
-    "carrier_pillar_bottom": 4.0,
-    "screw_radius": 10.95,
+    "socket_top": 4.7,
+    "carrier_pillar_bottom": 4.7,
+    "screw_radius": 11.9,
     "screw_angles": [
       0.0,
       180.0
     ],
     "screw_pilot_diameter": 0.8,
     "screw_clearance_diameter": 1.1,
-    "screw_post_radius": 0.75,
+    "screw_post_radius": 1.5,
     "wire_diameter": 0.4,
-    "wire_channel_diameter": 0.6,
-    "wire_channel_y": 10.5,
+    "wire_channel_diameter": 0.5,
+    "wire_channel_y": 11.5,
     "minimum_negative_face_radius": 6.0,
     "mesh_deflection": 0.08
   },
@@ -145,7 +146,7 @@
     ],
     "width": 17.78,
     "height": 19.049999999999997,
-    "thickness": 1.6,
+    "thickness": 0.8,
     "positive": [
       0.0,
       0.3810000000000002
@@ -209,21 +210,21 @@
   },
   "stack": {
     "working_pin_height": 2.2352,
-    "battery_top": 6.735200000000001,
-    "negative_flange": 1.3000000000000003,
-    "positive_flange": 8.970400000000001,
-    "pcb_top": 10.6204,
-    "assembly_top": 11.2204,
-    "highest_component": 11.7204,
-    "profile_above_finger": 11.420399999999999
+    "battery_top": 7.3352,
+    "negative_flange": 1.9000000000000004,
+    "positive_flange": 9.5704,
+    "pcb_top": 10.4204,
+    "assembly_top": 11.5204,
+    "highest_component": 11.5204,
+    "profile_above_finger": 11.2204
   },
   "flexible_fit": {
     "nominal_bore": 18.5,
     "screening_bore": 19.5,
-    "uniform_curvature_strain": 0.00250156347717323,
-    "free_arm_angle": 88.33368700158212,
-    "free_arm_strain": 0.004247920972315621,
-    "tip_gap": 8.749999999999998,
+    "uniform_curvature_strain": 0.002724390727164647,
+    "free_arm_angle": 82.49336039181209,
+    "free_arm_strain": 0.0049538363709966966,
+    "tip_gap": 8.7,
     "status": "UNQUALIFIED: curvature screens only; root strain, force, creep and fatigue require tests"
   },
   "legacy_reference": {
@@ -241,9 +242,9 @@
     "body_height": 27.899181365966797
   },
   "printed_body_envelope": {
-    "width": 24.900000000000006,
-    "depth": 24.900000000000006,
-    "height": 29.114145761183366
+    "width": 27.5,
+    "depth": 27.5,
+    "height": 29.50744709777159
   },
   "checks": [
     "RingBase: valid single solid",
@@ -259,16 +260,109 @@
     "Pogo travel worst case: 0.052..0.557 mm; max 0.610 mm",
     "Both pogo tips touch the intended battery faces at nominal compression",
     "Battery extraction: 17 poses, 0..16 mm after deck removal",
-    "Split band open across full width; nested crown retains 0.5 mm floor",
-    "Hollow 40 deg shoulder walls meet band 61.7 deg from crest; band tapers 11->6 mm",
-    "Actual solids: 24.9 mm maximum width; LED-inclusive top 11.42 mm above finger",
+    "Split band open across full width; nested crown retains 1.1 mm floor",
+    "Hollow 40 deg shoulder walls meet band 67.5 deg from crest; band tapers 11->6 mm",
+    "Actual solids: 27.5 mm maximum width; LED-inclusive top 11.42 mm above finger",
     "Legacy native CAD measured: 22 mm setting, 5 mm above PCB, 11 mm band",
     "RingBase STL watertight and STEP valid after re-import",
+    "RingBase minimum printed wall 1.038 mm (>= 1 mm required)",
     "Carrier STL watertight and STEP valid after re-import",
+    "Carrier minimum printed wall 1.098 mm (>= 1 mm required)",
     "ContactDeck STL watertight and STEP valid after re-import",
+    "ContactDeck minimum printed wall 1.059 mm (>= 1 mm required)",
     "Bezel STL watertight and STEP valid after re-import",
+    "Bezel minimum printed wall 1.099 mm (>= 1 mm required)",
     "Assembly STEP re-import preserves every solid and total volume",
     "FCStd re-open/recompute preserves all four printed solids"
   ],
+  "print_check": {
+    "min_wall_mm": 1.0,
+    "parts": {
+      "RingBase": {
+        "file": "RingBase.stl",
+        "triangles": 21800,
+        "watertight": true,
+        "volume_mm3": 1800.479,
+        "size_mm": [
+          27.5,
+          27.474,
+          22.687
+        ],
+        "min_thickness_mm": 1.038,
+        "min_thickness_at": [
+          8.36,
+          -4.54,
+          13.05
+        ],
+        "thin_triangles": 0,
+        "thin_examples": [],
+        "problems": [],
+        "passes": true
+      },
+      "Carrier": {
+        "file": "Carrier.stl",
+        "triangles": 2568,
+        "watertight": true,
+        "volume_mm3": 1519.734,
+        "size_mm": [
+          23.646,
+          23.934,
+          9.02
+        ],
+        "min_thickness_mm": 1.098,
+        "min_thickness_at": [
+          -10.02,
+          6.23,
+          7.11
+        ],
+        "thin_triangles": 0,
+        "thin_examples": [],
+        "problems": [],
+        "passes": true
+      },
+      "ContactDeck": {
+        "file": "ContactDeck.stl",
+        "triangles": 1124,
+        "watertight": true,
+        "volume_mm3": 804.465,
+        "size_mm": [
+          22.59,
+          22.596,
+          2.62
+        ],
+        "min_thickness_mm": 1.059,
+        "min_thickness_at": [
+          -0.6,
+          0.82,
+          1.06
+        ],
+        "thin_triangles": 0,
+        "thin_examples": [],
+        "problems": [],
+        "passes": true
+      },
+      "Bezel": {
+        "file": "Bezel.stl",
+        "triangles": 900,
+        "watertight": true,
+        "volume_mm3": 362.376,
+        "size_mm": [
+          27.097,
+          27.088,
+          1.1
+        ],
+        "min_thickness_mm": 1.099,
+        "min_thickness_at": [
+          -10.76,
+          6.25,
+          0.73
+        ],
+        "thin_triangles": 0,
+        "thin_examples": [],
+        "problems": [],
+        "passes": true
+      }
+    }
+  },
   "physical_test_status": "NOT PRINTED: fit, wear, electrical continuity and battery safety require bench validation"
 }

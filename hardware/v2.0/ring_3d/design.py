@@ -262,6 +262,7 @@ def validate_parameters(p, pcb):
         if isinstance(value, (float, int)) and (not math.isfinite(value) or value <= 0):
             raise ValueError("{} must be finite and positive".format(name))
     s = stack(p, pcb)
+    wall = p["min_printed_wall"]
     worst = p["printed_stack_tolerance"] + p["pin_height_tolerance"] + p["battery_height_tolerance"]
     if not (0 < p["pin_compression"] - worst
             < p["pin_compression"] + worst < p["pin_max_stroke"]):
@@ -273,12 +274,12 @@ def validate_parameters(p, pcb):
     if s["negative_flange"] - p["wire_diameter"] <= p["carrier_bottom"]:
         raise ValueError("Negative solder land protrudes below the cassette")
     if not (p["deck_bottom"] < s["positive_flange"] - p["pin_flange_thickness"]
-            < p["deck_floor_top"] < s["positive_flange"]):
+            < s["positive_flange"] < p["pcb_bottom"]):
         raise ValueError("Positive pin flange is not captured by the contact deck")
-    if p["deck_floor_top"] >= p["pcb_bottom"] - 0.6:
-        raise ValueError("PCB support lip has no underside wiring clearance")
-    if p["body_radius"] - p["track_outer_radius"] < 0.79:
-        raise ValueError("Bayonet track leaves less than 0.8 mm outer wall")
+    if (s["positive_flange"] - p["pin_flange_thickness"] - p["deck_bottom"]) < wall + 0.05:
+        raise ValueError("Contact deck floor under the pogo shoulder is thinner than the printed wall minimum")
+    if p["body_radius"] - p["track_outer_radius"] < wall + 0.05:
+        raise ValueError("Bayonet track leaves less than the printed wall minimum outside")
     if not (p["carrier_radius"] < p["socket_radius"] < p["lug_outer_radius"]
             < p["track_outer_radius"] < p["body_radius"]):
         raise ValueError("Invalid bayonet radial stack")
@@ -287,8 +288,24 @@ def validate_parameters(p, pcb):
     if not (p["screw_radius"] - p["screw_post_radius"] < p["body_radius"]
             and p["screw_radius"] + p["screw_post_radius"] > p["socket_radius"]):
         raise ValueError("Carrier side pillars must overlap the RingBase top wall")
-    if p["carrier_radius"] - p["battery_radius"] - p["battery_clearance"] < 0.49:
-        raise ValueError("Battery well wall is less than 0.5 mm")
+    if p["screw_post_radius"] - p["screw_pilot_diameter"] / 2 < wall + 0.05:
+        raise ValueError("Screw pillars leave less than the printed wall minimum around the pilot")
+    if p["screw_radius"] + p["screw_post_radius"] > p["body_radius"]:
+        raise ValueError("Screw pillars overhang the RingBase")
+    if (p["screw_radius"] - p["screw_post_radius"] - 0.2
+            - max(abs(v[0]) for v in pcb["outline"]) - p["pcb_clearance"]) < wall + 0.05:
+        raise ValueError("Deck material between PCB pocket and screw notch is too thin")
+    battery_wall = p["carrier_radius"] - p["battery_radius"] - p["battery_clearance"]
+    if battery_wall < wall + 0.05:
+        raise ValueError("Battery well wall is below the printed wall minimum")
+    if battery_wall - p["wire_channel_diameter"] / 2 < wall + 0.05:
+        raise ValueError("Wire groove leaves less than the printed wall minimum")
+    if p["socket_radius"] - p["wire_channel_y"] - p["wire_channel_diameter"] / 2 < 0.05:
+        raise ValueError("Wire groove touches the RingBase socket")
+    if p["lug_height"] < wall + 0.05:
+        raise ValueError("Bayonet lugs are thinner than the printed wall minimum")
+    if p["socket_top"] - p["lug_bottom"] - p["lug_height"] - p["track_clearance"] < wall + 0.05:
+        raise ValueError("Bayonet retaining shelf is thinner than the printed wall minimum")
     if p["deck_radius"] >= p["deck_pocket_radius"]:
         raise ValueError("Contact deck does not fit the carrier")
     if p["lug_inner_radius"] >= p["carrier_radius"]:
@@ -323,24 +340,27 @@ def validate_parameters(p, pcb):
         raise ValueError("Negative tip could reach the positive battery rim")
     if max(math.hypot(*v) for v in pcb["outline"]) + p["pcb_clearance"] >= p["deck_radius"]:
         raise ValueError("PCB does not fit in the contact deck")
-    if p["body_radius"] > 12.45 or s["assembly_top"] > 11.221:
-        raise ValueError("Compact legacy-derived crown envelope exceeded")
+    if p["body_radius"] > 13.75 or s["assembly_top"] > 11.521:
+        raise ValueError("Compact crown envelope exceeded (27.5 mm width, 11.52 mm plate top)")
     if p["band_width"] != 11.0:
         raise ValueError("Preserve the measured legacy 11 mm band width")
-    if p["band_wall"] != 1.0:
-        raise ValueError("Preserve the measured legacy 1 mm band wall")
+    if not wall + 0.05 <= p["band_wall"] <= 1.2:
+        raise ValueError("Band wall must exceed the printed wall minimum (1.05..1.2 mm)")
     if not 45 <= p["band_gap_angle"] <= 80:
         raise ValueError("Split band needs a 45..80 degree bottom opening")
-    if p["carrier_bottom"] - p["bore_top"] < 0.5 - 1e-6:
-        raise ValueError("Nested finger bore leaves less than 0.5 mm insulating floor")
+    if p["carrier_bottom"] - p["bore_top"] < wall + 0.05 - 1e-6:
+        raise ValueError("Nested finger bore leaves less than the printed wall minimum as floor")
     if s["profile_above_finger"] > 11.421:
         raise ValueError("Lowered top exceeds the 11.42 mm above-finger budget")
-    if p["bezel_height"] < 0.6:
-        raise ValueError("Bezel clamp is thinner than 0.6 mm")
+    if p["bezel_height"] < wall + 0.05:
+        raise ValueError("Bezel clamp plate is thinner than the printed wall minimum")
+    if (p["bezel_radius"] - p["screw_radius"] - p["screw_clearance_diameter"] / 2 < wall + 0.05
+            or p["bezel_radius"] > p["body_radius"]):
+        raise ValueError("Bezel edge beside the screw holes is thinner than the printed wall minimum")
     if not 30 <= p["shoulder_angle"] <= 45:
         raise ValueError("Shoulder walls must lean 30..45 degrees from the crown axis")
-    if not 0.8 <= p["shoulder_wall"] <= 1.5:
-        raise ValueError("Shoulder walls need 0.8..1.5 mm thickness")
+    if not wall + 0.05 <= p["shoulder_wall"] <= 1.5:
+        raise ValueError("Shoulder walls need 1.05..1.5 mm thickness")
     if not 5.0 <= p["band_tip_width"] <= p["band_width"] - 2:
         raise ValueError("Band must taper from 11 mm to a 5..9 mm tip width")
     if not p["band_edge_radius"] < p["band_wall"] / 2:

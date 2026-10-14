@@ -33,6 +33,10 @@ jobs:
         run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_design.py"
       - name: Check Lantern Corps crowns, logo sources and artifact provenance
         run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_crowns.py"
+      - name: Install numpy for the STL print-DRC
+        run: python -m pip install numpy
+      - name: Check printed walls are at least 1 mm on every committed STL (Elecrow rule)
+        run: python -m unittest discover -s hardware/v2.0/ring_3d -p "test_printcheck.py"
       - name: Check contact roadmap, image provenance and offline Nano Banana client
         run: python -m unittest discover -s docs/design/contact-roadmap -p "test_roadmap.py"
       - name: Check IR programming clip against the IR ring board

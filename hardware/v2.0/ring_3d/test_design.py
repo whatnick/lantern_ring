@@ -20,7 +20,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(len(self.pcb["outline"]), 10)
         self.assertAlmostEqual(self.pcb["width"], 17.78)
         self.assertAlmostEqual(self.pcb["height"], 19.05)
-        self.assertAlmostEqual(self.pcb["thickness"], 1.6)
+        self.assertAlmostEqual(self.pcb["thickness"], 0.8)
         self.assertEqual(self.pcb["origin"], (136.906, 83.185))
 
     def test_contact_nets_and_coordinate_handedness(self):
@@ -75,39 +75,40 @@ class InterfaceTests(unittest.TestCase):
     def test_nominal_stack(self):
         result = validate_parameters(self.p, self.pcb)
         self.assertAlmostEqual(result["working_pin_height"], 2.2352)
-        self.assertAlmostEqual(result["negative_flange"], 1.3)
-        self.assertAlmostEqual(result["positive_flange"], 8.9704)
-        self.assertAlmostEqual(result["pcb_top"], 10.6204)
-        self.assertAlmostEqual(result["assembly_top"], 11.2204)
-        self.assertAlmostEqual(result["highest_component"], 11.7204)
-        self.assertAlmostEqual(result["profile_above_finger"], 11.4204)
+        self.assertAlmostEqual(result["negative_flange"], 1.9)
+        self.assertAlmostEqual(result["positive_flange"], 9.5704)
+        self.assertAlmostEqual(result["pcb_top"], 10.4204)
+        self.assertAlmostEqual(result["assembly_top"], 11.5204)
+        self.assertAlmostEqual(result["highest_component"], 11.5204)
+        self.assertAlmostEqual(result["profile_above_finger"], 11.2204)
         self.assertEqual(self.p["band_width"], 11)
-        self.assertEqual(self.p["band_wall"], 1)
+        self.assertEqual(self.p["band_wall"], 1.1)
+        self.assertGreaterEqual(self.p["min_printed_wall"], 1.0)
         self.assertEqual(self.p["battery_radius"], 10)
         self.assertEqual(self.p["battery_thickness"], 3.2)
         self.assertEqual(self.p["carrier_pillar_bottom"], self.p["socket_top"])
-        self.assertLessEqual(2 * self.p["body_radius"], 24.9)
+        self.assertLessEqual(2 * self.p["body_radius"], 27.5)
         self.assertAlmostEqual(self.p["pcb_bottom"] - result["positive_flange"], 0.05)
 
     def test_open_band_fit_screen_is_not_a_qualified_size_range(self):
         fit = flexible_fit(self.p)
-        self.assertAlmostEqual(fit["tip_gap"], 8.75)
+        self.assertAlmostEqual(fit["tip_gap"], 8.7)
         self.assertEqual(fit["nominal_bore"], 18.5)
         self.assertEqual(fit["screening_bore"], 19.5)
-        self.assertAlmostEqual(fit["uniform_curvature_strain"], 0.00250156348)
+        self.assertAlmostEqual(fit["uniform_curvature_strain"], 0.002724390727)
         self.assertIn("UNQUALIFIED", fit["status"])
         smaller = dict(self.p, fit_expansion=0.5)
         self.assertLess(flexible_fit(smaller)["uniform_curvature_strain"], fit["uniform_curvature_strain"])
 
     def test_hollow_shoulders_stiffen_root_and_shorten_free_arm(self):
         meet = shoulder(self.p)
-        self.assertAlmostEqual(meet["depth"], 4.0853, places=3)
-        self.assertAlmostEqual(meet["meet_angle_from_top"], 61.666, places=2)
+        self.assertAlmostEqual(meet["depth"], 4.9903, places=3)
+        self.assertAlmostEqual(meet["meet_angle_from_top"], 67.507, places=2)
         fit = flexible_fit(self.p)
         self.assertAlmostEqual(fit["free_arm_angle"], 150 - meet["meet_angle_from_top"])
         self.assertGreater(fit["free_arm_strain"], fit["uniform_curvature_strain"])
         self.assertLessEqual(fit["free_arm_strain"], 0.005)
-        for angle in (30, 45):
+        for angle in (40, 45):
             validate_parameters(dict(self.p, shoulder_angle=angle), self.pcb)
         steeper = shoulder(dict(self.p, shoulder_angle=30))
         self.assertGreater(steeper["meet_angle_from_top"], meet["meet_angle_from_top"])
@@ -116,7 +117,7 @@ class InterfaceTests(unittest.TestCase):
         for diameter in (15.5, 16.5, 18.5, 19.5, 22.0):
             with self.subTest(diameter=diameter):
                 # Shoulders stiffen a larger share of small bands, so they get a smaller expansion screen.
-                expansion = 1.0 if diameter >= 18.5 else 0.7
+                expansion = 1.0 if diameter >= 18.5 else 0.6
                 p = dict(self.p, finger_diameter=diameter, fit_expansion=expansion)
                 validate_parameters(p, self.pcb)
         with self.assertRaises(ValueError):
@@ -130,13 +131,13 @@ class InterfaceTests(unittest.TestCase):
             "bottomed out": {"pin_compression": 1.2},
             "cell too large": {"battery_clearance": 0.05},
             "SMT land separated from PCB": {"pcb_bottom": 16.0},
-            "pin protruding": {"carrier_bottom": 1.5},
-            "flange not captured": {"deck_floor_top": 8.2},
-            "no wiring clearance": {"deck_floor_top": 18.0},
-            "thin bayonet": {"body_radius": 12.2},
-            "radial collision": {"socket_radius": 10.5},
-            "thin carrier": {"carrier_radius": 10.4},
-            "pillars miss base": {"carrier_pillar_bottom": 3.9},
+            "pin protruding": {"carrier_bottom": 2.0},
+            "flange not captured": {"deck_bottom": 9.5},
+            "thin deck floor": {"deck_bottom": 8.4},
+            "thin bayonet": {"body_radius": 13.0},
+            "radial collision": {"socket_radius": 11.5},
+            "thin carrier": {"carrier_radius": 11.0},
+            "pillars miss base": {"carrier_pillar_bottom": 4.5},
             "pillars miss base wall": {"screw_radius": 13.5},
             "deck interference": {"deck_radius": 13.7},
             "disconnected lugs": {"lug_inner_radius": 15.1},
@@ -156,11 +157,13 @@ class InterfaceTests(unittest.TestCase):
             "too short arms": {"band_gap_angle": 90},
             "floor puncture": {"bore_top": 0.5},
             "too much expansion": {"fit_expansion": 2},
-            "high bezel": {"bezel_height": 1.2},
-            "thin bezel": {"bezel_height": 0.3},
+            "high bezel": {"bezel_height": 1.3},
+            "thin bezel": {"bezel_height": 0.9},
             "shallow shoulder": {"shoulder_angle": 25},
             "flat shoulder": {"shoulder_angle": 50},
             "thin shoulder": {"shoulder_wall": 0.5},
+            "thin band": {"band_wall": 0.9},
+            "thin screw pillar": {"screw_post_radius": 0.6},
             "untapered band": {"band_tip_width": 11},
             "needle tips": {"band_tip_width": 4},
             "sharp-edged profile": {"band_edge_radius": 0.6},
@@ -185,9 +188,9 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(reference["setting_diameter"], 22)
         self.assertEqual(reference["setting_height_above_pcb"], 5)
         self.assertEqual(reference["band_width"], self.p["band_width"])
-        self.assertEqual(reference["band_wall"], self.p["band_wall"])
-        self.assertAlmostEqual(report["printed_body_envelope"]["width"], 24.9)
-        self.assertLess(report["printed_body_envelope"]["height"], 29.2)
+        self.assertEqual(reference["band_wall"], 1)
+        self.assertAlmostEqual(report["printed_body_envelope"]["width"], 27.5)
+        self.assertLess(report["printed_body_envelope"]["height"], 29.6)
         self.assertEqual(report["flexible_fit"], flexible_fit(self.p))
         for name, expected in reference["files_sha256"].items():
             self.assertEqual(expected, artifact_hash(HERE.parents[2] / name))

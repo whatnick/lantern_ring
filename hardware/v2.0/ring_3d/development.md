@@ -12,6 +12,9 @@ the repository root on Windows.
 - `build.FCMacro` opens the model in the FreeCAD GUI.
 - `crowns.py` builds the eight low-profile crowns from `logos/logos.json`;
   `--extract` traces the source emblems from the v1 FreeCAD document.
+- `printcheck.py` is the numpy-only STL print-DRC (watertight, volume, build
+  volume, local wall thickness >= `min_printed_wall`); `lantern_ring.py` and
+  `crowns.py` call `check_stl`, and `test_printcheck.py` gates committed STLs.
 - `animation/export_parts.py` exports assembled parts and crown meshes for
   Blender.
 - `animation/animate.py` produces the assembly animation and crown lineup.
@@ -31,6 +34,9 @@ python -m unittest discover -s hardware\v2.0\ring_3d -p "test_design.py"
 & 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\test_freecad.py
 & 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\crowns.py
 python -m unittest discover -s hardware\v2.0\ring_3d -p "test_crowns.py"
+python -m pip install numpy   # once, for the print-DRC
+python -m unittest discover -s hardware\v2.0\ring_3d -p "test_printcheck.py"
+python hardware\v2.0\ring_3d\printcheck.py hardware\v2.0\ring_3d\generated\RingBase.stl
 ```
 
 To re-trace the v1 logos before rebuilding the crowns, run:

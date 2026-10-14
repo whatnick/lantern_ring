@@ -37,7 +37,7 @@ class CrownTests(unittest.TestCase):
             self.assertTrue((HERE / "logos" / (key + ".svg")).is_file(), key)
 
     def test_logos_fit_inside_bezel(self):
-        radius = self.report["parameters"]["screw_radius"] + self.report["parameters"]["screw_post_radius"]
+        radius = self.report["parameters"]["bezel_radius"]
         for key, logo in self.logos.items():
             reach = max(math.hypot(x, y) for loop in logo["loops"] for x, y in loop)
             # Logos are clipped to the bezel; avarice bar tips are the only overhang.
@@ -46,14 +46,15 @@ class CrownTests(unittest.TestCase):
 
     def test_low_profile_versus_v1_emblem(self):
         levels = self.report["levels"]
-        self.assertAlmostEqual(levels["top"] - levels["pcb_top"], 2.3, places=3)
+        self.assertAlmostEqual(levels["top"] - levels["pcb_top"], 2.95, places=3)
         self.assertLess(levels["top"] - levels["pcb_top"],
                         self.report["v1_logo_reference_mm"]["v1_logo_cap_height"] / 2)
         for key, crown in self.report["crowns"].items():
-            self.assertLessEqual(crown["top_above_pcb_mm"], 2.5, key)
+            self.assertLessEqual(crown["top_above_pcb_mm"], 3.0, key)
             self.assertGreaterEqual(crown["led_clearance_mm"], self.report["crown"]["led_clearance"] - 1e-6, key)
-            self.assertAlmostEqual(crown["diameter_mm"], 23.4, key)
-            self.assertGreater(crown["volume_mm3"], 400, key)
+            self.assertAlmostEqual(crown["diameter_mm"], 27.1, key)
+            self.assertGreater(crown["volume_mm3"], 1000, key)
+            self.assertGreaterEqual(crown["min_wall_mm"], self.report["crown"]["relief_min_width"] - 1e-6, key)
 
     def test_lens_and_relief_layers_are_printable(self):
         crown = self.report["crown"]

@@ -22,6 +22,7 @@ import Part
 
 from design import (HERE, PCB_PATH, artifact_hash, load_parameters, offset_polygon,
                     pcb_interface, source_hash, validate_parameters)
+from printcheck import check_stl
 from lantern_ring import (Z, bop_check, box, cylinder, geometry, mesh_for, polygon_solid,
                           screw_positions, unrotated_geometry)
 
@@ -33,8 +34,11 @@ V1_SKIP = ("riser", "support", "slot", "fric")
 
 CROWN = {
     "led_clearance": 0.2,   # lens underside above the tallest LED
-    "lens": 0.4,            # two 0.2 mm layers of translucent diffuser
+    "lens": 1.05,           # translucent diffuser; at least the printed-wall minimum
     "relief": 0.6,          # raised logo strokes
+    "stroke_growth": 0.1,   # logo outline offset, mm per side
+    "growth_overrides": {"life": 0.3},  # the traced life logo has 0.3 mm strokes
+    "relief_min_width": 0.4,  # raised-detail stroke minimum; all structure stays >= min_printed_wall
     "counterbore": 2.2,     # M1 head (OD <= 2 mm) seats at the original bezel top
     "logo_rotation": 0.0,   # degrees, relative to the v1 orientation when locked
 }
@@ -119,29 +123,52 @@ def clean_loop(loop, min_edge=0.01, max_dev=0.002):
     return pts
 
 
-def logo_face(loops, rotation):
+def inside(point, loop):
+    x, y = point
+    hit = False
+    for (x1, y1), (x2, y2) in zip(loop, loop[1:] + loop[:1]):
+        if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1):
+            hit = not hit
+    return hit
+
+
+def logo_face(loops, rotation, growth=None):
+    growth = CROWN["stroke_growth"] if growth is None else growth
+    # Traced strokes can be exactly 1.0 mm wide; grow the material so it clears the print minimum.
+    cleaned = [clean_loop(loop, 0.08, 0.01) for loop in loops]
     wires = []
-    for loop in loops:
-        pts = [App.Vector(x, y, 0) for x, y in clean_loop(loop)]
+    for i, loop in enumerate(cleaned):
+        depth = sum(inside(loop[0], other) for j, other in enumerate(cleaned) if j != i)
+        pts = [App.Vector(x, y, 0) for x, y in clean_loop(loops[i])]
+        try:
+            grown = offset_polygon(loop, growth * (-1 if depth % 2 else 1))
+            trial = [App.Vector(x, y, 0) for x, y in grown]
+            old_area = abs(Part.Face(Part.makePolygon(pts + pts[:1])).Area)
+            new_area = Part.Face(Part.makePolygon(trial + trial[:1]))
+            # Keep the traced outline when the mitre offset self-intersects or blows up a sliver.
+            if new_area.isValid() and abs(new_area.Area - old_area) < 0.3 * old_area:
+                pts = trial
+        except ValueError:
+            pass
         wires.append(Part.makePolygon(pts + pts[:1]))
     face = Part.makeFace(wires, "Part::FaceMakerBullseye")
     face.rotate(App.Vector(), Z, rotation)
     return face
 
 
-def build_crown(p, pcb, loops):
+def build_crown(p, pcb, loops, growth=None):
     """Crown in the unlocked cassette frame (same frame as unrotated_geometry)."""
     s = validate_parameters(p, pcb)
-    radius = p["screw_radius"] + p["screw_post_radius"]
+    radius = p["bezel_radius"]
     lens_bottom = s["highest_component"] + CROWN["led_clearance"]
     relief_bottom = lens_bottom + CROWN["lens"]
     top = relief_bottom + CROWN["relief"]
     window = offset_polygon(pcb["outline"], -0.45)
     skirt = cylinder(radius, s["assembly_top"] - 0.05, lens_bottom).cut(
-        polygon_solid(window, s["assembly_top"] - 0.1, lens_bottom + 0.1))
+        polygon_solid(window, s["assembly_top"] - 0.3, lens_bottom + 0.1))
     lens = cylinder(radius, lens_bottom, relief_bottom)
     # Pre-rotate so the emblem reads in the v1 orientation once the cassette is locked.
-    face = logo_face(loops, CROWN["logo_rotation"] - p["lock_angle"])
+    face = logo_face(loops, CROWN["logo_rotation"] - p["lock_angle"], growth)
     # Embed the relief 0.05 mm: a coplanar polygon-on-cylinder fuse is invalid in OCC 7.5.
     face.translate(App.Vector(0, 0, relief_bottom - 0.05))
     relief = face.extrude(Z * (CROWN["relief"] + 0.05)).common(
@@ -150,10 +177,15 @@ def build_crown(p, pcb, loops):
     # Fuse each relief island separately; a compound fuse inverts a solid in OCC 7.5.
     crown = crown.fuse(lens.multiFuse(relief.Solids).removeSplitter()).removeSplitter()
     for x, y in screw_positions(p):
-        crown = crown.cut(cylinder(CROWN["counterbore"] / 2, s["assembly_top"], top + 1, x, y))
+        # Open-sided head slot: a closed counterbore would leave a rim thinner than the print minimum.
+        slot = box(CROWN["counterbore"], 4, s["assembly_top"] - 0.05, top + 1, -CROWN["counterbore"] / 2, 0)
+        slot.rotate(App.Vector(), Z, math.degrees(math.atan2(y, x)) - 90)
+        slot.translate(App.Vector(x, y, 0))
+        crown = crown.cut(slot).cut(cylinder(CROWN["counterbore"] / 2, s["assembly_top"] - 0.05, top + 1, x, y))
     wire_x, wire_y, wire_r = pcb["ground"][0], p["wire_channel_y"], p["wire_channel_diameter"] / 2
+    # Cut through plate and skirt so the 1.05 mm lens is the slot ceiling.
     crown = crown.cut(box(p["wire_channel_diameter"], wire_y - pcb["ground"][1] + 0.8,
-                          s["pcb_top"] - 0.01, s["pcb_top"] + 0.9, wire_x - wire_r,
+                          s["pcb_top"] - 0.01, lens_bottom, wire_x - wire_r,
                           pcb["ground"][1] - 0.4))
     levels = {"lens_bottom": lens_bottom, "relief_bottom": relief_bottom, "top": top}
     return crown.removeSplitter(), levels
@@ -174,7 +206,7 @@ def validate_crown(key, crown, levels, p, pcb, s, locked_parts):
     led_gap = locked.distToShape(locked_parts["LEDs"])[0]
     if led_gap < CROWN["led_clearance"] - 1e-6:
         raise ValueError("{} crown is {:.3f} mm from an LED".format(key, led_gap))
-    radius = p["screw_radius"] + p["screw_post_radius"]
+    radius = p["bezel_radius"]
     if crown.common(cylinder(radius, -50, 50)).Volume < crown.Volume - 1e-6:
         raise ValueError("{} crown exceeds the bezel diameter".format(key))
     return {
@@ -196,7 +228,8 @@ def generate(output=HERE / "generated" / "crowns", extract=False):
     locked_parts = geometry(json.dumps(p, sort_keys=True), json.dumps(pcb, sort_keys=True))
     report = {}
     for key in CORPS:
-        crown, levels = build_crown(p, pcb, logos[key]["loops"])
+        crown, levels = build_crown(p, pcb, logos[key]["loops"],
+                                    CROWN["growth_overrides"].get(key))
         checks = validate_crown(key, crown, levels, p, pcb, s, locked_parts)
         # OCC 7.5 cannot round-trip these faceted crowns through STEP after an
         # off-axis rotation, so STEP stays in the cassette (insertion) frame.
@@ -213,6 +246,13 @@ def generate(output=HERE / "generated" / "crowns", extract=False):
         if not mesh.isSolid():
             raise ValueError("{} crown mesh is not watertight".format(key))
         mesh.write(str(output / "Crown_{}.stl".format(key)))
+        thickness = check_stl(output / "Crown_{}.stl".format(key), p["min_printed_wall"],
+                              emboss=(CROWN["relief"], CROWN["relief_min_width"]))
+        if not thickness["passes"]:
+            raise ValueError("{} crown fails the {:g} mm print-wall check: min {} mm at {} ({})".format(
+                key, p["min_printed_wall"], thickness["min_thickness_mm"],
+                thickness["min_thickness_at"], "; ".join(thickness["problems"])))
+        checks["min_wall_mm"] = thickness["min_thickness_mm"]
         checks.update(corps=logos[key]["corps"], light=logos[key]["light"],
                       logo_area_mm2=logos[key]["area_mm2"])
         report[key] = checks

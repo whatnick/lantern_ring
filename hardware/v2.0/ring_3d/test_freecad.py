@@ -42,9 +42,10 @@ class NativeDocumentTests(unittest.TestCase):
         original = parameters.PCBClearance.Value
         before = self.doc.ContactDeck.Shape.Volume
         try:
-            parameters.PCBClearance = original + 0.1
+            parameters.PCBClearance = original - 0.05
             self.doc.recompute()
-            self.assertLess(self.doc.ContactDeck.Shape.Volume, before)
+            # The wall rule leaves no room to widen the pocket, so tighten it instead.
+            self.assertGreater(self.doc.ContactDeck.Shape.Volume, before)
             self.doc.ContactDeck.Shape.check(True)
         finally:
             parameters.PCBClearance = original
@@ -70,9 +71,9 @@ class NativeDocumentTests(unittest.TestCase):
         original = parameters.BandGapAngle.Value
         before = self.doc.RingBase.Shape.Volume
         try:
-            parameters.BandGapAngle = 70
+            parameters.BandGapAngle = 55
             self.doc.recompute()
-            self.assertLess(self.doc.RingBase.Shape.Volume, before)
+            self.assertGreater(self.doc.RingBase.Shape.Volume, before)
             bop_check(self.doc.RingBase.Shape)
         finally:
             parameters.BandGapAngle = original
