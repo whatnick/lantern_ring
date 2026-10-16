@@ -53,6 +53,38 @@ Printed metal is rough (about Ra 6-10 um): tumble or polish before coating. Allo
 coating thickness in the bayonet clearance, and keep the negative contact area and
 pogo seats bare or plated.
 
+## Colour and paint options for every material
+
+Elecrow's own colour statements (page text; surface treatment is charged extra):
+
+| Material | Colour as printed | Colour route |
+|---|---|---|
+| Photosensitive resin 9400, Genl | smooth white | "oil injection" colouring (spray paint) offered |
+| Yellow high-toughness resin | light yellow | same |
+| Transparent / translucent resin | clear / frosted | keep clear for the LED lens; tint with clear dye or lacquer |
+| Black resin | grey-black | paint over, or leave |
+| Nylon, nylon + glass fibre, high-performance nylon | grey-white, grainy | dye bath or paint after priming |
+| PLA / PETG | black, white (default), orange, blue, red, green selectable - add a note to the order | choose green at order time, no paint needed |
+| Stainless A316L, AlSi10Mg, Ti6Al4V | grainy grey | metal finishes below |
+
+Paint systems for printed parts you finish yourself:
+
+| System | Use on | Notes |
+|---|---|---|
+| Spray primer + acrylic or enamel spray (e.g. Lantern green) | resin, nylon, PLA, metal | Sand 400-800 grit, prime, 2-3 thin coats, clear coat. Adds about 30-60 um. |
+| Airbrushed acrylic / lacquer | resin, nylon, crowns | Best for the two-tone logo and a green gradient. |
+| Fabric / nylon dye (e.g. green) | nylon only | Penetrates, so no dimensional change. Dye before assembly. |
+| Alcohol or resin-compatible tint in clear resin | clear resin | Colours the lens without blocking light. Test on a sample first. |
+| Metallic paint / rub-n-buff (green-gold, verdigris) | any | Fast crown highlights on raised logo detail. |
+| Glow or UV paint | crown logo | Charges from the LED; a nice night effect. |
+| Epoxy / UV-resin fill in the logo relief | crowns | Fill, then scrape high spots for a crisp inlay. |
+| Clear coat (gloss or matt) | all painted parts | Protects against hand wear. Skip on contact faces. |
+
+Rules for this ring: keep paint off the pogo seats, battery contact faces and bayonet
+sliding faces (mask with tape or a plug); keep the lens and LED window unpainted; and
+allow 0.05-0.1 mm per painted face in the bayonet clearance, or leave the bayonet
+unpainted. Painting the print does not change the Elecrow thickness check.
+
 ## Small-scale production routes
 
 - Investment casting from a printed wax or resin pattern: 10-200 units, no tooling,
