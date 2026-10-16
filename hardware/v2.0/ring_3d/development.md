@@ -37,6 +37,8 @@ python -m unittest discover -s hardware\v2.0\ring_3d -p "test_crowns.py"
 python -m pip install numpy   # once, for the print-DRC
 python -m unittest discover -s hardware\v2.0\ring_3d -p "test_printcheck.py"
 python hardware\v2.0\ring_3d\printcheck.py hardware\v2.0\ring_3d\generated\RingBase.stl
+# Hybrid metal/plastic package -> generated\metal\ and generated\lantern_ring_v2_metal.zip
+python hardware\v2.0\ring_3d\metal_export.py
 ```
 
 To re-trace the v1 logos before rebuilding the crowns, run:

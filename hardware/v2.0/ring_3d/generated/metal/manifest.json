@@ -1,0 +1,185 @@
+{
+  "note": "Hybrid set: metal RingBase and crowns, plastic insulating parts. Indicative prices only.",
+  "wall_rule_mm": 1.0,
+  "crown_relief_detail_min_mm": 0.4,
+  "parts": [
+    {
+      "group": "metal",
+      "part": "RingBase",
+      "volume_cm3": 1.8,
+      "size_mm": [
+        27.5,
+        27.474,
+        22.687
+      ],
+      "min_wall_mm": 1.038,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_avarice",
+      "volume_cm3": 1.142,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_compassion",
+      "volume_cm3": 1.106,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_fear",
+      "volume_cm3": 1.126,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_hope",
+      "volume_cm3": 1.146,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_life",
+      "volume_cm3": 1.119,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 0.434,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_love",
+      "volume_cm3": 1.102,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_rage",
+      "volume_cm3": 1.108,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "metal",
+      "part": "Crown_will",
+      "volume_cm3": 1.118,
+      "size_mm": [
+        27.1,
+        27.1,
+        2.95
+      ],
+      "min_wall_mm": 1.05,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "plastic",
+      "part": "Carrier",
+      "volume_cm3": 1.52,
+      "size_mm": [
+        23.646,
+        23.934,
+        9.02
+      ],
+      "min_wall_mm": 1.098,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "plastic",
+      "part": "ContactDeck",
+      "volume_cm3": 0.804,
+      "size_mm": [
+        22.59,
+        22.596,
+        2.62
+      ],
+      "min_wall_mm": 1.059,
+      "watertight": true,
+      "passes": true
+    },
+    {
+      "group": "plastic",
+      "part": "Bezel",
+      "volume_cm3": 0.362,
+      "size_mm": [
+        27.097,
+        27.088,
+        1.1
+      ],
+      "min_wall_mm": 1.099,
+      "watertight": true,
+      "passes": true
+    }
+  ],
+  "estimate_usd_per_ring_before_minimums": {
+    "stainless_316L_lpbf": {
+      "ringbase": [
+        18.0,
+        54.0
+      ],
+      "ringbase_plus_one_crown": [
+        29.2,
+        87.6
+      ]
+    },
+    "bronze_or_brass_cast": {
+      "ringbase": [
+        36.0,
+        108.0
+      ],
+      "ringbase_plus_one_crown": [
+        58.4,
+        175.3
+      ]
+    }
+  }
+}
