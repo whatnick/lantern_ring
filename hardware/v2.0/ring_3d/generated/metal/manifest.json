@@ -160,17 +160,24 @@
       "passes": true
     }
   ],
-  "estimate_usd_per_ring_before_minimums": {
-    "stainless_316L_lpbf": {
-      "ringbase": [
-        18.0,
-        54.0
-      ],
-      "ringbase_plus_one_crown": [
-        29.2,
-        87.6
-      ]
+  "estimate_usd_elecrow_formula": {
+    "Stainless Steel A316L": {
+      "ringbase_plus_crown_as_separate_items": 46.77,
+      "all_five_parts_as_separate_items": 116.93,
+      "ringbase_plus_crown_as_one_combined_file": 27.0
     },
+    "AlSi10Mg Aluminum Alloy": {
+      "ringbase_plus_crown_as_separate_items": 46.77,
+      "all_five_parts_as_separate_items": 116.93,
+      "ringbase_plus_crown_as_one_combined_file": 27.0
+    },
+    "Ti6Al4V Titanium Alloy": {
+      "ringbase_plus_crown_as_separate_items": 56.12,
+      "all_five_parts_as_separate_items": 140.32,
+      "ringbase_plus_crown_as_one_combined_file": 42.2
+    }
+  },
+  "estimate_usd_per_ring_cast_brass_bronze": {
     "bronze_or_brass_cast": {
       "ringbase": [
         36.0,
