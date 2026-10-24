@@ -178,6 +178,17 @@ lower-jaw tip; the riser carries that load.
 3. Rebuild. The FreeCAD fit and the sweep must pass. The pins should reach
    the ring at about two-thirds of their travel when the clip is closed.
 
+## Actual photos and measurements of AliExpress Clip
+
+![Top clip body image with ruler](./images/)
+![Jaw width with vernier](./images/)
+![Side both clips with ruler](./images/)
+![Bottom clip body image with ruler](./images/)
+
+Clip main dimensions and mechanical drawing - traced
+
+![Isometric mechanical drawing](./images/)
+
 ## Assembly
 
 1. Solder J1 and the GND lead to J2 on the top probe board.
