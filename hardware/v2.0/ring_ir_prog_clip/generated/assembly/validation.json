@@ -1,0 +1,968 @@
+{
+  "scope": "Partially measured reconstruction, not a fabrication drawing or programming qualification",
+  "album": "https://photos.google.com/share/AF1QipNwx2ELJVqs2tECPYQ5cwoX293osVatVeGoo2XyBIm2Dzrf3vpLs3F5LxYhLjrQvA?key=RVRZOGVPc3RqZ1FpdEt0eEJ4c1piN01uNm1QZm9n",
+  "variants": {
+    "pitch_127": {
+      "static_collisions": [],
+      "opening": {
+        "samples": [
+          {
+            "angle_deg": 0.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.8333
+          },
+          {
+            "angle_deg": 0.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7923
+          },
+          {
+            "angle_deg": 1.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7514
+          },
+          {
+            "angle_deg": 1.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7106
+          },
+          {
+            "angle_deg": 2.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6697
+          },
+          {
+            "angle_deg": 2.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6289
+          },
+          {
+            "angle_deg": 3.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5882
+          },
+          {
+            "angle_deg": 3.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5475
+          },
+          {
+            "angle_deg": 4.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5068
+          },
+          {
+            "angle_deg": 4.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4661
+          },
+          {
+            "angle_deg": 5.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4254
+          },
+          {
+            "angle_deg": 5.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.3847
+          },
+          {
+            "angle_deg": 6.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.344
+          }
+        ],
+        "collisions": [],
+        "note": "Rigid hinge plus estimated helical spring compression/coil spacing. No force, spring-end seating, fatigue or measured spring qualification."
+      },
+      "details": {
+        "tip_z": 7.200000000000001,
+        "working_compression_mm": 0.8,
+        "target_z": 8.000000000000002,
+        "travel_mm": 1.5,
+        "fine_pin_geometry_estimated": true
+      },
+      "solid_count": 38
+    },
+    "pitch_200": {
+      "static_collisions": [],
+      "opening": {
+        "samples": [
+          {
+            "angle_deg": 0.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.8333
+          },
+          {
+            "angle_deg": 0.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7923
+          },
+          {
+            "angle_deg": 1.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7514
+          },
+          {
+            "angle_deg": 1.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7106
+          },
+          {
+            "angle_deg": 2.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6697
+          },
+          {
+            "angle_deg": 2.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6289
+          },
+          {
+            "angle_deg": 3.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5882
+          },
+          {
+            "angle_deg": 3.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5475
+          },
+          {
+            "angle_deg": 4.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5068
+          },
+          {
+            "angle_deg": 4.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4661
+          },
+          {
+            "angle_deg": 5.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4254
+          },
+          {
+            "angle_deg": 5.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.3847
+          },
+          {
+            "angle_deg": 6.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.344
+          }
+        ],
+        "collisions": [],
+        "note": "Rigid hinge plus estimated helical spring compression/coil spacing. No force, spring-end seating, fatigue or measured spring qualification."
+      },
+      "details": {
+        "tip_z": 6.200000000000001,
+        "working_compression_mm": 1.65,
+        "target_z": 7.850000000000001,
+        "travel_mm": 2.5,
+        "fine_pin_geometry_estimated": false
+      },
+      "solid_count": 38
+    },
+    "pitch_254": {
+      "static_collisions": [],
+      "opening": {
+        "samples": [
+          {
+            "angle_deg": 0.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.8333
+          },
+          {
+            "angle_deg": 0.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7923
+          },
+          {
+            "angle_deg": 1.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7514
+          },
+          {
+            "angle_deg": 1.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7106
+          },
+          {
+            "angle_deg": 2.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6697
+          },
+          {
+            "angle_deg": 2.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6289
+          },
+          {
+            "angle_deg": 3.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5882
+          },
+          {
+            "angle_deg": 3.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5475
+          },
+          {
+            "angle_deg": 4.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5068
+          },
+          {
+            "angle_deg": 4.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4661
+          },
+          {
+            "angle_deg": 5.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4254
+          },
+          {
+            "angle_deg": 5.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.3847
+          },
+          {
+            "angle_deg": 6.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.344
+          }
+        ],
+        "collisions": [],
+        "note": "Rigid hinge plus estimated helical spring compression/coil spacing. No force, spring-end seating, fatigue or measured spring qualification."
+      },
+      "details": {
+        "tip_z": 6.200000000000001,
+        "working_compression_mm": 1.65,
+        "target_z": 7.850000000000001,
+        "travel_mm": 2.5,
+        "fine_pin_geometry_estimated": false
+      },
+      "solid_count": 38
+    },
+    "ir_custom": {
+      "static_collisions": [],
+      "opening": {
+        "samples": [
+          {
+            "angle_deg": 0.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.8333
+          },
+          {
+            "angle_deg": 0.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7923
+          },
+          {
+            "angle_deg": 1.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7514
+          },
+          {
+            "angle_deg": 1.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.7106
+          },
+          {
+            "angle_deg": 2.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6697
+          },
+          {
+            "angle_deg": 2.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.6289
+          },
+          {
+            "angle_deg": 3.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5882
+          },
+          {
+            "angle_deg": 3.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5475
+          },
+          {
+            "angle_deg": 4.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.5068
+          },
+          {
+            "angle_deg": 4.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4661
+          },
+          {
+            "angle_deg": 5.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.4254
+          },
+          {
+            "angle_deg": 5.5,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.3847
+          },
+          {
+            "angle_deg": 6.0,
+            "max_interference_mm3": 0.0,
+            "estimated_coil_gap_mm": 0.344
+          }
+        ],
+        "collisions": [],
+        "note": "Rigid hinge plus estimated helical spring compression/coil spacing. No force, spring-end seating, fatigue or measured spring qualification."
+      },
+      "details": {
+        "pin_contacts": {
+          "TP1": {
+            "net": "PB0",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          },
+          "TP2": {
+            "net": "PB1",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          },
+          "TP3": {
+            "net": "PB2",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          },
+          "TP4": {
+            "net": "PB3",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          },
+          "TP5": {
+            "net": "PB4",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          },
+          "TP6": {
+            "net": "PB5",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          },
+          "TP9": {
+            "net": "VCC",
+            "offset_mm": 0.0,
+            "pad_half_width_mm": 0.5
+          }
+        },
+        "stack": {
+          "compression_mm": 1.65,
+          "barrel_bottom_z": 10.55,
+          "pin_top_z": 23.05,
+          "screw_tip_z": 5.8,
+          "hole_x": 11.0
+        },
+        "frame": {
+          "riser_top": 5.0,
+          "anvil_top": 6.6,
+          "ring_top": 8.2,
+          "guide_top": 9.799999999999999,
+          "upper_bottom": 9.799999999999999,
+          "upper_top": 14.2,
+          "probe_top": 15.799999999999999
+        },
+        "working_compression_mm": 1.65,
+        "travel_mm": 2.5
+      },
+      "solid_count": 17
+    }
+  },
+  "stock_ir_compatibility": [
+    {
+      "pitch_mm": 1.27,
+      "tip_diameter_mm": 0.4,
+      "registration_uncertainty_mm": 0.15,
+      "signal_contacts": [
+        {
+          "ref": "TP1",
+          "net": "PB0",
+          "pad_uv": [
+            -3.0500000000000114,
+            0.0
+          ],
+          "pin_uv": [
+            -1.2700000000000105,
+            0.8900000000000032
+          ],
+          "offset_mm": 1.9901,
+          "containment_margin_mm": -1.63,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP2",
+          "net": "PB1",
+          "pad_uv": [
+            -3.0500000000000114,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            -1.2700000000000105,
+            2.160000000000008
+          ],
+          "offset_mm": 1.9901,
+          "containment_margin_mm": -1.63,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP3",
+          "net": "PB2",
+          "pad_uv": [
+            -0.0,
+            0.0
+          ],
+          "pin_uv": [
+            -5.529031998482965e-15,
+            0.8900000000000032
+          ],
+          "offset_mm": 0.89,
+          "containment_margin_mm": -0.74,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP4",
+          "net": "PB3",
+          "pad_uv": [
+            -0.0,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            -5.529031998482965e-15,
+            2.160000000000008
+          ],
+          "offset_mm": 0.89,
+          "containment_margin_mm": -0.74,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP5",
+          "net": "PB4",
+          "pad_uv": [
+            3.049999999999983,
+            0.0
+          ],
+          "pin_uv": [
+            1.2699999999999874,
+            0.8900000000000032
+          ],
+          "offset_mm": 1.9901,
+          "containment_margin_mm": -1.63,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP6",
+          "net": "PB5",
+          "pad_uv": [
+            3.049999999999983,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            1.2699999999999874,
+            2.160000000000008
+          ],
+          "offset_mm": 1.9901,
+          "containment_margin_mm": -1.63,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        }
+      ],
+      "signals_fully_contained": false,
+      "direct_isp_compatible": false,
+      "reason": "VCC TP9 is off-grid; GND TP8 is on the front face. Stock header wiring is not the AVR ISP pinout."
+    },
+    {
+      "pitch_mm": 2.0,
+      "tip_diameter_mm": 0.9,
+      "registration_uncertainty_mm": 0.15,
+      "signal_contacts": [
+        {
+          "ref": "TP1",
+          "net": "PB0",
+          "pad_uv": [
+            -3.0500000000000114,
+            0.0
+          ],
+          "pin_uv": [
+            -2.0000000000000107,
+            0.5250000000000019
+          ],
+          "offset_mm": 1.1739,
+          "containment_margin_mm": -1.15,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP2",
+          "net": "PB1",
+          "pad_uv": [
+            -3.0500000000000114,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            -2.0000000000000107,
+            2.5250000000000092
+          ],
+          "offset_mm": 1.1739,
+          "containment_margin_mm": -1.15,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP3",
+          "net": "PB2",
+          "pad_uv": [
+            -0.0,
+            0.0
+          ],
+          "pin_uv": [
+            -3.261507639554558e-15,
+            0.5250000000000019
+          ],
+          "offset_mm": 0.525,
+          "containment_margin_mm": -0.625,
+          "freecad_tip_overlap_fraction": 0.46465,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP4",
+          "net": "PB3",
+          "pad_uv": [
+            -0.0,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            -3.261507639554558e-15,
+            2.5250000000000092
+          ],
+          "offset_mm": 0.525,
+          "containment_margin_mm": -0.625,
+          "freecad_tip_overlap_fraction": 0.46465,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP5",
+          "net": "PB4",
+          "pad_uv": [
+            3.049999999999983,
+            0.0
+          ],
+          "pin_uv": [
+            1.9999999999999856,
+            0.5250000000000019
+          ],
+          "offset_mm": 1.1739,
+          "containment_margin_mm": -1.15,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP6",
+          "net": "PB5",
+          "pad_uv": [
+            3.049999999999983,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            1.9999999999999856,
+            2.5250000000000092
+          ],
+          "offset_mm": 1.1739,
+          "containment_margin_mm": -1.15,
+          "freecad_tip_overlap_fraction": 0.0,
+          "freecad_axis_on_pad": false
+        }
+      ],
+      "signals_fully_contained": false,
+      "direct_isp_compatible": false,
+      "reason": "VCC TP9 is off-grid; GND TP8 is on the front face. Stock header wiring is not the AVR ISP pinout."
+    },
+    {
+      "pitch_mm": 2.54,
+      "tip_diameter_mm": 0.9,
+      "registration_uncertainty_mm": 0.15,
+      "signal_contacts": [
+        {
+          "ref": "TP1",
+          "net": "PB0",
+          "pad_uv": [
+            -3.0500000000000114,
+            0.0
+          ],
+          "pin_uv": [
+            -2.540000000000011,
+            0.2550000000000008
+          ],
+          "offset_mm": 0.5702,
+          "containment_margin_mm": -0.61,
+          "freecad_tip_overlap_fraction": 0.40339,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP2",
+          "net": "PB1",
+          "pad_uv": [
+            -3.0500000000000114,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            -2.540000000000011,
+            2.7950000000000106
+          ],
+          "offset_mm": 0.5702,
+          "containment_margin_mm": -0.61,
+          "freecad_tip_overlap_fraction": 0.40339,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP3",
+          "net": "PB2",
+          "pad_uv": [
+            -0.0,
+            0.0
+          ],
+          "pin_uv": [
+            -1.5841608534979275e-15,
+            0.2550000000000008
+          ],
+          "offset_mm": 0.255,
+          "containment_margin_mm": -0.355,
+          "freecad_tip_overlap_fraction": 0.82862,
+          "freecad_axis_on_pad": true
+        },
+        {
+          "ref": "TP4",
+          "net": "PB3",
+          "pad_uv": [
+            -0.0,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            -1.5841608534979275e-15,
+            2.7950000000000106
+          ],
+          "offset_mm": 0.255,
+          "containment_margin_mm": -0.355,
+          "freecad_tip_overlap_fraction": 0.82862,
+          "freecad_axis_on_pad": true
+        },
+        {
+          "ref": "TP5",
+          "net": "PB4",
+          "pad_uv": [
+            3.049999999999983,
+            0.0
+          ],
+          "pin_uv": [
+            2.5399999999999845,
+            0.2550000000000008
+          ],
+          "offset_mm": 0.5702,
+          "containment_margin_mm": -0.61,
+          "freecad_tip_overlap_fraction": 0.40339,
+          "freecad_axis_on_pad": false
+        },
+        {
+          "ref": "TP6",
+          "net": "PB5",
+          "pad_uv": [
+            3.049999999999983,
+            3.0500000000000114
+          ],
+          "pin_uv": [
+            2.5399999999999845,
+            2.7950000000000106
+          ],
+          "offset_mm": 0.5702,
+          "containment_margin_mm": -0.61,
+          "freecad_tip_overlap_fraction": 0.40339,
+          "freecad_axis_on_pad": false
+        }
+      ],
+      "signals_fully_contained": false,
+      "direct_isp_compatible": false,
+      "reason": "VCC TP9 is off-grid; GND TP8 is on the front face. Stock header wiring is not the AVR ISP pinout."
+    }
+  ],
+  "custom_ir_contact": {
+    "pitch_mm": 3.05,
+    "tip_diameter_mm": 0.9,
+    "registration_uncertainty_mm": 0,
+    "signal_contacts": [
+      {
+        "ref": "TP1",
+        "net": "PB0",
+        "pad_uv": [
+          -3.0500000000000114,
+          0.0
+        ],
+        "pin_uv": [
+          -3.0500000000000114,
+          0.0
+        ],
+        "offset_mm": 0.0,
+        "containment_margin_mm": 0.05,
+        "freecad_tip_overlap_fraction": 1.0,
+        "freecad_axis_on_pad": true
+      },
+      {
+        "ref": "TP2",
+        "net": "PB1",
+        "pad_uv": [
+          -3.0500000000000114,
+          3.0500000000000114
+        ],
+        "pin_uv": [
+          -3.0500000000000114,
+          3.0500000000000114
+        ],
+        "offset_mm": 0.0,
+        "containment_margin_mm": 0.05,
+        "freecad_tip_overlap_fraction": 1.0,
+        "freecad_axis_on_pad": true
+      },
+      {
+        "ref": "TP3",
+        "net": "PB2",
+        "pad_uv": [
+          -0.0,
+          0.0
+        ],
+        "pin_uv": [
+          0.0,
+          0.0
+        ],
+        "offset_mm": 0.0,
+        "containment_margin_mm": 0.05,
+        "freecad_tip_overlap_fraction": 1.0,
+        "freecad_axis_on_pad": true
+      },
+      {
+        "ref": "TP4",
+        "net": "PB3",
+        "pad_uv": [
+          -0.0,
+          3.0500000000000114
+        ],
+        "pin_uv": [
+          0.0,
+          3.0500000000000114
+        ],
+        "offset_mm": 0.0,
+        "containment_margin_mm": 0.05,
+        "freecad_tip_overlap_fraction": 1.0,
+        "freecad_axis_on_pad": true
+      },
+      {
+        "ref": "TP5",
+        "net": "PB4",
+        "pad_uv": [
+          3.049999999999983,
+          0.0
+        ],
+        "pin_uv": [
+          3.049999999999983,
+          0.0
+        ],
+        "offset_mm": 0.0,
+        "containment_margin_mm": 0.05,
+        "freecad_tip_overlap_fraction": 1.0,
+        "freecad_axis_on_pad": true
+      },
+      {
+        "ref": "TP6",
+        "net": "PB5",
+        "pad_uv": [
+          3.049999999999983,
+          3.0500000000000114
+        ],
+        "pin_uv": [
+          3.049999999999983,
+          3.0500000000000114
+        ],
+        "offset_mm": 0.0,
+        "containment_margin_mm": 0.05,
+        "freecad_tip_overlap_fraction": 1.0,
+        "freecad_axis_on_pad": true
+      }
+    ],
+    "signals_fully_contained": true,
+    "direct_isp_compatible": false,
+    "reason": "VCC TP9 is off-grid; GND TP8 is on the front face. Stock header wiring is not the AVR ISP pinout."
+  },
+  "source_sha256": {
+    "assembly_parameters.json": "86b3f38a6e0634125c81e168f005a5b767ce8eec1cac785e36f054380f5951ce",
+    "assembly_interface.py": "1aee3b6bd46f6b1a223d8c16e075536bf2fadd0bf041a1e841e508c7094f29fb",
+    "assembly_model.py": "3a05615a8bc46b7b696054c2d89466638be389fb31df04e521f09b5e2f5d995d",
+    "fit_check.py": "47a28ea7d2def122acd12ea25d7045db76f7f69cae3a0ddc19462d7e12b57483",
+    "parameters.json": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
+    "generated/geometry.json": "78daa038577fe55baccd7b3be2740c1385bba87458f18893053c76f8be2234d5"
+  },
+  "artifact_sha256": {
+    "ir_custom/Anvil.stl": "5016765e2c806dd52c33230abbdcb6d89d80139f9d49ec096274e2170b0d07ca",
+    "ir_custom/clip.FCStd": "f585cb93d557107f6d4a3af56c20bcbdffeadde09170ade02b650d8548688288",
+    "ir_custom/clip.FCStd1": "953d73b41918aadb437a8d2a0ec371f4141ce83bf4a6b6a484b06dd3e07d2b8c",
+    "ir_custom/clip.step": "cdf0c8e99ef6691a8932885b98ee485362b16572377d46da7187f780cadeb54e",
+    "ir_custom/Fence.stl": "0c91cad0a157fd3e7c56732209ddf2dd8dc708cd7bb9f17ffd9faf4212fd46da",
+    "ir_custom/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
+    "ir_custom/Guide.stl": "62a3aa47d1a8a30ec75cd82474d99753c14477fef888acdc850f2a876e553a2c",
+    "ir_custom/Header.stl": "3603617018d58ffee4459185cecb7df82b4214e62f057596040ab4c7f475b412",
+    "ir_custom/HeaderPins.stl": "44da54c948b61630e7761e6b6b51fc2a9509e0d91fcbd04aceec712193fa0fc9",
+    "ir_custom/Hinge.stl": "a61b00c5a6bfcc1a6c7a366dc33cb5f64b01a23232287d623b0039be3edb2d7c",
+    "ir_custom/LowerJaw.stl": "5d644c5fe7c4feae51034eaa23aad922d657ef26955f2434dc87c2a4a9b051bb",
+    "ir_custom/meshes.json": "3e2650ba06231508599522a78fff98181bf44379e6c023a5e93b32852bb02333",
+    "ir_custom/Nuts.stl": "0e9181d47c6cab223c1111c5bef75087487c5ba442d2d6264dfe71b29a7ed41a",
+    "ir_custom/Pins.stl": "e00620221f4593cbb4854ee1edb4eb43d71037f55dcb2a78b9b11a6808ba26f8",
+    "ir_custom/Probe.stl": "c52fe6b79a2b287f8c7f16cdf5cd4180cd9d0efc2dd8ea1a844098a202bd9ee5",
+    "ir_custom/Ring.stl": "de986d4702837bab317127e78b4a84b27dfa16ba904ae96762e8387d8c7bf656",
+    "ir_custom/RingParts.stl": "42ae638b44d1a78e46b6aa5b8b24b4a118108c9ec19c6d34da278d729d742901",
+    "ir_custom/Riser.stl": "b77eb7f3ec8da548e81d92eda98b61665dcb09ac3bcffa58ef3ff4b3b09184ce",
+    "ir_custom/Screws.stl": "a3eb4580da7a9aefc1ed670e6fe8ff7503dc15cf633c41202bffcc798398428e",
+    "ir_custom/Spring.stl": "26a425effa621205c971df317f772fa1eb8a4f17062a56047fbb713281c71eb0",
+    "ir_custom/UpperJaw.stl": "a1298b9288039fc1201cd33a3f6d718c18ca236fa7b2981f00e1d65a4f2bb0e4",
+    "pitch_127/Barrel_00.stl": "45bcab139b355bc21134fe8895ba3f3d60963b34e4c8d8861ba2391a3fd7a792",
+    "pitch_127/Barrel_01.stl": "646e32636b434e85f92851ce1b31ba2ca356cfc2431ce6b63fed49e139d4209f",
+    "pitch_127/Barrel_02.stl": "05eee7c1b184f682c1d5ee718aec3469d8006dde9097f0f0da74c5f72ed610ff",
+    "pitch_127/Barrel_03.stl": "d48a44facefac49818706212a751d2da0d01c793d9f55fb22702bdf8a70ebbfe",
+    "pitch_127/Barrel_04.stl": "86e27c0770341c8c0743cd05e6e36cce803996cb161369d8e4ee9876622b9031",
+    "pitch_127/Barrel_05.stl": "7ed91a0062469e7e50a6d1fd23d5a6c2571a387c21cacffd9047d7cc878187af",
+    "pitch_127/Barrel_06.stl": "e0d0c862ef59e7815ed0550b89e39072ce37493910325a038382fa9b32c68779",
+    "pitch_127/Barrel_07.stl": "6ccb17722f713f9ba9c7f9d1260e77fa2535bd4bd803c25b793014bf3705576e",
+    "pitch_127/Barrel_08.stl": "abe1c50b405d60474707f354029ad3fa76bd32ef3b753a0b5b2f456029bfa88f",
+    "pitch_127/Barrel_09.stl": "c82fb0dd94bedfa4bd34a973577221b816e14cda46128d0b413d35e9e60f6648",
+    "pitch_127/Barrel_10.stl": "2bfd3d4b6219298e7213566746387bef46be871135d53f0701f720980b97775d",
+    "pitch_127/Barrel_11.stl": "64f988c1e378eb5ed0869a023b1e856012739a8eb008403f841d90bb17b97f52",
+    "pitch_127/clip.FCStd": "fde91340aa6a406f595b4f60875fea9e20aa42210e4720da533566eaeb471444",
+    "pitch_127/clip.FCStd1": "e613fc51e9bf04d5132d84c860bc48ac6a20f8f75e6f3fe7b5f0faee3058b3fb",
+    "pitch_127/clip.step": "c5bd26d13cd378ad348550559db57f070e49747d9c40220e0dd806c95bdf6ab3",
+    "pitch_127/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
+    "pitch_127/Guide.stl": "5299abedc2b490489c3046cfcf4d74e503aa6d1575c5d14f450723bd82388661",
+    "pitch_127/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
+    "pitch_127/HeaderPins.stl": "ad8363edeb9292ef377e87f08c421b17c88dbc0996d4d6878d55f13518f6286f",
+    "pitch_127/Hinge.stl": "a61b00c5a6bfcc1a6c7a366dc33cb5f64b01a23232287d623b0039be3edb2d7c",
+    "pitch_127/LowerJaw.stl": "5d644c5fe7c4feae51034eaa23aad922d657ef26955f2434dc87c2a4a9b051bb",
+    "pitch_127/meshes.json": "2c622fbbbe595e3428138fbdf4e06a537343b01d475fad8b2cae6678011a5b99",
+    "pitch_127/Nut_0.stl": "51f6a98093700a4fb38bd6f1e5090e08450787522ff9f72211a2d99bb8110824",
+    "pitch_127/Nut_1.stl": "2d87f36f3267c42f8b44c3d063775c3db0dc808c36cab879a781a5b9ffcd5d4b",
+    "pitch_127/Pads.stl": "7627a0a6c683588d632e62a5e9b5a336490402941777823fdfd4955a4872435c",
+    "pitch_127/Plunger_00.stl": "eb01dda8f60ef90b650d13a297deadf28389314c6ee2a3600819f4bc42fb211d",
+    "pitch_127/Plunger_01.stl": "7e250cc40264673eb219d408e326669547d836fc60d73f80e0d8f9e5d0b6fa30",
+    "pitch_127/Plunger_02.stl": "d3a5360ce21d52440b2a34434622322bfe04ac341b62fe49d2594af9ce591886",
+    "pitch_127/Plunger_03.stl": "957340fb9141078fae6ab818f24e9f4ebd00ac58e9ba905f4cac7bc4d2ea7e79",
+    "pitch_127/Plunger_04.stl": "d1176da4063d3f50d76e3422c98641af062daf80217fa63119115f7852a7ee87",
+    "pitch_127/Plunger_05.stl": "5c3989a11a6564e6ed5c789ced05f583ee9bc2be33c2796311a91813aacc5310",
+    "pitch_127/Plunger_06.stl": "e2898ba85696c4d524034f48a453fe4cb8b8f1a57585a7abe05dc62febb84b39",
+    "pitch_127/Plunger_07.stl": "40f8718720a0e1179b16e6bd47515dc05f922682af7d1ef9e7812fb4d3c5a506",
+    "pitch_127/Plunger_08.stl": "acb1c5487e2d4052f4d862158e93614a9ee8291d3725ba6a19c9b9427a7bfdaf",
+    "pitch_127/Plunger_09.stl": "65d396c8aeb6648b733faf71f9e7b280faf937e596a7cd91a17f8621a9a6de71",
+    "pitch_127/Plunger_10.stl": "d2dcc329561457de86981e39b34adfc6ce80b18af104214a7ffd746cb8100a0a",
+    "pitch_127/Plunger_11.stl": "f92c2a9985f1ed59d907844cd57fce748e0c8d6d8d1540e4a80a09ad2a817bfe",
+    "pitch_127/Probe.stl": "07492fa10b2c2cd25981b2d4a7f33e282c0544e53c1a0a1f9c2fdc2d73239094",
+    "pitch_127/Screw_0.stl": "b6344ba9fb9a274f4ded704af2eda386d2aaed061cf9208402baf3810e1ab96f",
+    "pitch_127/Screw_1.stl": "222be992e0940e4fb707dc1ce14672459540552cedaf7554965816412d87a2aa",
+    "pitch_127/Spring.stl": "26a425effa621205c971df317f772fa1eb8a4f17062a56047fbb713281c71eb0",
+    "pitch_127/UpperJaw.stl": "a1298b9288039fc1201cd33a3f6d718c18ca236fa7b2981f00e1d65a4f2bb0e4",
+    "pitch_200/Barrel_00.stl": "6722809803032c1eaced8f988f3c08816bd8abbaad1beda564f20db99188a326",
+    "pitch_200/Barrel_01.stl": "a88ea3093a6d93b4bde8352bd82f43e5ee354612f4afa0f6fbbf9b0fc083ba44",
+    "pitch_200/Barrel_02.stl": "491b0c9a9a0b439b7fbb47de2b1961f201150fefdd7b38646875863fd26c276b",
+    "pitch_200/Barrel_03.stl": "e0ab419ff7dfbdaf06922410a73e6f27770e4bb61c05f0a94959b4baceecf5ad",
+    "pitch_200/Barrel_04.stl": "407d7de50e587893d9103aaafb4e914823f8dbdf32f8e7a8d85d5b92e6982f1c",
+    "pitch_200/Barrel_05.stl": "f27cc5edad6866107676c5f85ca0a9f62b950d03b5afe2a8df8f989131c352ca",
+    "pitch_200/Barrel_06.stl": "799010c630ad51a3ccc894a8f5bd123dd106fa29c261932ee60387bea6ae61b2",
+    "pitch_200/Barrel_07.stl": "13e4753e0e3ac5d84cc6ea9a4562a7751e3dfed1b35981e958d21666a0271d80",
+    "pitch_200/Barrel_08.stl": "436bf2c54144ffc4c93f9ae164181bfbe204999170d69b1cfd4044cb2683b502",
+    "pitch_200/Barrel_09.stl": "f8385c2a21fb69e04833f39320d91f987431b1c76bbffe0b80f2d2146c8d33e7",
+    "pitch_200/Barrel_10.stl": "82ee9759b36d12a37afc815c68bb491dc69a470b35d226a3488fe786dfce6eb6",
+    "pitch_200/Barrel_11.stl": "a02c177bae28b0b4cb23e347acff7a00762896dd29c86bbd52d920d8fe0031d4",
+    "pitch_200/clip.FCStd": "3823a471ae56d0b06e3af1b1c71deb83fb4750dacef8a981dc5c686078b8221d",
+    "pitch_200/clip.FCStd1": "6ef260affc71bab60be795e34684f2eacdae5dd2a9b48e6a5cb39b34c37068d4",
+    "pitch_200/clip.step": "f0e0ebf2f564d0d093b8ee95d674a4230fc23bfbe2c5372f42fa28fdfec6afaa",
+    "pitch_200/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
+    "pitch_200/Guide.stl": "6f1b6fcaa9aa9a75f3108a83a306a5ea1f3c1afac80dc1f3487df48271402e12",
+    "pitch_200/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
+    "pitch_200/HeaderPins.stl": "ad8363edeb9292ef377e87f08c421b17c88dbc0996d4d6878d55f13518f6286f",
+    "pitch_200/Hinge.stl": "a61b00c5a6bfcc1a6c7a366dc33cb5f64b01a23232287d623b0039be3edb2d7c",
+    "pitch_200/LowerJaw.stl": "5d644c5fe7c4feae51034eaa23aad922d657ef26955f2434dc87c2a4a9b051bb",
+    "pitch_200/meshes.json": "1a575f727e0adef407a46927e831010d3bb2c2fc29b734375f53a35f12899368",
+    "pitch_200/Nut_0.stl": "51f6a98093700a4fb38bd6f1e5090e08450787522ff9f72211a2d99bb8110824",
+    "pitch_200/Nut_1.stl": "2d87f36f3267c42f8b44c3d063775c3db0dc808c36cab879a781a5b9ffcd5d4b",
+    "pitch_200/Pads.stl": "01292bd6b66a1df6ae9e6b4a01edbfa27f59613b48cedda7a7b3e5bc52cfee47",
+    "pitch_200/Plunger_00.stl": "f51ae7f1866421268858ca9d68fb2848a6406e8e24a1d98ec0074eeef9d085f3",
+    "pitch_200/Plunger_01.stl": "fd9b71e809b6fbe1f0377532f0b806d4761797f34ab1d596d95e949cf02838de",
+    "pitch_200/Plunger_02.stl": "b52870202c58f5821d720cbcd1cf4aae94a5410c9d78e98ef3f517e974c5b652",
+    "pitch_200/Plunger_03.stl": "6c436dbfde9b40b9abb28bc3888bf082c9914cf5692b33c558d310de10804354",
+    "pitch_200/Plunger_04.stl": "a3b5f8d1044b2930489b64a372a5d9415cbc14f1d6a68c90fd6036446cbfc540",
+    "pitch_200/Plunger_05.stl": "75c36424d4c3168245a18d408042750fc2f879df6b05c132053918682df69c1e",
+    "pitch_200/Plunger_06.stl": "e527c077087c767e5d4bdb06cc0534652d194868cd63bfda49594281c8d823f6",
+    "pitch_200/Plunger_07.stl": "6933497561e5e1023d2ded0cfb8893754af6196ddb89a61524af3e37a1a6b8cc",
+    "pitch_200/Plunger_08.stl": "543ce77617a11898484a94a3eaf40f7dfa37a060253b4f714b2dd992b8a044c4",
+    "pitch_200/Plunger_09.stl": "d4cae468754b2465387c9c6dcc7a8b81bbe9ffba54264964123a26c1b0efe6e3",
+    "pitch_200/Plunger_10.stl": "a22de1f356597fe2b1ae2559624a04ebf2db0932853b6e43bbb7a622a3e4389d",
+    "pitch_200/Plunger_11.stl": "00ddc2b6def968835f9aafd4e930959eb3aa898f3548de59072d10601d7d665e",
+    "pitch_200/Probe.stl": "48dc5348b9ebc1c1ba2717837c1822465ed9833bcd131900ee5b43cec53f9a52",
+    "pitch_200/Screw_0.stl": "b6344ba9fb9a274f4ded704af2eda386d2aaed061cf9208402baf3810e1ab96f",
+    "pitch_200/Screw_1.stl": "222be992e0940e4fb707dc1ce14672459540552cedaf7554965816412d87a2aa",
+    "pitch_200/Spring.stl": "26a425effa621205c971df317f772fa1eb8a4f17062a56047fbb713281c71eb0",
+    "pitch_200/UpperJaw.stl": "a1298b9288039fc1201cd33a3f6d718c18ca236fa7b2981f00e1d65a4f2bb0e4",
+    "pitch_254/Barrel_00.stl": "3c3d89df07331b383664ecba0fbac5d1888d5c3b664e8fe441c7103b3fbed323",
+    "pitch_254/Barrel_01.stl": "194193d887297c7799ee1aff81f6b16dd6b7af21c04b66d1dc73c54b10c0ad36",
+    "pitch_254/Barrel_02.stl": "801e56bd33f72451643866008c6e3cafd7cb64b86942d8b81240ce6a8f2bb944",
+    "pitch_254/Barrel_03.stl": "6b983bf601ebbaa4c9b26de959abde43086615b06cbb985a467bd965b1ee43a6",
+    "pitch_254/Barrel_04.stl": "4415773c03707b89cc276598025e8afe17b2ebf71430eb4568be73f33837e4bb",
+    "pitch_254/Barrel_05.stl": "9ce576f9ed8daf9ba5892f5995d35ef9a84179d2519fe500e46ae090d26ee8bc",
+    "pitch_254/Barrel_06.stl": "5e347f6ca7e5b136a757420e61f08408a848b950e2153d00d227f7277cf97d0f",
+    "pitch_254/Barrel_07.stl": "86a49ee0fe4e2fa4c5d7f4c9767912085f9eed76f87cc386b532b448aec8de7f",
+    "pitch_254/Barrel_08.stl": "e374c836e31513a5c937327f4bdd7fe88901f4eb18aaad3bee1a4e24d9368bbc",
+    "pitch_254/Barrel_09.stl": "a6fe293e9c895454956ae213a2c3d662fda840751c99da4bbadca1239842b4ab",
+    "pitch_254/Barrel_10.stl": "80e4235f9f00525350baed4503b5ee3b645af1a7a84125d439532ca785830af3",
+    "pitch_254/Barrel_11.stl": "1bcaf62bcd8d170df99a4281e408db0a8b5519b74933afada97ad7b5670182c1",
+    "pitch_254/clip.FCStd": "c03bcdfed44a3ae590179723cd1e6882686064c81a80df7f3ae3f19feb01728a",
+    "pitch_254/clip.FCStd1": "a7daf13a66bce25942e90a96174bca877843f1a6c9d3c5760e3ad79c68fabc5e",
+    "pitch_254/clip.step": "5a41a5bbbf64a9bbf8a4b9438e225717f75de777a96cea043a29a447029c1675",
+    "pitch_254/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
+    "pitch_254/Guide.stl": "f6cdf8ec73ed380dab0959574996bcf94709735b59f4886d0b585ad9e0925153",
+    "pitch_254/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
+    "pitch_254/HeaderPins.stl": "ad8363edeb9292ef377e87f08c421b17c88dbc0996d4d6878d55f13518f6286f",
+    "pitch_254/Hinge.stl": "a61b00c5a6bfcc1a6c7a366dc33cb5f64b01a23232287d623b0039be3edb2d7c",
+    "pitch_254/LowerJaw.stl": "5d644c5fe7c4feae51034eaa23aad922d657ef26955f2434dc87c2a4a9b051bb",
+    "pitch_254/meshes.json": "1a575f727e0adef407a46927e831010d3bb2c2fc29b734375f53a35f12899368",
+    "pitch_254/Nut_0.stl": "51f6a98093700a4fb38bd6f1e5090e08450787522ff9f72211a2d99bb8110824",
+    "pitch_254/Nut_1.stl": "2d87f36f3267c42f8b44c3d063775c3db0dc808c36cab879a781a5b9ffcd5d4b",
+    "pitch_254/Pads.stl": "1605c605afc39764080b22a0a81f2558f0913a6b5f680012734fb32e0593956d",
+    "pitch_254/Plunger_00.stl": "f8b2936f57745a7177b84a97da59155d44347117a12b604595bbdffa4cb2e92f",
+    "pitch_254/Plunger_01.stl": "70b8f1fc915ca05143118db8c332146fa6e939542e7a68801153bacadede0235",
+    "pitch_254/Plunger_02.stl": "3135cba039a461cc6cfbb663fe849d01cca2d4f38a910809e7c5c7a60d923c43",
+    "pitch_254/Plunger_03.stl": "0832a260473702cdfd1f21d32b7434a0107d505ea03e3acb7402d2211c46d59c",
+    "pitch_254/Plunger_04.stl": "8fa06e485e8200580942ca3b8c33ee1fe7adfaeabf1dc96217c1ff0de88c16e3",
+    "pitch_254/Plunger_05.stl": "d6f0ac2a4c4756a40bf37ce4b7d4c100fca936773f197617ae85cfb90f1ac2a7",
+    "pitch_254/Plunger_06.stl": "01f5b53fd978e3c47229033947b783a4f023d626d30aa68d1b7a1a9ac1cf5e8b",
+    "pitch_254/Plunger_07.stl": "769fc63cfa7b2c355b385b12e6d77910561d566c68461a161c7705a656dd13b8",
+    "pitch_254/Plunger_08.stl": "10c26320d8a57612816fe3e80956e7756db0cca66a0208d85a83ed1bd3b4429e",
+    "pitch_254/Plunger_09.stl": "0d2355ccf0f1f265ef6d3178b9a47b4323d051528515ab355cd01c94f0113bba",
+    "pitch_254/Plunger_10.stl": "da979b4b86236b94e188f00f7a9f20722216d4aa7558c0bc508f5e23caf3e8c0",
+    "pitch_254/Plunger_11.stl": "7e536f6d859ddb73a1aad9f90d7af1d93bc8f1054aca55e1f74fdf8e3b6db927",
+    "pitch_254/Probe.stl": "0c2f418b875efac07874a3be04351f7975bfe48a3d0aa023e23af33e2f2196a4",
+    "pitch_254/Screw_0.stl": "b6344ba9fb9a274f4ded704af2eda386d2aaed061cf9208402baf3810e1ab96f",
+    "pitch_254/Screw_1.stl": "222be992e0940e4fb707dc1ce14672459540552cedaf7554965816412d87a2aa",
+    "pitch_254/Spring.stl": "26a425effa621205c971df317f772fa1eb8a4f17062a56047fbb713281c71eb0",
+    "pitch_254/UpperJaw.stl": "a1298b9288039fc1201cd33a3f6d718c18ca236fa7b2981f00e1d65a4f2bb0e4"
+  },
+  "pcb_sha256": "f844ee0df92d4f6f85eaed4eaf02b5c35ee97af6636cb68fc87b3dc8dcbfeee1"
+}

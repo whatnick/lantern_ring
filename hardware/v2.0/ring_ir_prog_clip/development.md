@@ -13,6 +13,19 @@ repository root.
 - `fit_check.py` builds and checks the clip stack in FreeCAD.
 - `test_prog_clip.py` checks the PCB interfaces and generated fit report.
 - `build.ps1` runs the complete KiCad and FreeCAD pipeline.
+- `assembly_parameters.json` separates readable album measurements from estimated
+  kit geometry and declares the 1.27/2.00/2.54 mm grids and custom IR variant.
+- `assembly_interface.py` checks square-pad containment against the actual IR PCB
+  geometry, with a stale-board hash gate.
+- `assembly_model.py` reconstructs the photographed kit, uses the existing IR
+  fixture geometry, and checks every solid pair (only the deliberate header/body
+  embedding is excluded), 13 hinge poses and estimated spring compression.
+- `animation/assemble.py` renders those same FreeCAD meshes in Blender, not a
+  separately drawn approximation. The spring is visually scaled in Blender;
+  the CAD check rebuilds its helix at each pose. Frame assembly flights are
+  instructional, not an assembly-path collision certification.
+- `images/sources.json` records album image URLs, indices and downloaded-image
+  SHA256 hashes. The photographs are user supplied, not renders.
 
 The board geometry is derived from the v2 IR PCB's pads, nets, outline, front
 mask opening and component courtyards. Estimated clip-kit geometry is based on
@@ -42,3 +55,31 @@ boards or fabrication files. Update the source parameters and rebuild.
 
 After assembly, check that `avrdude -c usbasp -p t85` consistently reads the
 ATtiny85 signature `0x1e930b` before securing the anvil stack in place.
+
+## Album reconstruction and Blender animation
+
+This pipeline is separate from `build.ps1`: it does not alter the IR board,
+generated clip PCBs, ERC/DRC results or fabrication data. In particular, it does
+not mark the older `clip_kit.measured` flag true based on partial measurements.
+The source configuration remains explicit about unresolved dimensions.
+
+```powershell
+& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_ir_prog_clip\assembly_model.py
+python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_assembly.py"
+& hardware\v2.0\ring_ir_prog_clip\animation\render.ps1 -SkipCAD
+```
+
+Without `-SkipCAD`, rendering first rebuilds and validates the CAD. `-StillsOnly`
+renders the five preview PNGs. Requires FreeCAD, Blender 5.2 and ffmpeg on PATH.
+Full rendering writes `generated/assembly/clip_assembly.blend`, MP4 and GIF,
+plus assembled/exploded/IR adapter/pitch stills. Frame PNGs are ignored in
+`animation/build/`; final deliverables and CAD are versioned.
+
+Each variant has an FCStd, STEP and per-component STL meshes in
+`generated/assembly/<variant>/`. These are visualization/reference geometry,
+not fabrication-approved replacement jaws or new electrically routed PCBs.
+`generated/assembly/validation.json` records source/PCB hashes, static and
+motion collisions, spring-coil gaps and FreeCAD tip/pad overlap fractions.
+The IR variant uses the existing custom 3.05 mm signal pattern and off-grid
+VCC, not a relabelled 2.54 mm stock grid. Stock grids cannot provide the front
+GND contact, and the illustrated kit header must not be treated as ISP wiring.

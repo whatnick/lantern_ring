@@ -1,0 +1,382 @@
+[
+  {
+    "name": "LowerJaw",
+    "file": "LowerJaw.stl",
+    "color": [
+      0.08,
+      0.11,
+      0.15
+    ],
+    "volume_mm3": 4500.5127
+  },
+  {
+    "name": "UpperJaw",
+    "file": "UpperJaw.stl",
+    "color": [
+      0.13,
+      0.17,
+      0.21
+    ],
+    "volume_mm3": 4421.5788
+  },
+  {
+    "name": "Grip",
+    "file": "Grip.stl",
+    "color": [
+      0.18,
+      0.22,
+      0.26
+    ],
+    "volume_mm3": 508.53
+  },
+  {
+    "name": "Hinge",
+    "file": "Hinge.stl",
+    "color": [
+      0.65,
+      0.68,
+      0.72
+    ],
+    "volume_mm3": 51.208
+  },
+  {
+    "name": "Spring",
+    "file": "Spring.stl",
+    "color": [
+      0.7,
+      0.73,
+      0.78
+    ],
+    "volume_mm3": 51.4006
+  },
+  {
+    "name": "Probe",
+    "file": "Probe.stl",
+    "color": [
+      0.42,
+      0.12,
+      0.54
+    ],
+    "volume_mm3": 631.7998
+  },
+  {
+    "name": "Guide",
+    "file": "Guide.stl",
+    "color": [
+      0.32,
+      0.1,
+      0.43
+    ],
+    "volume_mm3": 475.3198
+  },
+  {
+    "name": "Barrel_00",
+    "file": "Barrel_00.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_00",
+    "file": "Plunger_00.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_01",
+    "file": "Barrel_01.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_01",
+    "file": "Plunger_01.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_02",
+    "file": "Barrel_02.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_02",
+    "file": "Plunger_02.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_03",
+    "file": "Barrel_03.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_03",
+    "file": "Plunger_03.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_04",
+    "file": "Barrel_04.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_04",
+    "file": "Plunger_04.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_05",
+    "file": "Barrel_05.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_05",
+    "file": "Plunger_05.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_06",
+    "file": "Barrel_06.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_06",
+    "file": "Plunger_06.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_07",
+    "file": "Barrel_07.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_07",
+    "file": "Plunger_07.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_08",
+    "file": "Barrel_08.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_08",
+    "file": "Plunger_08.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_09",
+    "file": "Barrel_09.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_09",
+    "file": "Plunger_09.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_10",
+    "file": "Barrel_10.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_10",
+    "file": "Plunger_10.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Barrel_11",
+    "file": "Barrel_11.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 3.7888
+  },
+  {
+    "name": "Plunger_11",
+    "file": "Plunger_11.stl",
+    "color": [
+      0.92,
+      0.72,
+      0.25
+    ],
+    "volume_mm3": 0.3004
+  },
+  {
+    "name": "Screw_0",
+    "file": "Screw_0.stl",
+    "color": [
+      0.68,
+      0.71,
+      0.76
+    ],
+    "volume_mm3": 43.0964
+  },
+  {
+    "name": "Nut_0",
+    "file": "Nut_0.stl",
+    "color": [
+      0.68,
+      0.71,
+      0.76
+    ],
+    "volume_mm3": 17.1437
+  },
+  {
+    "name": "Screw_1",
+    "file": "Screw_1.stl",
+    "color": [
+      0.68,
+      0.71,
+      0.76
+    ],
+    "volume_mm3": 43.0964
+  },
+  {
+    "name": "Nut_1",
+    "file": "Nut_1.stl",
+    "color": [
+      0.68,
+      0.71,
+      0.76
+    ],
+    "volume_mm3": 17.1437
+  },
+  {
+    "name": "Header",
+    "file": "Header.stl",
+    "color": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "volume_mm3": 194.31
+  },
+  {
+    "name": "HeaderPins",
+    "file": "HeaderPins.stl",
+    "color": [
+      0.95,
+      0.8,
+      0.35
+    ],
+    "volume_mm3": 27.0
+  },
+  {
+    "name": "Pads",
+    "file": "Pads.stl",
+    "color": [
+      0.95,
+      0.72,
+      0.22
+    ],
+    "volume_mm3": 0.181
+  }
+]

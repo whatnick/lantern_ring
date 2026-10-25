@@ -1,0 +1,172 @@
+[
+  {
+    "name": "LowerJaw",
+    "file": "LowerJaw.stl",
+    "color": [
+      0.08,
+      0.11,
+      0.15
+    ],
+    "volume_mm3": 4500.5127
+  },
+  {
+    "name": "UpperJaw",
+    "file": "UpperJaw.stl",
+    "color": [
+      0.13,
+      0.17,
+      0.21
+    ],
+    "volume_mm3": 4421.5788
+  },
+  {
+    "name": "Grip",
+    "file": "Grip.stl",
+    "color": [
+      0.18,
+      0.22,
+      0.26
+    ],
+    "volume_mm3": 508.53
+  },
+  {
+    "name": "Hinge",
+    "file": "Hinge.stl",
+    "color": [
+      0.65,
+      0.68,
+      0.72
+    ],
+    "volume_mm3": 51.208
+  },
+  {
+    "name": "Spring",
+    "file": "Spring.stl",
+    "color": [
+      0.7,
+      0.73,
+      0.78
+    ],
+    "volume_mm3": 51.4006
+  },
+  {
+    "name": "Anvil",
+    "file": "Anvil.stl",
+    "color": [
+      0.36,
+      0.2,
+      0.52
+    ],
+    "volume_mm3": 487.3342
+  },
+  {
+    "name": "Ring",
+    "file": "Ring.stl",
+    "color": [
+      0.08,
+      0.36,
+      0.2
+    ],
+    "volume_mm3": 442.6314
+  },
+  {
+    "name": "RingParts",
+    "file": "RingParts.stl",
+    "color": [
+      0.85,
+      0.85,
+      0.8
+    ],
+    "volume_mm3": 99.139
+  },
+  {
+    "name": "Fence",
+    "file": "Fence.stl",
+    "color": [
+      0.42,
+      0.25,
+      0.6
+    ],
+    "volume_mm3": 341.1135
+  },
+  {
+    "name": "Guide",
+    "file": "Guide.stl",
+    "color": [
+      0.32,
+      0.1,
+      0.43
+    ],
+    "volume_mm3": 521.1854
+  },
+  {
+    "name": "Probe",
+    "file": "Probe.stl",
+    "color": [
+      0.42,
+      0.12,
+      0.54
+    ],
+    "volume_mm3": 521.1854
+  },
+  {
+    "name": "Riser",
+    "file": "Riser.stl",
+    "color": [
+      0.95,
+      0.55,
+      0.15
+    ],
+    "volume_mm3": 3033.0983
+  },
+  {
+    "name": "Pins",
+    "file": "Pins.stl",
+    "color": [
+      0.95,
+      0.76,
+      0.25
+    ],
+    "volume_mm3": 79.4392
+  },
+  {
+    "name": "Header",
+    "file": "Header.stl",
+    "color": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "volume_mm3": 96.774
+  },
+  {
+    "name": "HeaderPins",
+    "file": "HeaderPins.stl",
+    "color": [
+      0.95,
+      0.8,
+      0.35
+    ],
+    "volume_mm3": 32.3174
+  },
+  {
+    "name": "Screws",
+    "file": "Screws.stl",
+    "color": [
+      0.78,
+      0.8,
+      0.82
+    ],
+    "volume_mm3": 86.1927
+  },
+  {
+    "name": "Nuts",
+    "file": "Nuts.stl",
+    "color": [
+      0.7,
+      0.72,
+      0.74
+    ],
+    "volume_mm3": 34.2874
+  }
+]

@@ -8,12 +8,44 @@ matched to the ring. The parts are the jaws, spring and hardware from the
 [AliExpress DIY pogo clip kit](https://www.aliexpress.com/item/1005006153573416.html),
 with its generic guide PCBs replaced by the boards here.
 
-> **Status: generated, checked in KiCad, and fitted virtually in FreeCAD.**
+> **Status: kit physically assembled; custom IR adapter still virtual.**
 > ERC and DRC pass with zero violations of any severity. The FreeCAD fit check
 > passes against a clip model built from **photo and datasheet estimates**,
-> because the seller publishes no drawing. The clip has not been built or
-> physically fitted, and it has not programmed a ring. The clip dimensions and
-> pogo-pin dimensions are unmeasured.
+> because the seller publishes no drawing. The AliExpress kit has now been
+> assembled and photographed with calipers. The new reconstruction below uses
+> readable measurements, but mounting geometry and spring travel remain estimates.
+> The custom probe/anvil/fence boards have not been physically fitted or used
+> to program a ring. The original PCB fit report retains its estimated inputs.
+
+## Kit assembly animation
+
+![Clip implosion, explosion and pogo pitch variants](generated/assembly/clip_assembly.gif)
+
+[Assembly video (MP4)](generated/assembly/clip_assembly.mp4) shows the lower jaw,
+compression spring, upper jaw, hinge, grip block, guide/probe PCBs, screws/nuts,
+pogo pins and header coming together, separating, and opening at the hinge.
+It compares **1.27, 2.00 and 2.54 mm** grids and the separate IR adapter.
+Fine-pitch pins require different guide drills; do not force large pins into them.
+The flights apart identify parts, not a collision-verified tool-access sequence.
+
+**A stock 2.54 mm pogo grid is not a direct match to this IR board.** Its signal
+test pads are on a **3.05 mm grid**, VCC is off-grid, and ground is on the front.
+The 2.54 mm AVR ISP *header* pitch must not be confused with pogo spacing.
+FreeCAD places a centred 2.54 mm grid optimistically over six pads: outer pin
+centres miss by 0.51 mm across and 0.255 mm along the rows (0.570 mm diagonally).
+The outer tip faces overlap only about 40% of the nominal pads; this is not
+a dependable contact. Extra stock pins and wiring are not assumed safe.
+Use the custom seven-pin probe/guide plus the front-ground anvil, not stock PCBs.
+
+The reconstructed body passes solid/STEP round-trip, all-pair static collision
+and 13-position hinge-opening checks for each variant (0 to 6 degrees).
+Estimated spring geometry is compressed at each pose and checked for jaw
+interference and coil spacing; this is **not** a force or fatigue simulation.
+The custom pins nominally cover their pads, but a 0.9 mm tip on a 1 mm pad has
+only **0.05 mm** edge margin: physical registration still needs qualification.
+Threads, solder joints, spring-end seating and cable clearance are not resolved.
+The IR adapter retains the earlier unmeasured P75 length/travel assumptions;
+the album's 14.0/16.4 mm loose pins are not interchangeable without a stack rebuild.
 
 ![Clipped prototype, virtual FreeCAD fit](generated/fit/clipped_iso.png)
 
@@ -180,14 +212,31 @@ lower-jaw tip; the riser carries that load.
 
 ## Actual photos and measurements of AliExpress Clip
 
-![Top clip body image with ruler](./images/)
-![Jaw width with vernier](./images/)
-![Side both clips with ruler](./images/)
-![Bottom clip body image with ruler](./images/)
+[Clip Programmer Assembly album](https://photos.google.com/share/AF1QipNwx2ELJVqs2tECPYQ5cwoX293osVatVeGoo2XyBIm2Dzrf3vpLs3F5LxYhLjrQvA?key=RVRZOGVPc3RqZ1FpdEt0eEJ4c1piN01uNm1QZm9n)
+is the source for these kit photographs, not AI imagery.
 
-Clip main dimensions and mechanical drawing - traced
+| Kit parts laid out | Assembled kit |
+| --- | --- |
+| ![Loose jaws and fasteners](images/album_02.jpg) | ![Actual assembled kit](images/album_19.jpg) |
 
-![Isometric mechanical drawing](./images/)
+| Readable caliper measurement | Value | Qualification |
+| --- | --- | --- |
+| Body length | about 60.4 mm | multiple readings/angles; use +/-0.3 mm reconstruction uncertainty |
+| Body/board width | 16.3 mm | photo 16; jaw contact points are partly obscured |
+| Loose pogo lengths | 16.4 and 14.0 mm | photos 11/12; do not infer rated stroke |
+| Thin shaft diameter | 0.6 mm | photo 9; not the large pin's barrel |
+| Loose screw lengths | 11.0, 12.8, 14.9 mm | photos 4/6/13; under-head datum and screw roles unresolved |
+
+Only these readings are treated as measurements. Hinge position, jaw profiles,
+mounting centres, spring dimensions and pogo stroke are estimated. The stock
+grid models are configurable illustrations, not reverse-engineered Gerbers
+or certified drawings. The photographed stock PCB is labelled **1.5**; the
+1.27/2.00/2.54 mm models are pitch studies, not claimed readings of that board.
+The old estimated fit model remains separately documented.
+
+| Reconstructed kit | Separated parts |
+| --- | --- |
+| ![Assembled CAD reconstruction](generated/assembly/assembled.png) | ![Exploded CAD reconstruction](generated/assembly/exploded.png) |
 
 ## Assembly
 

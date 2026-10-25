@@ -13,6 +13,11 @@ insulating contact/battery insert unless a separately reviewed design changes it
 The ATtiny85 IR board's programming fixture is a KiCad generator, not FreeCAD:
 see `hardware/v2.0/ring_ir_prog_clip/README.md`. Do not reuse the mono-board
 contact map for it.
+The photographed kit reconstruction uses `assembly_parameters.json`,
+`assembly_model.py` and `animation/render.ps1` in that directory. Preserve
+measurement/photo provenance and keep unresolved geometry marked estimated.
+The stock 2.54 mm pogo grid does not match the IR board's 3.05 mm signal grid,
+off-grid VCC and front-side GND; the 2.54 mm ISP header is a different interface.
 
 Use this skill for Lantern Ring enclosure, PCB fit, battery contacts, FreeCAD
 regeneration, printing or mechanical review. Work from

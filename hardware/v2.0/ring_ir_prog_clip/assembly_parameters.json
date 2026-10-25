@@ -1,0 +1,49 @@
+{
+  "album": "https://photos.google.com/share/AF1QipNwx2ELJVqs2tECPYQ5cwoX293osVatVeGoo2XyBIm2Dzrf3vpLs3F5LxYhLjrQvA?key=RVRZOGVPc3RqZ1FpdEt0eEJ4c1piN01uNm1QZm9n",
+  "status": "Partially measured reconstruction, not a fabrication drawing or programming qualification",
+  "measurements": {
+    "body_length": {"mm": 60.4, "uncertainty_mm": 0.3, "source": "album 22/23/25: 60.4, 60.6, 60.3 mm; 26 reads 59.8 mm at a different jaw angle"},
+    "body_width": {"mm": 16.3, "uncertainty_mm": 0.3, "source": "album 16 caliper across body/boards"},
+    "long_pogo_length": {"mm": 16.4, "uncertainty_mm": 0.2, "source": "album 11"},
+    "short_pogo_length": {"mm": 14.0, "uncertainty_mm": 0.2, "source": "album 12"},
+    "thin_shaft_diameter": {"mm": 0.6, "uncertainty_mm": 0.1, "source": "album 9; not established as the large pin barrel diameter"},
+    "loose_screw_lengths": {"mm": [11.0, 12.8, 14.9], "source": "album 4/6/13; screw roles and under-head datum are not established"}
+  },
+  "estimated": {
+    "jaw_tip_thickness": 4.4,
+    "hinge_x": 27.5,
+    "hinge_z": 5.5,
+    "hinge_radius": 1.0,
+    "upper_tip_x": 7.5,
+    "spring_x": 53.0,
+    "spring_radius": 2.7,
+    "spring_wire_radius": 0.4,
+    "spring_turns": 6,
+    "working_gap": 9.8,
+    "board_thickness": 1.6,
+    "mount_hole_pitch": 9.0,
+    "mount_x": 11.0,
+    "mount_screw_length": 10.0,
+    "pogo_barrel_diameter": 1.02,
+    "pogo_tip_diameter": 0.9,
+    "pogo_plunger_diameter": 0.74,
+    "pogo_free_extension": 4.0,
+    "pogo_travel": 2.5,
+    "pogo_working_compression": 1.65,
+    "fine_pogo_barrel_diameter": 0.6,
+    "fine_pogo_tip_diameter": 0.4,
+    "fine_pogo_plunger_diameter": 0.35,
+    "fine_pogo_free_extension": 3.0,
+    "fine_pogo_travel": 1.5,
+    "fine_pogo_working_compression": 0.8,
+    "guide_hole_clearance": 0.13,
+    "registration_uncertainty": 0.15,
+    "open_angle_deg": 6.0
+  },
+  "variants": [
+    {"id": "pitch_127", "pitch_mm": 1.27, "columns": 6, "rows": 2, "pins": "fine", "label": "1.27 mm | fine pins | generic jig"},
+    {"id": "pitch_200", "pitch_mm": 2.0, "columns": 6, "rows": 2, "pins": "standard", "label": "2.00 mm | standard pins | generic jig"},
+    {"id": "pitch_254", "pitch_mm": 2.54, "columns": 6, "rows": 2, "pins": "standard", "label": "2.54 mm | standard pins | NOT a direct IR match"},
+    {"id": "ir_custom", "pitch_mm": 3.05, "pins": "standard", "label": "IR custom | 3.05 mm signals + offset VCC + front GND"}
+  ]
+}
