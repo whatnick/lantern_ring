@@ -371,7 +371,7 @@
   ],
   "inputs_sha256": {
     "parameters.json": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
-    "generated/geometry.json": "78daa038577fe55baccd7b3be2740c1385bba87458f18893053c76f8be2234d5",
+    "generated/geometry.json": "45133993b6b2be4bd2a13579dc3fb3348a03f22c3be037b7b2ed85fb59d7a94f",
     "fit_check.py": "47a28ea7d2def122acd12ea25d7045db76f7f69cae3a0ddc19462d7e12b57483"
   },
   "outputs": [

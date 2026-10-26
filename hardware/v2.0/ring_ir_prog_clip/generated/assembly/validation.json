@@ -813,9 +813,9 @@
     "assembly_model.py": "c91c748e86860f4f3c6702bc0f4a0e700ac306f2eafb9747efb4471cec2616c1",
     "fit_check.py": "47a28ea7d2def122acd12ea25d7045db76f7f69cae3a0ddc19462d7e12b57483",
     "parameters.json": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
-    "generated/geometry.json": "78daa038577fe55baccd7b3be2740c1385bba87458f18893053c76f8be2234d5",
+    "generated/geometry.json": "45133993b6b2be4bd2a13579dc3fb3348a03f22c3be037b7b2ed85fb59d7a94f",
     "export_ir_visual.py": "d44518e0ea29bf13ee0ac59b86895a4d85ba02b381ac9ae66fb3e4476dbb7b9d",
-    "generated/assembly/ir_board_layers.json": "7b881a74628921c8818ac925866bd3371c7a5a9331bfed40b9731497b72a067a",
+    "generated/assembly/ir_board_layers.json": "7b3318722480cf4179f087ef6141ce939f35f7c7fc1991d2e6b2414dbef072b6",
     "generated/assembly/clip_board_layers.json": "64b5e9b56bb2f072c4d55e71237944a612806311a54431c76e036f3b7b268dc3"
   },
   "artifact_sha256": {
@@ -826,8 +826,8 @@
     "ir_custom/AnvilPCB_rearCopper.stl": "0d7133759c56993761c63a0cc7b85405eb34ec8031950b04a94fa37f2c11d796",
     "ir_custom/AnvilPCB_rearMask.stl": "285e17afd8b82f348e128eecec85b12c703c7802505c76cda59cd6a8f05be977",
     "ir_custom/AnvilPCB_rearSilk.stl": "52beace52c0cf8c47c193f5466ed1990a7b192a5446cfebb56b8f1a41d13375b",
-    "ir_custom/clip.FCStd": "873fa4bde3755f4fe02738bdcb6d2a17900b3a4cdab77090c538002ec28e8461",
-    "ir_custom/clip.step": "3952935e0ee94e743894f93bc726d6cf313c022224bdb3dd07e0bd4da9451420",
+    "ir_custom/clip.FCStd": "6860567a8f1401144386ee862099c977b188fbcaff8e549c5d6baa661e0c751e",
+    "ir_custom/clip.step": "03cf54b35d234913a18c9baebdf15039125f2f6f6d27cdfe2f6b330ce8db8243",
     "ir_custom/Fence.stl": "0c91cad0a157fd3e7c56732209ddf2dd8dc708cd7bb9f17ffd9faf4212fd46da",
     "ir_custom/FencePCB_frontMask.stl": "3e2f141d8663efdd985b4e9c9d5d0ed688ca68e91a62fd9574a306e12baa2520",
     "ir_custom/FencePCB_frontSilk.stl": "668b7c537f53a49a31a15d33aed628e336ab1008aaf4ba7a448c975fc85798d8",
@@ -878,8 +878,8 @@
     "pitch_127/Barrel_09.stl": "c82fb0dd94bedfa4bd34a973577221b816e14cda46128d0b413d35e9e60f6648",
     "pitch_127/Barrel_10.stl": "2bfd3d4b6219298e7213566746387bef46be871135d53f0701f720980b97775d",
     "pitch_127/Barrel_11.stl": "64f988c1e378eb5ed0869a023b1e856012739a8eb008403f841d90bb17b97f52",
-    "pitch_127/clip.FCStd": "2ff8348c578d400590a6e96320af1fee262449d74ca5152b2cd56deac0a032af",
-    "pitch_127/clip.step": "a106e767d888db20904f2cc5408e9991e0e0230613d35e4b26647872d05c9fab",
+    "pitch_127/clip.FCStd": "660d67d9089fdd89823f83c305182de6e9c8d199fc192969e061d541145924e0",
+    "pitch_127/clip.step": "67bd8ea1d22c8e192ae57e24493713c00a1090fd65ccb3378ccf0e157b49538b",
     "pitch_127/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "pitch_127/Guide.stl": "5299abedc2b490489c3046cfcf4d74e503aa6d1575c5d14f450723bd82388661",
     "pitch_127/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
@@ -919,8 +919,8 @@
     "pitch_200/Barrel_09.stl": "f8385c2a21fb69e04833f39320d91f987431b1c76bbffe0b80f2d2146c8d33e7",
     "pitch_200/Barrel_10.stl": "82ee9759b36d12a37afc815c68bb491dc69a470b35d226a3488fe786dfce6eb6",
     "pitch_200/Barrel_11.stl": "a02c177bae28b0b4cb23e347acff7a00762896dd29c86bbd52d920d8fe0031d4",
-    "pitch_200/clip.FCStd": "f877136174161c7219b43368c5860bbe3eebb97d7e7ef123d08a291e0e3b9bc8",
-    "pitch_200/clip.step": "37936d180e37c3e2962cbffa32b1b929df2c048ec9ce70fe417b55a54f7a2369",
+    "pitch_200/clip.FCStd": "4f57072123721355ba5b14676f08b17514a1978d327edd5396ad5b3516d05946",
+    "pitch_200/clip.step": "cc8a3e66325ffe3ee3f381df4980170399198427433a962ca1f4cf19ee025e07",
     "pitch_200/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "pitch_200/Guide.stl": "6f1b6fcaa9aa9a75f3108a83a306a5ea1f3c1afac80dc1f3487df48271402e12",
     "pitch_200/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
@@ -960,8 +960,8 @@
     "pitch_254/Barrel_09.stl": "a6fe293e9c895454956ae213a2c3d662fda840751c99da4bbadca1239842b4ab",
     "pitch_254/Barrel_10.stl": "80e4235f9f00525350baed4503b5ee3b645af1a7a84125d439532ca785830af3",
     "pitch_254/Barrel_11.stl": "1bcaf62bcd8d170df99a4281e408db0a8b5519b74933afada97ad7b5670182c1",
-    "pitch_254/clip.FCStd": "3d7aab635fbf1b541af7c998505c94962206e305dbf7db6255ab91683004ced0",
-    "pitch_254/clip.step": "6c968f2aead1058be06771dd64a68f4ec3d0e2edaf2b60106399e1ed17bc9ebe",
+    "pitch_254/clip.FCStd": "c6474ba633db6476424de94c76f8df91a91a8d6b12abbe5f0e1ba8fb88baf9d9",
+    "pitch_254/clip.step": "91b1f925c67633082fd387417a9663ada8fb3e5a230adb159ae2099cf3b11b72",
     "pitch_254/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "pitch_254/Guide.stl": "f6cdf8ec73ed380dab0959574996bcf94709735b59f4886d0b585ad9e0925153",
     "pitch_254/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
@@ -990,5 +990,5 @@
     "pitch_254/Spring.stl": "26a425effa621205c971df317f772fa1eb8a4f17062a56047fbb713281c71eb0",
     "pitch_254/UpperJaw.stl": "a1298b9288039fc1201cd33a3f6d718c18ca236fa7b2981f00e1d65a4f2bb0e4"
   },
-  "pcb_sha256": "f844ee0df92d4f6f85eaed4eaf02b5c35ee97af6636cb68fc87b3dc8dcbfeee1"
+  "pcb_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c"
 }

@@ -1,6 +1,6 @@
 {
   "target_board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
-  "target_sha256": "f844ee0df92d4f6f85eaed4eaf02b5c35ee97af6636cb68fc87b3dc8dcbfeee1",
+  "target_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
   "parameters_sha256": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
   "target_thickness_mm": 1.6,
   "pogo_pitch_mm": 3.05,

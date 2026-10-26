@@ -114,6 +114,16 @@ ISP J1.6 -> probe J2 -> wire -> anvil J1 -> P8 -> front TP8. Its interpolated
 shape is illustrative and excluded from rigid-solid collision claims.
 The electrical boards, routing and fabrication outputs are unchanged.
 
+The target IR PCB was resaved in KiCad 10 format, including standard 3D-model
+links migrated from KiCad 6 WRL to KiCad 10 STEP. Comparing both boards after
+KiCad 10 normalization confirms identical board objects apart from UUIDs,
+ordering and those model links; test-pad centres remain on a 3.05 mm grid.
+The target file hash and dependent clip/CAD provenance were regenerated.
+Existing IR-board findings remain unchanged: DRC has two starved-thermal errors
+and 33 warnings; ERC has two undriven-power errors and 107 warnings.
+These are legacy target-board findings, not the clip's zero-violation reports.
+No fabrication or animation geometry change is implied by this format migration.
+
 The repository skill
 [lantern-ring-ecad-mcad-render](../../../.github/skills/lantern-ring-ecad-mcad-render/SKILL.md)
 captures the reusable source/frame, electrical, mechanical and rendering gates.
