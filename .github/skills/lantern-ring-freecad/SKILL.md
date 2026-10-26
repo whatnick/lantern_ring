@@ -13,6 +13,8 @@ insulating contact/battery insert unless a separately reviewed design changes it
 The ATtiny85 IR board's programming fixture is a KiCad generator, not FreeCAD:
 see `hardware/v2.0/ring_ir_prog_clip/README.md`. Do not reuse the mono-board
 contact map for it.
+For the PCB-to-FreeCAD-to-Blender workflow also load the sibling
+`lantern-ring-ecad-mcad-render` skill.
 The photographed kit reconstruction uses `assembly_parameters.json`,
 `assembly_model.py` and `animation/render.ps1` in that directory. Preserve
 measurement/photo provenance and keep unresolved geometry marked estimated.

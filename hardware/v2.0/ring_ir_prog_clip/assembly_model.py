@@ -147,18 +147,13 @@ def ir_fixture(cfg):
                    "travel_mm": params["pogo"]["rated_travel"]}
 
 
-def ir_visual():
-    data = json.loads((OUT / "ir_board_layers.json").read_text())
-    if data["board_sha256"] != interface.sha256(HERE / ".." / "ring_pcb_IR" / "ring_pcb_IR.kicad_pcb"):
-        raise ValueError("Stale actual-board layers; run export_ir_visual.py with KiCad Python")
-    params, geometry = fit.load()
-    f = fit.frame(params, geometry)
+def board_visual(data, substrate, bottom, top, xy, prefix, top_side="rear"):
+    """Map real layer polygons onto a checked substrate; mask is openings' complement."""
     ox, oy = data["origin_xy_mm"]
-    bottom, top = f["z"]["anvil_top"], f["z"]["ring_top"]
 
     def face(poly, z):
         def wire(points):
-            pts = [V(y - oy - f["lt"], ox - x, z) for x, y in points]
+            pts = [V(*xy(x - ox, y - oy), z) for x, y in points]
             return Part.makePolygon(pts + [pts[0]])
         result = Part.Face(wire(poly["outer"]))
         for hole in poly["holes"]:
@@ -166,31 +161,61 @@ def ir_visual():
         return result
 
     visuals = {}
-    for side, z, direction in (("front", bottom - 0.003, -1), ("rear", top + 0.003, 1)):
-        board_face = Part.Face(Part.makePolygon(
-            [V(*f["xy"](*p), z) for p in geometry["fit_inputs"]["ring"]["outline"]] +
-            [V(*f["xy"](*geometry["fit_inputs"]["ring"]["outline"][0]), z)]))
+    bottom_side = "front" if top_side == "rear" else "rear"
+    for side, z, direction in ((bottom_side, bottom - 0.003, -1), (top_side, top + 0.003, 1)):
+        board_face = fit.compound([
+            p.copy() for p in substrate.Faces
+            if abs(p.BoundBox.ZLength) < 1e-7 and abs(p.CenterOfMass.z - top) < 1e-6])
+        board_face.translate(V(0, 0, z - top))
         openings = [face(p, z) for p in data["layers"][side + "_openings"]]
         mask = board_face
         for opening in openings:
             mask = mask.cut(opening)
+        opening_shape = fit.compound(openings)
         copper = []
         for p in data["layers"][side + "_copper"]:
             exposed = face(p, z).common(board_face)
             # Cu intersects the actual mask openings, including battery/front bars.
-            exposed = exposed.common(fit.compound(openings))
+            exposed = exposed.common(opening_shape) if openings else Part.Shape()
             if exposed.Area > 0:
                 exposed.translate(V(0, 0, direction * 0.001))
                 copper.append(exposed)
-        silk = [face(p, z + direction * 0.002)
-                for p in data["layers"][side + "_silk"]]
+        silk = []
+        for p in data["layers"][side + "_silk"]:
+            item = face(p, z).common(board_face)
+            item.translate(V(0, 0, direction * 0.002))
+            if item.Area > 0:
+                silk.append(item)
         for suffix, shape, color in (
                 ("Mask", mask, (0.025, 0.24, 0.08)),
                 ("Copper", fit.compound(copper), (0.88, 0.76, 0.42)),
                 ("Silk", fit.compound(silk), (0.92, 0.94, 0.87))):
-            if not shape.isValid() or shape.Area <= 0:
-                raise ValueError("Invalid actual PCB visual: " + side + suffix)
-            visuals["PCB_" + side + suffix] = (shape, color)
+            if shape.isNull() or shape.Area <= 0:
+                continue  # fence has no copper; some board sides have no silkscreen
+            if not shape.isValid():
+                raise ValueError("Invalid actual PCB visual: " + prefix + side + suffix)
+            if suffix == "Mask" and prefix != "PCB":
+                color = (0.29, 0.065, 0.42)
+            visuals[prefix + "_" + side + suffix] = (shape, color, direction)
+    return visuals
+
+
+def ir_visual(parts):
+    data = json.loads((OUT / "ir_board_layers.json").read_text())
+    if data["board_sha256"] != interface.sha256(HERE / ".." / "ring_pcb_IR" / "ring_pcb_IR.kicad_pcb"):
+        raise ValueError("Stale actual-board layers; run export_ir_visual.py with KiCad Python")
+    params, geometry = fit.load()
+    f = fit.frame(params, geometry)
+    visuals = board_visual(data, parts["Ring"], f["z"]["anvil_top"], f["z"]["ring_top"],
+                           lambda x, y: (y - f["lt"], -x), "PCB")
+    clip = json.loads((OUT / "clip_board_layers.json").read_text())["boards"]
+    for part, source in (("Probe", "probe"), ("Guide", "probe"), ("Anvil", "anvil"), ("Fence", "fence")):
+        path = HERE / source / ("ring_ir_prog_" + source + ".kicad_pcb")
+        if clip[source]["board_sha256"] != interface.sha256(path):
+            raise ValueError("Stale clip board layers: " + source)
+        shape = parts[part]
+        visuals.update(board_visual(clip[source], shape, shape.BoundBox.ZMin, shape.BoundBox.ZMax,
+                                    f["xy"], part + "PCB", top_side="front"))
     return visuals
 
 
@@ -287,14 +312,15 @@ def export(cfg, variant, parts):
         meshes.append({"name": name, "file": name + ".stl", "color": color,
                        "volume_mm3": round(shape.Volume, 4)})
     if variant["id"] == "ir_custom":
-        for name, (shape, color) in ir_visual().items():
+        for name, (shape, color, normal) in ir_visual(parts).items():
             obj = doc.addObject("PartDesign::Feature", name)
             obj.Shape = shape
             mesh = MeshPart.meshFromShape(Shape=shape, LinearDeflection=0.02,
                                           AngularDeflection=0.15, Relative=False)
             mesh.write(str(dest / (name + ".stl")))
             meshes.append({"name": name, "file": name + ".stl", "color": color,
-                           "visual_surface_only": True, "area_mm2": round(shape.Area, 4)})
+                           "visual_surface_only": True, "surface_normal_z": normal,
+                           "area_mm2": round(shape.Area, 4)})
     doc.recompute()
     doc.saveAs(str(dest / "clip.FCStd"))
     Part.export([obj for obj in doc.Objects if obj.Name in parts], str(dest / "clip.step"))
@@ -336,7 +362,8 @@ def main():
               "source_sha256": {name: interface.sha256(HERE / name) for name in (
                   "assembly_parameters.json", "assembly_interface.py", "assembly_model.py",
                   "fit_check.py", "parameters.json", "generated/geometry.json",
-                  "export_ir_visual.py", "generated/assembly/ir_board_layers.json")},
+                  "export_ir_visual.py", "generated/assembly/ir_board_layers.json",
+                  "generated/assembly/clip_board_layers.json")},
               "artifact_sha256": {path.relative_to(OUT).as_posix(): interface.artifact_sha256(path)
                                   for path in sorted(OUT.glob("*/*"))
                                   if path.is_file() and path.suffix in (".stl", ".step", ".FCStd", ".json")},

@@ -178,6 +178,7 @@
       0.08
     ],
     "visual_surface_only": true,
+    "surface_normal_z": -1,
     "area_mm2": 209.9697
   },
   {
@@ -189,6 +190,7 @@
       0.42
     ],
     "visual_surface_only": true,
+    "surface_normal_z": -1,
     "area_mm2": 61.6148
   },
   {
@@ -200,6 +202,7 @@
       0.87
     ],
     "visual_surface_only": true,
+    "surface_normal_z": -1,
     "area_mm2": 20.21
   },
   {
@@ -211,6 +214,7 @@
       0.08
     ],
     "visual_surface_only": true,
+    "surface_normal_z": 1,
     "area_mm2": 255.1216
   },
   {
@@ -222,6 +226,7 @@
       0.42
     ],
     "visual_surface_only": true,
+    "surface_normal_z": 1,
     "area_mm2": 19.7325
   },
   {
@@ -233,6 +238,259 @@
       0.87
     ],
     "visual_surface_only": true,
+    "surface_normal_z": 1,
     "area_mm2": 12.111
+  },
+  {
+    "name": "ProbePCB_rearMask",
+    "file": "ProbePCB_rearMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 302.4672
+  },
+  {
+    "name": "ProbePCB_rearCopper",
+    "file": "ProbePCB_rearCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 23.2737
+  },
+  {
+    "name": "ProbePCB_rearSilk",
+    "file": "ProbePCB_rearSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 2.0145
+  },
+  {
+    "name": "ProbePCB_frontMask",
+    "file": "ProbePCB_frontMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 302.4672
+  },
+  {
+    "name": "ProbePCB_frontCopper",
+    "file": "ProbePCB_frontCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 23.2737
+  },
+  {
+    "name": "ProbePCB_frontSilk",
+    "file": "ProbePCB_frontSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 10.2364
+  },
+  {
+    "name": "GuidePCB_rearMask",
+    "file": "GuidePCB_rearMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 302.4672
+  },
+  {
+    "name": "GuidePCB_rearCopper",
+    "file": "GuidePCB_rearCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 23.2737
+  },
+  {
+    "name": "GuidePCB_rearSilk",
+    "file": "GuidePCB_rearSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 2.0145
+  },
+  {
+    "name": "GuidePCB_frontMask",
+    "file": "GuidePCB_frontMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 302.4672
+  },
+  {
+    "name": "GuidePCB_frontCopper",
+    "file": "GuidePCB_frontCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 23.2737
+  },
+  {
+    "name": "GuidePCB_frontSilk",
+    "file": "GuidePCB_frontSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 10.2364
+  },
+  {
+    "name": "AnvilPCB_rearMask",
+    "file": "AnvilPCB_rearMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 302.8281
+  },
+  {
+    "name": "AnvilPCB_rearCopper",
+    "file": "AnvilPCB_rearCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 1.7558
+  },
+  {
+    "name": "AnvilPCB_rearSilk",
+    "file": "AnvilPCB_rearSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 3.887
+  },
+  {
+    "name": "AnvilPCB_frontMask",
+    "file": "AnvilPCB_frontMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 295.3821
+  },
+  {
+    "name": "AnvilPCB_frontCopper",
+    "file": "AnvilPCB_frontCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 9.2018
+  },
+  {
+    "name": "AnvilPCB_frontSilk",
+    "file": "AnvilPCB_frontSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 4.9439
+  },
+  {
+    "name": "FencePCB_rearMask",
+    "file": "FencePCB_rearMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": -1,
+    "area_mm2": 213.1959
+  },
+  {
+    "name": "FencePCB_frontMask",
+    "file": "FencePCB_frontMask.stl",
+    "color": [
+      0.29,
+      0.065,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 213.1959
+  },
+  {
+    "name": "FencePCB_frontSilk",
+    "file": "FencePCB_frontSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "surface_normal_z": 1,
+    "area_mm2": 4.1075
   }
 ]

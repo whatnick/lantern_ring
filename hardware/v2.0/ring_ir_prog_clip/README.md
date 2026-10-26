@@ -34,6 +34,15 @@ models.
 
 ![Actual IR PCB from KiCad in the assembly](generated/assembly/ir_actual_pcb.png)
 
+The custom-adapter segment separates the **actual probe, second probe/guide,
+anvil and fence PCBs**, including their KiCad copper, mask and silkscreen.
+The black service loop shows the required ground connection:
+**ISP J1.6 → probe J2 → insulated wire → anvil J1 → ENIG P8 → front TP8**.
+Its flexible shape is illustrative, not a cable-clearance simulation.
+PB3/PB4 remain spare, unconnected positions on the probe.
+
+![Actual adapter PCBs separated for assembly](generated/assembly/ir_adapter_exploded.png)
+
 **A stock 2.54 mm pogo grid is not a direct match to this IR board.** Its signal
 test pads are on a **3.05 mm grid**, VCC is off-grid, and ground is on the front.
 The 2.54 mm AVR ISP *header* pitch must not be confused with pogo spacing.

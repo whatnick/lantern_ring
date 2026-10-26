@@ -75,9 +75,37 @@ class AssemblyTests(unittest.TestCase):
             self.assertAlmostEqual(y - oy, pad["uv"][1], places=6)
             self.assertEqual(actual["net"], pad["net"])
         meshes = json.loads((out / "ir_custom" / "meshes.json").read_text())
-        visuals = [p for p in meshes if p.get("visual_surface_only")]
+        visuals = [p for p in meshes if p.get("visual_surface_only") and p["name"].startswith("PCB_")]
         self.assertEqual(len(visuals), 6)
         self.assertTrue(all(p["area_mm2"] > 0 for p in visuals))
+
+    def test_actual_clip_layers_and_ground_path(self):
+        out = interface.HERE / "generated" / "assembly"
+        data = json.loads((out / "clip_board_layers.json").read_text())
+        self.assertEqual(data["exporter_sha256"], interface.sha256(interface.HERE / "export_ir_visual.py"))
+        for name, board in data["boards"].items():
+            path = interface.HERE / name / ("ring_ir_prog_" + name + ".kicad_pcb")
+            self.assertEqual(board["board_sha256"], interface.sha256(path))
+        from test_prog_clip import footprints
+        for name, board in data["boards"].items():
+            expected = footprints(str(interface.HERE / name / ("ring_ir_prog_" + name + ".kicad_pcb")))
+            for p in board["pads"]:
+                position, net, _ = expected[p["ref"]]["pads"][p["number"]]
+                self.assertEqual(net, p["net"])
+                for actual, target in zip(p["xy_mm"], position):
+                    self.assertAlmostEqual(actual, target, places=5)
+        probe = data["boards"]["probe"]["pads"]
+        anvil = data["boards"]["anvil"]["pads"]
+        for ref in ("J1", "J2"):
+            ground = [p for p in probe if p["ref"] == ref and p["net"] == "/GND"]
+            self.assertEqual(len(ground), 1)
+        self.assertEqual({p["net"] for p in anvil}, {"/GND"})
+        self.assertEqual({p["ref"] for p in anvil}, {"P8", "J1"})
+        meshes = json.loads((out / "ir_custom" / "meshes.json").read_text())
+        for part in ("Probe", "Guide", "Anvil", "Fence"):
+            self.assertTrue(any(p["name"].startswith(part + "PCB_") for p in meshes))
+        self.assertTrue(all(p["surface_normal_z"] in (-1, 1) for p in meshes
+                            if p.get("visual_surface_only")))
 
 
 if __name__ == "__main__":

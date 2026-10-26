@@ -14,6 +14,21 @@ def contour(line):
              round(pcbnew.ToMM(line.CPoint(i).y), 6)] for i in range(line.PointCount())]
 
 
+def board_layers(board):
+    layers = {}
+    for name, layer in (("front_copper", pcbnew.F_Cu), ("rear_copper", pcbnew.B_Cu),
+                        ("front_openings", pcbnew.F_Mask), ("rear_openings", pcbnew.B_Mask),
+                        ("front_silk", pcbnew.F_SilkS), ("rear_silk", pcbnew.B_SilkS)):
+        polygons = pcbnew.SHAPE_POLY_SET()
+        board.ConvertBrdLayerToPolygonalContours(layer, polygons)
+        polygons.Simplify()
+        layers[name] = [
+            {"outer": contour(polygons.Outline(i)),
+             "holes": [contour(polygons.Hole(i, j)) for j in range(polygons.HoleCount(i))]}
+            for i in range(polygons.OutlineCount())]
+    return layers
+
+
 def main():
     board_path = HERE / ".." / "ring_pcb_IR" / "ring_pcb_IR.kicad_pcb"
     board = pcbnew.LoadBoard(str(board_path))
@@ -27,17 +42,7 @@ def main():
                 "size_mm": [pcbnew.ToMM(pad.GetSize().x), pcbnew.ToMM(pad.GetSize().y)],
                 "net": pad.GetNetname(),
             }
-    layers = {}
-    for name, layer in (("front_copper", pcbnew.F_Cu), ("rear_copper", pcbnew.B_Cu),
-                        ("front_openings", pcbnew.F_Mask), ("rear_openings", pcbnew.B_Mask),
-                        ("front_silk", pcbnew.F_SilkS), ("rear_silk", pcbnew.B_SilkS)):
-        polygons = pcbnew.SHAPE_POLY_SET()
-        board.ConvertBrdLayerToPolygonalContours(layer, polygons)
-        polygons.Simplify()
-        layers[name] = [
-            {"outer": contour(polygons.Outline(i)),
-             "holes": [contour(polygons.Hole(i, j)) for j in range(polygons.HoleCount(i))]}
-            for i in range(polygons.OutlineCount())]
+    layers = board_layers(board)
     x = sorted({round(pads[r]["xy_mm"][0], 6) for r in ("TP1", "TP2", "TP3", "TP4", "TP5", "TP6")})
     y = sorted({round(pads[r]["xy_mm"][1], 6) for r in ("TP1", "TP2", "TP3", "TP4", "TP5", "TP6")})
     pitch = {"x_mm": [round(b - a, 6) for a, b in zip(x, x[1:])],
@@ -55,6 +60,21 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({"pad_centres": pads, "pitch": pitch}, indent=2))
+    clip = {}
+    for name in ("probe", "anvil", "fence"):
+        path = HERE / name / ("ring_ir_prog_" + name + ".kicad_pcb")
+        pcb = pcbnew.LoadBoard(str(path))
+        clip[name] = {
+            "board_sha256": interface.sha256(path), "origin_xy_mm": [150.0, 100.0],
+            "layers": board_layers(pcb),
+            "pads": [{"ref": fp.GetReference(), "number": p.GetNumber(), "net": p.GetNetname(),
+                      "xy_mm": [pcbnew.ToMM(p.GetPosition().x), pcbnew.ToMM(p.GetPosition().y)]}
+                     for fp in pcb.GetFootprints() for p in fp.Pads()],
+        }
+    (out.parent / "clip_board_layers.json").write_text(json.dumps({
+        "exporter_sha256": interface.sha256(__file__), "boards": clip,
+        "note": "Actual adapter PCB layers. Guide is an unpopulated second probe PCB."
+    }, indent=2) + "\n")
 
 
 if __name__ == "__main__":

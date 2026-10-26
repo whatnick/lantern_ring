@@ -20,6 +20,8 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v2.0/ring_ir_prog_clip`: KiCad 10 generated pogo-pin ISP clip PCBs
   (probe/anvil/fence) for `ring_pcb_IR`; geometry is derived from the IR board.
   `fit_check.py` (FreeCAD) fits them in the estimated clip jaw.
+  Load `lantern-ring-ecad-mcad-render` for actual-PCB layer export, clip assembly
+  reconstruction and Blender rendering; preserve measured/estimated provenance.
 - `firmware/Arduino-TV-B-Gone`: legacy firmware; keep unrelated behaviour unchanged.
 - `software/materialator`: independent STL volume/metal-weight experiment.
 - `docs/design`: electrical proposals and repository review notes.

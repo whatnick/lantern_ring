@@ -27,7 +27,8 @@ repository root.
 - `images/sources.json` records album image URLs, indices and downloaded-image
   SHA256 hashes. The photographs are user supplied, not renders.
 - `export_ir_visual.py` runs with KiCad Python to read actual pad centres and
-  F/B copper, mask-opening and silkscreen polygons. FreeCAD maps them with the
+  F/B copper, mask-opening and silkscreen polygons from the IR board and the
+  probe/anvil/fence PCBs. FreeCAD maps them with the
   same board frame as the pogo contacts; these are visual surfaces, not extra
   physical solids included in interference or solid STEP round-trip checks.
   Surface meshes are intentionally open and labelled `visual_surface_only`.
@@ -76,7 +77,7 @@ python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_assembly
 ```
 
 Without `-SkipCAD`, rendering first rebuilds and validates the CAD. `-StillsOnly`
-renders the six preview PNGs. Requires KiCad 10, FreeCAD, Blender 5.2 and ffmpeg.
+renders the seven preview PNGs. Requires KiCad 10, FreeCAD, Blender 5.2 and ffmpeg.
 Full rendering writes `generated/assembly/clip_assembly.blend`, MP4 and GIF,
 plus assembled/exploded/IR adapter/pitch stills. Frame PNGs are ignored in
 `animation/build/`; final deliverables and CAD are versioned.
@@ -98,3 +99,21 @@ adds another 0.04 mm layer separation to avoid depth-buffer fighting and does
 not bevel open copper/mask/silk meshes. This does not move the CAD contacts.
 The renderer uses fresh Blender processes for 30-frame batches to avoid the
 Windows Eevee GPU-texture access violation seen during a long single run.
+
+`clip_board_layers.json` records the actual adapter board hashes, pad nets,
+coordinates and layer polygons. The second probe copy is the unpopulated guide.
+Adapter `(u,v) = (x-150,y-100)` maps to assembly `(X,Y) = (v-lower_tip_v,u)`;
+the IR board instead uses `(u,v) = (TP3.x-x,y-TP3.y)` because it is rear-up.
+Layer surfaces are clipped to the checked substrate faces, including drill
+holes and the anvil window. Do not substitute bounding rectangles.
+
+The added custom-adapter exploded still and animation use the same meshes.
+The GND service loop derives its endpoints from probe J2 and anvil J1 in the
+exported pad data, with the upper endpoint following the hinge. It represents
+ISP J1.6 -> probe J2 -> wire -> anvil J1 -> P8 -> front TP8. Its interpolated
+shape is illustrative and excluded from rigid-solid collision claims.
+The electrical boards, routing and fabrication outputs are unchanged.
+
+The repository skill
+[lantern-ring-ecad-mcad-render](../../../.github/skills/lantern-ring-ecad-mcad-render/SKILL.md)
+captures the reusable source/frame, electrical, mechanical and rendering gates.

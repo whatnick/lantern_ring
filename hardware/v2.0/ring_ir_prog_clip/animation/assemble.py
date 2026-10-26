@@ -93,20 +93,21 @@ def import_variant(variant, active_start, active_end, animate=False):
         bpy.ops.wm.stl_import(filepath=str(OUT / variant / entry["file"]))
         obj = bpy.context.object
         obj.name = variant + "_" + name
-        if name.startswith("PCB_"):
+        surface = entry.get("visual_surface_only", False)
+        if surface:
             # Separate coplanar render layers visually; never change CAD/contact datums.
-            extra = 0.04 if "rear" in name else -0.04
+            extra = 0.04 * entry["surface_normal_z"]
             for vertex in obj.data.vertices:
                 vertex.co.z += extra
         stationary = name in ("LowerJaw", "Hinge", "Spring", "Ring", "RingParts",
-                              "Riser", "Anvil", "Fence") or name.startswith("PCB_")
+                              "Riser", "Anvil", "Fence") or name.startswith(("PCB_", "AnvilPCB_", "FencePCB_"))
         obj.parent = root if stationary else motion
         if not stationary:
             obj.location = (-27.5, 0, -5.5)
         obj.data.materials.append(material(name, entry["color"],
             name.startswith(("Barrel", "Plunger", "Screw", "Nut")) or
             name in ("Hinge", "Spring", "Pins", "HeaderPins", "Pads")))
-        if not name.startswith("PCB_"):
+        if not surface:
             bevel = obj.modifiers.new("Edge highlights", "BEVEL")
             bevel.width = 0.12
             bevel.segments = 2
@@ -123,6 +124,17 @@ def import_variant(variant, active_start, active_end, animate=False):
                     hz=e["hinge_z"], gap=e["working_gap"], wire2=2 * e["spring_wire_radius"],
                     sx=e["spring_x"], hx=e["hinge_x"], r=e["spring_radius"])
         visibility(obj, active_start, active_end)
+        if variant == "ir_custom" and not name.startswith("PCB_") and name not in ("Ring", "RingParts"):
+            part = name.split("PCB_")[0] if "PCB_" in name else name
+            delta = {"Probe": (0, 0, 25), "Guide": (0, -18, 7),
+                     "Anvil": (0, -14, 0), "Fence": (0, -14, 8),
+                     "Pins": (0, 0, 35), "Header": (0, 0, 25),
+                     "HeaderPins": (0, 0, 25), "Screws": (0, 0, 35),
+                     "Nuts": (0, -18, 4)}.get(part, (0, 0, 0))
+            base = obj.location.copy()
+            for frame, amount in ((321, 1), (330, 1), (348, 0), (440, 0)):
+                obj.location = base + Vector(delta) * amount
+                obj.keyframe_insert("location", frame=frame)
         if variant == "ir_custom" and (name in ("Ring", "RingParts") or name.startswith("PCB_")):
             # Show the actual rear copper/mask clearly, then lower the board into its pocket.
             for frame, offset in ((321, (0, 0, 0)), (360, (0, 0, 0)),
@@ -146,7 +158,57 @@ def import_variant(variant, active_start, active_end, animate=False):
             continue
         motion.rotation_euler[1] = math.radians(degrees)
         motion.keyframe_insert("rotation_euler", frame=frame)
+    if variant == "ir_custom":
+        ground_lead(root, motion, active_end)
     return root
+
+
+def ground_lead(root, motion, end):
+    """Illustrative flexible lead; not included in the rigid CAD clearance claim."""
+    curve = bpy.data.curves.new("GND service loop", "CURVE")
+    curve.dimensions = "3D"
+    curve.bevel_depth = 0.22
+    curve.bevel_resolution = 3
+    spline = curve.splines.new("BEZIER")
+    layers = json.loads((OUT / "clip_board_layers.json").read_text())["boards"]
+    geometry = json.loads((ROOT / "generated" / "geometry.json").read_text())
+    params = json.loads((ROOT / "parameters.json").read_text())
+    lower_tip = geometry["fit_inputs"]["probe"]["lower_tip_v"]
+    gap = params["clip_kit"]["geometry"]["parallel_gap_tip"]
+    thickness = 1.6
+    anvil_top = gap - thickness - geometry["target_thickness_mm"]
+    probe_top = gap + params["clip_kit"]["geometry"]["upper_tip_thickness"] + thickness
+
+    def endpoint(board, ref, z):
+        source = layers[board]
+        pad = next(p for p in source["pads"] if p["ref"] == ref)
+        x, y = pad["xy_mm"]
+        ox, oy = source["origin_xy_mm"]
+        return (y - oy - lower_tip, x - ox, z)
+
+    first, last = endpoint("probe", "J2", probe_top), endpoint("anvil", "J1", anvil_top)
+    points = [first, (-8, 13, 18), (15, 13, 10), last]
+    spline.bezier_points.add(len(points) - 1)
+    for p, co in zip(spline.bezier_points, points):
+        p.co = co
+        p.handle_left_type = p.handle_right_type = "AUTO"
+    wire = bpy.data.objects.new("GND lead: probe J2 to anvil J1", curve)
+    bpy.context.collection.objects.link(wire)
+    wire.parent = root
+    wire.data.materials.append(material("Insulated ground lead", (0.035, 0.035, 0.045)))
+    visibility(wire, 349, end)
+    p = spline.bezier_points[0]
+    e = json.loads((ROOT / "assembly_parameters.json").read_text())["estimated"]
+    hx, hz = e["hinge_x"], e["hinge_z"]
+    for axis, expression in (
+            (0, "{hx}+cos(a)*({x}-{hx})+sin(a)*({z}-{hz})"),
+            (2, "{hz}-sin(a)*({x}-{hx})+cos(a)*({z}-{hz})")):
+        driver = p.driver_add("co", axis).driver
+        var = driver.variables.new()
+        var.name = "a"
+        var.targets[0].id = motion
+        var.targets[0].data_path = "rotation_euler[1]"
+        driver.expression = expression.format(hx=hx, hz=hz, x=first[0], z=first[2])
 
 
 def main():
@@ -211,7 +273,8 @@ def main():
         (208, 240, "2.54 mm  /  squeeze rear handles to open jaws"),
         (241, 280, "1.27 mm  /  fine pins; do not reuse large guide drills"),
         (281, 320, "2.00 mm  /  same mechanism, different probe/guide grid"),
-        (321, 360, "IR ADAPTER  /  3.05 mm signals, offset VCC, front GND"),
+        (321, 348, "CUSTOM PCBs  /  probe + identical guide, anvil + fence"),
+        (349, 360, "ISP GND -> probe J2 -> wire -> anvil J1 -> front TP8"),
         (361, 410, "ACTUAL KiCad IR PCB  /  rear copper, mask and test pads"),
         (411, 440, "Insert PCB LEDs down  /  close onto custom probe"),
     ]
@@ -229,7 +292,8 @@ def main():
     if args.stills:
         for frame, filename in ((179, "assembled.png"), (198, "exploded.png"),
                                 (254, "pitch_127.png"), (294, "pitch_200.png"),
-                                (350, "ir_adapter.png"), (400, "ir_actual_pcb.png")):
+                                (335, "ir_adapter_exploded.png"), (350, "ir_adapter.png"),
+                                (400, "ir_actual_pcb.png")):
             scene.frame_set(frame)
             scene.render.filepath = str(OUT / filename)
             bpy.ops.render.render(write_still=True)
