@@ -27,6 +27,12 @@ pogo pins and header coming together, separating, and opening at the hinge.
 It compares **1.27, 2.00 and 2.54 mm** grids and the separate IR adapter.
 Fine-pitch pins require different guide drills; do not force large pins into them.
 The flights apart identify parts, not a collision-verified tool-access sequence.
+The final segment shows the **actual KiCad IR PCB copper, solder-mask openings
+and silkscreen**, lifted clear for inspection and then seated LEDs-down in the
+custom adapter. Component boxes remain clearance envelopes, not detailed package
+models.
+
+![Actual IR PCB from KiCad in the assembly](generated/assembly/ir_actual_pcb.png)
 
 **A stock 2.54 mm pogo grid is not a direct match to this IR board.** Its signal
 test pads are on a **3.05 mm grid**, VCC is off-grid, and ground is on the front.
@@ -36,6 +42,13 @@ centres miss by 0.51 mm across and 0.255 mm along the rows (0.570 mm diagonally)
 The outer tip faces overlap only about 40% of the nominal pads; this is not
 a dependable contact. Extra stock pins and wiring are not assumed safe.
 Use the custom seven-pin probe/guide plus the front-ground anvil, not stock PCBs.
+Rechecked directly with KiCad's board API: TP1/TP3/TP5 X coordinates are
+139.6004/136.5504/133.5004 mm; TP1/TP2 Y coordinates are
+115.7986/118.8486 mm. Both differences are **3.0500 mm**. Pads are 1.00 mm square,
+so the edge-to-edge gap is 2.05 mm, not 2.54 mm. The reported approximately
+2.5 mm physical reading does not match these centre coordinates; confirm the
+physical board revision and repeat across multiple centres before changing
+the manufactured adapter. The PCB and pad positions have not been altered.
 
 The reconstructed body passes solid/STEP round-trip, all-pair static collision
 and 13-position hinge-opening checks for each variant (0 to 6 degrees).

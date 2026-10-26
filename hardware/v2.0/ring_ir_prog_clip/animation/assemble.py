@@ -93,14 +93,23 @@ def import_variant(variant, active_start, active_end, animate=False):
         bpy.ops.wm.stl_import(filepath=str(OUT / variant / entry["file"]))
         obj = bpy.context.object
         obj.name = variant + "_" + name
+        if name.startswith("PCB_"):
+            # Separate coplanar render layers visually; never change CAD/contact datums.
+            extra = 0.04 if "rear" in name else -0.04
+            for vertex in obj.data.vertices:
+                vertex.co.z += extra
         stationary = name in ("LowerJaw", "Hinge", "Spring", "Ring", "RingParts",
-                              "Riser", "Anvil", "Fence")
+                              "Riser", "Anvil", "Fence") or name.startswith("PCB_")
         obj.parent = root if stationary else motion
         if not stationary:
             obj.location = (-27.5, 0, -5.5)
         obj.data.materials.append(material(name, entry["color"],
             name.startswith(("Barrel", "Plunger", "Screw", "Nut")) or
             name in ("Hinge", "Spring", "Pins", "HeaderPins", "Pads")))
+        if not name.startswith("PCB_"):
+            bevel = obj.modifiers.new("Edge highlights", "BEVEL")
+            bevel.width = 0.12
+            bevel.segments = 2
         if name == "Spring":
             curve = obj.driver_add("scale", 2)
             var = curve.driver.variables.new()
@@ -113,10 +122,14 @@ def import_variant(variant, active_start, active_end, animate=False):
                 "-{r}*abs(tan(a))-{wire2})/{gap}").format(
                     hz=e["hinge_z"], gap=e["working_gap"], wire2=2 * e["spring_wire_radius"],
                     sx=e["spring_x"], hx=e["hinge_x"], r=e["spring_radius"])
-        bevel = obj.modifiers.new("Edge highlights", "BEVEL")
-        bevel.width = 0.12
-        bevel.segments = 2
         visibility(obj, active_start, active_end)
+        if variant == "ir_custom" and (name in ("Ring", "RingParts") or name.startswith("PCB_")):
+            # Show the actual rear copper/mask clearly, then lower the board into its pocket.
+            for frame, offset in ((321, (0, 0, 0)), (360, (0, 0, 0)),
+                                  (380, (-12, -12, 18)), (410, (-12, -12, 18)),
+                                  (435, (0, 0, 0)), (440, (0, 0, 0))):
+                obj.location = offset
+                obj.keyframe_insert("location", frame=frame)
         if animate:
             delta, settle = displacement(name)
             base = obj.location.copy()
@@ -124,8 +137,11 @@ def import_variant(variant, active_start, active_end, animate=False):
                                   (180, 0), (198, 1), (216, 0)):
                 obj.location = base + Vector(delta) * amount
                 obj.keyframe_insert("location", frame=frame)
-    for frame, degrees in ((1, 0), (208, 0), (222, 6), (235, 0), (240, 0),
-                           (active_start, 0), (active_end - 12, 6), (active_end, 0)):
+    poses = ((1, 0), (208, 0), (222, 6), (235, 0), (240, 0),
+             (active_start, 0), (active_end - 12, 6), (active_end, 0))
+    if variant == "ir_custom":
+        poses = ((321, 0), (348, 6), (360, 0), (375, 6), (420, 6), (440, 0))
+    for frame, degrees in poses:
         if not animate and frame < active_start:
             continue
         motion.rotation_euler[1] = math.radians(degrees)
@@ -138,6 +154,7 @@ def main():
     bpy.context.preferences.filepaths.save_version = 0
     parser = argparse.ArgumentParser()
     parser.add_argument("--stills", action="store_true")
+    parser.add_argument("--prepare", action="store_true")
     args = parser.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else [])
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
@@ -151,7 +168,7 @@ def main():
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
     scene.render.fps = 20
-    scene.frame_start, scene.frame_end = 1, 360
+    scene.frame_start, scene.frame_end = 1, 440
     scene.world.color = (0.18, 0.18, 0.18)
     bpy.ops.object.camera_add(location=(-100, -135, 95))
     camera = bpy.context.object
@@ -164,7 +181,7 @@ def main():
     HUD.parent = camera
     for frame, scale, height in ((1, 142, 95), (145, 142, 95), (165, 110, 83),
                                  (180, 110, 83), (198, 142, 95),
-                                 (216, 110, 83), (360, 110, 83)):
+                                 (216, 110, 83), (440, 110, 83)):
         camera.data.ortho_scale = scale
         camera.data.keyframe_insert("ortho_scale", frame=frame)
         camera.location.z = height
@@ -195,22 +212,24 @@ def main():
         (241, 280, "1.27 mm  /  fine pins; do not reuse large guide drills"),
         (281, 320, "2.00 mm  /  same mechanism, different probe/guide grid"),
         (321, 360, "IR ADAPTER  /  3.05 mm signals, offset VCC, front GND"),
+        (361, 410, "ACTUAL KiCad IR PCB  /  rear copper, mask and test pads"),
+        (411, 440, "Insert PCB LEDs down  /  close onto custom probe"),
     ]
     for start, end, title in stages:
         caption = text(title, (-65, 39, -100), 2.4)
         visibility(caption, start, end)
     caption = text("Stock 2.54 mm pogo grid does NOT match the IR PCB", (-65, -37, -100), 2.3,
                    (1, 0.5, 0.3))
-    visibility(caption, 208, 360)
+    visibility(caption, 208, 440)
     import_variant("pitch_254", 1, 240, True)
     import_variant("pitch_127", 241, 280)
     import_variant("pitch_200", 281, 320)
-    import_variant("ir_custom", 321, 360)
+    import_variant("ir_custom", 321, 440)
     # Frame at the assembled state rather than the exploded endpoint.
     if args.stills:
         for frame, filename in ((179, "assembled.png"), (198, "exploded.png"),
                                 (254, "pitch_127.png"), (294, "pitch_200.png"),
-                                (350, "ir_adapter.png")):
+                                (350, "ir_adapter.png"), (400, "ir_actual_pcb.png")):
             scene.frame_set(frame)
             scene.render.filepath = str(OUT / filename)
             bpy.ops.render.render(write_still=True)
@@ -218,7 +237,8 @@ def main():
         BUILD.mkdir(parents=True, exist_ok=True)
         bpy.ops.wm.save_as_mainfile(filepath=str(OUT / "clip_assembly.blend"))
         scene.render.filepath = str(BUILD / "frame_")
-        bpy.ops.render.render(animation=True)
+        if not args.prepare:
+            bpy.ops.render.render(animation=True)
 
 
 if __name__ == "__main__":

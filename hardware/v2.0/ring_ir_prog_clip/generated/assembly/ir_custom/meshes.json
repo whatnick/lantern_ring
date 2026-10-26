@@ -168,5 +168,71 @@
       0.74
     ],
     "volume_mm3": 34.2874
+  },
+  {
+    "name": "PCB_frontMask",
+    "file": "PCB_frontMask.stl",
+    "color": [
+      0.025,
+      0.24,
+      0.08
+    ],
+    "visual_surface_only": true,
+    "area_mm2": 209.9697
+  },
+  {
+    "name": "PCB_frontCopper",
+    "file": "PCB_frontCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "area_mm2": 61.6148
+  },
+  {
+    "name": "PCB_frontSilk",
+    "file": "PCB_frontSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "area_mm2": 20.21
+  },
+  {
+    "name": "PCB_rearMask",
+    "file": "PCB_rearMask.stl",
+    "color": [
+      0.025,
+      0.24,
+      0.08
+    ],
+    "visual_surface_only": true,
+    "area_mm2": 255.1216
+  },
+  {
+    "name": "PCB_rearCopper",
+    "file": "PCB_rearCopper.stl",
+    "color": [
+      0.88,
+      0.76,
+      0.42
+    ],
+    "visual_surface_only": true,
+    "area_mm2": 19.7325
+  },
+  {
+    "name": "PCB_rearSilk",
+    "file": "PCB_rearSilk.stl",
+    "color": [
+      0.92,
+      0.94,
+      0.87
+    ],
+    "visual_surface_only": true,
+    "area_mm2": 12.111
   }
 ]

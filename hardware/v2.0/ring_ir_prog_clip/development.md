@@ -26,6 +26,11 @@ repository root.
   instructional, not an assembly-path collision certification.
 - `images/sources.json` records album image URLs, indices and downloaded-image
   SHA256 hashes. The photographs are user supplied, not renders.
+- `export_ir_visual.py` runs with KiCad Python to read actual pad centres and
+  F/B copper, mask-opening and silkscreen polygons. FreeCAD maps them with the
+  same board frame as the pogo contacts; these are visual surfaces, not extra
+  physical solids included in interference or solid STEP round-trip checks.
+  Surface meshes are intentionally open and labelled `visual_surface_only`.
 
 The board geometry is derived from the v2 IR PCB's pads, nets, outline, front
 mask opening and component courtyards. Estimated clip-kit geometry is based on
@@ -64,13 +69,14 @@ not mark the older `clip_kit.measured` flag true based on partial measurements.
 The source configuration remains explicit about unresolved dimensions.
 
 ```powershell
+& 'C:\Program Files\KiCad\10.0\bin\python.exe' hardware\v2.0\ring_ir_prog_clip\export_ir_visual.py
 & 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_ir_prog_clip\assembly_model.py
 python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_assembly.py"
 & hardware\v2.0\ring_ir_prog_clip\animation\render.ps1 -SkipCAD
 ```
 
 Without `-SkipCAD`, rendering first rebuilds and validates the CAD. `-StillsOnly`
-renders the five preview PNGs. Requires FreeCAD, Blender 5.2 and ffmpeg on PATH.
+renders the six preview PNGs. Requires KiCad 10, FreeCAD, Blender 5.2 and ffmpeg.
 Full rendering writes `generated/assembly/clip_assembly.blend`, MP4 and GIF,
 plus assembled/exploded/IR adapter/pitch stills. Frame PNGs are ignored in
 `animation/build/`; final deliverables and CAD are versioned.
@@ -83,3 +89,12 @@ motion collisions, spring-coil gaps and FreeCAD tip/pad overlap fractions.
 The IR variant uses the existing custom 3.05 mm signal pattern and off-grid
 VCC, not a relabelled 2.54 mm stock grid. Stock grids cannot provide the front
 GND contact, and the illustrated kit header must not be treated as ISP wiring.
+The 22-second animation ends with actual KiCad board layers visible outside the
+clip followed by insertion into the custom adapter. `ir_board_layers.json`
+contains the independently extracted XY coordinates, layer polygons and hashes.
+Its nominal 1.6 mm substrate is used for fit; thin visual layers are offsets for
+rendering only and are not treated as additional mechanical thickness. Blender
+adds another 0.04 mm layer separation to avoid depth-buffer fighting and does
+not bevel open copper/mask/silk meshes. This does not move the CAD contacts.
+The renderer uses fresh Blender processes for 30-frame batches to avoid the
+Windows Eevee GPU-texture access violation seen during a long single run.

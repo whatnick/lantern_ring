@@ -46,13 +46,16 @@ def compatibility(pitch, tip_diameter, uncertainty):
     refs = ["TP1", "TP2", "TP3", "TP4", "TP5", "TP6"]
     cx = sum(pads[r]["uv"][0] for r in refs) / 6
     cy = sum(pads[r]["uv"][1] for r in refs) / 6
+    us = sorted({round(pads[r]["uv"][0], 6) for r in refs})
+    vs = sorted({round(pads[r]["uv"][1], 6) for r in refs})
+    pitch_u = us[1] - us[0]
+    pitch_v = vs[1] - vs[0]
     results = []
     for ref in refs:
         p = pads[ref]
         u, v = p["uv"]
-        actual_pitch = 3.05
-        point = (cx + (u - cx) * pitch / actual_pitch,
-                 cy + (v - cy) * pitch / actual_pitch)
+        point = (cx + (u - cx) * pitch / pitch_u,
+                 cy + (v - cy) * pitch / pitch_v)
         delta = [point[0] - u, point[1] - v]
         margin = min(size / 2 - abs(d) - tip_diameter / 2 - uncertainty
                      for size, d in zip(p["size"], delta))

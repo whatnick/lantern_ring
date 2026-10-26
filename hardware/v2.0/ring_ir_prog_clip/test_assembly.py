@@ -59,6 +59,26 @@ class AssemblyTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((images / item["file"]).read_bytes()).hexdigest(),
                              item["sha256"])
 
+    def test_actual_kicad_board_layers_and_pitch(self):
+        out = interface.HERE / "generated" / "assembly"
+        layers = json.loads((out / "ir_board_layers.json").read_text())
+        self.assertEqual(layers["board_sha256"],
+                         interface.sha256(interface.HERE / ".." / "ring_pcb_IR" / "ring_pcb_IR.kicad_pcb"))
+        self.assertEqual(layers["exporter_sha256"], interface.sha256(interface.HERE / "export_ir_visual.py"))
+        self.assertEqual(layers["measured_from_file"]["x_mm"], [3.05, 3.05])
+        self.assertEqual(layers["measured_from_file"]["y_mm"], [3.05])
+        ox, oy = layers["origin_xy_mm"]
+        for ref, pad in interface.ir_contacts().items():
+            actual = layers["pads"][ref]
+            x, y = actual["xy_mm"]
+            self.assertAlmostEqual(ox - x, pad["uv"][0], places=6)
+            self.assertAlmostEqual(y - oy, pad["uv"][1], places=6)
+            self.assertEqual(actual["net"], pad["net"])
+        meshes = json.loads((out / "ir_custom" / "meshes.json").read_text())
+        visuals = [p for p in meshes if p.get("visual_surface_only")]
+        self.assertEqual(len(visuals), 6)
+        self.assertTrue(all(p["area_mm2"] > 0 for p in visuals))
+
 
 if __name__ == "__main__":
     unittest.main()

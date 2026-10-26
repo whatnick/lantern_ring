@@ -147,6 +147,53 @@ def ir_fixture(cfg):
                    "travel_mm": params["pogo"]["rated_travel"]}
 
 
+def ir_visual():
+    data = json.loads((OUT / "ir_board_layers.json").read_text())
+    if data["board_sha256"] != interface.sha256(HERE / ".." / "ring_pcb_IR" / "ring_pcb_IR.kicad_pcb"):
+        raise ValueError("Stale actual-board layers; run export_ir_visual.py with KiCad Python")
+    params, geometry = fit.load()
+    f = fit.frame(params, geometry)
+    ox, oy = data["origin_xy_mm"]
+    bottom, top = f["z"]["anvil_top"], f["z"]["ring_top"]
+
+    def face(poly, z):
+        def wire(points):
+            pts = [V(y - oy - f["lt"], ox - x, z) for x, y in points]
+            return Part.makePolygon(pts + [pts[0]])
+        result = Part.Face(wire(poly["outer"]))
+        for hole in poly["holes"]:
+            result = result.cut(Part.Face(wire(hole)))
+        return result
+
+    visuals = {}
+    for side, z, direction in (("front", bottom - 0.003, -1), ("rear", top + 0.003, 1)):
+        board_face = Part.Face(Part.makePolygon(
+            [V(*f["xy"](*p), z) for p in geometry["fit_inputs"]["ring"]["outline"]] +
+            [V(*f["xy"](*geometry["fit_inputs"]["ring"]["outline"][0]), z)]))
+        openings = [face(p, z) for p in data["layers"][side + "_openings"]]
+        mask = board_face
+        for opening in openings:
+            mask = mask.cut(opening)
+        copper = []
+        for p in data["layers"][side + "_copper"]:
+            exposed = face(p, z).common(board_face)
+            # Cu intersects the actual mask openings, including battery/front bars.
+            exposed = exposed.common(fit.compound(openings))
+            if exposed.Area > 0:
+                exposed.translate(V(0, 0, direction * 0.001))
+                copper.append(exposed)
+        silk = [face(p, z + direction * 0.002)
+                for p in data["layers"][side + "_silk"]]
+        for suffix, shape, color in (
+                ("Mask", mask, (0.025, 0.24, 0.08)),
+                ("Copper", fit.compound(copper), (0.88, 0.76, 0.42)),
+                ("Silk", fit.compound(silk), (0.92, 0.94, 0.87))):
+            if not shape.isValid() or shape.Area <= 0:
+                raise ValueError("Invalid actual PCB visual: " + side + suffix)
+            visuals["PCB_" + side + suffix] = (shape, color)
+    return visuals
+
+
 def collision_report(parts):
     hits = []
     for i, a in enumerate(sorted(parts)):
@@ -239,9 +286,18 @@ def export(cfg, variant, parts):
         mesh.write(str(dest / (name + ".stl")))
         meshes.append({"name": name, "file": name + ".stl", "color": color,
                        "volume_mm3": round(shape.Volume, 4)})
+    if variant["id"] == "ir_custom":
+        for name, (shape, color) in ir_visual().items():
+            obj = doc.addObject("PartDesign::Feature", name)
+            obj.Shape = shape
+            mesh = MeshPart.meshFromShape(Shape=shape, LinearDeflection=0.02,
+                                          AngularDeflection=0.15, Relative=False)
+            mesh.write(str(dest / (name + ".stl")))
+            meshes.append({"name": name, "file": name + ".stl", "color": color,
+                           "visual_surface_only": True, "area_mm2": round(shape.Area, 4)})
     doc.recompute()
     doc.saveAs(str(dest / "clip.FCStd"))
-    Part.export(list(doc.Objects), str(dest / "clip.step"))
+    Part.export([obj for obj in doc.Objects if obj.Name in parts], str(dest / "clip.step"))
     imported = Part.Shape()
     imported.read(str(dest / "clip.step"))
     expected = sum(shape.Volume for shape in parts.values())
@@ -279,9 +335,11 @@ def main():
               "custom_ir_contact": contact_check(3.05, cfg["estimated"]["pogo_tip_diameter"], 0),
               "source_sha256": {name: interface.sha256(HERE / name) for name in (
                   "assembly_parameters.json", "assembly_interface.py", "assembly_model.py",
-                  "fit_check.py", "parameters.json", "generated/geometry.json")},
+                  "fit_check.py", "parameters.json", "generated/geometry.json",
+                  "export_ir_visual.py", "generated/assembly/ir_board_layers.json")},
               "artifact_sha256": {path.relative_to(OUT).as_posix(): interface.artifact_sha256(path)
-                                  for path in sorted(OUT.glob("*/*")) if path.is_file()},
+                                  for path in sorted(OUT.glob("*/*"))
+                                  if path.is_file() and path.suffix in (".stl", ".step", ".FCStd", ".json")},
               "pcb_sha256": interface.sha256(HERE / ".." / "ring_pcb_IR" / "ring_pcb_IR.kicad_pcb")}
     (OUT / "validation.json").write_text(json.dumps(report, indent=2) + "\n")
 
