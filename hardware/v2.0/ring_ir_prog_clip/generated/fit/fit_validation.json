@@ -16,6 +16,36 @@
   },
   "pin_compression_mm": 1.65,
   "pin_compression_fraction": 0.66,
+  "smd_header": {
+    "mount_z_mm": 15.8,
+    "mating_centres_xy_mm": [
+      [
+        -9.97,
+        -2.54
+      ],
+      [
+        -9.97,
+        0.0
+      ],
+      [
+        -9.97,
+        2.54
+      ],
+      [
+        -7.43,
+        -2.54
+      ],
+      [
+        -7.43,
+        0.0
+      ],
+      [
+        -7.43,
+        2.54
+      ]
+    ],
+    "source": "Actual KiCad STEP header, mounted by its lowest solder foot; no through tails."
+  },
   "pins": {
     "TP1": {
       "net": "PB0",
@@ -53,7 +83,7 @@
       "pad_half_width_mm": 0.5
     }
   },
-  "interference_pairs_checked": 33,
+  "interference_pairs_checked": 32,
   "interference": [],
   "contacts_mm": {
     "riser_on_lower_jaw": 0.0,
@@ -68,7 +98,7 @@
     "nuts_to_fence": 0.649,
     "nuts_to_anvil": 0.649,
     "screws_to_riser": 0.8,
-    "header_pins_to_guide": 1.351
+    "header_pins_to_guide": 6.0
   },
   "margins_mm": {
     "lower_tip_v": -2.9,
@@ -83,7 +113,7 @@
     "vcc_pin_over_lower_jaw": -1.647,
     "barrel_above_guide": 0.75,
     "head_through_guide_hole": 0.25,
-    "header_tail_above_guide": 1.35,
+    "header_tail_above_guide": 4.4,
     "jaw_tilt_deg": 0.0
   },
   "margin_limits_mm": {
@@ -118,7 +148,7 @@
         "vcc_pin_over_lower_jaw": -2.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -141,7 +171,7 @@
         "vcc_pin_over_lower_jaw": -0.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -162,7 +192,7 @@
         "vcc_pin_over_lower_jaw": -2.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -186,7 +216,7 @@
         "vcc_pin_over_lower_jaw": -0.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -207,7 +237,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -228,7 +258,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -249,7 +279,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": -2.862
       }
     },
@@ -270,7 +300,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 2.862
       }
     },
@@ -293,7 +323,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -314,7 +344,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -337,7 +367,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     },
@@ -358,7 +388,7 @@
         "vcc_pin_over_lower_jaw": -1.647,
         "barrel_above_guide": 0.75,
         "head_through_guide_hole": 0.25,
-        "header_tail_above_guide": 1.35,
+        "header_tail_above_guide": 4.4,
         "jaw_tilt_deg": 0.0
       }
     }
@@ -370,9 +400,10 @@
     "upper_tip_setback +1.0: board_end_to_upper_jaw_step"
   ],
   "inputs_sha256": {
-    "parameters.json": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
-    "generated/geometry.json": "45133993b6b2be4bd2a13579dc3fb3348a03f22c3be037b7b2ed85fb59d7a94f",
-    "fit_check.py": "47a28ea7d2def122acd12ea25d7045db76f7f69cae3a0ddc19462d7e12b57483"
+    "parameters.json": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
+    "generated/geometry.json": "e5e5161837562c57859293af408c4c36defadc3a186601c1b0d33afc47cfd2aa",
+    "fit_check.py": "3acee6fc23fdd5fa8eccb62b2f7dcc2d04305080bba898e6afde9c29e21408f3",
+    "generated/assembly/clip_board_layers.json": "02c6dc02dced976e5b3ab7342ac6d277a1132dc233f3eecdd7c8ae6b9738ced4"
   },
   "outputs": [
     "Riser.step",

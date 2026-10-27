@@ -142,7 +142,10 @@ def ir_fixture(cfg):
     params["clip_kit"]["geometry"]["width"] = cfg["measurements"]["body_width"]["mm"]
     f = fit.frame(params, geometry)
     parts, pins, stack = fit.fixture_parts(params, geometry, f)
+    boards, step_evidence = fit.step_boards(f)
+    parts.update(boards)
     return parts, {"pin_contacts": pins, "stack": stack, "frame": f["z"],
+                   "kicad_step": step_evidence,
                    "working_compression_mm": stack["compression_mm"],
                    "travel_mm": params["pogo"]["rated_travel"]}
 
@@ -165,8 +168,8 @@ def board_visual(data, substrate, bottom, top, xy, prefix, top_side="rear"):
     for side, z, direction in ((bottom_side, bottom - 0.003, -1), (top_side, top + 0.003, 1)):
         board_face = fit.compound([
             p.copy() for p in substrate.Faces
-            if abs(p.BoundBox.ZLength) < 1e-7 and abs(p.CenterOfMass.z - top) < 1e-6])
-        board_face.translate(V(0, 0, z - top))
+            if abs(p.BoundBox.ZLength) < 1e-7 and abs(p.CenterOfMass.z - substrate.BoundBox.ZMax) < 1e-6])
+        board_face.translate(V(0, 0, z - substrate.BoundBox.ZMax))
         openings = [face(p, z) for p in data["layers"][side + "_openings"]]
         mask = board_face
         for opening in openings:
@@ -214,7 +217,9 @@ def ir_visual(parts):
         if clip[source]["board_sha256"] != interface.sha256(path):
             raise ValueError("Stale clip board layers: " + source)
         shape = parts[part]
-        visuals.update(board_visual(clip[source], shape, shape.BoundBox.ZMin, shape.BoundBox.ZMax,
+        top = f["z"][{"Probe": "probe_top", "Guide": "guide_top", "Anvil": "anvil_top",
+                       "Fence": "ring_top"}[part]]
+        visuals.update(board_visual(clip[source], shape, top - clip[source]["thickness_mm"], top,
                                     f["xy"], part + "PCB", top_side="front"))
     return visuals
 

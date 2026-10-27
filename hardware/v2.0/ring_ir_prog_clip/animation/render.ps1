@@ -11,6 +11,8 @@ $out = Join-Path $root "generated\assembly"
 if (-not $SkipCAD) {
     & $KiCadPython (Join-Path $root "export_ir_visual.py")
     if ($LASTEXITCODE) { throw "KiCad IR board layer export failed" }
+    & $FreeCADPython (Join-Path $root "fit_check.py") --no-render
+    if ($LASTEXITCODE) { throw "FreeCAD STEP header fit failed" }
     & $FreeCADPython (Join-Path $root "assembly_model.py")
     if ($LASTEXITCODE) { throw "FreeCAD assembly validation failed" }
 }

@@ -137,6 +137,75 @@ def board_with_holes(fi, f, z0):
     return shape.cut(compound(cuts))
 
 
+def kicad_step(name):
+    with open(os.path.join(HERE, "generated", "assembly", "clip_board_layers.json")) as handle:
+        board = json.load(handle)["boards"][name]
+    path = os.path.join(HERE, name, "ring_ir_prog_" + name + ".kicad_pcb")
+    if board["board_sha256"] != sha256(path):
+        raise ValueError("Stale KiCad STEP source: " + name)
+    import assembly_interface as interface
+    shapes = {}
+    for kind in ("assembly", "substrate"):
+        asset = board["step"][kind]
+        path = os.path.join(HERE, asset["path"])
+        if interface.artifact_sha256(path) != asset["sha256"]:
+            raise ValueError("Stale KiCad STEP export: " + path)
+        shape = Part.read(path)
+        if not shape.isValid() or not shape.Solids or shape.Volume <= 0:
+            raise ValueError("Invalid KiCad STEP export: " + path)
+        shapes[kind] = shape
+    return shapes, board
+
+
+def place_step(shape, f, z_offset):
+    # KiCad STEP X=u, Y=-v; rotate into assembly X=v-lower_tip_v, Y=u.
+    result = shape.copy()
+    result.rotate(V(0, 0, 0), V(0, 0, 1), 90)
+    result.translate(V(-f["lt"], 0, z_offset))
+    return result
+
+
+def step_boards(f):
+    parts, evidence = {}, {}
+    for name in ("probe", "anvil", "fence"):
+        shapes, source = kicad_step(name)
+        core = shapes["substrate"]
+        t = source["thickness_mm"]
+        b = core.BoundBox
+        if abs(b.ZLength - (t - 0.09)) > 1e-4:
+            raise ValueError("Unexpected KiCad STEP stackup: " + name)
+        evidence[name] = {"step": source["step"], "core_thickness_mm": b.ZLength,
+                          "core_volume_mm3": round(core.Volume, 4),
+                          "nominal_finished_thickness_mm": t,
+                          "note": "KiCad substrate excludes outer copper/mask. No board scaling."}
+        for part, top in (("Probe", "probe_top"), ("Guide", "guide_top")) if name == "probe" else (
+                (name.capitalize(), "anvil_top" if name == "anvil" else "ring_top"),):
+            bottom = f["z"][top] - t
+            parts[part] = place_step(core, f, bottom + (t - b.ZLength) / 2 - b.ZMin)
+    return parts, evidence
+
+
+def step_header(params, f):
+    shapes, source = kicad_step("probe")
+    core = shapes["substrate"]
+    components = [s for s in shapes["assembly"].Solids
+                  if abs(s.Volume - core.Volume) > 1e-4]
+    if len(components) != 1:
+        raise ValueError("Expected one populated SMD header in probe STEP")
+    header = components[0]
+    mount = header.BoundBox.ZMin
+    header = place_step(header, f, f["z"]["probe_top"] - mount)
+    isp = params["isp_header"]
+    z0 = f["z"]["probe_top"] + isp["body_standoff"]
+    b = header.BoundBox
+    body = header.common(box(b.XMin - 1, b.XMax + 1, b.YMin - 1, b.YMax + 1,
+                             z0, z0 + isp["body_height"]))
+    pins = header.cut(body)
+    if body.Volume <= 0 or pins.Volume <= 0 or abs(body.Volume + pins.Volume - header.Volume) > 1e-4:
+        raise ValueError("Cannot separate STEP header body and exposed contacts")
+    return {"Header": body, "HeaderPins": pins}
+
+
 def clip_parts(params, f):
     g = params["clip_kit"]["geometry"]
     w = g["width"] / 2
@@ -230,19 +299,7 @@ def fixture_parts(params, geometry, f):
                                                                                      hole["uv"][1] - pad["uv"][1]), 4),
                                    "pad_half_width_mm": min(pad["size"]) / 2}
     parts["Pins"] = compound(pins)
-    # 2x3 header on the probe, tails into the gap in front of the jaw.
-    isp = params["isp_header"]
-    hdr = [h for h in fi["probe"]["holes"] if h["kind"] == "header"]
-    us = [h["uv"][0] for h in hdr]
-    vs = [h["uv"][1] for h in hdr]
-    parts["Header"] = box(min(vs) - 1.27 - f["lt"], max(vs) + 1.27 - f["lt"], min(us) - 1.27, max(us) + 1.27,
-                          z["probe_top"], z["probe_top"] + isp["body_height"])
-    hpins = []
-    for h in hdr:
-        x, y = xy(*h["uv"])
-        hpins.append(box(x - 0.32, x + 0.32, y - 0.32, y + 0.32, z["upper_top"] - isp["tail_below_board"],
-                         z["probe_top"] + isp["body_height"] + 6.0))
-    parts["HeaderPins"] = compound(hpins)
+    parts.update(step_header(params, f))
     # M2 screws through the jaw holes (nominal positions) with nuts under the guide.
     kit = params["clip_kit"]
     head_d, head_h = kit["screw_head"]
@@ -489,6 +546,14 @@ def main():
         "stack_z_mm": {k: round(v, 3) for k, v in f["z"].items()},
         "pin_compression_mm": stack["compression_mm"],
         "pin_compression_fraction": round(compression, 3),
+        "smd_header": {
+            "mount_z_mm": round(parts["HeaderPins"].BoundBox.ZMin, 6),
+            "mating_centres_xy_mm": sorted([
+                [round(s.BoundBox.Center.x, 6), round(s.BoundBox.Center.y, 6)]
+                for s in parts["HeaderPins"].Solids
+                if s.BoundBox.ZMax > f["z"]["probe_top"] + 8]),
+            "source": "Actual KiCad STEP header, mounted by its lowest solder foot; no through tails."
+        },
         "pins": pins,
         "interference_pairs_checked": checked,
         "interference": hits,
@@ -501,7 +566,8 @@ def main():
         "sweep_sensitive": sorted({"%s %+.1f: %s" % (r["dimension"], r["delta_mm"], ", ".join(r["failures"]))
                                    for r in sweep_results if r["failures"]}),
         "inputs_sha256": {name: sha256(os.path.join(HERE, *name.split("/")))
-                          for name in ("parameters.json", "generated/geometry.json", "fit_check.py")},
+                          for name in ("parameters.json", "generated/geometry.json", "fit_check.py",
+                                       "generated/assembly/clip_board_layers.json")},
     }
     doc = App.newDocument("ring_ir_prog_clip_fit")
     for name, shape in parts.items():

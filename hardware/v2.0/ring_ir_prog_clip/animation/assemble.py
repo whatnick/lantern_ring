@@ -62,6 +62,14 @@ def displacement(name):
         return (0, -35, 0), 60
     if name == "Grip":
         return (0, 0, 30), 75
+    if name == "Riser":
+        return (0, -25, 0), 22
+    if name == "Anvil":
+        return (0, -25, 8), 50
+    if name == "Fence":
+        return (0, -25, 16), 65
+    if name in ("Ring", "RingParts"):
+        return (0, -30, 20), 80
     if name == "Guide":
         return (0, -28, 0), 90
     if name == "Probe":
@@ -72,7 +80,7 @@ def displacement(name):
         return (0, -28, -4), 120
     if name.startswith("Screw"):
         return (0, 0, 45), 120
-    if name.startswith(("Barrel", "Plunger")):
+    if name == "Pins" or name.startswith(("Barrel", "Plunger")):
         return (0, 0, 40), 140
     if name.startswith("Header"):
         return (0, 0, 50), 140
@@ -124,7 +132,7 @@ def import_variant(variant, active_start, active_end, animate=False):
                     hz=e["hinge_z"], gap=e["working_gap"], wire2=2 * e["spring_wire_radius"],
                     sx=e["spring_x"], hx=e["hinge_x"], r=e["spring_radius"])
         visibility(obj, active_start, active_end)
-        if variant == "ir_custom" and not name.startswith("PCB_") and name not in ("Ring", "RingParts"):
+        if variant == "ir_custom" and not animate and not name.startswith("PCB_") and name not in ("Ring", "RingParts"):
             part = name.split("PCB_")[0] if "PCB_" in name else name
             delta = {"Probe": (0, 0, 25), "Guide": (0, -18, 7),
                      "Anvil": (0, -14, 0), "Fence": (0, -14, 8),
@@ -135,7 +143,7 @@ def import_variant(variant, active_start, active_end, animate=False):
             for frame, amount in ((321, 1), (330, 1), (348, 0), (440, 0)):
                 obj.location = base + Vector(delta) * amount
                 obj.keyframe_insert("location", frame=frame)
-        if variant == "ir_custom" and (name in ("Ring", "RingParts") or name.startswith("PCB_")):
+        if variant == "ir_custom" and not animate and (name in ("Ring", "RingParts") or name.startswith("PCB_")):
             # Show the actual rear copper/mask clearly, then lower the board into its pocket.
             for frame, offset in ((321, (0, 0, 0)), (360, (0, 0, 0)),
                                   (380, (-12, -12, 18)), (410, (-12, -12, 18)),
@@ -143,7 +151,8 @@ def import_variant(variant, active_start, active_end, animate=False):
                 obj.location = offset
                 obj.keyframe_insert("location", frame=frame)
         if animate:
-            delta, settle = displacement(name)
+            part = name.split("PCB_")[0] if "PCB_" in name else name
+            delta, settle = displacement(part or "Ring")
             base = obj.location.copy()
             for frame, amount in ((1, 1), (settle, 1), (settle + 18, 0),
                                   (180, 0), (198, 1), (216, 0)):
@@ -151,7 +160,7 @@ def import_variant(variant, active_start, active_end, animate=False):
                 obj.keyframe_insert("location", frame=frame)
     poses = ((1, 0), (208, 0), (222, 6), (235, 0), (240, 0),
              (active_start, 0), (active_end - 12, 6), (active_end, 0))
-    if variant == "ir_custom":
+    if variant == "ir_custom" and not animate:
         poses = ((321, 0), (348, 6), (360, 0), (375, 6), (420, 6), (440, 0))
     for frame, degrees in poses:
         if not animate and frame < active_start:
@@ -159,11 +168,11 @@ def import_variant(variant, active_start, active_end, animate=False):
         motion.rotation_euler[1] = math.radians(degrees)
         motion.keyframe_insert("rotation_euler", frame=frame)
     if variant == "ir_custom":
-        ground_lead(root, motion, active_end)
+        ground_lead(root, motion, active_end, 170 if animate else 349)
     return root
 
 
-def ground_lead(root, motion, end):
+def ground_lead(root, motion, end, start=349):
     """Illustrative flexible lead; not included in the rigid CAD clearance claim."""
     curve = bpy.data.curves.new("GND service loop", "CURVE")
     curve.dimensions = "3D"
@@ -196,7 +205,12 @@ def ground_lead(root, motion, end):
     bpy.context.collection.objects.link(wire)
     wire.parent = root
     wire.data.materials.append(material("Insulated ground lead", (0.035, 0.035, 0.045)))
-    visibility(wire, 349, end)
+    visibility(wire, start, end)
+    if start < 180:
+        for frame, hidden in ((180, True), (207, True), (208, False)):
+            wire.hide_render = wire.hide_viewport = hidden
+            wire.keyframe_insert("hide_render", frame=frame)
+            wire.keyframe_insert("hide_viewport", frame=frame)
     p = spline.bezier_points[0]
     e = json.loads((ROOT / "assembly_parameters.json").read_text())["estimated"]
     hx, hz = e["hinge_x"], e["hinge_z"]
@@ -270,10 +284,11 @@ def main():
         (105, 139, "04  Probe PCB, M2 screws and nuts"),
         (140, 179, "05  Insert pogo pins through BOTH boards; solder tops only"),
         (180, 207, "EXPLOSION  /  component identification"),
-        (208, 240, "2.54 mm  /  squeeze rear handles to open jaws"),
-        (241, 280, "1.27 mm  /  fine pins; do not reuse large guide drills"),
-        (281, 320, "2.00 mm  /  same mechanism, different probe/guide grid"),
-        (321, 348, "CUSTOM PCBs  /  probe + identical guide, anvil + fence"),
+        (208, 240, "CUSTOM IR  /  squeeze rear handles to open jaws"),
+        (241, 265, "1.27 mm  /  fine pins; do not reuse large guide drills"),
+        (266, 290, "2.00 mm  /  same mechanism, different probe/guide grid"),
+        (291, 320, "2.54 mm  /  stock grid study, NOT the custom IR probe"),
+        (321, 348, "KiCad STEP PCBs  /  top SMD 2.54 mm Dupont header"),
         (349, 360, "ISP GND -> probe J2 -> wire -> anvil J1 -> front TP8"),
         (361, 410, "ACTUAL KiCad IR PCB  /  rear copper, mask and test pads"),
         (411, 440, "Insert PCB LEDs down  /  close onto custom probe"),
@@ -284,14 +299,16 @@ def main():
     caption = text("Stock 2.54 mm pogo grid does NOT match the IR PCB", (-65, -37, -100), 2.3,
                    (1, 0.5, 0.3))
     visibility(caption, 208, 440)
-    import_variant("pitch_254", 1, 240, True)
-    import_variant("pitch_127", 241, 280)
-    import_variant("pitch_200", 281, 320)
+    import_variant("ir_custom", 1, 240, True)
+    import_variant("pitch_127", 241, 265)
+    import_variant("pitch_200", 266, 290)
+    import_variant("pitch_254", 291, 320)
     import_variant("ir_custom", 321, 440)
     # Frame at the assembled state rather than the exploded endpoint.
     if args.stills:
         for frame, filename in ((179, "assembled.png"), (198, "exploded.png"),
-                                (254, "pitch_127.png"), (294, "pitch_200.png"),
+                                (254, "pitch_127.png"), (275, "pitch_200.png"),
+                                (304, "pitch_254.png"),
                                 (335, "ir_adapter_exploded.png"), (350, "ir_adapter.png"),
                                 (400, "ir_actual_pcb.png")):
             scene.frame_set(frame)

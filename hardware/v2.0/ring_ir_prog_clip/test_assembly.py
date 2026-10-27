@@ -107,6 +107,32 @@ class AssemblyTests(unittest.TestCase):
         self.assertTrue(all(p["surface_normal_z"] in (-1, 1) for p in meshes
                             if p.get("visual_surface_only")))
 
+    def test_kicad_step_sources_and_smd_mating_posts(self):
+        data = json.loads((interface.HERE / "generated" / "assembly" / "clip_board_layers.json").read_text())
+        for board in data["boards"].values():
+            for kind in ("assembly", "substrate"):
+                asset = board["step"][kind]
+                self.assertEqual(interface.artifact_sha256(interface.HERE / asset["path"]),
+                                 asset["sha256"])
+        out = interface.HERE / "generated" / "assembly"
+        cad = json.loads((out / "validation.json").read_text())["variants"]["ir_custom"]["details"]["kicad_step"]
+        meshes = {p["name"]: p for p in json.loads((out / "ir_custom" / "meshes.json").read_text())}
+        for part, board in (("Probe", "probe"), ("Guide", "probe"), ("Anvil", "anvil"), ("Fence", "fence")):
+            self.assertEqual(meshes[part]["volume_mm3"], cad[board]["core_volume_mm3"])
+            self.assertEqual(cad[board]["step"], data["boards"][board]["step"])
+        report = json.loads((interface.HERE / "generated" / "fit" / "fit_validation.json").read_text())
+        header = report["smd_header"]
+        self.assertAlmostEqual(header["mount_z_mm"], report["stack_z_mm"]["probe_top"])
+        posts = header["mating_centres_xy_mm"]
+        self.assertEqual(len(posts), 6)
+        xs = sorted({round(p[0], 4) for p in posts})
+        ys = sorted({round(p[1], 4) for p in posts})
+        self.assertEqual(len(xs), 2)
+        self.assertEqual(len(ys), 3)
+        self.assertAlmostEqual(xs[1] - xs[0], 2.54)
+        self.assertAlmostEqual(ys[1] - ys[0], 2.54)
+        self.assertAlmostEqual(ys[2] - ys[1], 2.54)
+
 
 if __name__ == "__main__":
     unittest.main()

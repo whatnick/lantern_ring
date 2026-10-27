@@ -1,5 +1,8 @@
 """Read actual IR PCB layers and pad centres with KiCad's bundled Python."""
 import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 import pcbnew
@@ -27,6 +30,29 @@ def board_layers(board):
              "holes": [contour(polygons.Hole(i, j)) for j in range(polygons.HoleCount(i))]}
             for i in range(polygons.OutlineCount())]
     return layers
+
+
+def export_step(path, pcb, name):
+    dest = HERE / "generated" / "kicad_step"
+    dest.mkdir(parents=True, exist_ok=True)
+    env = dict(os.environ)
+    models = Path(sys.executable).parent.parent / "share" / "kicad" / "3dmodels"
+    env["KICAD10_3DMODEL_DIR"] = str(models)
+    cli = str(Path(sys.executable).with_name("kicad-cli.exe"))
+    files = {}
+    for kind, options in (("assembly", []), ("substrate", ["--board-only"])):
+        output = dest / (name + "_" + kind + ".step")
+        subprocess.run([cli, "pcb", "export", "step", "--force", "--user-origin",
+                        "150x100mm", "--subst-models", *options, "-o", str(output),
+                        str(path)], env=env, check=True)
+        files[kind] = {"path": output.relative_to(HERE).as_posix(),
+                       "sha256": interface.artifact_sha256(output)}
+    for fp in pcb.GetFootprints():
+        if fp.GetReference() == "J1" and name == "probe":
+            model_path = models / "Connector_PinHeader_2.54mm.3dshapes" / (
+                "PinHeader_2x03_P2.54mm_Vertical_SMD.step")
+            files["header_model_sha256"] = interface.artifact_sha256(model_path)
+    return files
 
 
 def main():
@@ -66,6 +92,8 @@ def main():
         pcb = pcbnew.LoadBoard(str(path))
         clip[name] = {
             "board_sha256": interface.sha256(path), "origin_xy_mm": [150.0, 100.0],
+            "thickness_mm": pcbnew.ToMM(pcb.GetDesignSettings().GetBoardThickness()),
+            "step": export_step(path, pcb, name),
             "layers": board_layers(pcb),
             "pads": [{"ref": fp.GetReference(), "number": p.GetNumber(), "net": p.GetNetname(),
                       "xy_mm": [pcbnew.ToMM(p.GetPosition().x), pcbnew.ToMM(p.GetPosition().y)]}

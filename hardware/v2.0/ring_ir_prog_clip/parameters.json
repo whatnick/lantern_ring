@@ -24,7 +24,8 @@
     }
   },
   "isp_header": {
-    "standard": "Atmel AVR ISP-6 (2x3, 2.54 mm)",
+    "standard": "Atmel AVR ISP-6 (2x3, 2.54 mm), top-side SMD male for female Dupont leads",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical_SMD",
     "pins": {
       "1": "PB1",
       "2": "VCC",
@@ -39,10 +40,11 @@
       "PB2": "SCK",
       "PB5": "RESET"
     },
-    "row_a_offset": 7.6,
+    "row_a_offset": 10.33,
     "row_note": "odd row (MISO, SCK, RESET) at v = -row_a_offset, even row 2.54 mm further out, in front of the pogo grid",
-    "tail_below_board": 3.05,
-    "body_height": 2.5
+    "tail_below_board": 0.0,
+    "body_standoff": 0.76,
+    "body_height": 2.54
   },
   "pogo": {
     "series": "P75 class (1.02 mm barrel, about 16.5 mm long, about 2.6 mm travel)",
@@ -62,7 +64,7 @@
   "probe_board": {
     "u_min": -7.75,
     "u_max": 7.75,
-    "v_min": -13.0,
+    "v_min": -18.0,
     "v_max_note": "computed: upper jaw tip + tip section length - step_margin",
     "step_margin": 0.1,
     "corner_radius": 1.0,
@@ -70,7 +72,7 @@
     "outer_route_u": 4.4,
     "gnd_lead_pad": [
       5.6,
-      -10.14
+      -14.125
     ],
     "copies": 2,
     "copies_note": "second unpopulated copy is the lower pin guide under the jaw"

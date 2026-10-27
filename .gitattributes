@@ -2,3 +2,5 @@
 *.stl binary
 *.step text eol=lf whitespace=-trailing-space
 *.svg text eol=lf
+# KiCad's generated review drawings contain exporter-supplied trailing spaces.
+hardware/v2.0/ring_ir_prog_clip/generated/*_2d.svg whitespace=-trailing-space

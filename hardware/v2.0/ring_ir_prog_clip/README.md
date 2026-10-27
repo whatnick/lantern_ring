@@ -24,7 +24,9 @@ with its generic guide PCBs replaced by the boards here.
 [Assembly video (MP4)](generated/assembly/clip_assembly.mp4) shows the lower jaw,
 compression spring, upper jaw, hinge, grip block, guide/probe PCBs, screws/nuts,
 pogo pins and header coming together, separating, and opening at the hinge.
-It compares **1.27, 2.00 and 2.54 mm** grids and the separate IR adapter.
+The main assembly/explosion now uses the **actual custom IR adapter with SMD
+header**, not a generic stock probe. A separate comparison shows
+**1.27, 2.00 and 2.54 mm** stock-grid studies.
 Fine-pitch pins require different guide drills; do not force large pins into them.
 The flights apart identify parts, not a collision-verified tool-access sequence.
 The final segment shows the **actual KiCad IR PCB copper, solder-mask openings
@@ -35,7 +37,10 @@ models.
 ![Actual IR PCB from KiCad in the assembly](generated/assembly/ir_actual_pcb.png)
 
 The custom-adapter segment separates the **actual probe, second probe/guide,
-anvil and fence PCBs**, including their KiCad copper, mask and silkscreen.
+anvil and fence PCBs**, using KiCad-exported STEP substrates and the actual
+top-side **SMD 2x3 male header** model, with KiCad copper, mask and silkscreen.
+Its 2.54 mm mating posts accept female Dupont programming leads; there are no
+header tails projecting below the probe. The pogo pattern remains unchanged.
 The black service loop shows the required ground connection:
 **ISP J1.6 → probe J2 → insulated wire → anvil J1 → ENIG P8 → front TP8**.
 Its flexible shape is illustrative, not a cable-clearance simulation.
@@ -75,6 +80,18 @@ the album's 14.0/16.4 mm loose pins are not interchangeable without a stack rebu
 | --- | --- | --- | --- |
 | ![Probe top](generated/ring_ir_prog_probe_top.png) | ![Probe bottom](generated/ring_ir_prog_probe_bottom.png) | ![Anvil](generated/ring_ir_prog_anvil_top.png) | ![Fence](generated/ring_ir_prog_fence_top.png) |
 
+### Current 2D board drawings
+
+| Board | Front | Rear (mirrored viewing side) |
+| --- | --- | --- |
+| Probe / guide | [Copper + silk SVG](generated/ring_ir_prog_probe_top_2d.svg) | [Copper + silk SVG](generated/ring_ir_prog_probe_bottom_2d.svg) |
+| Anvil | [Copper + silk SVG](generated/ring_ir_prog_anvil_top_2d.svg) | [Copper + silk SVG](generated/ring_ir_prog_anvil_bottom_2d.svg) |
+| Fence | [Outline + silk SVG](generated/ring_ir_prog_fence_top_2d.svg) | [Outline SVG](generated/ring_ir_prog_fence_bottom_2d.svg) |
+
+[Probe schematic](generated/ring_ir_prog_probe_schematic.pdf) and
+[anvil schematic](generated/ring_ir_prog_anvil_schematic.pdf) are also regenerated
+from the current design. The SVGs are review drawings, not fabrication files.
+
 ## How it works
 
 All components on the ring are on the front, so the rear is flat. The ring
@@ -93,7 +110,7 @@ goes into the clip **LEDs down**:
          ▓ hook ┌──────── lower jaw ─────────
 ```
 
-- **Probe board** (15.5 × 22.7 mm, the jaw width). Order two identical boards.
+- **Probe board** (15.5 × 27.7 mm, the jaw width). Order two identical boards.
   They sandwich the upper-jaw tip, as on Adafruit 5434: the populated probe on
   top, the unpopulated copy underneath as a pin guide resting on the ring. Two
   M2 slots go through both boards and the jaw holes; the slots absorb the
@@ -102,6 +119,10 @@ goes into the clip **LEDs down**:
   the exposed battery pad. The pins are routed to a standard AVR ISP-6 header
   (J1) and a GND lead pad (J2). The header sits **in front of** the pin grid,
   so the jaw tip can sit just behind the pins and close over the ring.
+  The top-side SMD header requires longer solder lands than the old through-hole
+  header, so the front edge extends 5 mm further; pogo centres and jaw slots
+  have not moved. Its mating posts remain on a 2.54 mm grid, while the splayed
+  SMD solder-land rows are 5.05 mm apart. The lower guide has no header fitted.
 - **Anvil board** (22.5 × 29.2 mm). Taped to the printed riser. A window
   clears every front courtyard. The ring rests on its side rails, the top band
   and a flat ENIG GND pad under the exposed front ground bar (TP8). A narrow
@@ -120,6 +141,11 @@ outline and component clearances. See [development.md](development.md) for
 engineering source and regeneration details.
 
 ### Pin map
+
+See [programming-clip wiring](programming.md) for the board-top connector
+orientation, complete IR ISP cable map, ground lead, power checks and first
+signature read, plus the requirements for a different ISP or SWD target.
+The current IR probe is AVR ISP only; it is not a pin-compatible SWD adapter.
 
 | Ring pad | Net | ATtiny85 function | ISP-6 pin |
 | --- | --- | --- | --- |
@@ -194,7 +220,7 @@ Results at the nominal estimates:
 | Probe end to the upper-jaw step | 0.10 mm |
 | M2 nut to fence/anvil; screw tip above riser | 0.65 mm; 0.80 mm |
 | Ring parts to riser (inside the anvil window) | 0.35 mm |
-| Header tails above the guide | 1.35 mm |
+| Header below-board tails | none (top-side SMD) |
 | Ring rear edge to the lower-jaw throat | 4.95 mm |
 
 The ±1 mm sweep shows which dimensions to measure first:
@@ -215,7 +241,7 @@ lower-jaw tip; the riser carries that load.
 | 1 | Anvil PCB, 1.6 mm, ENIG | `fab/ring_ir_prog_anvil.zip`; ENIG for the flat GND contact |
 | 1 | Fence PCB, 1.6 mm | `fab/ring_ir_prog_fence.zip`; stack two for a deeper pocket if needed |
 | 7 | P75-class pogo pin, 1.02 mm barrel | B1 spear or LM2 cone tip (head ≤ 1.05 mm, so it passes the 1.15 mm guide hole) |
-| 1 | 2×3 2.54 mm pin header | Through-hole, on the top probe board |
+| 1 | 2×3 2.54 mm SMD male pin header | Top probe only; use female Dupont leads, confirm matching SMD footprint |
 | 1 | DIY pogo clip kit | Jaws, spring, M2 nuts |
 | 2 | M2 × 10 pan-head screw | The kit's 12–16 mm screws are longer than the 9.2 mm grip and hit the riser |
 | 1 | Printed riser | PLA or PETG, 100% infill |
@@ -262,7 +288,8 @@ The old estimated fit model remains separately documented.
 
 ## Assembly
 
-1. Solder J1 and the GND lead to J2 on the top probe board.
+1. Reflow or hand-solder SMD J1 on the top probe board, checking all six joints.
+   Solder the GND lead to J2. Leave J1 unpopulated on the lower guide.
 2. Screw the probe (top) and guide (underneath) to the upper-jaw tip with
    M2 × 10 screws through the slots. Put the nuts under the guide.
 3. Insert the pins tip first from the top, through the probe and the guide.
@@ -283,6 +310,8 @@ The old estimated fit model remains separately documented.
 - Use a 3.3 V or 5 V programmer within the ATtiny85 and LED limits, and keep
   current limited.
 - Always insert LEDs down. Face-up insertion lets pins hit components.
+- The unshrouded header is not keyed. Check pin 1 and every Dupont lead against
+  the ISP table; provide cable strain relief so unplugging does not peel SMD pads.
 
 ## Development
 

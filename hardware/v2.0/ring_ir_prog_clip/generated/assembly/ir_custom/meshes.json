@@ -57,7 +57,7 @@
       0.2,
       0.52
     ],
-    "volume_mm3": 487.3342
+    "volume_mm3": 459.6646
   },
   {
     "name": "Ring",
@@ -87,7 +87,7 @@
       0.25,
       0.6
     ],
-    "volume_mm3": 341.1135
+    "volume_mm3": 320.6295
   },
   {
     "name": "Guide",
@@ -97,7 +97,7 @@
       0.1,
       0.43
     ],
-    "volume_mm3": 521.1854
+    "volume_mm3": 616.0094
   },
   {
     "name": "Probe",
@@ -107,7 +107,7 @@
       0.12,
       0.54
     ],
-    "volume_mm3": 521.1854
+    "volume_mm3": 616.0094
   },
   {
     "name": "Riser",
@@ -137,7 +137,7 @@
       0.12,
       0.12
     ],
-    "volume_mm3": 96.774
+    "volume_mm3": 97.3392
   },
   {
     "name": "HeaderPins",
@@ -147,7 +147,7 @@
       0.8,
       0.35
     ],
-    "volume_mm3": 32.3174
+    "volume_mm3": 21.3057
   },
   {
     "name": "Screws",
@@ -251,7 +251,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 302.4672
+    "area_mm2": 394.1334
   },
   {
     "name": "ProbePCB_rearCopper",
@@ -263,7 +263,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 23.2737
+    "area_mm2": 13.8199
   },
   {
     "name": "ProbePCB_rearSilk",
@@ -287,7 +287,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 302.4672
+    "area_mm2": 375.2334
   },
   {
     "name": "ProbePCB_frontCopper",
@@ -299,7 +299,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 23.2737
+    "area_mm2": 32.7199
   },
   {
     "name": "ProbePCB_frontSilk",
@@ -311,7 +311,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 10.2364
+    "area_mm2": 9.7818
   },
   {
     "name": "GuidePCB_rearMask",
@@ -323,7 +323,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 302.4672
+    "area_mm2": 394.1334
   },
   {
     "name": "GuidePCB_rearCopper",
@@ -335,7 +335,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 23.2737
+    "area_mm2": 13.8199
   },
   {
     "name": "GuidePCB_rearSilk",
@@ -359,7 +359,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 302.4672
+    "area_mm2": 375.2334
   },
   {
     "name": "GuidePCB_frontCopper",
@@ -371,7 +371,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 23.2737
+    "area_mm2": 32.7199
   },
   {
     "name": "GuidePCB_frontSilk",
@@ -383,7 +383,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 10.2364
+    "area_mm2": 9.7818
   },
   {
     "name": "AnvilPCB_rearMask",
@@ -395,7 +395,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 302.8281
+    "area_mm2": 303.0427
   },
   {
     "name": "AnvilPCB_rearCopper",
@@ -407,7 +407,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 1.7558
+    "area_mm2": 1.371
   },
   {
     "name": "AnvilPCB_rearSilk",
@@ -431,7 +431,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 295.3821
+    "area_mm2": 295.5967
   },
   {
     "name": "AnvilPCB_frontCopper",
@@ -443,7 +443,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 9.2018
+    "area_mm2": 8.817
   },
   {
     "name": "AnvilPCB_frontSilk",
@@ -467,7 +467,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 213.1959
+    "area_mm2": 212.3374
   },
   {
     "name": "FencePCB_frontMask",
@@ -479,7 +479,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 213.1959
+    "area_mm2": 212.3374
   },
   {
     "name": "FencePCB_frontSilk",

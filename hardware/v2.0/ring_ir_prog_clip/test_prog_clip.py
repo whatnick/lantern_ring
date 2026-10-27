@@ -178,9 +178,20 @@ class ClipTest(unittest.TestCase):
             self.assertEqual(header[pin][1], "/" + net, pin)
         self.assertEqual(self.params["isp_header"]["functions"],
                          {"PB0": "MOSI", "PB1": "MISO", "PB2": "SCK", "PB5": "RESET"})
-        # Standard ISP-6 geometry: odd and even pins in two rows 2.54 mm apart.
-        self.assertAlmostEqual(math.dist(header["1"][0], header["2"][0]), 2.54, places=3)
+        # SMD solder lands splay out; the mating posts, not the lands, have 2.54 mm row pitch.
+        self.assertAlmostEqual(math.dist(header["1"][0], header["2"][0]), 5.05, places=3)
         self.assertAlmostEqual(math.dist(header["1"][0], header["5"][0]), 5.08, places=3)
+        fp = next(f for f in blocks(read(PROBE), "footprint ")
+                  if '(property "Reference" "J1"' in f)
+        self.assertIn("PinHeader_2x03_P2.54mm_Vertical_SMD", fp)
+        self.assertIn("(attr smd)", fp)
+        for pad in blocks(fp, "pad "):
+            self.assertRegex(pad, r'\(pad "[1-6]" smd rect')
+            self.assertNotIn("(drill", pad)
+            self.assertIn('"F.Paste"', pad)
+        with open(os.path.join(HERE, "generated", "geometry.json")) as handle:
+            geo = json.load(handle)
+        self.assertFalse(any(h["kind"] == "header" for h in geo["fit_inputs"]["probe"]["holes"]))
 
     def test_ground_reaches_both_boards(self):
         self.assertEqual(self.probe["J2"]["pads"]["1"][1], "/GND")

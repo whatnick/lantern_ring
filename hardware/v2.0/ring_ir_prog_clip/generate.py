@@ -280,6 +280,16 @@ def add_track(board, net, layer, path, width):
         board.Add(track)
 
 
+def add_via(board, net, uv):
+    via = pcbnew.PCB_VIA(board)
+    via.SetPosition(pt(*uv))
+    via.SetWidth(pcbnew.FromMM(0.6))
+    via.SetDrill(pcbnew.FromMM(0.3))
+    via.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+    via.SetNet(net)
+    board.Add(via)
+
+
 # ------------------------------------------------------------------ schematics
 
 def extract_block(text, start):
@@ -364,11 +374,13 @@ def write_schematic(path, project, title, parts):
 
 def write_project(path, name):
     template = os.path.normpath(os.path.join(HERE, "..", "ring_pcb_IR", "ring_pcb_IR.kicad_pro"))
-    with open(template, encoding="utf-8") as handle:
+    existing = os.path.exists(path)
+    with open(path if existing else template, encoding="utf-8") as handle:
         project = json.load(handle)
     project["meta"]["filename"] = name + ".kicad_pro"
-    project.pop("sheets", None)
-    project.pop("boards", None)
+    if not existing:
+        project.pop("sheets", None)
+        project.pop("boards", None)
     with open(path, "w", encoding="utf-8", newline="\n") as handle:
         json.dump(project, handle, indent=2)
         handle.write("\n")
@@ -466,7 +478,7 @@ def build_probe(target, params, pogo_uv):
                       "footprint": "%s:Pogo_P75_THT" % LIB_NAME, "at": (40 + 20 * (i % 4), 50 + 25 * (i // 4)),
                       "nets": {"1": net}, "target": ref})
     header = {"lib": "Connector_Generic", "name": "Conn_02x03_Odd_Even", "ref": "J1",
-              "value": "AVR_ISP_6", "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical",
+              "value": "AVR_ISP_6_SMD", "footprint": isp["footprint"],
               "at": (60, 110), "nets": dict(isp["pins"])}
     lead = {"lib": "Connector", "name": "TestPoint", "ref": "J2", "value": "GND_lead_to_anvil",
             "footprint": "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm", "at": (110, 110), "nets": {"1": "GND"},
@@ -486,18 +498,10 @@ def build_probe(target, params, pogo_uv):
         assign_nets(board, fp, part["nets"], netmap)
     # Header sits in front of the pogo grid so the jaw tip can sit just behind it.
     # Odd row (MISO, SCK, RESET) faces the pogo grid; even row (VCC, MOSI, GND) is outboard.
-    want = {"1": (-2.54, a), "2": (-2.54, b), "3": (0.0, a)}
-    for angle in (0, 90, 180, 270):
-        fp = load_fp("Connector_PinHeader_2.54mm", "PinHeader_2x03_P2.54mm_Vertical")
-        fp.SetOrientationDegrees(angle)
-        fp.SetPosition(pt(-2.54, a))
-        got = {p.GetNumber(): pad_uv(p) for p in fp.Pads()}
-        if all(abs(got[k][0] - w[0]) < 1e-3 and abs(got[k][1] - w[1]) < 1e-3 for k, w in want.items()):
-            break
-    else:
-        raise SystemExit("could not orient ISP header")
-    fp = place(board, header, fp, -2.54, a, angle, sheetfile=name + ".kicad_sch")
+    fp = load_fp(*isp["footprint"].split(":"))
+    fp = place(board, header, fp, 0.0, (a + b) / 2, 90, sheetfile=name + ".kicad_sch")
     assign_nets(board, fp, header["nets"], netmap)
+    header_pads = {p.GetNumber(): pad_uv(p) for p in fp.Pads()}
     fp = place(board, lead, load_fp("TestPoint", "TestPoint_THTPad_D1.5mm_Drill0.7mm"),
                *pb["gnd_lead_pad"], sheetfile=name + ".kicad_sch")
     assign_nets(board, fp, lead["nets"], netmap)
@@ -516,20 +520,28 @@ def build_probe(target, params, pogo_uv):
     top, bot = pcbnew.F_Cu, pcbnew.B_Cu
     mi, ms, rs, sk, vc = p["PB1"], p["PB0"], p["PB5"], p["PB2"], p["VCC"]
     o = pb["outer_route_u"]
-    add_track(board, netmap["PB1"], top, [mi, (-o, mi[1] - (o - abs(mi[0]))), (-o, a + 1.0),
-                                          (-o + 1.0, a), (-2.54, a)], w)
-    add_track(board, netmap["PB5"], top, [rs, (o, rs[1] - (o - abs(rs[0]))), (o, a + 1.0),
-                                          (o - 1.0, a), (2.54, a)], w)
-    add_track(board, netmap["PB2"], bot, [sk, (s, -s), (s, a + 1.27), (0.0, a)], w)
+    h = header_pads
+    add_track(board, netmap["PB1"], top, [mi, (-o, mi[1] - (o - abs(mi[0]))), (-o, h["1"][1] + 1.0),
+                                          (-o + 1.0, h["1"][1]), h["1"]], w)
+    add_track(board, netmap["PB5"], top, [rs, (o, rs[1] - (o - abs(rs[0]))), (o, h["5"][1] + 1.0),
+                                          (o - 1.0, h["5"][1]), h["5"]], w)
+    sk_via = (0.0, h["3"][1] + 2.2)
+    add_track(board, netmap["PB2"], bot, [sk, (s, -s), (s, sk_via[1] + s), sk_via], w)
+    add_via(board, netmap["PB2"], sk_via)
+    add_track(board, netmap["PB2"], top, [sk_via, h["3"]], w)
     # MOSI and VCC pass header pin 1 in the channel at u = -1.27, on opposite layers.
+    mosi_via = (0.0, h["4"][1] - 2.2)
     add_track(board, netmap["PB0"], bot, [ms, (-s, -s), (-s, vc[1] - 1.05), (-1.27, vc[1] - 1.05 - (s - 1.27)),
-                                          (-1.27, b + 1.27), (0.0, b)], w)
-    add_track(board, netmap["VCC"], top, [vc, (-1.27, vc[1] - (1.27 + vc[0])), (-1.27, b + 1.27), (-2.54, b)], w)
-    add_track(board, netmap["GND"], bot, [(2.54, b), tuple(pb["gnd_lead_pad"])], w)
+                                          (-1.27, mosi_via[1] + 1.27), mosi_via], w)
+    add_via(board, netmap["PB0"], mosi_via)
+    add_track(board, netmap["PB0"], top, [mosi_via, h["4"]], w)
+    add_track(board, netmap["VCC"], top, [vc, (-1.27, vc[1] - (1.27 + vc[0])),
+                                          (-1.27, h["2"][1] + 1.27), h["2"]], w)
+    add_track(board, netmap["GND"], top, [h["6"], tuple(pb["gnd_lead_pad"])], w)
 
     fsilk, bsilk, ffab = pcbnew.F_SilkS, pcbnew.B_SilkS, pcbnew.F_Fab
-    add_text(board, fsilk, "1", -4.6, a, 0.8, 0.12)
-    add_text(board, fsilk, "ISP", 0.0, b - 1.9, 0.8, 0.12)
+    add_text(board, fsilk, "1", -4.6, h["1"][1], 0.8, 0.12)
+    add_text(board, fsilk, "ISP SMD", 0.0, v_min + 0.7, 0.8, 0.12)
     add_text(board, fsilk, "PB4", p["PB4"][0] + 2.1, p["PB4"][1] - 1.5, 0.8, 0.12)
     add_text(board, fsilk, "PB3", p["PB3"][0], p["PB3"][1] + 1.75, 0.8, 0.12)
     add_text(board, fsilk, "GND", pb["gnd_lead_pad"][0], pb["gnd_lead_pad"][1] + 1.5, 0.8, 0.12)
@@ -682,9 +694,6 @@ def fit_inputs(target, params, pogo_uv, geo):
                   "layer": q["layer"], "net": q["net"]} for ref, q in target["pads"].items()}
     holes = [{"uv": list(pogo_uv[ref]), "d": params["pogo"]["drill"], "kind": "pogo", "ref": ref}
              for ref in sorted(pogo_uv)]
-    for i, col in enumerate((-2.54, 0.0, 2.54)):
-        for row in (lay["a"], lay["b"]):
-            holes.append({"uv": [col, row], "d": 1.0, "kind": "header"})
     holes.append({"uv": list(params["probe_board"]["gnd_lead_pad"]), "d": 0.7, "kind": "lead"})
     return {
         "probe": dict(lay, corner_radius=params["probe_board"]["corner_radius"], holes=holes,
@@ -715,10 +724,21 @@ def main():
     an = params["anvil"]
     if min(geo["rails"].values()) < an["min_rail_contact"]:
         raise SystemExit("anvil support too narrow: %s" % geo["rails"])
-    write_footprints(params, geo["pad"])
-    probe_pcb, probe_sch = build_probe(target, params, pogo_uv)
-    anvil_pcb, anvil_sch = build_anvil(target, params, geo)
-    fence_pcb = build_fence(params, geo)
+    projects = {}
+    for name in ("probe", "anvil", "fence"):
+        path = os.path.join(HERE, name, "ring_ir_prog_" + name + ".kicad_pro")
+        if os.path.exists(path):
+            with open(path, "rb") as handle:
+                projects[path] = handle.read()
+    try:
+        write_footprints(params, geo["pad"])
+        probe_pcb, probe_sch = build_probe(target, params, pogo_uv)
+        anvil_pcb, anvil_sch = build_anvil(target, params, geo)
+        fence_pcb = build_fence(params, geo)
+    finally:
+        for path, content in projects.items():
+            with open(path, "wb") as handle:
+                handle.write(content)
     os.makedirs(os.path.join(HERE, "generated"), exist_ok=True)
     rel = lambda p: os.path.relpath(p, HERE).replace("\\", "/")
     summary = {

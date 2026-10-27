@@ -1,7 +1,7 @@
 ISO-10303-21;
 HEADER;
 FILE_DESCRIPTION(('KiCad electronic assembly'),'2;1');
-FILE_NAME('ring_ir_prog_anvil.step','2026-10-08T10:38:43',('Pcbnew'),(
+FILE_NAME('ring_ir_prog_anvil.step','2026-10-27T22:19:43',('Pcbnew'),(
     'Kicad'),'Open CASCADE STEP processor 7.9','KiCad to STEP converter'
   ,'Unknown');
 FILE_SCHEMA(('AUTOMOTIVE_DESIGN { 1 0 10303 214 1 1 1 1 }'));

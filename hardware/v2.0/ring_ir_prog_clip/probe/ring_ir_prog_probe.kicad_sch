@@ -932,7 +932,7 @@
 				)
 			)
 		)
-		(property "Value" "AVR_ISP_6"
+		(property "Value" "AVR_ISP_6_SMD"
 			(at 63.5 112.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -942,7 +942,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical_SMD"
 			(at 63.5 114.22 0)
 			(hide yes)
 			(show_name no)

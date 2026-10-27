@@ -1,7 +1,7 @@
 {
   "target_board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
   "target_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
-  "parameters_sha256": "600e72b4c0c4c0b58dd827bd628ee73668ce048e0323f9cc0c802d2aca607256",
+  "parameters_sha256": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
   "target_thickness_mm": 1.6,
   "pogo_pitch_mm": 3.05,
   "pogo_uv": {
@@ -101,13 +101,13 @@
   },
   "fit_inputs": {
     "probe": {
-      "a": -7.6,
-      "b": -10.14,
+      "a": -10.33,
+      "b": -12.870000000000001,
       "upper_tip_v": 4.6,
       "lower_tip_v": -2.9000000000000004,
       "u_min": -7.75,
       "u_max": 7.75,
-      "v_min": -13.0,
+      "v_min": -18.0,
       "v_max": 9.7,
       "slots": [
         [
@@ -190,56 +190,8 @@
         },
         {
           "uv": [
-            -2.54,
-            -7.6
-          ],
-          "d": 1.0,
-          "kind": "header"
-        },
-        {
-          "uv": [
-            -2.54,
-            -10.14
-          ],
-          "d": 1.0,
-          "kind": "header"
-        },
-        {
-          "uv": [
-            0.0,
-            -7.6
-          ],
-          "d": 1.0,
-          "kind": "header"
-        },
-        {
-          "uv": [
-            0.0,
-            -10.14
-          ],
-          "d": 1.0,
-          "kind": "header"
-        },
-        {
-          "uv": [
-            2.54,
-            -7.6
-          ],
-          "d": 1.0,
-          "kind": "header"
-        },
-        {
-          "uv": [
-            2.54,
-            -10.14
-          ],
-          "d": 1.0,
-          "kind": "header"
-        },
-        {
-          "uv": [
             5.6,
-            -10.14
+            -14.125
           ],
           "d": 0.7,
           "kind": "lead"
@@ -247,7 +199,7 @@
       ],
       "header_origin": [
         0.0,
-        -8.870000000000001
+        -11.600000000000001
       ]
     },
     "anvil": {

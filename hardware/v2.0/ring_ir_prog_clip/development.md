@@ -50,7 +50,8 @@ python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_prog_cli
 ```
 
 The build runs the PCB generator, schematic/ERC/DRC checks, exports PDFs,
-renders and STEP, and optionally exports Gerbers and Excellon drill files.
+front/rear copper-and-silkscreen SVG drawings (rear mirrored for viewing),
+3D PCB previews and STEP, and optionally exports Gerbers and Excellon drill files.
 It then checks the reports and runs the FreeCAD fit verification. Use
 `-SkipFit` only when intentionally bypassing the fit step.
 
@@ -61,6 +62,10 @@ boards or fabrication files. Update the source parameters and rebuild.
 
 After assembly, check that `avrdude -c usbasp -p t85` consistently reads the
 ATtiny85 signature `0x1e930b` before securing the anvil stack in place.
+Follow [the programming wiring guide](programming.md) for header orientation,
+the separate anvil ground wire, safe power selection and a read-only first
+connection. It also distinguishes this AVR ISP adapter from target-specific
+SWD wiring and voltage-reference requirements.
 
 ## Album reconstruction and Blender animation
 
@@ -77,7 +82,7 @@ python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_assembly
 ```
 
 Without `-SkipCAD`, rendering first rebuilds and validates the CAD. `-StillsOnly`
-renders the seven preview PNGs. Requires KiCad 10, FreeCAD, Blender 5.2 and ffmpeg.
+renders the eight preview PNGs. Requires KiCad 10, FreeCAD, Blender 5.2 and ffmpeg.
 Full rendering writes `generated/assembly/clip_assembly.blend`, MP4 and GIF,
 plus assembled/exploded/IR adapter/pitch stills. Frame PNGs are ignored in
 `animation/build/`; final deliverables and CAD are versioned.
@@ -112,7 +117,48 @@ The GND service loop derives its endpoints from probe J2 and anvil J1 in the
 exported pad data, with the upper endpoint following the hinge. It represents
 ISP J1.6 -> probe J2 -> wire -> anvil J1 -> P8 -> front TP8. Its interpolated
 shape is illustrative and excluded from rigid-solid collision claims.
-The electrical boards, routing and fabrication outputs are unchanged.
+That earlier layer-only visualization did not alter electrical outputs; the
+subsequent SMD header revision below does revise the probe and its fabrication.
+
+## Top-side SMD programming header and KiCad STEP sources
+
+The current probe replaces through-hole J1 with
+`Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical_SMD`.
+Its six male mating posts remain on the 2.54 mm ISP grid for female Dupont leads,
+but the splayed SMD solder-land rows are 5.05 mm apart. Tests deliberately
+distinguish these dimensions. Two 0.6/0.3 mm vias outside the paste lands
+connect the existing bottom-side MOSI/SCK routes to the new top-side lands.
+The probe front edge extends from v=-13 to -18 mm and J1 moves forward to
+clear the VCC pogo courtyard. J2 follows the front header row. The 3.05 mm
+pogo centres, offset VCC, slot positions and target IR PCB remain unchanged.
+Updated probe fabrication outputs supersede the earlier through-hole revision.
+
+`export_ir_visual.py` now also runs `kicad-cli pcb export step` for the actual
+probe/anvil/fence, writing populated assembly and board-only substrate files
+to `generated\kicad_step`. It explicitly resolves the installed KiCad 10 model
+directory; missing models or exports fail instead of substituting a generic box.
+The adapter-layer manifest records the PCB, STEP and header-model hashes.
+The generic stock pitch studies remain estimated illustrations, not STEP exports.
+The main assembly/explosion and primary assembled/exploded stills now use the
+custom IR STEP hardware with the SMD header; stock pitch studies are separate
+short segments and stills, including `pitch_254.png`.
+
+`fit_check.py` reads the real probe STEP header for fit checks. Its lowest
+solder foot mates to the nominal probe top; its insulating-body/exposed-pin
+colour split follows the standard model's 0.76 mm standoff and 2.54 mm body.
+The STEP contact-post centres independently verify the 2.54 mm grid.
+`assembly_model.py` imports the actual STEP board cores (including holes/windows)
+for the custom render rather than reconstructing their outlines. KiCad exports
+a 1.51 mm core for the nominal 1.6 mm stack: it excludes the outer copper/mask.
+The core is centred in that finished-board stack without scaling, and layer
+surfaces stay at the nominal finished faces. The separate fit checker retains
+nominal finished-board envelopes for contact/stack checks. Neither exported
+core clearance nor illustrative layers qualify a manufactured tolerance.
+
+Run `build.ps1 -Fab` before rebuilding the assembly and render. The build
+preserves existing project settings, including local top-level sheet metadata,
+instead of replacing them with the IR project's settings or deleting editor files.
+The render wrapper refreshes STEP-dependent fit evidence when rebuilding CAD.
 
 The target IR PCB was resaved in KiCad 10 format, including standard 3D-model
 links migrated from KiCad 6 WRL to KiCad 10 STEP. Comparing both boards after
