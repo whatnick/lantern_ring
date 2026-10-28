@@ -44,7 +44,7 @@ foreach ($b in $boards) {
             if ($side -eq 'bottom') { $svgArgs += '--mirror' }
             & $cli @svgArgs "$base.kicad_pcb" | Out-Null
             if ($LASTEXITCODE) { throw "2D PCB export failed: $($b.Name) $side" }
-            & $cli pcb render --side $side --width 900 --height 900 --quality basic `
+            & $cli pcb render --side $side --width 1600 --height 1600 --quality high --zoom 0.9 `
                 -o (Join-Path $gen "$($b.Name)_$side.png") "$base.kicad_pcb" | Out-Null
             if ($LASTEXITCODE) { throw "PCB render failed: $($b.Name) $side" }
         }

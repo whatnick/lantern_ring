@@ -52,6 +52,9 @@ python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_prog_cli
 The build runs the PCB generator, schematic/ERC/DRC checks, exports PDFs,
 front/rear copper-and-silkscreen SVG drawings (rear mirrored for viewing),
 3D PCB previews and STEP, and optionally exports Gerbers and Excellon drill files.
+The six top/bottom PCB previews use KiCad's high-quality renderer with a requested
+1600 x 1600 canvas (KiCad 10 exports 1568 x 1568 pixels), a small framing margin
+and the actual component models.
 It then checks the reports and runs the FreeCAD fit verification. Use
 `-SkipFit` only when intentionally bypassing the fit step.
 
