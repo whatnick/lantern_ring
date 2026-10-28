@@ -9,7 +9,7 @@ This is a prototype batch for 5 clip sets (two identical probe/guide PCBs,
 one ground-contact anvil and one locator fence per set).
 
 All jobs: FR-4, 2 copper layers, 1.6 mm finished thickness, 1 oz outer copper,
-green solder mask both sides, white silkscreen as supplied, ENIG finish.
+purple solder mask both sides, white silkscreen as supplied, ENIG finish.
 PCB ONLY: no components, sourcing, soldering, assembly or stencil.
 Please quote three separate jobs and combine dispatch if possible. Supply
 separated routed boards; any supplier production panelization is your process.

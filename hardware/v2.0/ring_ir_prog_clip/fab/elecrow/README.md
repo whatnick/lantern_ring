@@ -13,10 +13,26 @@ designs**, not three copies of a single panel. Quote them separately and combine
 dispatch if possible. No fourth PCB or modification of the target IR ring is
 included. The user will supply and hand-assemble all parts.
 
+## Browser quote recorded 2026-10-28
+
+| Job | Elecrow cart SKU | Discounted batch price (USD) |
+| --- | --- | --- |
+| 10 probe / guide PCBs | PCB1028108218 | 45.47 |
+| 5 GND-contact anvils | PCB1028108219 | 39.00 |
+| 5 fences | PCB1028108220 | 39.00 |
+
+**PCB subtotal: USD 123.47**, excluding finalized freight and tax.
+All jobs are purple with white silkscreen and immersion gold.
+These are automatic browser cart quotes, not paid orders or manual engineering
+acceptance. No checkout, payment or production authorization was submitted.
+Supplier-hosted ZIP downloads matched each recorded local raw SHA256.
+The site's Gerber preview was unavailable; DFM still needs supplier review.
+See `submission.json` for the exact submitted package hashes and settings.
+
 ## Quote settings
 
 - FR-4, two copper layers, **1.6 mm finished thickness**, 1 oz outer copper.
-- Green solder mask on both sides; white silkscreen as supplied.
+- Purple solder mask on both sides for this order; white silkscreen as supplied.
 - **ENIG / immersion gold**, including the anvil's exposed P8 GND contact.
   Do not substitute HASL: solder buildup is unsuitable for this flat contact.
 - Separated routed boards with the supplied internal windows and slots; no
@@ -89,7 +105,7 @@ programming tests remain necessary before a larger order.
 From the repository root, with installed KiCad 10:
 
 ```powershell
-python hardware\v2.0\ring_ir_prog_clip\package_elecrow.py --sets 5
+python hardware\v2.0\ring_ir_prog_clip\package_elecrow.py --sets 5 --color purple
 python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_*.py"
 ```
 

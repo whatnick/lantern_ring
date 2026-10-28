@@ -64,7 +64,7 @@ def write_zip(path, files):
             raise ValueError("Corrupt ZIP member: " + bad)
 
 
-def prepare(cli, sets):
+def prepare(cli, sets, color):
     validation = json.loads((HERE / "generated" / "validation.json").read_text())
     if validation["status"] != "pass":
         raise ValueError("Existing clip validation is not passing")
@@ -87,7 +87,7 @@ def prepare(cli, sets):
         "sets": sets,
         "settings": {
             "material": "FR-4", "layers": 2, "finished_thickness_mm": 1.6,
-            "outer_copper_oz": 1, "solder_mask": "green, both sides",
+            "outer_copper_oz": 1, "solder_mask": color + ", both sides",
             "silkscreen": "white, as supplied", "finish": "ENIG (immersion gold)",
             "electrical_test": "100% for copper-bearing probe and anvil",
             "delivery": "Separate routed boards, not a customer-designed panel",
@@ -154,7 +154,7 @@ def prepare(cli, sets):
                 "QUOTATION ONLY - BARE PCB, NO ASSEMBLY OR PARTS.\n"
                 "Job: {name}; quantity: {quantity}; outline: {width_mm} x {height_mm} mm.\n"
                 "FR-4, 2 layers, 1.6 mm finished thickness, 1 oz outer copper.\n"
-                "Green mask both sides, white silk as supplied, ENIG finish.\n"
+                "{color} mask both sides, white silk as supplied, ENIG finish.\n"
                 "Dimensions follow Edge_Cuts.gm1 centreline, not plot stroke width.\n"
                 "PTH.txt = plated finished holes; NPTH.txt = unplated slots/holes.\n"
                 "Missing drill files mean no holes of that type. Do not invent holes.\n"
@@ -163,7 +163,7 @@ def prepare(cli, sets):
                 "Do not add order numbers/markings without agreeing a safe position.\n"
                 "No paste files, stencil, BOM, placement data or components are required.\n"
                 "Supply separated boards. Contact us for DFM changes; do not alter files.\n"
-                .format(name=name, quantity=sets * copies, **dimensions),
+                .format(name=name, quantity=sets * copies, color=color.capitalize(), **dimensions),
                 encoding="ascii",
             )
             files.append((notes, notes.name))
@@ -190,7 +190,7 @@ def prepare(cli, sets):
             "This is a prototype batch for five clip sets (two identical probe/guide PCBs,\n"
             "one ground-contact anvil and one locator fence per set).\n\n"
             "All jobs: FR-4, 2 copper layers, 1.6 mm finished thickness, 1 oz outer copper,\n"
-            "green solder mask both sides, white silkscreen as supplied, ENIG finish.\n"
+            "{color} solder mask both sides, white silkscreen as supplied, ENIG finish.\n"
             "PCB ONLY: no components, sourcing, soldering, assembly or stencil.\n"
             "Please quote three separate jobs and combine dispatch if possible. Supply\n"
             "separated routed boards; any supplier production panelization is your process.\n"
@@ -212,6 +212,7 @@ def prepare(cli, sets):
             "an account or treat this request as a paid manufacturing authorization.\n"
         )
         request = request.replace("five clip sets", "{} clip sets".format(sets))
+        request = request.replace("{color}", color)
         (staging / "RFQ.txt").write_text(request, encoding="ascii")
         (staging / "manifest.json").write_text(
             json.dumps(manifest, indent=2) + "\n", encoding="ascii"
@@ -240,10 +241,11 @@ def main():
     parser.add_argument("--kicad-bin", type=Path,
                         default=Path(r"C:\Program Files\KiCad\10.0\bin"))
     parser.add_argument("--sets", type=int, default=5)
+    parser.add_argument("--color", choices=("green", "purple"), default="purple")
     args = parser.parse_args()
     if args.sets < 1:
         parser.error("--sets must be positive")
-    prepare(args.kicad_bin / "kicad-cli.exe", args.sets)
+    prepare(args.kicad_bin / "kicad-cli.exe", args.sets, args.color)
 
 
 if __name__ == "__main__":
