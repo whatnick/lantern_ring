@@ -88,7 +88,7 @@ def prepare(cli, sets, color):
         "settings": {
             "material": "FR-4", "layers": 2, "finished_thickness_mm": 1.6,
             "outer_copper_oz": 1, "solder_mask": color + ", both sides",
-            "silkscreen": "white, as supplied", "finish": "ENIG (immersion gold)",
+            "silkscreen": "white, as supplied", "finish": "Lead-free HASL",
             "electrical_test": "100% for copper-bearing probe and anvil",
             "delivery": "Separate routed boards, not a customer-designed panel",
         },
@@ -154,12 +154,12 @@ def prepare(cli, sets, color):
                 "QUOTATION ONLY - BARE PCB, NO ASSEMBLY OR PARTS.\n"
                 "Job: {name}; quantity: {quantity}; outline: {width_mm} x {height_mm} mm.\n"
                 "FR-4, 2 layers, 1.6 mm finished thickness, 1 oz outer copper.\n"
-                "{color} mask both sides, white silk as supplied, ENIG finish.\n"
+                "{color} mask both sides, white silk as supplied, lead-free HASL finish.\n"
                 "Dimensions follow Edge_Cuts.gm1 centreline, not plot stroke width.\n"
                 "PTH.txt = plated finished holes; NPTH.txt = unplated slots/holes.\n"
                 "Missing drill files mean no holes of that type. Do not invent holes.\n"
                 "Route internal cutouts and all slots as supplied; no V-scoring.\n"
-                "Keep mask openings and flat ENIG contact P8 free of mask, ink and solder.\n"
+                "Keep contact P8 exposed with lead-free HASL; no mask, ink or added solder blobs.\n"
                 "Do not add order numbers/markings without agreeing a safe position.\n"
                 "No paste files, stencil, BOM, placement data or components are required.\n"
                 "Supply separated boards. Contact us for DFM changes; do not alter files.\n"
@@ -190,13 +190,14 @@ def prepare(cli, sets, color):
             "This is a prototype batch for five clip sets (two identical probe/guide PCBs,\n"
             "one ground-contact anvil and one locator fence per set).\n\n"
             "All jobs: FR-4, 2 copper layers, 1.6 mm finished thickness, 1 oz outer copper,\n"
-            "{color} solder mask both sides, white silkscreen as supplied, ENIG finish.\n"
+            "{color} solder mask both sides, white silkscreen as supplied, lead-free HASL finish.\n"
             "PCB ONLY: no components, sourcing, soldering, assembly or stencil.\n"
             "Please quote three separate jobs and combine dispatch if possible. Supply\n"
             "separated routed boards; any supplier production panelization is your process.\n"
             "Perform electrical testing on the copper-bearing probe and anvil.\n\n"
-            "The anvil's P8 pad is a flat electrical contact: retain its full exposed ENIG\n"
-            "area. No HASL, solder coating, mask, ink or order marking on this pad.\n"
+            "The anvil's P8 pad is an electrical contact: retain its exposed area with\n"
+            "lead-free HASL. No mask, ink, order marking or added solder blobs on it.\n"
+            "HASL flatness/contact reliability will be checked during prototype assembly.\n"
             "The probe's seven nominal 1.15 mm PTH holes guide pogo barrels; preserve\n"
             "their finished diameters and position. Its two 2.2 x 3.4 mm mounting slots\n"
             "are NPTH. Preserve all anvil/fence internal routing and corner radii.\n"
@@ -205,7 +206,7 @@ def prepare(cli, sets, color):
             "Please review narrow rails, internal corners and clearances for DFM and\n"
             "report any issues before changing artwork. Do not add a maker/order code\n"
             "without agreeing a location away from contacts, holes and seating surfaces.\n\n"
-            "Please quote fabrication price, any engineering/panel fees, ENIG option and\n"
+            "Please quote fabrication price, any engineering/panel fees, lead-free HASL and\n"
             "lead time. Freight can be quoted separately after destination confirmation.\n"
             "These are prototype fixtures; mechanical fit/contact/programming have not\n"
             "been physically qualified. Quotation only: do not start production, charge\n"

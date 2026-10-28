@@ -17,12 +17,14 @@ included. The user will supply and hand-assemble all parts.
 
 | Job | Elecrow cart SKU | Discounted batch price (USD) |
 | --- | --- | --- |
-| 10 probe / guide PCBs | PCB1028108218 | 45.47 |
-| 5 GND-contact anvils | PCB1028108219 | 39.00 |
-| 5 fences | PCB1028108220 | 39.00 |
+| 10 probe / guide PCBs | PCB1028108223 | 25.97 |
+| 5 GND-contact anvils | PCB1028108224 | 21.46 |
+| 5 fences | PCB1028108225 | 21.46 |
 
-**PCB subtotal: USD 123.47**, excluding finalized freight and tax.
-All jobs are purple with white silkscreen and immersion gold.
+**Clip PCB subtotal: USD 68.89**, excluding finalized freight and tax.
+This replaces the USD 123.47 ENIG quote, saving USD 54.58.
+Unrelated cart items are preserved and excluded from this clip subtotal.
+All jobs are purple with white silkscreen and lead-free HASL.
 These are automatic browser cart quotes, not paid orders or manual engineering
 acceptance. No checkout, payment or production authorization was submitted.
 Supplier-hosted ZIP downloads matched each recorded local raw SHA256.
@@ -33,8 +35,10 @@ See `submission.json` for the exact submitted package hashes and settings.
 
 - FR-4, two copper layers, **1.6 mm finished thickness**, 1 oz outer copper.
 - Purple solder mask on both sides for this order; white silkscreen as supplied.
-- **ENIG / immersion gold**, including the anvil's exposed P8 GND contact.
-  Do not substitute HASL: solder buildup is unsuitable for this flat contact.
+- **Lead-free HASL**, including the anvil's exposed P8 GND contact, selected
+  for lower prototype cost. Do not substitute leaded HASL. Its uneven solder
+  coating may affect seating/contact reliability; inspect and continuity-test
+  the assembled contact before use. This finish is not a qualified flat contact.
 - Separated routed boards with the supplied internal windows and slots; no
   V-scoring, customer panel, castellations or gold fingers.
 - Electrical test for the copper-bearing probe and anvil. The fence is a
@@ -77,7 +81,7 @@ plot-stroke extents. Select PCB fabrication, not PCB assembly; do not buy a sten
 Capture the resulting quote/cart references and specifications before claiming
 submission. Stop before payment or authorization to begin production.
 
-The supplied request asks for fabrication cost, ENIG/engineering fees, DFM
+The supplied request asks for fabrication cost, lead-free HASL/engineering fees, DFM
 feedback and lead time. Shipping requires a later destination confirmation.
 No payment or manufacturing start is authorized by the RFQ.
 `submission.json` records actual browser submission status; package creation
