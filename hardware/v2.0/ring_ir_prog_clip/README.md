@@ -94,6 +94,11 @@ from the current design. The SVGs are review drawings, not fabrication files.
 
 ## How it works
 
+For bare-board fabrication, use the
+[Elecrow quotation package](fab/elecrow/README.md): three separate PCB jobs,
+with two identical probe/guide boards, one GND-contact anvil and one fence per
+clip. It excludes all parts, assembly and stencils.
+
 All components on the ring are on the front, so the rear is flat. The ring
 goes into the clip **LEDs down**:
 

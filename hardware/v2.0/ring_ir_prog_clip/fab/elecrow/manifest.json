@@ -1,0 +1,125 @@
+{
+  "prepared_utc": "2026-10-28T11:05:53.119673+00:00",
+  "source_commit": "3b2a6e9ca8d43cbd42f58deb93e91c5150c61b50",
+  "kicad_version": "10.0.3",
+  "packager_sha256": "6ad3686f48230d72a987c925716d46cedbf68949da8a91bb8c5550afa1334925",
+  "scope": "Bare PCB quotation only; no assembly, parts, stencil or production authorization",
+  "sets": 5,
+  "settings": {
+    "material": "FR-4",
+    "layers": 2,
+    "finished_thickness_mm": 1.6,
+    "outer_copper_oz": 1,
+    "solder_mask": "green, both sides",
+    "silkscreen": "white, as supplied",
+    "finish": "ENIG (immersion gold)",
+    "electrical_test": "100% for copper-bearing probe and anvil",
+    "delivery": "Separate routed boards, not a customer-designed panel"
+  },
+  "target_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
+  "source_sha256": {
+    "parameters.json": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
+    "generate.py": "c803248d18f43010b50a4e28585d12d7547d781aa3505b96ac839e011ad0e054",
+    "probe/ring_ir_prog_probe.kicad_pcb": "493f85e576b61b78dca0fadd6ad46ec8203e08d1be6482ab9a5517cf826d08c7",
+    "probe/ring_ir_prog_probe.kicad_sch": "f7e3d359a3099de1cef2aae6a02af1eca6bda8c8d6fe5ac775773856a132dd87",
+    "anvil/ring_ir_prog_anvil.kicad_pcb": "021fe1628bcf17023df50b2d0285d419e03586833f00cdd712c50aacc3b83f4e",
+    "anvil/ring_ir_prog_anvil.kicad_sch": "c5943dc7f5fd71f18aeed33a439ba201b517637be213c1a6d61b4b6446e077fa",
+    "fence/ring_ir_prog_fence.kicad_pcb": "1102bc08d510f9bbe0727e0f24f18c7259bdce0ce7888329146853b4d93e1b6a",
+    "ring_ir_prog_clip.pretty/Pogo_P75_THT.kicad_mod": "1e343698ca4433dfaedd8374cd3334877793862bbc6a19e90ebd4b1d5904bb36",
+    "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod": "f18827e3439cabc31ec586f458c751416d9a6e53fa4fc38d7869a6a9a0a128ec",
+    "ring_ir_prog_clip.pretty/M2_Slot_Clip_Jaw.kicad_mod": "b4d1ce56fa9179c7522e187434a628bb8d1163978b41a931c62501f87fa5d196"
+  },
+  "jobs": [
+    {
+      "board": "ring_ir_prog_probe",
+      "quantity": 10,
+      "width_mm": 15.5,
+      "height_mm": 27.7,
+      "thickness_mm": 1.6,
+      "copper_layers": 2,
+      "role": "Upper probe and identical lower guide",
+      "source_sha256": "493f85e576b61b78dca0fadd6ad46ec8203e08d1be6482ab9a5517cf826d08c7",
+      "upload_zip": "ring_ir_prog_probe_elecrow.zip",
+      "zip_sha256": "f13d571ef25d503bc724523fed8695f61e73e3ec1b28c214b6ca068cce94aa33",
+      "members_sha256": {
+        "ring_ir_prog_probe-F_Cu.gtl": "42c1cf18600c3bbe32230b7958cb7626b530b60360b3d3d82df59b36fc6b146e",
+        "ring_ir_prog_probe-B_Cu.gbl": "8055d0542a1c790d3472b26edfad36059866878f0d172c2de29aea237b686d13",
+        "ring_ir_prog_probe-F_Mask.gts": "5557db039374e7030054a4ae8a3c6ce61651b5fd16fd8bf5701ab08e7223ac0e",
+        "ring_ir_prog_probe-B_Mask.gbs": "1cf36c4e54294c8cd76ab780063ac32a151c271eb87d4fdeb09cd6c9b3ea3095",
+        "ring_ir_prog_probe-F_Silkscreen.gto": "f8eb4497957ff9f4b8c7aef15c05a83fce698c1b246b2ea7b6bd60601d61f855",
+        "ring_ir_prog_probe-B_Silkscreen.gbo": "0627a3d1943f724aa54a193edc270e2819941cf087ddbb54d0d9ccd0a677027b",
+        "ring_ir_prog_probe-Edge_Cuts.gm1": "86333fd4787f753e26bcfe1830c00f0610e59f9e4327ccfbc5e91057483bc897",
+        "ring_ir_prog_probe-PTH.txt": "4dd6186a730dedd22f324d921b0a4b67bd2caf1efce4dc6d95cb00ea4516370d",
+        "ring_ir_prog_probe-NPTH.txt": "da2a9e600c5489cf43d82e5d4c0d93990116bc1696e89fb8ed14e8ec5be9ba5d",
+        "FABRICATION-NOTES.txt": "bb12e7968a7c5397526c60c907dbbbe90e46d2af47586693025085a3d9d2bde6"
+      }
+    },
+    {
+      "board": "ring_ir_prog_anvil",
+      "quantity": 5,
+      "width_mm": 22.526,
+      "height_mm": 29.15,
+      "thickness_mm": 1.6,
+      "copper_layers": 2,
+      "role": "Front-side GND contact and component-clearance window",
+      "source_sha256": "021fe1628bcf17023df50b2d0285d419e03586833f00cdd712c50aacc3b83f4e",
+      "upload_zip": "ring_ir_prog_anvil_elecrow.zip",
+      "zip_sha256": "271452a41a05fb670c721da9b1379c9f04a0dce8f9d346b8b8d7fbb362f0ef7e",
+      "members_sha256": {
+        "ring_ir_prog_anvil-F_Cu.gtl": "dd242bc690a5acf4d9bddab2a2790075fca7739c81d5110eb51168ec2b2cf21c",
+        "ring_ir_prog_anvil-B_Cu.gbl": "e59a1d2f1ff29fc59d9f8330534b6c253bdf1e30e6053aa14ff41fe3390e07d5",
+        "ring_ir_prog_anvil-F_Mask.gts": "3d1ba71bbfb5a1a8175fe1ff6345b67cf7084bf596c3dfec9989393d9f817d00",
+        "ring_ir_prog_anvil-B_Mask.gbs": "cba99f7357a3056a8c30d004913848e1d3aca1ac5af50abcd9f4988ee612935d",
+        "ring_ir_prog_anvil-F_Silkscreen.gto": "33a9e5c1d68d87bd721e0883bd17cf6428287dd47780ae4ca146629b89ee204d",
+        "ring_ir_prog_anvil-B_Silkscreen.gbo": "d427f7fac4ad770d476d408745cdf3fa34ad704b8e89f4c96417665d16f7a232",
+        "ring_ir_prog_anvil-Edge_Cuts.gm1": "e45fab69f1255e15bf7ac0270b12a4e8f1290a661090de642759c3ff295dfc7d",
+        "ring_ir_prog_anvil-PTH.txt": "f19894f96930b0388b3991f28fe7c653b7cf9848817b30e791b1171942d3b99c",
+        "FABRICATION-NOTES.txt": "97776bceae7079947c08c170b0f171171690c8a1585abd3229c12a381b12e19c"
+      }
+    },
+    {
+      "board": "ring_ir_prog_fence",
+      "quantity": 5,
+      "width_mm": 22.526,
+      "height_mm": 22.15,
+      "thickness_mm": 1.6,
+      "copper_layers": 2,
+      "role": "Mechanical locator; no functional copper",
+      "source_sha256": "1102bc08d510f9bbe0727e0f24f18c7259bdce0ce7888329146853b4d93e1b6a",
+      "upload_zip": "ring_ir_prog_fence_elecrow.zip",
+      "zip_sha256": "fd4c7bbfa36ae0516ced758487d6b6c077087fe2c4c95e71748976dd4185e0b8",
+      "members_sha256": {
+        "ring_ir_prog_fence-F_Cu.gtl": "621dd6b89a5d1047efed1bb1e910914300378aec27b6f6b38a953bd43dc5468f",
+        "ring_ir_prog_fence-B_Cu.gbl": "e7ee6cb9726d8229b1f0687728989043086e0515052d23c3c7a389df1363c6ae",
+        "ring_ir_prog_fence-F_Mask.gts": "1896ef5d47bc65b2d2cf7e4c3869174cf458df37e4051d69aabdec0c4b12ba94",
+        "ring_ir_prog_fence-B_Mask.gbs": "f86837408172f8a331c599c9897784dfaa80449e216448266547dbed739cd29e",
+        "ring_ir_prog_fence-F_Silkscreen.gto": "e0f636d0ddb140fce32a68cfb1142a3d26effedc6845170f954d9f46f5566b66",
+        "ring_ir_prog_fence-B_Silkscreen.gbo": "0114654464e624e26f4df4f21c881243006a16db38b726c0b2b4fe50ea0b18f4",
+        "ring_ir_prog_fence-Edge_Cuts.gm1": "96321455f5204cc91a0bb31682b6ec0e060e144dfd453178748547cbea6453c5",
+        "FABRICATION-NOTES.txt": "bd9aed0f2ed266f17abc9a11c369670ff981e4bbaf673468785397f71bd97fc0"
+      }
+    }
+  ],
+  "reports": {
+    "ring_ir_prog_probe_drc.json": {
+      "violations": 0,
+      "sha256": "a1626a7cb214561951e66c0166e773592bb4d78842ca1f6b71375a099c9079b9"
+    },
+    "ring_ir_prog_probe_erc.json": {
+      "violations": 0,
+      "sha256": "11d3b5ccc44d617ad8b5ed51495d77c175d9f6ec71e9e04cb4cf8a9c70fa5103"
+    },
+    "ring_ir_prog_anvil_drc.json": {
+      "violations": 0,
+      "sha256": "c3fef60f4cd80a1bdf1872223b45426a78ef3963bbf58ba8fed13018175c789a"
+    },
+    "ring_ir_prog_anvil_erc.json": {
+      "violations": 0,
+      "sha256": "06c1504a79459fea90a1ae60049fbd9fd61c35b38ae7f4f2a95ed3477914f699"
+    },
+    "ring_ir_prog_fence_drc.json": {
+      "violations": 0,
+      "sha256": "40e2487cfd6c6a261fea4d97729a0c295ed79bd8d76fc564d0fb142a6eaef72b"
+    }
+  }
+}

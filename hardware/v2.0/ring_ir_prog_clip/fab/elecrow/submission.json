@@ -1,0 +1,12 @@
+{
+  "status": "blocked_login_required",
+  "checked_date": "2026-10-28",
+  "channel": "Elecrow PCB fabrication browser form via Playwright",
+  "url": "https://www.elecrow.com/pcb-manufacturing.html",
+  "attempt": "Selecting the probe ZIP in the browser redirected to Customer Login before fabrication upload/quotation could proceed.",
+  "supplier_quote_reference": null,
+  "supplier_received_files_confirmed": false,
+  "manufacturing_or_payment_authorized": false,
+  "email_sent": false,
+  "next_action": "Sign in to the dedicated Elecrow Chromium window, then upload the three individual jobs and verify quotation/cart references. Do not pay or authorize production."
+}

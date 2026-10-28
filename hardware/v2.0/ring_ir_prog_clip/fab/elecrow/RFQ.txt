@@ -1,0 +1,33 @@
+Hello Elecrow PCB team,
+
+Please provide a fabrication-only quotation for three separate PCB designs:
+- ring_ir_prog_probe: 10 bare boards, 15.5 x 27.7 mm; ring_ir_prog_probe_elecrow.zip
+- ring_ir_prog_anvil: 5 bare boards, 22.526 x 29.15 mm; ring_ir_prog_anvil_elecrow.zip
+- ring_ir_prog_fence: 5 bare boards, 22.526 x 22.15 mm; ring_ir_prog_fence_elecrow.zip
+
+This is a prototype batch for 5 clip sets (two identical probe/guide PCBs,
+one ground-contact anvil and one locator fence per set).
+
+All jobs: FR-4, 2 copper layers, 1.6 mm finished thickness, 1 oz outer copper,
+green solder mask both sides, white silkscreen as supplied, ENIG finish.
+PCB ONLY: no components, sourcing, soldering, assembly or stencil.
+Please quote three separate jobs and combine dispatch if possible. Supply
+separated routed boards; any supplier production panelization is your process.
+Perform electrical testing on the copper-bearing probe and anvil.
+
+The anvil's P8 pad is a flat electrical contact: retain its full exposed ENIG
+area. No HASL, solder coating, mask, ink or order marking on this pad.
+The probe's seven nominal 1.15 mm PTH holes guide pogo barrels; preserve
+their finished diameters and position. Its two 2.2 x 3.4 mm mounting slots
+are NPTH. Preserve all anvil/fence internal routing and corner radii.
+Please confirm finished thickness, hole/slot and routed-profile tolerances,
+particularly registration of pogo holes to the anvil/fence locator.
+Please review narrow rails, internal corners and clearances for DFM and
+report any issues before changing artwork. Do not add a maker/order code
+without agreeing a location away from contacts, holes and seating surfaces.
+
+Please quote fabrication price, any engineering/panel fees, ENIG option and
+lead time. Freight can be quoted separately after destination confirmation.
+These are prototype fixtures; mechanical fit/contact/programming have not
+been physically qualified. Quotation only: do not start production, charge
+an account or treat this request as a paid manufacturing authorization.
