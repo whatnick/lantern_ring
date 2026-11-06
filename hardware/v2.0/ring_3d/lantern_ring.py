@@ -14,7 +14,7 @@ import Mesh
 import MeshPart
 import Part
 
-from design import HERE, PCB_PATH, artifact_hash, flexible_fit, load_parameters, offset_polygon, pcb_interface, shoulder, source_hash, validate_parameters
+from design import HERE, PCB_PATH, artifact_hash, bayonet_fit, flexible_fit, load_parameters, offset_polygon, pcb_interface, shoulder, source_hash, validate_parameters
 from printcheck import check_stl
 
 Z = App.Vector(0, 0, 1)
@@ -195,7 +195,14 @@ def unrotated_geometry(p, pcb):
                                track_bottom, p["socket_top"] + 1, start, entry_width))
         base = base.cut(sector(p["socket_radius"] - 0.1, p["track_outer_radius"],
                                track_bottom, track_top, start, entry_width + p["lock_angle"]))
+    fit = bayonet_fit(p)
     carrier = cylinder(p["carrier_radius"], p["carrier_bottom"], pcb_top)
+    if p["bayonet_radial_relief"]:
+        relief = cylinder(p["carrier_radius"] + 0.1, p["carrier_bottom"] - 0.1,
+                          p["socket_top"]).cut(
+            cylinder(fit["skirt_radius_mm"], p["carrier_bottom"] - 0.2,
+                     p["socket_top"] + 0.1))
+        carrier = carrier.cut(relief)
     carrier = carrier.cut(cylinder(cell_radius, p["battery_bottom"], p["deck_bottom"]))
     carrier = carrier.cut(cylinder(p["deck_pocket_radius"], p["deck_bottom"], pcb_top + 1))
     for x, y in screw_positions(p):
@@ -215,7 +222,7 @@ def unrotated_geometry(p, pcb):
     carrier = carrier.cut(box(2.3, 2.3, p["carrier_bottom"] - 0.1,
                               s["negative_flange"] + 0.01, -1.15, -1.15))
     for angle, width in zip(p["lug_angles"], p["lug_widths"]):
-        carrier = carrier.fuse(sector(p["lug_inner_radius"], p["lug_outer_radius"],
+        carrier = carrier.fuse(sector(fit["lug_inner_radius_mm"], fit["lug_outer_radius_mm"],
                                       p["lug_bottom"], p["lug_bottom"] + p["lug_height"],
                                       angle - width / 2, width))
 
@@ -292,6 +299,7 @@ def object_config(parameters):
     p["pcb_clearance"] = parameters.PCBClearance.Value
     p["lock_angle"] = parameters.LockAngle.Value
     p["band_gap_angle"] = parameters.BandGapAngle.Value
+    p["bayonet_radial_relief"] = parameters.BayonetRadialRelief.Value
     return json.dumps(p, sort_keys=True)
 
 
@@ -319,6 +327,7 @@ def create_document(p, pcb):
     parameters.addProperty("App::PropertyLength", "PCBClearance", "Design").PCBClearance = p["pcb_clearance"]
     parameters.addProperty("App::PropertyAngle", "LockAngle", "Design").LockAngle = p["lock_angle"]
     parameters.addProperty("App::PropertyAngle", "BandGapAngle", "Design").BandGapAngle = p["band_gap_angle"]
+    parameters.addProperty("App::PropertyLength", "BayonetRadialRelief", "Design").BayonetRadialRelief = p["bayonet_radial_relief"]
     parameters.addProperty("App::PropertyString", "BatteryPolarity", "Interface").BatteryPolarity = "CR2032 positive (+) face UP"
     parameters.addProperty("App::PropertyString", "GroundPad", "Interface").GroundPad = pcb["ground_reference"] + " front /GND"
     parameters.setEditorMode("PCBInterface", 1)
@@ -386,6 +395,12 @@ def validate_geometry(p, pcb, parts):
     if base.common(posed(raw["Carrier"], p["lock_angle"], 1)).Volume < 1e-3:
         raise ValueError("Locked bayonet can be pulled out axially")
     checks.append("Locked cassette cannot lift 1 mm through retaining shelves")
+    fit = bayonet_fit(p)
+    checks.append("Provisional bayonet relief: {:.2f} mm radial / {:.2f} mm diametral; "
+                  "{:.2f} mm skirt gap, {:.2f} mm lug-tip gap, {:.2f} mm retaining overlap".format(
+                      fit["radial_relief_mm"], fit["diameter_reduction_mm"],
+                      fit["skirt_radial_clearance_mm"], fit["lug_tip_radial_clearance_mm"],
+                      fit["radial_retaining_overlap_mm"]))
     carrier_seat_gap = base.distToShape(posed(raw["Carrier"], p["lock_angle"]))[0]
     if carrier_seat_gap > 1e-5:
         raise ValueError("Carrier side pillars do not seat on the RingBase")
@@ -734,6 +749,7 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         "pcb_interface": pcb,
         "stack": s,
         "flexible_fit": flexible_fit(p),
+        "bayonet_fit": bayonet_fit(p),
         "legacy_reference": reference,
         "printed_body_envelope": {
             "width": body_bounds.XLength,
@@ -742,7 +758,9 @@ def generate(output=HERE / "generated", parameters_path=HERE / "parameters.json"
         },
         "checks": checks,
         "print_check": {"min_wall_mm": p["min_printed_wall"], "parts": print_reports},
-        "physical_test_status": "NOT PRINTED: fit, wear, electrical continuity and battery safety require bench validation",
+        "physical_test_status": "PRIOR PRINT TOO TIGHT (user report); relieved revision NOT PRINTED. "
+                                "As-printed vernier dimensions pending; fit, retention, electrical continuity "
+                                "and battery safety require bench validation",
     }
     (output / "validation.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print("Generated {}. {} checks passed.".format(output, len(checks)))

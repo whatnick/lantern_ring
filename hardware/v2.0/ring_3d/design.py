@@ -257,11 +257,28 @@ def flexible_fit(p):
     }
 
 
+def bayonet_fit(p):
+    relief = p["bayonet_radial_relief"]
+    return {
+        "radial_relief_mm": relief,
+        "diameter_reduction_mm": 2 * relief,
+        "skirt_radius_mm": p["carrier_radius"] - relief,
+        "lug_inner_radius_mm": p["lug_inner_radius"] - relief,
+        "lug_outer_radius_mm": p["lug_outer_radius"] - relief,
+        "skirt_radial_clearance_mm": p["socket_radius"] - p["carrier_radius"] + relief,
+        "lug_tip_radial_clearance_mm": p["track_outer_radius"] - p["lug_outer_radius"] + relief,
+        "radial_retaining_overlap_mm": p["lug_outer_radius"] - relief - p["socket_radius"],
+    }
+
+
 def validate_parameters(p, pcb):
     for name, value in p.items():
+        if name == "bayonet_radial_relief" and value == 0:
+            continue
         if isinstance(value, (float, int)) and (not math.isfinite(value) or value <= 0):
             raise ValueError("{} must be finite and positive".format(name))
     s = stack(p, pcb)
+    fit_dimensions = bayonet_fit(p)
     wall = p["min_printed_wall"]
     worst = p["printed_stack_tolerance"] + p["pin_height_tolerance"] + p["battery_height_tolerance"]
     if not (0 < p["pin_compression"] - worst
@@ -283,6 +300,12 @@ def validate_parameters(p, pcb):
     if not (p["carrier_radius"] < p["socket_radius"] < p["lug_outer_radius"]
             < p["track_outer_radius"] < p["body_radius"]):
         raise ValueError("Invalid bayonet radial stack")
+    if fit_dimensions["radial_retaining_overlap_mm"] < 0.3 - 1e-6:
+        raise ValueError("Relieved bayonet has less than 0.3 mm radial retaining overlap")
+    if fit_dimensions["lug_inner_radius_mm"] >= fit_dimensions["skirt_radius_mm"]:
+        raise ValueError("Relieved bayonet lugs are disconnected from the skirt")
+    if p["lug_outer_radius"] - p["lug_inner_radius"] < wall + 0.05 - 1e-6:
+        raise ValueError("Bayonet lugs are radially thinner than the printed wall minimum")
     if abs(p["carrier_pillar_bottom"] - p["socket_top"]) > 1e-6:
         raise ValueError("Carrier side pillars must seat at the RingBase socket top")
     if not (p["screw_radius"] - p["screw_post_radius"] < p["body_radius"]
@@ -295,10 +318,13 @@ def validate_parameters(p, pcb):
     if (p["screw_radius"] - p["screw_post_radius"] - 0.2
             - max(abs(v[0]) for v in pcb["outline"]) - p["pcb_clearance"]) < wall + 0.05:
         raise ValueError("Deck material between PCB pocket and screw notch is too thin")
-    battery_wall = p["carrier_radius"] - p["battery_radius"] - p["battery_clearance"]
+    battery_wall = fit_dimensions["skirt_radius_mm"] - p["battery_radius"] - p["battery_clearance"]
     if battery_wall < wall + 0.05:
         raise ValueError("Battery well wall is below the printed wall minimum")
-    if battery_wall - p["wire_channel_diameter"] / 2 < wall + 0.05:
+    wire_wall = min(fit_dimensions["skirt_radius_mm"],
+                    p["wire_channel_y"] - p["wire_channel_diameter"] / 2
+                    ) - p["battery_radius"] - p["battery_clearance"]
+    if wire_wall < wall + 0.05 - 1e-6:
         raise ValueError("Wire groove leaves less than the printed wall minimum")
     if p["socket_radius"] - p["wire_channel_y"] - p["wire_channel_diameter"] / 2 < 0.05:
         raise ValueError("Wire groove touches the RingBase socket")

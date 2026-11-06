@@ -37,6 +37,35 @@ rear mask opening, rather than using a library bounding box that includes the
 outline stroke. IR, v1 multi-colour and the unfinished DotStar board need their
 own measured contact decks; they are not drop-in electrically compatible.
 
+### Provisional first-print bayonet fit relief
+
+The first printed top was reported too tight for the base; as-printed vernier
+measurements are pending. `bayonet_radial_relief = 0.25` removes **0.25 mm per
+side (0.5 mm on diameter)** from the lower insertion skirt and shifts both lug
+edges inward by the same amount. It is not a 0.5 mm-per-side clearance increase.
+The existing base/socket, upper carrier, real PCB, crown and CR2032 stack remain
+unchanged; no smaller cell is needed for this revision.
+
+| Bayonet dimension | Earlier CAD | Relieved CAD |
+| --- | ---: | ---: |
+| Lower skirt diameter | 23.0 mm | 22.5 mm |
+| Lug-tip diameter | 24.9 mm | 24.4 mm |
+| Skirt-to-socket radial gap | 0.35 mm | 0.60 mm |
+| Lug-tip-to-groove radial gap | 0.20 mm | 0.45 mm |
+| Radial retaining overlap | 0.60 mm | 0.35 mm |
+| Lug radial thickness | 1.20 mm | 1.20 mm |
+
+The relieved battery-well wall remains 1.10 mm, above the 1.05 mm nominal
+minimum. Virtual insertion, keyed rejection, twisting and locked pullout are
+checked, but reduced retaining overlap is **not a retention-load qualification**.
+The relieved revision has not been printed. Do not force the earlier parts;
+try the revised Carrier against the existing base before assembling electronics.
+Measure socket ID, skirt OD and lug-tip envelope at several angles/heights,
+groove width/height and lug thickness, noting print material, orientation and
+finish. These readings will determine final radial/axial compensation.
+A full 1 mm diameter reduction is not enabled with this CR2032 wall budget;
+a smaller standard cell would require a separately checked pocket/contact stack.
+
 Default dimensions: **18.5 mm unloaded finger bore, 11 mm band width, 27.5 mm
 maximum crown diameter and 11.5204 mm printed cassette height above Z=0**.
 The LEDs extend to Z=11.5204. The bore apex is raised to Z=0.3, so the true
@@ -82,7 +111,7 @@ old envelope would require a different contact architecture, not uniform scaling
 The closed loop is replaced by **two continuous 1.1 mm-thick PA12 arms**, with a
 60-degree bottom opening and 0.5 mm-radius end caps across the band width.
 The unloaded tip gap is 8.7 mm. The top sits low on the circular finger
-arc: the raised bore cuts into the crown underside, while a **continuous 0.5 mm
+arc: the raised bore cuts into the crown underside, while a **continuous 1.10 mm
 floor separates skin from the contact well**. Only the finger band is open; the
 battery compartment is not.
 

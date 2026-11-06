@@ -2,23 +2,23 @@
   "freecad_version": "0.19.24291 (Git)",
   "pcb_sha256": "c654e4aa105abfa6cf989eb2876a415812a02f522823408e27979c8d29b0eacb",
   "source_sha256": {
-    "design.py": "9a503eb48148d69dbae51bd6a2559087e28b8ad186547ce039ea0f79b05b0aa9",
-    "lantern_ring.py": "15de37952a25f678503ccecea867b01cebcd5e0ed52750466a725fd2aea49aef"
+    "design.py": "6a06f1d28ca5dec9e5e60cc264c90dc47535292a37c8a1660627afce55deed19",
+    "lantern_ring.py": "9e9103c22df3dfcc526a63602ea76fd4c00b07a273720c50dd167bd82519d3ed"
   },
   "artifact_sha256": {
-    "assembly.png": "8316e070f642631604edea0c4e0bbbe4abaf0e713c2f542fef6bb23b02c30da1",
-    "Bezel.step": "4619b77806317f5efcf428dcc993522a08e92a52774ba9053ea40a0863e6c4ac",
+    "assembly.png": "569076083d22d1cfde084af2d286f868421b1a58e7cb12bfcf0122e214021d64",
+    "Bezel.step": "1780a5bfb47f42f559461b32ca1011b4b39aca853d1bc6ab75e416ddffbd75ff",
     "Bezel.stl": "4d6a8b4274e44c7b9b45b9faef12093f9bb54258d98780000a01f60700d2d360",
-    "Carrier.step": "f1dfbd2ab82e74455f95a5f8aaef7c72e674dfd2ee0515c1447144b3cb141d94",
-    "Carrier.stl": "62e4528f571c8968c886bab4c2fc15f483ea684a4e0a68f8f68146117b816210",
-    "ContactDeck.step": "ee737007fe7986fae191c1915549fa14b7b9d42e5a9b4e5fb306a1643c37be36",
+    "Carrier.step": "6c07b4158bb10a0f8a05bd41076c21c32e4cb4b8e9f46dfbeff16bc7194110fd",
+    "Carrier.stl": "55d922a68d627600430ccd514b86cde3d26afaf29fbd6e95a241873a11d1da39",
+    "ContactDeck.step": "364a48d380f3cfb47a0560959e52fe0af7a61529386ee184228a56b86da3624f",
     "ContactDeck.stl": "8113679314b8898d6d56c83fdffe1caa44d5bb8733a8cab4de8d0ee5288637fe",
-    "exploded.png": "deb52d6df5fdb8302443a116ca5a65e80def1527bb8e6be4385160ebd2a3de3d",
+    "exploded.png": "377d000353ae018f91d9eb1d1e06e68a7377fd6d368e666337e9d4ebdffc370a",
     "flex-fit.png": "65a79b8ea82fac1196b79264c1504b631dcb5650943a0c006e5c77eae1698101",
-    "Lantern_Ring_v2.FCStd": "d722e749f3b5b296fe88f3917ceafc62d9f56c9cca82041f0d8d6085fda9e887",
-    "Lantern_Ring_v2.step": "d961ecbca172d5b75895d1a83786bb18c5acaee351d76cc7d908b94a60b2e47b",
+    "Lantern_Ring_v2.FCStd": "84852458609fdd36a1ae8a1207ee7f46c9243d0eca6af6126e0fa23b390f5980",
+    "Lantern_Ring_v2.step": "565af4e086767c89507dc79633853ecf94311af78a1a60a5ce58cb1dea10c7a9",
     "legacy-comparison.png": "31159026a09693bcfac6fa644b5d88ee6e0ef1c2d1745220cb5a97f7d38ec02f",
-    "RingBase.step": "5105d0c48e867b44198087ce0d50f9d8a35e6d4d572f64ee35911a4797923771",
+    "RingBase.step": "f21ca339553475351cb18fefdf854f2aef2e4b0780595ffa43ddaa4932c923aa",
     "RingBase.stl": "053a8a87ee63c637e047c1d77902dd8404580ad38ae06dda53ff93046b3812d3"
   },
   "parameters": {
@@ -36,6 +36,7 @@
     "body_radius": 13.75,
     "socket_radius": 11.85,
     "carrier_radius": 11.5,
+    "bayonet_radial_relief": 0.25,
     "deck_radius": 11.3,
     "deck_pocket_radius": 11.6,
     "pcb_clearance": 0.25,
@@ -227,6 +228,16 @@
     "tip_gap": 8.7,
     "status": "UNQUALIFIED: curvature screens only; root strain, force, creep and fatigue require tests"
   },
+  "bayonet_fit": {
+    "radial_relief_mm": 0.25,
+    "diameter_reduction_mm": 0.5,
+    "skirt_radius_mm": 11.25,
+    "lug_inner_radius_mm": 11.0,
+    "lug_outer_radius_mm": 12.2,
+    "skirt_radial_clearance_mm": 0.5999999999999996,
+    "lug_tip_radial_clearance_mm": 0.45000000000000107,
+    "radial_retaining_overlap_mm": 0.34999999999999964
+  },
   "legacy_reference": {
     "setting_diameter": 22.0,
     "setting_height_above_pcb": 5.0,
@@ -256,6 +267,7 @@
     "Twist: 31 poses, 0..30.0 degrees",
     "Wide lug rejects both incorrect 120/240 degree insertion orientations",
     "Locked cassette cannot lift 1 mm through retaining shelves",
+    "Provisional bayonet relief: 0.25 mm radial / 0.50 mm diametral; 0.60 mm skirt gap, 0.45 mm lug-tip gap, 0.35 mm retaining overlap",
     "Carrier side pillars seat on the RingBase at the locked height",
     "Pogo travel worst case: 0.052..0.557 mm; max 0.610 mm",
     "Both pogo tips touch the intended battery faces at nominal compression",
@@ -267,7 +279,7 @@
     "RingBase STL watertight and STEP valid after re-import",
     "RingBase minimum printed wall 1.038 mm (>= 1 mm required)",
     "Carrier STL watertight and STEP valid after re-import",
-    "Carrier minimum printed wall 1.098 mm (>= 1 mm required)",
+    "Carrier minimum printed wall 1.093 mm (>= 1 mm required)",
     "ContactDeck STL watertight and STEP valid after re-import",
     "ContactDeck minimum printed wall 1.059 mm (>= 1 mm required)",
     "Bezel STL watertight and STEP valid after re-import",
@@ -301,19 +313,19 @@
       },
       "Carrier": {
         "file": "Carrier.stl",
-        "triangles": 2568,
+        "triangles": 2848,
         "watertight": true,
-        "volume_mm3": 1519.734,
+        "volume_mm3": 1460.966,
         "size_mm": [
-          23.646,
-          23.934,
+          23.611,
+          23.68,
           9.02
         ],
-        "min_thickness_mm": 1.098,
+        "min_thickness_mm": 1.093,
         "min_thickness_at": [
-          -10.02,
-          6.23,
-          7.11
+          -10.51,
+          -3.98,
+          2.87
         ],
         "thin_triangles": 0,
         "thin_examples": [],
@@ -364,5 +376,5 @@
       }
     }
   },
-  "physical_test_status": "NOT PRINTED: fit, wear, electrical continuity and battery safety require bench validation"
+  "physical_test_status": "PRIOR PRINT TOO TIGHT (user report); relieved revision NOT PRINTED. As-printed vernier dimensions pending; fit, retention, electrical continuity and battery safety require bench validation"
 }

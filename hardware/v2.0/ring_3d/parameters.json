@@ -13,6 +13,7 @@
   "body_radius": 13.75,
   "socket_radius": 11.85,
   "carrier_radius": 11.5,
+  "bayonet_radial_relief": 0.25,
   "deck_radius": 11.3,
   "deck_pocket_radius": 11.6,
   "pcb_clearance": 0.25,

@@ -123,13 +123,13 @@
     {
       "group": "plastic",
       "part": "Carrier",
-      "volume_cm3": 1.52,
+      "volume_cm3": 1.461,
       "size_mm": [
-        23.646,
-        23.934,
+        23.611,
+        23.68,
         9.02
       ],
-      "min_wall_mm": 1.098,
+      "min_wall_mm": 1.093,
       "watertight": true,
       "passes": true
     },

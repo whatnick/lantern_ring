@@ -3,7 +3,8 @@
 import json
 import unittest
 
-from lantern_ring import App, bop_check, HERE, PRINT_PARTS, RingFeature, object_config, validate_geometry
+from lantern_ring import App, bop_check, HERE, PRINT_PARTS, RingFeature, object_config, unrotated_geometry, validate_geometry
+from design import pcb_interface
 
 
 class NativeDocumentTests(unittest.TestCase):
@@ -51,6 +52,31 @@ class NativeDocumentTests(unittest.TestCase):
             parameters.PCBClearance = original
             self.doc.recompute()
         self.assertAlmostEqual(before, self.doc.ContactDeck.Shape.Volume, places=5)
+
+    def test_bayonet_relief_recomputes_only_carrier_and_preserves_base(self):
+        parameters = self.doc.Parameters
+        original = parameters.BayonetRadialRelief.Value
+        before = {name: self.doc.getObject(name).Shape.copy() for name in PRINT_PARTS}
+        try:
+            parameters.BayonetRadialRelief = 0
+            self.doc.recompute()
+            self.assertGreater(self.doc.Carrier.Shape.Volume, before["Carrier"].Volume)
+            for name in ("RingBase", "ContactDeck", "Bezel"):
+                self.assertAlmostEqual(self.doc.getObject(name).Shape.Volume,
+                                       before[name].Volume, places=5)
+            p = json.loads(object_config(parameters))
+            baseline = unrotated_geometry(p, pcb_interface())
+            p["bayonet_radial_relief"] = original
+            relieved = unrotated_geometry(p, pcb_interface())
+            point = App.Vector(0, -11.4, 3.8)
+            self.assertTrue(baseline["Carrier"].isInside(point, 1e-6, False))
+            self.assertFalse(relieved["Carrier"].isInside(point, 1e-6, False))
+            self.assertLess(relieved["RingBase"].cut(baseline["RingBase"]).Volume, 1e-5)
+            self.assertLess(baseline["RingBase"].cut(relieved["RingBase"]).Volume, 1e-5)
+        finally:
+            parameters.BayonetRadialRelief = original
+            self.doc.recompute()
+        self.assertAlmostEqual(before["Carrier"].Volume, self.doc.Carrier.Shape.Volume, places=5)
 
     def test_band_is_open_with_rounded_tips_and_insulated_nested_crown(self):
         p = json.loads(object_config(self.doc.Parameters))

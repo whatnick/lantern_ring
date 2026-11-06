@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from design import (
-    HERE, PCB_PATH, artifact_hash, load_parameters, offset_polygon, parse_sexpr,
+    HERE, PCB_PATH, artifact_hash, bayonet_fit, load_parameters, offset_polygon, parse_sexpr,
     flexible_fit, pcb_interface, point_inside, shoulder, source_hash, validate_parameters,
 )
 
@@ -99,6 +99,22 @@ class InterfaceTests(unittest.TestCase):
         self.assertIn("UNQUALIFIED", fit["status"])
         smaller = dict(self.p, fit_expansion=0.5)
         self.assertLess(flexible_fit(smaller)["uniform_curvature_strain"], fit["uniform_curvature_strain"])
+
+    def test_bayonet_relief_adds_clearance_without_scaling_stack(self):
+        baseline = dict(self.p, bayonet_radial_relief=0)
+        old_stack = validate_parameters(baseline, self.pcb)
+        self.assertEqual(validate_parameters(self.p, self.pcb), old_stack)
+        fit = bayonet_fit(self.p)
+        old_fit = bayonet_fit(baseline)
+        self.assertAlmostEqual(fit["diameter_reduction_mm"], 0.5)
+        self.assertAlmostEqual(fit["skirt_radial_clearance_mm"], 0.6)
+        self.assertAlmostEqual(fit["lug_tip_radial_clearance_mm"], 0.45)
+        self.assertAlmostEqual(fit["radial_retaining_overlap_mm"], 0.35)
+        self.assertAlmostEqual(fit["lug_outer_radius_mm"] - fit["lug_inner_radius_mm"],
+                               old_fit["lug_outer_radius_mm"] - old_fit["lug_inner_radius_mm"])
+        for relief in (-0.1, 0.5, 0.6):
+            with self.subTest(relief=relief), self.assertRaises(ValueError):
+                validate_parameters(dict(self.p, bayonet_radial_relief=relief), self.pcb)
 
     def test_hollow_shoulders_stiffen_root_and_shorten_free_arm(self):
         meet = shoulder(self.p)
@@ -194,6 +210,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(report["flexible_fit"], flexible_fit(self.p))
         for name, expected in reference["files_sha256"].items():
             self.assertEqual(expected, artifact_hash(HERE.parents[2] / name))
+        self.assertEqual(report["bayonet_fit"], bayonet_fit(self.p))
         self.assertIn("NOT PRINTED", report["physical_test_status"])
         for filename in ("Lantern_Ring_v2.FCStd", "Lantern_Ring_v2.step",
                          "assembly.png", "exploded.png", "legacy-comparison.png", "flex-fit.png"):

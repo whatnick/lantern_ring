@@ -51,6 +51,14 @@ to replace measured geometry with a generic circle.
 - Compact outer socket radius 13.75; socket 11.85; carrier 11.5; lug reach 12.45;
   groove reach 12.65 mm. Preserve at least 1.05 mm remaining outer track wall,
   radial running clearance and positive axial retention.
+  After reported first-print interference, `bayonet_radial_relief=0.25` reduces
+  only the insertion skirt and both lug radii by 0.25 mm (0.5 mm diameter).
+  Actual skirt/lug outer radii are 11.25/12.20 mm, with 0.60/0.45 mm radial
+  running gaps and 0.35 mm retaining overlap. Keep the existing base, upper
+  carrier and CR2032 stack unchanged. The relieved well wall is 1.10 mm.
+  This is provisional, unprinted compensation pending vernier measurements,
+  not a qualified tolerance or retention load. The native
+  `BayonetRadialRelief` property must recompute the lower Carrier geometry.
   Upper bezel diameter is 27.1 mm; band width remains 11 mm and wall is 1.1 mm. This is still
   larger/taller than the original direct-contact body: do not claim exact fit
   or scale the cell/PCB to hide the difference.
@@ -127,7 +135,7 @@ python -m unittest discover -s hardware\v2.0\ring_3d -p "test_design.py"
 ```
 
 For GUI regeneration run `build.FCMacro`. Import the local `lantern_ring`
-module before restoring the FeaturePython document for editing. The four
+module before restoring the FeaturePython document for editing. The
 exposed dimension overrides on `Parameters` recompute all affected shapes;
 the full configuration is JSON. Transfer final GUI settings back to
 `parameters.json` and regenerate **all** exports. Saved PCB geometry is a

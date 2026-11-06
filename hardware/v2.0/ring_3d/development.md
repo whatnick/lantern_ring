@@ -60,6 +60,13 @@ Copy intended changes into `parameters.json` and rebuild; GUI edits do not
 update exported manufacturing files. The PCB interface embedded in FCStd is a
 snapshot, so regenerate after PCB changes. Do not hand-edit generated geometry.
 
+`Parameters.BayonetRadialRelief` recomputes only the lower Carrier skirt and
+lug radii, not the RingBase or the PCB/battery stack. The provisional default is
+0.25 mm radial (0.5 mm diameter); zero restores the earlier nominal geometry.
+Do not increase it without checking well-wall thickness and retaining overlap.
+The 0.3 mm minimum radial overlap guard is a geometric screen, not an allowable
+load. Physical print dimensions and retention testing remain outstanding.
+
 ## Render animations and images
 
 Build the v2 parts and crowns before running either render script. The crown
