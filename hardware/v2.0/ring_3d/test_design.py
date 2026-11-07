@@ -190,6 +190,17 @@ class InterfaceTests(unittest.TestCase):
                 p.update(changes)
                 validate_parameters(p, self.pcb)
 
+    def test_fit_gauge_artifacts_match_both_source_boards(self):
+        output = HERE / "generated" / "fit_gauges"
+        report = json.loads((output / "validation.json").read_text(encoding="utf-8"))
+        self.assertIn("EXPERIMENTAL", report["status"])
+        self.assertEqual(len(report["print_check"]), 5)
+        self.assertTrue(all(result["passes"] for result in report["print_check"].values()))
+        for name, expected in report["source_sha256"].items():
+            self.assertEqual(expected, source_hash(HERE.parents[2] / name), name)
+        for name, expected in report["artifact_sha256"].items():
+            self.assertEqual(expected, artifact_hash(output / name), name)
+
     def test_checked_in_artifacts_match_source_interface(self):
         report_path = HERE / "generated" / "validation.json"
         self.assertTrue(report_path.exists(), "Run build.ps1 before committing")

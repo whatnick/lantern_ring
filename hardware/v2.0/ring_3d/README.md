@@ -34,17 +34,38 @@ The supported board is the **v2 mono-colour PCB only**:
 17.78 x 19.05 mm, 0.8 mm thick, with a ten-vertex asymmetric outline. This is not
 the v1 17.78 mm octagon. The generator reads actual Edge.Cuts, pad nets and the
 rear mask opening, rather than using a library bounding box that includes the
-outline stroke. IR, v1 multi-colour and the unfinished DotStar board need their
-own measured contact decks; they are not drop-in electrically compatible.
+outline stroke. The IR board has the same general rear VCC / front edge GND
+contact concept, but is not a validated drop-in: its KiCad outline differs,
+its saved thickness is 1.6 mm rather than 0.8 mm, and its ground contacts and
+components need their own clearance and wiring checks. The v1 multi-colour and
+unfinished DotStar boards also need separately verified interfaces.
+
+The user measured **1.6 mm for the populated mono board** and **2.4 mm for the
+populated IR board**. These are overall board-and-components measurements,
+not bare-board thicknesses: the KiCad files specify 0.8 mm and 1.6 mm for the
+respective substrates. The measurements do not establish which face contains
+the tallest component or its position. Verify bare-board thickness, component
+protrusion on each face, and the bezel clamping plane separately before
+designing a shared pocket or changing the spring-contact stack.
 
 ### Provisional first-print bayonet fit relief
 
-The first printed top was reported too tight for the base; as-printed vernier
-measurements are pending. `bayonet_radial_relief = 0.25` removes **0.25 mm per
+See the [illustrated first-print fit roadmap](fit-roadmap/README.md) for jaw
+placement, socket and lug measurement sheets, PCB stack measurements and
+the proposed validation sequence.
+
+The first printed top was reported too tight for the base. The user-supplied
+first-print photo album shows 21.3 mm across an apparent base opening and
+23.0 mm across an apparent carrier outside; the precise features and contact
+planes for those readings are not confirmed. The user subsequently measured
+**22.1 mm from the bayonet entry to the opposite wall without a bayonet slot**.
+This single measured span is not a complete socket/track survey or a
+print-process tolerance. `bayonet_radial_relief = 0.25` removes **0.25 mm per
 side (0.5 mm on diameter)** from the lower insertion skirt and shifts both lug
 edges inward by the same amount. It is not a 0.5 mm-per-side clearance increase.
 The existing base/socket, upper carrier, real PCB, crown and CR2032 stack remain
-unchanged; no smaller cell is needed for this revision.
+unchanged in this revision. It predates the 22.1 mm reading and is not expected
+to fit if that span limits the skirt.
 
 | Bayonet dimension | Earlier CAD | Relieved CAD |
 | --- | ---: | ---: |
@@ -58,13 +79,67 @@ unchanged; no smaller cell is needed for this revision.
 The relieved battery-well wall remains 1.10 mm, above the 1.05 mm nominal
 minimum. Virtual insertion, keyed rejection, twisting and locked pullout are
 checked, but reduced retaining overlap is **not a retention-load qualification**.
-The relieved revision has not been printed. Do not force the earlier parts;
-try the revised Carrier against the existing base before assembling electronics.
+The relieved revision has not been printed. Do not force either revision into
+the existing base; the nominal 22.5 mm skirt exceeds the measured 22.1 mm span.
 Measure socket ID, skirt OD and lug-tip envelope at several angles/heights,
 groove width/height and lug thickness, noting print material, orientation and
 finish. These readings will determine final radial/axial compensation.
-A full 1 mm diameter reduction is not enabled with this CR2032 wall budget;
-a smaller standard cell would require a separately checked pocket/contact stack.
+A full 1 mm diameter reduction is not enabled with this CR2032 wall budget.
+With the specified 0.15 mm battery clearance and 1.05 mm nominal wall, the
+minimum circular well outside diameter is 22.4 mm, before insertion clearance.
+If the 22.1 mm span constrains the circular bayonet entry, this CR2032 well cannot fit;
+a smaller standard cell or a redesigned base would require a separately checked
+contact stack and retention geometry. The entry and track dimensions must be
+measured separately before treating either approach as a fit.
+
+With the IR board centred on the same datum and bottom plane, a FreeCAD solid
+comparison gives approximately 2.21 mm^3 intersection with the current
+ContactDeck and 26.51 mm^3 with the current Bezel. This uses the saved 1.6 mm
+IR thickness and board outline, not the physical board or its components.
+Widening the pocket alone therefore does not accommodate both board thicknesses
+or establish an electrically safe assembly.
+
+### Experimental, battery-free fit gauges
+
+The [fit gauges](generated/fit_gauges/) are separate test pieces, **not an
+updated cassette**. `BayonetGauge.stl` has a 21.5 mm skirt, 0.6 mm below the
+single measured 22.1 mm entry span; its lugs follow the existing CAD, whose
+printed slot and track dimensions remain unmeasured. Try it without electronics
+or a cell and do not force it. It may fail to enter or turn despite passing the
+nominal CAD insertion and key checks. Report skirt OD, entry span, slot width,
+track depth and height, and whether it locks and releases.
+
+`BoardOutlineGauge.stl` has a through-opening made from the union of both
+actual KiCad outlines, offset outward by 0.25 mm. It tests outline clearance
+only, not a retaining deck, thickness, components, electrical contacts or
+component-side clearance. Use only a **fully unpowered, battery-free board**;
+avoid stressing components and stop if any touch the gauge. Both gauges need
+actual print and fit trials, and neither qualifies retention, battery safety or
+electrical performance.
+
+Their native FreeCAD document, STEP files and print-wall report are in the same
+directory. Regenerate with FreeCAD's Python:
+`& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' hardware\v2.0\ring_3d\fit_gauges.py`.
+
+The same folder also contains `CarrierFitOnly.stl` and `DualBoardDeckFitOnly.stl`:
+preliminary mechanical studies of a 16 x 3.2 mm CR1632-sized cell pocket and a
+deck cut for both saved board outlines. **Use them only for battery-free fit
+trials. Do not install a cell, power them or wear them.** They are not a finished
+ring or compatible clamp: the existing bezel does not fit the thicker IR
+substrate, and component, lead, contact, insulation and retention checks remain
+open. The single 22.1 mm span does not establish lug-slot or track dimensions.
+FreeCAD checks both substrate solids, nominal key motion and the original pin
+envelopes; those checks cannot qualify an actual CR1632 or its contacts.
+The installed KiCad export could not resolve the IR U2 component model, so
+the populated IR STEP must not be used as evidence of complete clearance.
+
+`IRBezelFitOnly.stl` is a separate experimental IR-substrate clamp, not a
+universal bezel: it bridges the 0.8 mm difference in saved substrate thickness
+with screw feet and has a perimeter lip derived from the IR outline. The CAD
+checks substrate clearance and nominal lip overlap only. It has **no verified
+ground-wire relief**, and component clearance, actual substrate thickness,
+screw length, electrical isolation, contact forces and locking remain unchecked.
+Do not install or power a board with it; it is for unpowered clearance studies.
 
 Default dimensions: **18.5 mm unloaded finger bore, 11 mm band width, 27.5 mm
 maximum crown diameter and 11.5204 mm printed cassette height above Z=0**.

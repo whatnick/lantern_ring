@@ -1,0 +1,150 @@
+{
+  "status": "EXPERIMENTAL GAUGES ONLY; not a battery holder, assembly or qualified fit",
+  "measured_entry_span_mm": 22.1,
+  "bayonet_skirt_diameter_mm": 21.5,
+  "nominal_diametral_clearance_against_measured_span_mm": 0.6000000000000014,
+  "nominal_lug_tip_radius_mm": 12.2,
+  "board_outline_clearance_mm": 0.25,
+  "board_substrate_thickness_mm": {
+    "mono": 0.8,
+    "ir": 1.6
+  },
+  "candidate_cell_nominal_diameter_mm": 16.0,
+  "candidate_cell_nominal_height_mm": 3.2,
+  "limitations": [
+    "The 22.1 mm is one physical span, not a measured cylindrical socket.",
+    "Lug slots and tracks remain unmeasured; only the source CAD base is checked.",
+    "Board gauge tests outlines only, not thickness, components or electrical contacts.",
+    "Candidate cassette is not compatible with either finished assembly until its bezel, components, wiring, electrical safety and retention are checked.",
+    "Do not insert a cell, power the boards or wear the candidate.",
+    "The parts are not physically printed or tested."
+  ],
+  "source_sha256": {
+    "hardware/v2.0/ring_mono/ring_mono.kicad_pcb": "c654e4aa105abfa6cf989eb2876a415812a02f522823408e27979c8d29b0eacb",
+    "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
+    "hardware/v2.0/ring_3d/parameters.json": "bb7f09d672465d64b135c708c33f689d1701a8aefb81286d431f98edc07cb583",
+    "hardware/v2.0/ring_3d/design.py": "6a06f1d28ca5dec9e5e60cc264c90dc47535292a37c8a1660627afce55deed19",
+    "hardware/v2.0/ring_3d/lantern_ring.py": "9e9103c22df3dfcc526a63602ea76fd4c00b07a273720c50dd167bd82519d3ed",
+    "hardware/v2.0/ring_3d/fit_gauges.py": "47803782a71748065dba371158337cce6bda9e2e2fc868f105ec742efb31795e"
+  },
+  "print_check": {
+    "BayonetGauge": {
+      "file": "BayonetGauge.stl",
+      "triangles": 350,
+      "watertight": true,
+      "volume_mm3": 743.385,
+      "size_mm": [
+        22.939,
+        22.46,
+        2.0
+      ],
+      "min_thickness_mm": 1.2,
+      "min_thickness_at": [
+        11.16,
+        -1.26,
+        0.8
+      ],
+      "thin_triangles": 0,
+      "thin_examples": [],
+      "problems": [],
+      "passes": true
+    },
+    "BoardOutlineGauge": {
+      "file": "BoardOutlineGauge.stl",
+      "triangles": 392,
+      "watertight": true,
+      "volume_mm3": 263.366,
+      "size_mm": [
+        25.6,
+        25.574,
+        1.2
+      ],
+      "min_thickness_mm": 1.2,
+      "min_thickness_at": [
+        11.56,
+        -1.64,
+        1.2
+      ],
+      "thin_triangles": 0,
+      "thin_examples": [],
+      "problems": [],
+      "passes": true
+    },
+    "CarrierFitOnly": {
+      "file": "CarrierFitOnly.stl",
+      "triangles": 3286,
+      "watertight": true,
+      "volume_mm3": 1774.492,
+      "size_mm": [
+        26.8,
+        22.987,
+        9.02
+      ],
+      "min_thickness_mm": 1.098,
+      "min_thickness_at": [
+        -11.79,
+        0.38,
+        7.11
+      ],
+      "thin_triangles": 0,
+      "thin_examples": [],
+      "problems": [],
+      "passes": true
+    },
+    "DualBoardDeckFitOnly": {
+      "file": "DualBoardDeckFitOnly.stl",
+      "triangles": 1200,
+      "watertight": true,
+      "volume_mm3": 796.354,
+      "size_mm": [
+        22.387,
+        22.599,
+        2.62
+      ],
+      "min_thickness_mm": 1.059,
+      "min_thickness_at": [
+        -0.73,
+        -0.29,
+        1.06
+      ],
+      "thin_triangles": 0,
+      "thin_examples": [],
+      "problems": [],
+      "passes": true
+    },
+    "IRBezelFitOnly": {
+      "file": "IRBezelFitOnly.stl",
+      "triangles": 1448,
+      "watertight": true,
+      "volume_mm3": 368.148,
+      "size_mm": [
+        27.1,
+        27.073,
+        1.9
+      ],
+      "min_thickness_mm": 1.079,
+      "min_thickness_at": [
+        -10.64,
+        1.03,
+        0.27
+      ],
+      "thin_triangles": 0,
+      "thin_examples": [],
+      "problems": [],
+      "passes": true
+    }
+  },
+  "artifact_sha256": {
+    "BayonetGauge.step": "9d256f36a6087a56002d803013bdd73c29a37d9ce90401c955917dd498799c5a",
+    "BayonetGauge.stl": "04fd6858d0c5060f86a77391b77ac50a31d370aa17a20d1ad02a3ea5443c7e34",
+    "BoardOutlineGauge.step": "cb85d58c715d61ed4dc0bfae9edf5e7b6d2fb142ffe89df29ea3a876445ca704",
+    "BoardOutlineGauge.stl": "5c849269bc9805d2058babff58707d4e97643cfd675262f72a6cc0d1327d9791",
+    "CarrierFitOnly.step": "1c5c6b5defa1255f1011eb070637eda4bfe06df5053adcfbe0a2e284587b0caf",
+    "CarrierFitOnly.stl": "fd2eaef487b70d74435ed80cc75ea1f0228bd82d43c54db48371816cd594eb63",
+    "DualBoardDeckFitOnly.step": "0d0bd8965d4ea8becd9459dd843b7bc3a74612e3cfdc3f12b76984570a196be4",
+    "DualBoardDeckFitOnly.stl": "241a0086f125d721f0495b590ccf6d676ad8f27420525c8156cd13a5b222a233",
+    "ExperimentalFitGauges.FCStd": "ad9a18f0c765cb76f379999cd05eec643675e98cfc73f7957df99c4472a94516",
+    "IRBezelFitOnly.step": "0907bed2f58404c5dbed68b271e6ef870abd38a719704f86f505d22b60420ff3",
+    "IRBezelFitOnly.stl": "c282140ba7a998f412912b65775e1b8ed012a6277496152511ccda2c66af8462"
+  }
+}

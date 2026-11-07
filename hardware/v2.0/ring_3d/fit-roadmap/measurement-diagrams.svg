@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Lantern Ring first-print measurement map</title>
+  <desc id="desc">Schematic top, section and board stack views showing socket, slots, lugs, track and PCB measurements. Not to scale.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#ba3f18"/></marker>
+    <style>
+      .title{font:bold 23px sans-serif;fill:#17334c}.text{font:18px sans-serif;fill:#17334c}
+      .label{font:bold 20px sans-serif;fill:#a62b0d}.small{font:16px sans-serif;fill:#17334c}
+      .outline{fill:none;stroke:#17334c;stroke-width:4}.wall{fill:#dce7ed;stroke:#17334c;stroke-width:3}
+      .part{fill:#c8e3d2;stroke:#17334c;stroke-width:3}.dim{fill:none;stroke:#ba3f18;stroke-width:2.5;marker-start:url(#arrow);marker-end:url(#arrow)}
+      .lead{fill:none;stroke:#ba3f18;stroke-width:2}.dash{fill:none;stroke:#687c8b;stroke-width:2;stroke-dasharray:6 6}
+    </style>
+  </defs>
+  <rect width="1200" height="1200" fill="#fff"/>
+  <text x="35" y="38" class="title">FIRST-PRINT MEASUREMENT MAP</text>
+  <text x="35" y="64" class="small">Schematic only - not to scale; measure actual printed surfaces, not this drawing.</text>
+
+  <text x="35" y="112" class="title">A. BASE - TOP VIEW</text>
+  <circle cx="220" cy="265" r="115" class="wall"/><circle cx="220" cy="265" r="87" fill="#fff" stroke="#17334c" stroke-width="3"/>
+  <path d="M 299 228 L 329 215 L 343 244 L 304 254 M 145 222 L 117 208 L 104 239 L 134 251 M 205 351 L 205 379 L 237 379 L 237 351" fill="#fff" stroke="#17334c" stroke-width="3"/>
+  <path d="M 134 280 L 306 280" class="dim"/><text x="196" y="310" class="label">D1</text>
+  <path d="M 333 214 L 346 244" class="dim"/><text x="359" y="230" class="label">W1</text>
+  <path d="M 220 145 L 220 390 M 100 265 L 350 265" class="dash"/>
+  <text x="30" y="424" class="text">D1: wall-to-wall entry, avoid slots</text>
+  <text x="30" y="450" class="text">W1: each slot mouth, straight chord</text>
+  <text x="30" y="476" class="small">Repeat D1 at multiple angles and depths.</text>
+
+  <text x="430" y="112" class="title">B. BASE - SECTION THROUGH TRACK</text>
+  <path d="M 460 180 H 548 V 222 H 510 V 275 H 548 V 347 H 460 Z" class="wall"/>
+  <path d="M 690 180 H 602 V 222 H 640 V 275 H 602 V 347 H 690 Z" class="wall"/>
+  <path d="M 510 248 H 548" class="dim"/><text x="520" y="236" class="label">R1</text>
+  <path d="M 660 223 V 274" class="dim"/><text x="670" y="255" class="label">H1</text>
+  <path d="M 481 182 V 222" class="dim"/><text x="443" y="210" class="label">S1</text>
+  <path d="M 581 182 V 347" class="dim"/><text x="550" y="195" class="label">Z1</text>
+  <text x="430" y="390" class="text">R1: radial track depth beyond wall</text>
+  <text x="430" y="416" class="text">H1: clear height between track faces</text>
+  <text x="430" y="442" class="text">S1: shelf thickness; Z1: rim to seat</text>
+  <text x="430" y="469" class="small">Section is through one track, not a continuous groove.</text>
+
+  <text x="770" y="112" class="title">C. CARRIER - TOP / SIDE</text>
+  <circle cx="950" cy="254" r="87" class="part"/>
+  <path d="M 1034 230 L 1060 222 L 1068 251 L 1037 256 M 875 209 L 852 198 L 841 224 L 866 235 M 939 340 L 939 365 L 967 365 L 967 340" class="part"/>
+  <path d="M 863 254 H 1037" class="dim"/><text x="925" y="245" class="label">D2</text>
+  <path d="M 1059 222 L 1068 251" class="dim"/><text x="1082" y="236" class="label">W2</text>
+  <path d="M 818 390 H 1082 V 409 H 1015 V 438 H 888 V 409 H 818 Z" class="part"/>
+  <path d="M 1103 390 V 409" class="dim"/><text x="1114" y="405" class="label">H2</text>
+  <text x="770" y="477" class="text">D2: skirt OD (exclude lugs)</text>
+  <text x="770" y="503" class="text">W2 / H2: each lug chord / thickness</text>
+  <text x="770" y="529" class="small">Measure lug radial reach R2 individually;</text>
+  <text x="770" y="551" class="small">three lugs are not opposite each other.</text>
+
+  <path d="M 30 575 H 1170" stroke="#c6d3db" stroke-width="2"/>
+  <text x="35" y="615" class="title">D. STACK AND PCB - SECTION (EACH BOARD SEPARATELY)</text>
+  <rect x="110" y="800" width="500" height="30" class="part"/>
+  <rect x="150" y="750" width="420" height="36" fill="#4a9668" stroke="#17334c" stroke-width="3"/>
+  <rect x="220" y="720" width="65" height="30" class="wall"/>
+  <rect x="450" y="730" width="48" height="20" class="wall"/>
+  <rect x="320" y="786" width="55" height="15" class="wall"/>
+  <path d="M 150 678 H 570" class="dim"/><text x="339" y="666" class="label">P1</text>
+  <path d="M 125 752 V 785" class="dim"/><text x="76" y="778" class="label">T0</text>
+  <path d="M 646 720 V 801" class="dim"/><text x="661" y="766" class="label">T1</text>
+  <path d="M 205 720 V 750" class="dim"/><text x="164" y="731" class="label">T2</text>
+  <path d="M 400 786 V 801" class="dim"/><text x="410" y="800" class="label">T3</text>
+  <text x="110" y="885" class="text">Green: PCB substrate; blue: components; lower block: deck.</text>
+  <text x="110" y="913" class="text">P1: outline in X and Y; T0: bare edge; T1: populated overall.</text>
+  <text x="110" y="941" class="text">T2 / T3: highest protrusion on each face, at mapped position.</text>
+  <text x="110" y="969" class="small">Also measure deck pocket depth and bezel underside / board-edge clamping plane.</text>
+  <text x="35" y="1030" class="title">TOOLS AND SAFETY</text>
+  <text x="35" y="1062" class="text">Zero calipers; avoid squeezing flexible parts. Photograph jaw contact points and display.</text>
+  <text x="35" y="1090" class="text">Use depth gauge, pin gauges or an impression for inaccessible tracks; label estimates.</text>
+  <text x="35" y="1118" class="text">Remove battery and power. Never clamp component bodies or force a tight bayonet.</text>
+  <text x="35" y="1155" class="small">Dimensions are measurement instructions, not proof of fit, retention or electrical safety.</text>
+</svg>
