@@ -14,9 +14,34 @@ with its generic guide PCBs replaced by the boards here.
 > because the seller publishes no drawing. The AliExpress kit has now been
 > assembled and photographed with calipers. The new reconstruction below uses
 > readable measurements, but mounting geometry and spring travel remain estimates.
-> The physical fit report includes no dimensions or contact-quality data yet.
+> New album photographs show the assembled custom clip with the IR PCB seated.
+> No measured fit dimensions or contact-quality data have been recorded yet.
 > Repeatable electrical contact and successful programming have not been
 > documented; the original PCB fit report remains a virtual estimate.
+
+## As-built clip with IR PCB
+
+The latest user-supplied photographs in the
+[Clip Programmer Assembly album](https://photos.google.com/share/AF1QipNwx2ELJVqs2tECPYQ5cwoX293osVatVeGoo2XyBIm2Dzrf3vpLs3F5LxYhLjrQvA?key=RVRZOGVPc3RqZ1FpdEt0eEJ4c1piN01uNm1QZm9n),
+reviewed on 2026-11-10, show the purple probe/guide PCBs assembled on the clip,
+the IR board seated rear-side up in the lower locator, and pogo tips meeting
+the visible rear test-pad region, including the off-grid VCC pad.
+These are photographs of hardware, not CAD renders.
+
+![Assembled clip with the IR PCB seated, side view](images/assembled_ir_side.jpg)
+
+| Rear test-pad close-up | Off-grid VCC and signal-pad close-up |
+| --- | --- |
+| ![Pogo tips at the IR rear pads](images/assembled_ir_pad_detail.jpg) | ![VCC pogo and neighbouring signal tips](images/assembled_ir_vcc_detail.jpg) |
+
+The pictures support the reported physical assembly and seating; they do not
+establish every tip's alignment, contact resistance, preload, retention or
+successful programming. J1's SMD header lands are visibly unpopulated, so this
+is not evidence of a complete programmer connection. The photographed PCB
+revision is not verified, and these images do not validate the new v0.2
+anvil/fence screw holes or paired GND contacts. Their source URLs and downloaded
+file hashes are preserved in [image provenance](images/sources.json).
+No CAD dimensions or measured/unmeasured flags were changed from these views.
 
 ## Kit assembly animation
 

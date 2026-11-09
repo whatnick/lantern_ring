@@ -67,6 +67,10 @@ The user reports that the custom probe/anvil/fence boards have now been built
 and physically fit-tested. Fit dimensions and repeatability results have not
 yet been recorded; the original FreeCAD report remains a virtual check against
 estimated clip geometry, not evidence of electrical contact or programming.
+The [as-built photo section](README.md#as-built-clip-with-ir-pcb) now records
+the latest album views of the assembled clip with the IR PCB seated. They
+document physical assembly, not measured tolerances or electrical qualification;
+the photographed revision is unverified and does not qualify the v0.2 changes.
 After finalizing the screwed anvil/fence stack, check that
 `avrdude -c usbasp -p t85` consistently reads the ATtiny85 signature `0x1e930b`.
 Follow [the programming wiring guide](programming.md) for header orientation,

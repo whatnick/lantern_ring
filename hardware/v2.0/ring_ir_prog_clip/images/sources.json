@@ -110,5 +110,26 @@
     "image_url": "https://lh3.googleusercontent.com/pw/AP1GczPeFl2-x7N-FwwazQsfStBDNKfuMJllhRG7LhKXpHOukAQDb1l5o4W1pdRS19V4SyaKpmpTmWpy98gOR5q3On9G-96E5unGh-_iLJSeb-3b0geg1Nck",
     "sha256": "0efdd20664368e31a18d2cd2c2f5e78cd850381ee6eb83300e5db6842f02e8e1",
     "provenance": "User-supplied Clip Programmer Assembly album; downloaded at 1400px, no geometry inferred from perspective alone"
+  },
+  {
+    "file": "assembled_ir_side.jpg",
+    "album_photo_id": "AF1QipMj3ev2VFajtWZPPQr8UNk1KwLoOEeryeQ8dx_q",
+    "image_url": "https://lh3.googleusercontent.com/pw/AP1GczMh32hJYl0gfsF2OxRp3s4Ojm7LetrNZKFU1NEWu72ApYhRFMJAfci7EExtg4w9u0O1KRZWbMa3OmWynTBTuqFLFRFEFSu9RqcaDkEq28PUR3loSJz0",
+    "sha256": "7fa62936d1f46c9d58ef1d7ea9ce78689c0344da5ebae0ad4a9af8882ef88ba6",
+    "provenance": "User-supplied Clip Programmer Assembly album; downloaded at 1400px and reviewed 2026-11-10. As-built clip with IR PCB seated; PCB revision unverified. No geometry inferred from perspective alone; not electrical qualification."
+  },
+  {
+    "file": "assembled_ir_pad_detail.jpg",
+    "album_photo_id": "AF1QipMFvJb3D68mLgF0zqVeeoIugMZdcnWs0a-is6pr",
+    "image_url": "https://lh3.googleusercontent.com/pw/AP1GczP9ztaf_5KJS-BuCDR3npiOueZU-ICSud4ZDuQLd5A4EbycWdGdlFwNEjvI82wKh18LFay4wwKgDADFXD45vVJ9B7DI2z0Uis2Re1YzKxC92AeiYVxH",
+    "sha256": "8499da146a05adb843447b15a6d6c1c52c07df7c2d55b139cfe968ac7da0a468",
+    "provenance": "User-supplied Clip Programmer Assembly album; downloaded at 1400px and reviewed 2026-11-10. Pogo/IR rear-pad close-up; PCB revision unverified. No geometry inferred from perspective alone; not electrical qualification."
+  },
+  {
+    "file": "assembled_ir_vcc_detail.jpg",
+    "album_photo_id": "AF1QipOZ_AZYQyT9pBlq1J82N4ZrHa0Pf99feTzcdCIO",
+    "image_url": "https://lh3.googleusercontent.com/pw/AP1GczOpWNh7dJ8ssR263C-igc4cNfqjX840e0XlrlqWn6Ye7vGxtDGFJUebTGCsE1nRquP_s8pIYFwq9fEFPwZyEyEo8ziVi4TnicLactH4HBrLA0kPSAL_",
+    "sha256": "a1ed04be390659f39ba26142bfe23cdb88c953c615872ace75a933a7cd5d150d",
+    "provenance": "User-supplied Clip Programmer Assembly album; downloaded at 1400px and reviewed 2026-11-10. Off-grid VCC pogo and signal-pad close-up; PCB revision unverified. No geometry inferred from perspective alone; not electrical qualification."
   }
 ]
