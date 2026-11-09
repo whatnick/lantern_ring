@@ -8,14 +8,15 @@ matched to the ring. The parts are the jaws, spring and hardware from the
 [AliExpress DIY pogo clip kit](https://www.aliexpress.com/item/1005006153573416.html),
 with its generic guide PCBs replaced by the boards here.
 
-> **Status: kit physically assembled; custom IR adapter still virtual.**
+> **Status: custom IR clip built and physical fit tested (user-reported).**
 > ERC and DRC pass with zero violations of any severity. The FreeCAD fit check
 > passes against a clip model built from **photo and datasheet estimates**,
 > because the seller publishes no drawing. The AliExpress kit has now been
 > assembled and photographed with calipers. The new reconstruction below uses
 > readable measurements, but mounting geometry and spring travel remain estimates.
-> The custom probe/anvil/fence boards have not been physically fitted or used
-> to program a ring. The original PCB fit report retains its estimated inputs.
+> The physical fit report includes no dimensions or contact-quality data yet.
+> Repeatable electrical contact and successful programming have not been
+> documented; the original PCB fit report remains a virtual estimate.
 
 ## Kit assembly animation
 
@@ -130,11 +131,13 @@ goes into the clip **LEDs down**:
   SMD solder-land rows are 5.05 mm apart. The lower guide has no header fitted.
 - **Anvil board** (22.5 × 29.2 mm). Taped to the printed riser. A window
   clears every front courtyard. The ring rests on its side rails, the top band
-  and a flat ENIG GND pad under the exposed front ground bar (TP8). A narrow
+  and two symmetric ENIG GND pads under the exposed front ground bar (TP8).
+  Two 1.4 mm NPTH holes match the fence board for M1/M1.2 screws. A narrow
   tail pad (J1) takes the GND lead between the M2 nuts.
 - **Fence board** (22.5 × 22.2 mm). Stacked on the anvil. Its pocket is the
   ring outline plus 0.15 mm, so the ring drops in at a fixed position. Its
-  rear edge stops 0.6 mm past the ring so the M2 nuts clear it.
+  rear edge stops 0.6 mm past the ring so the M2 nuts clear it. Matching
+  1.4 mm NPTH holes accept M1 or M1.2 screws through the fence and anvil.
 - **Riser** (printed). Lifts the anvil 5.0 mm, so
   the stack matches the 9.8 mm parallel jaw gap and the jaws close parallel.
   A hook drops in front of the lower-jaw tip to stop the stack sliding.
@@ -147,7 +150,8 @@ engineering source and regeneration details.
 
 ### Pin map
 
-See [programming-clip wiring](programming.md) for the board-top connector
+See the [J1-to-ArduinoISP connector diagram](programming-connector.svg) and
+[programming-clip wiring](programming.md) for the board-top connector
 orientation, complete IR ISP cable map, ground lead, power checks and first
 signature read, plus the requirements for a different ISP or SWD target.
 The current IR probe is AVR ISP only; it is not a pin-compatible SWD adapter.
@@ -249,6 +253,7 @@ lower-jaw tip; the riser carries that load.
 | 1 | 2×3 2.54 mm SMD male pin header | Top probe only; use female Dupont leads, confirm matching SMD footprint |
 | 1 | DIY pogo clip kit | Jaws, spring, M2 nuts |
 | 2 | M2 × 10 pan-head screw | The kit's 12–16 mm screws are longer than the 9.2 mm grip and hit the riser |
+| 2 | M1 or M1.2 screw and nut | Joins the fence and anvil through their matched 1.4 mm clearance holes; verify installed head/nut clearance |
 | 1 | Printed riser | PLA or PETG, 100% infill |
 | – | 30 AWG wire, VHB or double-sided tape | GND lead; holds the anvil/fence to the riser and the riser to the lower jaw |
 
@@ -301,9 +306,11 @@ The old estimated fit model remains separately documented.
    Set them so the tips stand 1.65 mm below the guide. In the clamped stack
    that is 66% of travel, and the barrel ends 0.75 mm above the guide. Solder
    them on the top board only.
-4. Tape the riser onto the lower jaw, with its hook against the jaw tip. Tape
-   the anvil to the riser and the fence onto the anvil. Solder the other end
-   of the GND lead to anvil J1.
+4. Join the anvil and fence through their matching holes using two M1 or M1.2
+   screws and nuts. Check the hardware clears the ring pocket and clip before
+   tightening. Tape the riser onto the lower jaw, with its hook against the jaw
+   tip, then tape the joined anvil/fence stack onto the riser. Solder the other
+   end of the GND lead to anvil J1.
 5. Insert a ring LEDs down into the fence and close the clip. The guide comes
    down flat onto the ring and fence. Nudge the anvil stack until the programmer
    reads the ATtiny85 signature consistently, then tape it down.

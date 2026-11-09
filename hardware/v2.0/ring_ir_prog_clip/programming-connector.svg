@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img" aria-labelledby="title desc">
+  <title id="title">Probe J1 AVR ISP-6 header pin map</title>
+  <desc id="desc">Top view of the populated probe header and the Arduino Uno ArduinoISP connections by signal name.</desc>
+  <defs>
+    <style>
+      .h1{font:bold 30px sans-serif;fill:#17334c}.h2{font:bold 22px sans-serif;fill:#17334c}
+      .txt{font:20px sans-serif;fill:#17334c}.small{font:16px sans-serif;fill:#42596a}
+      .body{fill:#e9eef2;stroke:#17334c;stroke-width:3}.pin{fill:#fff;stroke:#17334c;stroke-width:3}
+      .num{font:bold 18px sans-serif;fill:#17334c}.sig{font:bold 19px sans-serif;fill:#17334c}
+      .warn{fill:#a62b0d;font:bold 17px sans-serif}.line{stroke:#728897;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#fff"/>
+  <text x="35" y="46" class="h1">RING IR ISP PROBE - J1 DUPONT PIN MAP</text>
+  <text x="35" y="78" class="small">TOP VIEW of populated probe; extended header edge at top. Not the cable mating-face view.</text>
+  <text x="140" y="132" class="h2">J1: 2 x 3 AVR ISP-6, 2.54 mm mating-post pitch</text>
+  <rect x="85" y="155" width="480" height="305" rx="20" class="body"/>
+  <text x="205" y="188" class="small">front / header end</text>
+  <path d="M325 198 L325 218" class="line"/>
+  <rect x="120" y="222" width="410" height="204" rx="9" fill="#d0d5da" stroke="#687c8b" stroke-width="2"/>
+  <g>
+    <circle cx="190" cy="275" r="37" class="pin"/><circle cx="325" cy="275" r="37" class="pin"/><circle cx="460" cy="275" r="37" class="pin"/>
+    <circle cx="190" cy="373" r="37" class="pin"/><circle cx="325" cy="373" r="37" class="pin"/><circle cx="460" cy="373" r="37" class="pin"/>
+    <text x="190" y="270" text-anchor="middle" class="num">2</text><text x="190" y="296" text-anchor="middle" class="sig">VCC</text>
+    <text x="325" y="270" text-anchor="middle" class="num">4</text><text x="325" y="296" text-anchor="middle" class="sig">MOSI</text>
+    <text x="460" y="270" text-anchor="middle" class="num">6</text><text x="460" y="296" text-anchor="middle" class="sig">GND</text>
+    <text x="190" y="368" text-anchor="middle" class="num">1</text><text x="190" y="394" text-anchor="middle" class="sig">MISO</text>
+    <text x="325" y="368" text-anchor="middle" class="num">3</text><text x="325" y="394" text-anchor="middle" class="sig">SCK</text>
+    <text x="460" y="368" text-anchor="middle" class="num">5</text><text x="460" y="394" text-anchor="middle" class="sig">RESET</text>
+  </g>
+  <path d="M325 483 L325 530" stroke="#17334c" stroke-width="4"/>
+  <path d="M315 520 L325 535 L335 520" fill="#17334c"/>
+  <text x="222" y="566" class="h2">toward pogo grid</text>
+
+  <line x1="615" y1="135" x2="615" y2="620" stroke="#c6d3db" stroke-width="2"/>
+  <text x="655" y="157" class="h2">Arduino Uno running ArduinoISP</text>
+  <text x="655" y="205" class="txt">J1.1 MISO  &lt;-&gt;  D12 (MISO)</text>
+  <text x="655" y="250" class="txt">J1.2 VCC   &lt;-&gt;  target VCC*</text>
+  <text x="655" y="295" class="txt">J1.3 SCK   &lt;-&gt;  D13 (SCK)</text>
+  <text x="655" y="340" class="txt">J1.4 MOSI  &lt;-&gt;  D11 (MOSI)</text>
+  <text x="655" y="385" class="txt">J1.5 RESET &lt;-&gt;  D10</text>
+  <text x="655" y="430" class="txt">J1.6 GND   &lt;-&gt;  GND</text>
+  <text x="655" y="498" class="warn">*Use one compatible target-power source.</text>
+  <text x="655" y="526" class="small">Match target and programmer I/O voltage;</text>
+  <text x="655" y="550" class="small">do not connect two supply outputs together.</text>
+  <text x="655" y="588" class="small">Remove the CR2032 before connecting. J1 is</text>
+  <text x="655" y="612" class="small">unshrouded: check pin 1 and cable orientation.</text>
+  <text x="35" y="670" class="warn">Numbers are probe J1 pin numbers. Confirm the silkscreen pin-1 mark and wiring before powering.</text>
+</svg>

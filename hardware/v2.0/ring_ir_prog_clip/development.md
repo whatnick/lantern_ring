@@ -63,8 +63,12 @@ nets, ISP-6 pinout, anvil ground contact, courtyard/window clearance, board
 spacing, assembly fit and input provenance. Do not hand-edit generated KiCad
 boards or fabrication files. Update the source parameters and rebuild.
 
-After assembly, check that `avrdude -c usbasp -p t85` consistently reads the
-ATtiny85 signature `0x1e930b` before securing the anvil stack in place.
+The user reports that the custom probe/anvil/fence boards have now been built
+and physically fit-tested. Fit dimensions and repeatability results have not
+yet been recorded; the original FreeCAD report remains a virtual check against
+estimated clip geometry, not evidence of electrical contact or programming.
+After finalizing the screwed anvil/fence stack, check that
+`avrdude -c usbasp -p t85` consistently reads the ATtiny85 signature `0x1e930b`.
 Follow [the programming wiring guide](programming.md) for header orientation,
 the separate anvil ground wire, safe power selection and a read-only first
 connection. It also distinguishes this AVR ISP adapter from target-specific

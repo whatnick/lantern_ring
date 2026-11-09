@@ -1,7 +1,7 @@
 {
   "target_board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
   "target_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
-  "parameters_sha256": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
+  "parameters_sha256": "8a2e6771c8773931e7db970a4861e08a794f27fca262677aaeed1455b6308f36",
   "target_thickness_mm": 1.6,
   "pogo_pitch_mm": 3.05,
   "pogo_uv": {
@@ -62,6 +62,7 @@
       "function": "VCC"
     }
   },
+  "board_revision": "0.2",
   "isp_pins": {
     "1": "PB1",
     "2": "VCC",
@@ -83,20 +84,37 @@
       "top_v": 2.357,
       "bar_gap_v": 1.243
     },
-    "gnd_pad_mm": [
-      6.0,
-      1.241
-    ],
-    "gnd_pad_target_xy": [
+    "gnd_pads_mm": [
       [
-        133.55,
-        139.55
+        2.7,
+        1.241
       ],
       [
-        118.588,
-        119.829
+        2.7,
+        1.241
       ]
     ],
+    "gnd_pad_centres_uv": [
+      [
+        -1.5,
+        3.41
+      ],
+      [
+        1.5,
+        3.41
+      ]
+    ],
+    "mount_holes_uv": [
+      [
+        -9.5,
+        -14.8
+      ],
+      [
+        9.5,
+        -14.8
+      ]
+    ],
+    "mount_hole_diameter_mm": 1.4,
     "pocket_clearance_mm": 0.15
   },
   "fit_inputs": {
@@ -243,14 +261,43 @@
         7.8894,
         1.5464
       ],
-      "pad_uv": [
-        -0.0,
-        3.4097
+      "pads": [
+        {
+          "ref": "P8L",
+          "uv": [
+            -1.5,
+            3.4097
+          ],
+          "size": [
+            2.7,
+            1.241
+          ]
+        },
+        {
+          "ref": "P8R",
+          "uv": [
+            1.5,
+            3.4097
+          ],
+          "size": [
+            2.7,
+            1.241
+          ]
+        }
       ],
-      "pad_size": [
-        6.0,
-        1.241
-      ],
+      "mount_holes": {
+        "centres_uv": [
+          [
+            -9.5,
+            -14.8
+          ],
+          [
+            9.5,
+            -14.8
+          ]
+        ],
+        "diameter": 1.4
+      },
       "lead_uv": [
         0.0,
         8.951400000000012
@@ -304,7 +351,20 @@
           -4.4919,
           -13.5764
         ]
-      ]
+      ],
+      "mount_holes": {
+        "centres_uv": [
+          [
+            -9.5,
+            -14.8
+          ],
+          [
+            9.5,
+            -14.8
+          ]
+        ],
+        "diameter": 1.4
+      }
     },
     "ring": {
       "outline": [

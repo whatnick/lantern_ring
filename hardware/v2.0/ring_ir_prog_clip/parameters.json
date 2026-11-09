@@ -1,4 +1,5 @@
 {
+  "board_revision": "0.2",
   "dut": {
     "board": "../ring_pcb_IR/ring_pcb_IR.kicad_pcb",
     "origin_test_point": "TP3",
@@ -140,7 +141,17 @@
     "pocket_clearance": 0.15,
     "gnd_pad_inset": 0.3,
     "gnd_pad_half_width": 3.0,
+    "gnd_pad_pair": {
+      "u_offsets": [-1.5, 1.5],
+      "width": 2.7
+    },
     "gnd_track_width": 0.5,
+    "mount_holes": {
+      "centres_uv": [[-9.5, -14.8], [9.5, -14.8]],
+      "diameter": 1.4,
+      "edge_clearance": 0.5,
+      "screw": "M1 or M1.2"
+    },
     "min_rail_contact": 0.5,
     "hinge_margin": 0.6,
     "tail_half_width": 1.4

@@ -13,16 +13,17 @@
   ],
   "target_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
   "sources_sha256": {
-    "parameters.json": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
-    "generate.py": "c803248d18f43010b50a4e28585d12d7547d781aa3505b96ac839e011ad0e054",
-    "probe/ring_ir_prog_probe.kicad_pcb": "493f85e576b61b78dca0fadd6ad46ec8203e08d1be6482ab9a5517cf826d08c7",
-    "probe/ring_ir_prog_probe.kicad_sch": "f7e3d359a3099de1cef2aae6a02af1eca6bda8c8d6fe5ac775773856a132dd87",
-    "anvil/ring_ir_prog_anvil.kicad_pcb": "021fe1628bcf17023df50b2d0285d419e03586833f00cdd712c50aacc3b83f4e",
-    "anvil/ring_ir_prog_anvil.kicad_sch": "c5943dc7f5fd71f18aeed33a439ba201b517637be213c1a6d61b4b6446e077fa",
-    "fence/ring_ir_prog_fence.kicad_pcb": "1102bc08d510f9bbe0727e0f24f18c7259bdce0ce7888329146853b4d93e1b6a",
+    "parameters.json": "8a2e6771c8773931e7db970a4861e08a794f27fca262677aaeed1455b6308f36",
+    "generate.py": "4c6fb97f0217a36cc2c246314532edd63ef1794b12b81a3416b7b4f086edf9cf",
+    "probe/ring_ir_prog_probe.kicad_pcb": "cb892111fdb41e4ecb1580c1b6cfa1dbbac3ea3bd91449482dc5e5bda314d20f",
+    "probe/ring_ir_prog_probe.kicad_sch": "674e5e2e605fddf8b29e845da962f33027c6d6224a1e1562e47d0dca690e0fbe",
+    "anvil/ring_ir_prog_anvil.kicad_pcb": "1cc9cccb26918395949fc82056f3ef8fc7a35a65343ec0cd7a8a989dfd0b559d",
+    "anvil/ring_ir_prog_anvil.kicad_sch": "b5bc2f05fc5092becc498ede429b7c8ac89da96ffe024ddf69f489a66d93f691",
+    "fence/ring_ir_prog_fence.kicad_pcb": "498352b8b2eed32b394e1c0332c8ea47f2106d93b1dc4ea212f9985249ce45c6",
     "ring_ir_prog_clip.pretty/Pogo_P75_THT.kicad_mod": "1e343698ca4433dfaedd8374cd3334877793862bbc6a19e90ebd4b1d5904bb36",
-    "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod": "f18827e3439cabc31ec586f458c751416d9a6e53fa4fc38d7869a6a9a0a128ec",
-    "ring_ir_prog_clip.pretty/M2_Slot_Clip_Jaw.kicad_mod": "b4d1ce56fa9179c7522e187434a628bb8d1163978b41a931c62501f87fa5d196"
+    "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod": "6321f5af43212b4858e3efa54d99d6a9fac24c8d1fd6d04424324a0455b4e289",
+    "ring_ir_prog_clip.pretty/M2_Slot_Clip_Jaw.kicad_mod": "b4d1ce56fa9179c7522e187434a628bb8d1163978b41a931c62501f87fa5d196",
+    "ring_ir_prog_clip.pretty/M1_M1_2_Clearance_Hole.kicad_mod": "28cf7e9a8c3bfd1f69ba90e9598f2d8b1b31bb497ea96af2053a16218e251e8b"
   },
-  "scope": "KiCad ERC/DRC and generated geometry only; no physical fit, contact or programming test"
+  "scope": "KiCad ERC/DRC and generated geometry only; this report does not record physical fit or electrical qualification"
 }

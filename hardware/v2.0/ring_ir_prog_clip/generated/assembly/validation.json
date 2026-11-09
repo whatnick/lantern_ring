@@ -380,11 +380,11 @@
             "step": {
               "assembly": {
                 "path": "generated/kicad_step/probe_assembly.step",
-                "sha256": "45aeeae93e19215dc2216ab7e0381bb86443b9d157a344c6afd9371c76a6eb1d"
+                "sha256": "63cf4d6bfec5461c687a10d0e799f59d8d1e5a8fc687df19e261d21a896bcc38"
               },
               "substrate": {
                 "path": "generated/kicad_step/probe_substrate.step",
-                "sha256": "51c4e2d5ef2da776c8078cfc83b8bb0f9d3e864fbda2cc4315780182d529dcb1"
+                "sha256": "ebf108b54d82a80490c031d07126ef04e3bc226deb3f516ef1e9e7889420f0cc"
               },
               "header_model_sha256": "8db6f4656d0e729c87c34951adcfa14687b924d0a473c06e308d7e33a91fc4c1"
             },
@@ -397,15 +397,15 @@
             "step": {
               "assembly": {
                 "path": "generated/kicad_step/anvil_assembly.step",
-                "sha256": "f8dca32ce24b883d237493596a511e86d08218406a74504f01f132ea51ccb5ad"
+                "sha256": "42bd16b0e787a771038e9d61ea95ee6e1dd1059ad2ead181cece35a5b9cb612c"
               },
               "substrate": {
                 "path": "generated/kicad_step/anvil_substrate.step",
-                "sha256": "1d0d83521e5f8df0c284a9d917029a7ffe6f8ed7998a4dd8bbaa25096d964191"
+                "sha256": "feb77701182c7fc2d2e235f70ffc5d04dea96a82d4b7d67dd84b390c93df7703"
               }
             },
             "core_thickness_mm": 1.51,
-            "core_volume_mm3": 459.6646,
+            "core_volume_mm3": 455.0157,
             "nominal_finished_thickness_mm": 1.6,
             "note": "KiCad substrate excludes outer copper/mask. No board scaling."
           },
@@ -413,15 +413,15 @@
             "step": {
               "assembly": {
                 "path": "generated/kicad_step/fence_assembly.step",
-                "sha256": "413a60a9ffc08fb78c3aa88596446550e6aaea312524ac292bf02df4d4957cb9"
+                "sha256": "00e637f2f16723579377e5727f60d70af998d54ddd2207e017431551e63b83f8"
               },
               "substrate": {
                 "path": "generated/kicad_step/fence_substrate.step",
-                "sha256": "2b931eb974e5813150a14a8f074f5f43270aada2a15848d2718939dae0905275"
+                "sha256": "f2740262a6295e4fd2de5c3f80ea22ccfb6072fd60c6f3fc317e53572a0d802c"
               }
             },
             "core_thickness_mm": 1.51,
-            "core_volume_mm3": 320.6295,
+            "core_volume_mm3": 315.9805,
             "nominal_finished_thickness_mm": 1.6,
             "note": "KiCad substrate excludes outer copper/mask. No board scaling."
           }
@@ -862,32 +862,32 @@
     "assembly_parameters.json": "86b3f38a6e0634125c81e168f005a5b767ce8eec1cac785e36f054380f5951ce",
     "assembly_interface.py": "e210dff03e9f03f101ff34a1d5afc6126fdcf5229b188ee83460d9aee3f10c30",
     "assembly_model.py": "35a6155950b5f1b1e2b65c347f75a73bd3c6111fdbb81f02ed32ca4055353c81",
-    "fit_check.py": "3acee6fc23fdd5fa8eccb62b2f7dcc2d04305080bba898e6afde9c29e21408f3",
-    "parameters.json": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
-    "generated/geometry.json": "e5e5161837562c57859293af408c4c36defadc3a186601c1b0d33afc47cfd2aa",
+    "fit_check.py": "2e4bc9c5c03462ff0298e667edaa62832a714056a5dba34029d1a56de37e016e",
+    "parameters.json": "8a2e6771c8773931e7db970a4861e08a794f27fca262677aaeed1455b6308f36",
+    "generated/geometry.json": "d584691d8fa4709cf4e51c6119c0489e3970ae966c5a561d0cc34afde72c7308",
     "export_ir_visual.py": "2023ffbf0d0fccfd9e5f98db3069f6218046da4084041e4c95022a89f2c2b9cd",
     "generated/assembly/ir_board_layers.json": "f96337d5c13a7c1b581c0d9a0214016d756f3c4ce65905a7f1239df766b54472",
-    "generated/assembly/clip_board_layers.json": "02c6dc02dced976e5b3ab7342ac6d277a1132dc233f3eecdd7c8ae6b9738ced4"
+    "generated/assembly/clip_board_layers.json": "f3381a720347acc3db35c03c1310eab0f1112e73f900af6c4ac9087bd4cc1bf3"
   },
   "artifact_sha256": {
-    "ir_custom/Anvil.stl": "77faaff88faa0e4c8aa47d3a7797d938a251ec81abd32eadcd193d0cbfba8854",
-    "ir_custom/AnvilPCB_frontCopper.stl": "b968019022e54b7644e6461229c07e3f07f5de3674180f2a4672fd7a32ec4c06",
-    "ir_custom/AnvilPCB_frontMask.stl": "b19e638f9f862a7f8cfd3ae169bf0731f31bb94b24ec636c93e6c28120a16ba5",
-    "ir_custom/AnvilPCB_frontSilk.stl": "27bd41b1840bcc718f345d482f7dc966382cd966d6e4ac0d124e1be1c14c12b9",
+    "ir_custom/Anvil.stl": "0e3f0e0232c3b271727196b12fa115c71e8eff13c0c3011859cdfd2fd6c77da5",
+    "ir_custom/AnvilPCB_frontCopper.stl": "93eb30b0804614a0ab918ee4689a0ceeae62cad7a764ebd2078e5ccc916f3e59",
+    "ir_custom/AnvilPCB_frontMask.stl": "e2ce93f75cb6a7c7302aa419fa69620a08f854202c4c197e253617daeafff588",
+    "ir_custom/AnvilPCB_frontSilk.stl": "59ed4a5c0ca058d3f6520864f70d29b1c15a760512a4bfa4a6b8abf424d17e96",
     "ir_custom/AnvilPCB_rearCopper.stl": "578c697cf65077742867a1c49b784120eabe3e7fcf349d71abf0aa12e53d09b3",
-    "ir_custom/AnvilPCB_rearMask.stl": "466d5455d21d2d2d628f4056946974c7dfae7145acc72b1f48e91f5f84a44e45",
+    "ir_custom/AnvilPCB_rearMask.stl": "0e0cef0fb6039268bebf54ab893ee351ad9d97176f7634e866c35e682d3c3c8f",
     "ir_custom/AnvilPCB_rearSilk.stl": "d40af7c559e773379c823a2d046d5fc3fc9406224a0860d5ba060d51ea62e5b4",
-    "ir_custom/clip.FCStd": "329959822602f78a5b9388e003288d1ff48ece1a1642f0459e6ee03fb733e2e2",
-    "ir_custom/clip.step": "4d246e01716c66ef5dd498c62c016cf626ad52164be920e898c1bad1c7727b1b",
-    "ir_custom/Fence.stl": "c1840d4d67e7d2cd98f35c1384180742d30aeed2d24e8a72b3e9674e2d4a4204",
-    "ir_custom/FencePCB_frontMask.stl": "f56ef25eaea9c638dcab74e58762abacffd6612d382b06346905a14295f0d62f",
-    "ir_custom/FencePCB_frontSilk.stl": "668b7c537f53a49a31a15d33aed628e336ab1008aaf4ba7a448c975fc85798d8",
-    "ir_custom/FencePCB_rearMask.stl": "4526fee3e998ccc19a50f553e66e8dc9723dd5cb21de8c392c137b4a10956e26",
+    "ir_custom/clip.FCStd": "a883c3ccd65447f9c5e23ca0b36c07ae618c261213e0e65499e9c1578f4191fb",
+    "ir_custom/clip.step": "3bc62b8886930065245f0a2609f8202d067dfa0326260767ee99fc9193ffc8b3",
+    "ir_custom/Fence.stl": "9cfebb3b7f22a75eb63005351de43d50bf0ef7b3eb8a96028812e99e570bcd6f",
+    "ir_custom/FencePCB_frontMask.stl": "306c3f2755dd4f1b0d258e1c4d4d51c75c65e883dc590f38acf633d1837aab4d",
+    "ir_custom/FencePCB_frontSilk.stl": "bd310b21d35fee5b24b7bb1f43cf19c4adddca631a34c09872260c1f25e8a1fd",
+    "ir_custom/FencePCB_rearMask.stl": "54a67b84c3a33f783066aecc417fcbaa2cd18cfb5b263d03bdbf415a501d0242",
     "ir_custom/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "ir_custom/Guide.stl": "53700aa7712b258b9dfada0a27445db9e9c8610309ee3861f27da1686b6569a4",
     "ir_custom/GuidePCB_frontCopper.stl": "ae9cb971f7921575ceeb758904bef6fdd991ee74488309b473fa68f7979595d9",
     "ir_custom/GuidePCB_frontMask.stl": "70c2e3963161f39495e5da4b331c3efdbbb83b32d9a6b02c1da412817dfc0063",
-    "ir_custom/GuidePCB_frontSilk.stl": "db4efb621fc8f63f00cf0304c2201d72e2a8992f9844e4335b627568f311e263",
+    "ir_custom/GuidePCB_frontSilk.stl": "f6bd9e2e14a7b8f3393b034b4cd1b42c33025f2c5997d19694a48666cf4f8928",
     "ir_custom/GuidePCB_rearCopper.stl": "e6779d8dc73b495d331852cc03c8b347ad4a6f311b08ad4f3aac4633a3f7c579",
     "ir_custom/GuidePCB_rearMask.stl": "67ed4eaf48dcf7c72173cbb5b076e81292ef8188536bb59593b37982e2b95ef4",
     "ir_custom/GuidePCB_rearSilk.stl": "b27dcd9ffabdf8ebba6b7c8bd3114046bfca1c716d67666d3de8b6b12d147a0e",
@@ -895,7 +895,7 @@
     "ir_custom/HeaderPins.stl": "64209c7f4f40c568df2b9e503429a1dfd1751653908211b1d44f0ce40a9b146d",
     "ir_custom/Hinge.stl": "a61b00c5a6bfcc1a6c7a366dc33cb5f64b01a23232287d623b0039be3edb2d7c",
     "ir_custom/LowerJaw.stl": "5d644c5fe7c4feae51034eaa23aad922d657ef26955f2434dc87c2a4a9b051bb",
-    "ir_custom/meshes.json": "c7fc5747bc859e0265d285fa36a3f890e2402fefdb5ca9e82164307c4ffa7500",
+    "ir_custom/meshes.json": "d447f8ba461b00a0eee326f422f6bb275d025de445ebeb5095d3d5052244bee9",
     "ir_custom/Nuts.stl": "0e9181d47c6cab223c1111c5bef75087487c5ba442d2d6264dfe71b29a7ed41a",
     "ir_custom/PCB_frontCopper.stl": "e5b417808dfe8b862b63840324e8bf7c8fd9c7c78a83b35020f7360065c31dce",
     "ir_custom/PCB_frontMask.stl": "270f810030a7b92626f8d9d2fc4f30c4fa501590fa1a84400f79c80be022e284",
@@ -907,7 +907,7 @@
     "ir_custom/Probe.stl": "0df64bf19b7a7e7b0a754c505fcb04072834dc93865751b18df47dffd8b66cb2",
     "ir_custom/ProbePCB_frontCopper.stl": "1bc762d90a6761e1ac9cc3a17a82a4b5c485cb7c7bf0e801e2e02c70a96f08cc",
     "ir_custom/ProbePCB_frontMask.stl": "01f85999d174d27ab4e8b6283659e342e832db141a7c6dbec32fe672685453e0",
-    "ir_custom/ProbePCB_frontSilk.stl": "d994f3fe1f4fe3a03ca046a46be8397cec2ead9237c52296e1667d064acc740a",
+    "ir_custom/ProbePCB_frontSilk.stl": "aacbc8509501a63190ba78cae1426d3255c2db106718f74d9b783d9a42a320e8",
     "ir_custom/ProbePCB_rearCopper.stl": "8c1a850de18dbe1a01140917d85d579fd3aff75ab50a8bf30ca77cf7bb3ada22",
     "ir_custom/ProbePCB_rearMask.stl": "205849afed9736646264ef3bf5a5595ff7294df7d1ba06694e30c86f10f74143",
     "ir_custom/ProbePCB_rearSilk.stl": "e0e7e42897191abfc9ff98e3b9b62a20ad3189d2c3f2e9851d966e1d836a41f6",
@@ -929,8 +929,8 @@
     "pitch_127/Barrel_09.stl": "c82fb0dd94bedfa4bd34a973577221b816e14cda46128d0b413d35e9e60f6648",
     "pitch_127/Barrel_10.stl": "2bfd3d4b6219298e7213566746387bef46be871135d53f0701f720980b97775d",
     "pitch_127/Barrel_11.stl": "64f988c1e378eb5ed0869a023b1e856012739a8eb008403f841d90bb17b97f52",
-    "pitch_127/clip.FCStd": "32dd7fa71c88d440cc3d682ca6f4738e9bde0b0935e82d02a9a08624e17025d2",
-    "pitch_127/clip.step": "38fe1201cbddbd83508c8cddd54503125dcedab36ef697efae974556f9e3c18c",
+    "pitch_127/clip.FCStd": "a058f1fca8c2c55841e3b57dca0ec835379b8ebaadb32afdbb20f76e62f56a21",
+    "pitch_127/clip.step": "d47c3453e7e2a71b2f70c529ee4cd6236eed4dcd4491157fa59320ff2f442918",
     "pitch_127/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "pitch_127/Guide.stl": "5299abedc2b490489c3046cfcf4d74e503aa6d1575c5d14f450723bd82388661",
     "pitch_127/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
@@ -970,8 +970,8 @@
     "pitch_200/Barrel_09.stl": "f8385c2a21fb69e04833f39320d91f987431b1c76bbffe0b80f2d2146c8d33e7",
     "pitch_200/Barrel_10.stl": "82ee9759b36d12a37afc815c68bb491dc69a470b35d226a3488fe786dfce6eb6",
     "pitch_200/Barrel_11.stl": "a02c177bae28b0b4cb23e347acff7a00762896dd29c86bbd52d920d8fe0031d4",
-    "pitch_200/clip.FCStd": "b9fec6a21aa3fa022fca53930d02d363d0befd1a3d3c0017970412b38bac454e",
-    "pitch_200/clip.step": "0a051784a1124ccae4b66d79a5afc5e8d4bf35375ff5952e730425ffd74d800e",
+    "pitch_200/clip.FCStd": "831278b63a8ddc58914a26a8d75e45f3733a3e007fa5e1b4680afe814bdb6ab8",
+    "pitch_200/clip.step": "8a12606ef68b80e9047b57bcb038f02eab6254fd3c423131368d2fe4aad65256",
     "pitch_200/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "pitch_200/Guide.stl": "6f1b6fcaa9aa9a75f3108a83a306a5ea1f3c1afac80dc1f3487df48271402e12",
     "pitch_200/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",
@@ -1011,8 +1011,8 @@
     "pitch_254/Barrel_09.stl": "a6fe293e9c895454956ae213a2c3d662fda840751c99da4bbadca1239842b4ab",
     "pitch_254/Barrel_10.stl": "80e4235f9f00525350baed4503b5ee3b645af1a7a84125d439532ca785830af3",
     "pitch_254/Barrel_11.stl": "1bcaf62bcd8d170df99a4281e408db0a8b5519b74933afada97ad7b5670182c1",
-    "pitch_254/clip.FCStd": "8316aa2d47fcbb38b1fd61cc745f20ee5018eef32d9b6d86b86c8f866a7e7e6a",
-    "pitch_254/clip.step": "5e4ba1a543864b7f64d5b57e86764488a9c09ffc11358883f9b6b5336c872cc9",
+    "pitch_254/clip.FCStd": "5200009dfa3c06f23bfff58e819890dd3a18f1a666965c282bbc3863e764e7ed",
+    "pitch_254/clip.step": "63b3140c8e543d0afde34c0984bf6c8722bad294b56ec63d564b05718e61bd64",
     "pitch_254/Grip.stl": "2e89b8ee258bd212aa2d3e0e59c63f0a8185561e6101055087e1cf2bcd52b07e",
     "pitch_254/Guide.stl": "f6cdf8ec73ed380dab0959574996bcf94709735b59f4886d0b585ad9e0925153",
     "pitch_254/Header.stl": "9059932881e293b9468cc6235ebd999203eaaa45f71b1598aaaf4626285cbdd5",

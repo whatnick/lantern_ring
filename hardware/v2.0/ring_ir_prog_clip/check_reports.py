@@ -20,6 +20,7 @@ SOURCES = [
     "ring_ir_prog_clip.pretty/Pogo_P75_THT.kicad_mod",
     "ring_ir_prog_clip.pretty/GND_Anvil_Pad.kicad_mod",
     "ring_ir_prog_clip.pretty/M2_Slot_Clip_Jaw.kicad_mod",
+    "ring_ir_prog_clip.pretty/M1_M1_2_Clearance_Hole.kicad_mod",
 ]
 
 
@@ -59,7 +60,7 @@ def main():
         "unmeasured": geometry["unmeasured"],
         "target_sha256": geometry["target_sha256"],
         "sources_sha256": {name: sha256(os.path.join(HERE, name)) for name in SOURCES},
-        "scope": "KiCad ERC/DRC and generated geometry only; no physical fit, contact or programming test",
+        "scope": "KiCad ERC/DRC and generated geometry only; this report does not record physical fit or electrical qualification",
     }
     with open(os.path.join(GEN, "validation.json"), "w", encoding="utf-8", newline="\n") as handle:
         json.dump(result, handle, indent=2)

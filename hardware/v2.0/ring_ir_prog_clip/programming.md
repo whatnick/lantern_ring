@@ -3,8 +3,12 @@
 The clip is a passive contact fixture, not a programmer, voltage converter or
 protocol adapter. The current probe is wired for the **ATtiny85 IR ring's
 six-wire AVR ISP interface**. It does not give that MCU SWD support.
-Other PCBs need their own verified pad pattern, signal mapping and clearances.
-The custom adapter has not yet been physically qualified for programming.
+The user reports the custom clip has been built and its physical fit tested.
+That report does not establish repeatable electrical contact or successful
+programming. Other PCBs need their own verified pad pattern, signal mapping and
+clearances.
+
+![Top-view J1 header map and Arduino Uno ArduinoISP wiring](programming-connector.svg)
 
 ## Current IR ring: connect AVR ISP
 
@@ -41,6 +45,12 @@ on cable colours or assuming an IDC connector's orientation.
 | MOSI / programmer data output | 4 | P1 pogo | TP1 / PB0, data into target |
 | RESET / active-low reset output | 5 | P6 pogo | TP6 / PB5 |
 | GND / common signal return | 6 | J2 -> insulated wire -> anvil J1 -> exposed ENIG P8 | Front TP8 / GND |
+
+For an **Arduino Uno running ArduinoISP**, connect MISO to D12, MOSI to D11,
+SCK to D13, RESET to D10, plus GND and one correctly configured target-VCC
+source. Other Arduino boards may use different pins; follow their ArduinoISP
+example and verify signal names. J1.2 is target VCC, not a permission to connect
+two power supplies together.
 
 **The ground wire between the jaws is essential.** Solder it from probe J2 to
 anvil J1, leaving insulated service slack for opening. The upper pogos cannot

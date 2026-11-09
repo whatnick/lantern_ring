@@ -14,6 +14,7 @@ import math
 import os
 import re
 import unittest
+import xml.etree.ElementTree as ET
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TARGET = os.path.normpath(os.path.join(HERE, "..", "ring_pcb_IR", "ring_pcb_IR.kicad_pcb"))
@@ -146,6 +147,7 @@ class ClipTest(unittest.TestCase):
         cls.target = footprints(TARGET)
         cls.probe = footprints(PROBE)
         cls.anvil = footprints(ANVIL)
+        cls.fence = footprints(FENCE)
         _, polys = edge_items(TARGET)
         cls.outline = polys[0]
         origin = cls.target[cls.params["dut"]["origin_test_point"]]["pads"]["1"][0]
@@ -195,11 +197,11 @@ class ClipTest(unittest.TestCase):
 
     def test_ground_reaches_both_boards(self):
         self.assertEqual(self.probe["J2"]["pads"]["1"][1], "/GND")
-        self.assertEqual(self.anvil["P8"]["pads"]["1"][1], "/GND")
+        for ref in ("P8L", "P8R"):
+            self.assertEqual(self.anvil[ref]["pads"]["1"][1], "/GND")
         self.assertEqual(self.anvil["J1"]["pads"]["1"][1], "/GND")
 
-    def test_anvil_pad_sits_inside_exposed_front_ground_bar(self):
-        (cx, cy), _, (w, h) = self.anvil["P8"]["pads"]["1"]
+    def test_balanced_anvil_pads_sit_inside_exposed_front_ground_bar(self):
         bar = self.target["TP8"]["pads"]["1"][0]
         text = read(TARGET)
         masks = []
@@ -209,12 +211,53 @@ class ClipTest(unittest.TestCase):
                 if pts and inside(pts, *bar):
                     masks.append(pts)
         self.assertTrue(masks, "front mask opening around TP8 not found")
-        for du in (-w / 2, w / 2):
-            for dv in (-h / 2, h / 2):
-                x = self.target["TP3"]["pads"]["1"][0][0] - (cx + du - ORIGIN[0])
-                y = self.target["TP3"]["pads"]["1"][0][1] + (cy + dv - ORIGIN[1])
-                self.assertTrue(inside(self.outline, x, y), (x, y))
-                self.assertTrue(any(inside(m, x, y) for m in masks), (x, y))
+        left, right = (self.anvil[ref]["pads"]["1"] for ref in ("P8L", "P8R"))
+        self.assertAlmostEqual(left[0][0] + right[0][0], 2 * ORIGIN[0], places=3)
+        self.assertAlmostEqual(left[0][1], right[0][1], places=3)
+        self.assertEqual(left[2], right[2])
+        for (cx, cy), _, (w, h) in (left, right):
+            for du in (-w / 2, w / 2):
+                for dv in (-h / 2, h / 2):
+                    x = self.target["TP3"]["pads"]["1"][0][0] - (cx + du - ORIGIN[0])
+                    y = self.target["TP3"]["pads"]["1"][0][1] + (cy + dv - ORIGIN[1])
+                    self.assertTrue(inside(self.outline, x, y), (x, y))
+                    self.assertTrue(any(inside(m, x, y) for m in masks), (x, y))
+
+    def test_anvil_and_fence_have_matching_m1_clearance_holes(self):
+        with open(os.path.join(HERE, "generated", "geometry.json"), encoding="utf-8") as handle:
+            geo = json.load(handle)
+        centres = geo["fit_inputs"]["anvil"]["mount_holes"]["centres_uv"]
+        diameter = geo["fit_inputs"]["anvil"]["mount_holes"]["diameter"]
+        self.assertEqual(diameter, 1.4)
+        for board_path, board in ((ANVIL, self.anvil), (FENCE, self.fence)):
+            text = read(board_path)
+            for index, (u, v) in enumerate(centres, start=1):
+                ref = "H%d" % index
+                self.assertIn(ref, board)
+                self.assertAlmostEqual(board[ref]["at"][0], ORIGIN[0] + u, places=3)
+                self.assertAlmostEqual(board[ref]["at"][1], ORIGIN[1] + v, places=3)
+                footprint = next(fp for fp in blocks(text, "footprint ")
+                                 if re.search(r'\(property "Reference" "%s"' % ref, fp))
+                pad = blocks(footprint, "pad ")[0]
+                self.assertIn('np_thru_hole circle', pad)
+                self.assertRegex(pad, r"\(drill 1\.4\)")
+        self.assertEqual(geo["fit_inputs"]["anvil"]["mount_holes"],
+                         geo["fit_inputs"]["fence"]["mount_holes"])
+
+    def test_v020_revision_is_on_all_board_silkscreens_and_schematics(self):
+        for path in (PROBE, ANVIL, FENCE):
+            self.assertRegex(read(path), r'\(gr_text "V0\.2"')
+        self.assertIn('(rev "0.2")', read(os.path.join(HERE, "probe", "ring_ir_prog_probe.kicad_sch")))
+        self.assertIn('(rev "0.2")', read(os.path.join(HERE, "anvil", "ring_ir_prog_anvil.kicad_sch")))
+        self.assertEqual(self.params["board_revision"], "0.2")
+
+    def test_programming_connector_diagram_matches_isp_pin_map(self):
+        path = os.path.join(HERE, "programming-connector.svg")
+        root = ET.parse(path).getroot()
+        text = " ".join(node.text or "" for node in root.iter() if node.tag.endswith("text"))
+        for label in ("1", "2", "3", "4", "5", "6", "MISO", "VCC", "SCK", "MOSI", "RESET", "GND",
+                      "D10", "D11", "D12", "D13"):
+            self.assertIn(label, text)
 
     def test_anvil_window_clears_every_front_component(self):
         segments, _ = edge_items(ANVIL)
@@ -261,7 +304,7 @@ class ClipTest(unittest.TestCase):
         self.assertEqual(result["target_sha256"], digest(TARGET))
         for name, expected in result["sources_sha256"].items():
             self.assertEqual(expected, digest(os.path.join(HERE, *name.split("/"))), name)
-        self.assertIn("no physical fit", result["scope"])
+        self.assertIn("does not record physical fit", result["scope"])
 
     def test_header_in_front_of_pins_and_slots_behind_jaw_tip(self):
         pogo_v = [self.probe["P" + r[2:]]["pads"]["1"][0][1] for r in self.params["dut"]["probe_test_points"]]
@@ -291,7 +334,8 @@ class ClipTest(unittest.TestCase):
         self.assertTrue(0.3 <= fit["pin_compression_fraction"] <= 0.8)
         self.assertTrue(all(p["offset_mm"] <= 0.05 for p in fit["pins"].values()))
         self.assertEqual(fit["clip_dimensions_measured"], self.params["clip_kit"]["measured"])
-        self.assertIn("no physical fit", fit["scope"])
+        self.assertIn("Virtual FreeCAD fit", fit["scope"])
+        self.assertIn("does not record physical fit", fit["scope"])
         for image in ("clipped_iso.png", "clipped_section.png", "clipped_exploded.png"):
             self.assertIn(image, fit["outputs"])
 

@@ -1,7 +1,7 @@
 {
   "status": "pass",
   "failures": [],
-  "scope": "Virtual FreeCAD fit against photo/datasheet estimates of the clip; no physical fit, contact or programming test",
+  "scope": "Virtual FreeCAD fit against photo/datasheet estimates only; this report does not record physical fit, contact or programming testing",
   "clip_dimensions_measured": false,
   "freecad_version": "0.19.24291 (Git)",
   "riser_thickness_mm": 5.0,
@@ -400,10 +400,10 @@
     "upper_tip_setback +1.0: board_end_to_upper_jaw_step"
   ],
   "inputs_sha256": {
-    "parameters.json": "a4f8b3ada7f26536fe8386c92a141608a794d78ef38d1bca9b747bf76fcdb967",
-    "generated/geometry.json": "e5e5161837562c57859293af408c4c36defadc3a186601c1b0d33afc47cfd2aa",
-    "fit_check.py": "3acee6fc23fdd5fa8eccb62b2f7dcc2d04305080bba898e6afde9c29e21408f3",
-    "generated/assembly/clip_board_layers.json": "02c6dc02dced976e5b3ab7342ac6d277a1132dc233f3eecdd7c8ae6b9738ced4"
+    "parameters.json": "8a2e6771c8773931e7db970a4861e08a794f27fca262677aaeed1455b6308f36",
+    "generated/geometry.json": "d584691d8fa4709cf4e51c6119c0489e3970ae966c5a561d0cc34afde72c7308",
+    "fit_check.py": "2e4bc9c5c03462ff0298e667edaa62832a714056a5dba34029d1a56de37e016e",
+    "generated/assembly/clip_board_layers.json": "f3381a720347acc3db35c03c1310eab0f1112e73f900af6c4ac9087bd4cc1bf3"
   },
   "outputs": [
     "Riser.step",
