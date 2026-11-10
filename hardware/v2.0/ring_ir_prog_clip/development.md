@@ -78,6 +78,46 @@ the separate anvil ground wire, safe power selection and a read-only first
 connection. It also distinguishes this AVR ISP adapter from target-specific
 SWD wiring and voltage-reference requirements.
 
+## Fritzing harness diagrams
+
+`harness/generate_harness.py` builds an editable `.fz` and bundled `.fzz`,
+four custom interface parts (probe, anvil, target and selected supply), and
+`wiring-reference.svg`. It checks the six signals against `parameters.json`
+without tying the cable to a mechanical revision. The host uses the installed
+Fritzing core `arduino_Uno_Rev3(fix)` part and its real D10/D11/D12/D13/GND
+connector IDs/positions, not a relabelled generic Arduino.
+
+```powershell
+& hardware\v2.0\ring_ir_prog_clip\harness\export.ps1
+python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_harness.py"
+```
+
+The wrapper invokes installed Fritzing `-svg` to open/export the native sketch
+into breadboard and schematic SVGs. `preview.py` uses FreeCAD's bundled Qt
+runtime only to rasterize those SVGs and the separate colour reference to PNG,
+with explicit Arial font registration for the Windows offscreen renderer.
+It does not replace the Fritzing export with a handmade image.
+The original raw `.fz` is source; users should open `.fzz` to load the custom
+parts automatically. Keep the `.fz`, `.fzz`, `parts/`, exported SVGs and PNGs
+together. The auto-exported PCB view is removed: these custom parts are
+**logical wiring interfaces, not replacement PCB layouts**.
+
+`test_harness.py` independently parses the saved Fritzing graph, including
+internal part buses, reciprocal connectors and both wire views. It checks all
+six isolated nets against the actual KiCad probe/target pin maps, colour
+consistency, the separate front-ground return, unused Uno supply/reset pins,
+bundle resources and board-top J1 orientation. No electrical PCB, fabrication
+or CAD geometry is changed by generating this documentation.
+The selected VCC block intentionally has no automatic connection to either
+Uno supply output; direct Uno signal wiring is conditional on compatible I/O
+levels, not approval of a 5 V coin-cell target. See the programming guide.
+
+The Fritzing-based diagram exports and interface artwork are CC BY-SA 3.0,
+with attribution to Fritzing and its core Uno part (author `althaus`).
+The standalone colour reference uses the same licence. Generator/test source
+retains the repository's existing licence. Photo provenance is independent
+and remains recorded in `images/sources.json`.
+
 ## Album reconstruction and Blender animation
 
 This pipeline is separate from `build.ps1`: it does not alter the IR board,

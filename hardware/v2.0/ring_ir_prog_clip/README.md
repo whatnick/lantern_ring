@@ -36,12 +36,19 @@ These are photographs of hardware, not CAD renders.
 
 The pictures support the reported physical assembly and seating; they do not
 establish every tip's alignment, contact resistance, preload, retention or
-successful programming. J1's SMD header lands are visibly unpopulated, so this
-is not evidence of a complete programmer connection. The photographed PCB
+successful programming. J1's SMD header lands are visibly unpopulated in these
+three earlier views, so they are not evidence of a complete programmer connection. The photographed PCB
 revision is not verified, and these images do not validate the new v0.2
 anvil/fence screw holes or paired GND contacts. Their source URLs and downloaded
 file hashes are preserved in [image provenance](images/sources.json).
 No CAD dimensions or measured/unmeasured flags were changed from these views.
+
+The newer photograph below shows the Uno, loose programming cable and the clip
+with its J1 header fitted. The female leads are **not plugged into the clip**.
+Use the [colour-coded harness diagrams and editable Fritzing sketch](programming.md#colour-coded-arduinoisp-harness)
+to wire by signal and pin number, not by guessing colours from the photograph.
+
+![Arduino Uno and assembled clip with programming cable disconnected at the clip](images/arduino_clip_cabling.jpg)
 
 ## Kit assembly animation
 

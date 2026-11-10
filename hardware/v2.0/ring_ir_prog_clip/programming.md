@@ -10,6 +10,65 @@ clearances.
 
 ![Top-view J1 header map and Arduino Uno ArduinoISP wiring](programming-connector.svg)
 
+## Colour-coded ArduinoISP harness
+
+![Arduino Uno to clip to IR ring colour-coded wiring reference](harness/wiring-reference.png)
+
+[Full-size SVG reference](harness/wiring-reference.svg) |
+[Editable Fritzing sketch (.fzz)](harness/arduino_isp_harness.fzz) |
+[Fritzing breadboard SVG](harness/arduino_isp_harness_breadboard.svg) |
+[Fritzing schematic SVG](harness/arduino_isp_harness_schematic.svg).
+The `.fzz` bundles the custom interface parts; open that file in Fritzing.
+
+![Harness exported by the installed Fritzing application](harness/arduino_isp_harness_breadboard.png)
+
+Use the following **suggested colour convention** for six female Dupont leads.
+It is not a claim about the existing photo's cable colours. Label both ends
+with the signal and J1 number; use continuity rather than colour alone.
+
+| Colour | Arduino Uno running ArduinoISP | Clip probe J1 | Contact path to Ring IR |
+| --- | --- | --- | --- |
+| Green | D12 / MISO | 1 / MISO | P2 -> rear TP2 / PB1 |
+| Red | One selected, compatible target-VCC source | 2 / VCC | P9 -> rear TP9 / VCC |
+| Blue | D13 / SCK | 3 / SCK | P3 -> rear TP3 / PB2 |
+| Yellow | D11 / MOSI | 4 / MOSI | P1 -> rear TP1 / PB0 |
+| Orange | D10, **not Uno RESET** | 5 / RESET | P6 -> rear TP6 / PB5 |
+| Black | GND, shared with the target supply | 6 / GND | Probe J2 -> insulated wire -> anvil J1 -> front TP8 |
+
+Use **black** for the separate inter-jaw GND lead too. Earlier anvils use P8;
+v0.2 uses P8L and P8R on the same GND net. This mechanical/contact-pad revision
+does **not** change the six-pin harness. The fence and unpopulated guide need
+no ISP cable, and TP4/PB3 and TP5/PB4 are not extra ISP connections.
+In the Fritzing views the five right-hand coloured links mean **pogo-to-pad
+contacts**, not five additional loose wires; the lower black link means the
+flat anvil-to-front-TP8 contact. The interface blocks are logical drawings,
+not pad-spacing templates or fabrication designs.
+
+**Power is deliberately a selection, not an automatic Uno 5 V connection.**
+A normal Uno has **5 V I/O**, even when its 3V3 pin supplies the target.
+Direct signal wiring is conditional on the target's supply and **all populated
+components** being qualified for that voltage. These diagrams do not establish
+5 V compatibility of the IR ring. For a lower-voltage target use a compatible
+ISP host or verified SPI level translation (not designed or shown here).
+Do not connect Uno 5V/3V3 or any second supply output to the red lead without
+resolving that choice first. The Fritzing sketch leaves both Uno power outputs
+unconnected. Always remove the CR2032.
+
+Load `File > Examples > 11.ArduinoISP > ArduinoISP` onto the Uno before connecting
+the target. With all supplies off, verify every row end to end, check for
+VCC/GND shorts, then follow [power and first connection](#power-and-first-connection).
+The latest [user-supplied harness photograph](images/arduino_clip_cabling.jpg)
+shows the Uno and a clip with its header fitted, but the female leads are
+disconnected at the clip; it is not evidence of correct pin assignments or a
+successful programming run.
+
+The Fritzing views were exported with the installed Fritzing application.
+The Uno artwork is from its core parts library; the clip, anvil and target
+interface artwork is project-created. **This image was created with Fritzing**;
+the Fritzing-based diagrams and bundled interface artwork are
+[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+See [regeneration details](development.md#fritzing-harness-diagrams).
+
 ## Current IR ring: connect AVR ISP
 
 Use an ATtiny85-compatible ISP programmer, for example a correctly configured
@@ -44,7 +103,7 @@ on cable colours or assuming an IDC connector's orientation.
 | SCK / programmer clock output | 3 | P3 pogo | TP3 / PB2 |
 | MOSI / programmer data output | 4 | P1 pogo | TP1 / PB0, data into target |
 | RESET / active-low reset output | 5 | P6 pogo | TP6 / PB5 |
-| GND / common signal return | 6 | J2 -> insulated wire -> anvil J1 -> exposed ENIG P8 | Front TP8 / GND |
+| GND / common signal return | 6 | J2 -> insulated wire -> anvil J1 -> exposed P8 (earlier) or P8L/P8R (v0.2) | Front TP8 / GND |
 
 For an **Arduino Uno running ArduinoISP**, connect MISO to D12, MOSI to D11,
 SCK to D13, RESET to D10, plus GND and one correctly configured target-VCC
@@ -54,12 +113,12 @@ two power supplies together.
 
 **The ground wire between the jaws is essential.** Solder it from probe J2 to
 anvil J1, leaving insulated service slack for opening. The upper pogos cannot
-reach front-side TP8. The anvil's flat P8 contact must actually touch that bar.
+reach front-side TP8. The anvil's flat GND contacts must actually touch that bar.
 P4/TP4/PB3 and P5/TP5/PB4 are spare positions, deliberately not routed to J1;
 they are not extra ISP signals or a second ground.
 
 Insert the ring **LEDs/components down, rear test pads up**, with its front
-ground bar over anvil P8. The existing pogo centres remain on the 3.05 mm signal
+ground bar over the anvil GND contacts. The existing pogo centres remain on the 3.05 mm signal
 grid, with off-grid VCC. Do not confuse these dimensions with J1's 2.54 mm pitch.
 
 ### Power and first connection

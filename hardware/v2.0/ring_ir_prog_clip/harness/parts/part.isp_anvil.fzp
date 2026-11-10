@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module moduleId="lantern-ring-isp_anvil" fritzingVersion="1.0.8">
+  <version>1</version>
+  <title>IR ground anvil</title>
+  <label>IR ground anvil</label>
+  <author>Lantern Ring contributors</author>
+  <date>2026-11-10</date>
+  <description>ISP harness interface only; not a PCB layout or approved voltage converter. Artwork: Lantern Ring contributors, CC BY-SA 3.0. Created with Fritzing.</description>
+  <properties>
+    <property name="family">Lantern Ring ISP harness</property>
+  </properties>
+  <views>
+    <breadboardView>
+      <layers image="breadboard/isp_anvil.svg">
+        <layer layerId="breadboard"/>
+      </layers>
+    </breadboardView>
+    <schematicView>
+      <layers image="schematic/isp_anvil.svg">
+        <layer layerId="schematic"/>
+      </layers>
+    </schematicView>
+    <iconView>
+      <layers image="icon/isp_anvil.svg">
+        <layer layerId="icon"/>
+      </layers>
+    </iconView>
+    <pcbView>
+      <layers image="pcb/isp_anvil.svg">
+        <layer layerId="silkscreen"/>
+      </layers>
+    </pcbView>
+  </views>
+  <connectors>
+    <connector id="connector1" name="Anvil J1 GND" type="male">
+      <description>Anvil J1 GND</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector1pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector1pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector2" name="P8 / P8L / P8R GND" type="male">
+      <description>P8 / P8L / P8R GND</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector2pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector2pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+  </connectors>
+  <buses>
+    <bus id="bus0">
+      <nodeMember connectorId="connector1"/>
+      <nodeMember connectorId="connector2"/>
+    </bus>
+  </buses>
+</module>

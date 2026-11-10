@@ -131,5 +131,12 @@
     "image_url": "https://lh3.googleusercontent.com/pw/AP1GczOpWNh7dJ8ssR263C-igc4cNfqjX840e0XlrlqWn6Ye7vGxtDGFJUebTGCsE1nRquP_s8pIYFwq9fEFPwZyEyEo8ziVi4TnicLactH4HBrLA0kPSAL_",
     "sha256": "a1ed04be390659f39ba26142bfe23cdb88c953c615872ace75a933a7cd5d150d",
     "provenance": "User-supplied Clip Programmer Assembly album; downloaded at 1400px and reviewed 2026-11-10. Off-grid VCC pogo and signal-pad close-up; PCB revision unverified. No geometry inferred from perspective alone; not electrical qualification."
+  },
+  {
+    "file": "arduino_clip_cabling.jpg",
+    "album_photo_id": "AF1QipMLL9XZzhj3ghCDDUxhcXkLm4gDd7P2tmgSOzFf",
+    "image_url": "https://lh3.googleusercontent.com/pw/AP1GczMONayG6ElLzDdrWIuq803loK4KdF01Z02HGlNyElKQeMdZElFyBQhNIzBp8N9RYjeJbYmz61gnU3D0r9ObO59KhcagkJcX-CNN05OYmjr1IGydZUf2",
+    "sha256": "9a619a890fa36dbee5fca882c4e3f81acdeefbae6470897837516c7495743eff",
+    "provenance": "User-supplied Clip Programmer Assembly album; downloaded at 1600px and reviewed 2026-11-10. Uno and assembled clip with J1 header fitted; cable disconnected at clip. Cable signal/colour assignments and successful programming cannot be inferred. PCB revision unverified."
   }
 ]

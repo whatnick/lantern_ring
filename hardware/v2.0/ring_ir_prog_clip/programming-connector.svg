@@ -6,7 +6,7 @@
       .h1{font:bold 30px sans-serif;fill:#17334c}.h2{font:bold 22px sans-serif;fill:#17334c}
       .txt{font:20px sans-serif;fill:#17334c}.small{font:16px sans-serif;fill:#42596a}
       .body{fill:#e9eef2;stroke:#17334c;stroke-width:3}.pin{fill:#fff;stroke:#17334c;stroke-width:3}
-      .num{font:bold 18px sans-serif;fill:#17334c}.sig{font:bold 19px sans-serif;fill:#17334c}
+      .num{font:bold 18px sans-serif;fill:#fff}.sig{font:bold 19px sans-serif;fill:#fff}
       .warn{fill:#a62b0d;font:bold 17px sans-serif}.line{stroke:#728897;stroke-width:2}
     </style>
   </defs>
@@ -19,8 +19,8 @@
   <path d="M325 198 L325 218" class="line"/>
   <rect x="120" y="222" width="410" height="204" rx="9" fill="#d0d5da" stroke="#687c8b" stroke-width="2"/>
   <g>
-    <circle cx="190" cy="275" r="37" class="pin"/><circle cx="325" cy="275" r="37" class="pin"/><circle cx="460" cy="275" r="37" class="pin"/>
-    <circle cx="190" cy="373" r="37" class="pin"/><circle cx="325" cy="373" r="37" class="pin"/><circle cx="460" cy="373" r="37" class="pin"/>
+    <circle cx="190" cy="275" r="37" class="pin" style="fill:#d62728"/><circle cx="325" cy="275" r="37" class="pin" style="fill:#c99b00"/><circle cx="460" cy="275" r="37" class="pin" style="fill:#202020"/>
+    <circle cx="190" cy="373" r="37" class="pin" style="fill:#238b45"/><circle cx="325" cy="373" r="37" class="pin" style="fill:#1768c4"/><circle cx="460" cy="373" r="37" class="pin" style="fill:#e87500"/>
     <text x="190" y="270" text-anchor="middle" class="num">2</text><text x="190" y="296" text-anchor="middle" class="sig">VCC</text>
     <text x="325" y="270" text-anchor="middle" class="num">4</text><text x="325" y="296" text-anchor="middle" class="sig">MOSI</text>
     <text x="460" y="270" text-anchor="middle" class="num">6</text><text x="460" y="296" text-anchor="middle" class="sig">GND</text>

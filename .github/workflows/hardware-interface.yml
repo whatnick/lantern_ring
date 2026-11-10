@@ -43,3 +43,5 @@ jobs:
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_prog_clip.py"
       - name: Check photographed clip reconstruction, pogo pitches and CAD evidence
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_assembly.py"
+      - name: Check editable Fritzing ISP harness, colours and target connections
+        run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_harness.py"
