@@ -8,6 +8,11 @@ That report does not establish repeatable electrical contact or successful
 programming. Other PCBs need their own verified pad pattern, signal mapping and
 clearances.
 
+[Printable HTML wiring, physical-parts and voltage-testing guide](../../../docs/arduino-isp-wiring-reference.html)
+includes the standalone PDF's contents, the reported cable colours, Arduino IDE
+settings and illustrated C1/C2 measurements through the anvil window.
+Download the repository and open the HTML in a browser; GitHub displays its source.
+
 ![Top-view J1 header map and Arduino Uno ArduinoISP wiring](programming-connector.svg)
 
 ## Colour-coded ArduinoISP harness
@@ -22,17 +27,19 @@ The `.fzz` bundles the custom interface parts; open that file in Fritzing.
 
 ![Harness exported by the installed Fritzing application](harness/arduino_isp_harness_breadboard.png)
 
-Use the following **suggested colour convention** for six female Dupont leads.
-It is not a claim about the existing photo's cable colours. Label both ends
-with the signal and J1 number; use continuity rather than colour alone.
+These colours match the **user-reported connected harness on COM6**.
+They replace the earlier suggested palette; they were not inferred from the
+older disconnected photograph. Label both ends with the signal and J1 number;
+verify continuity rather than trusting colour alone. White wires have dark
+outlines in the diagrams so they remain visible on paper.
 
 | Colour | Arduino Uno running ArduinoISP | Clip probe J1 | Contact path to Ring IR |
 | --- | --- | --- | --- |
-| Green | D12 / MISO | 1 / MISO | P2 -> rear TP2 / PB1 |
-| Red | One selected, compatible target-VCC source | 2 / VCC | P9 -> rear TP9 / VCC |
+| Grey | D12 / MISO | 1 / MISO | P2 -> rear TP2 / PB1 |
+| White | Reported 3V3 target VCC; resolve logic levels below first | 2 / VCC | P9 -> rear TP9 / VCC |
 | Blue | D13 / SCK | 3 / SCK | P3 -> rear TP3 / PB2 |
-| Yellow | D11 / MOSI | 4 / MOSI | P1 -> rear TP1 / PB0 |
-| Orange | D10, **not Uno RESET** | 5 / RESET | P6 -> rear TP6 / PB5 |
+| Purple | D11 / MOSI | 4 / MOSI | P1 -> rear TP1 / PB0 |
+| Brown | D10, **not Uno RESET** | 5 / RESET | P6 -> rear TP6 / PB5 |
 | Black | GND, shared with the target supply | 6 / GND | Probe J2 -> insulated wire -> anvil J1 -> front TP8 |
 
 Use **black** for the separate inter-jaw GND lead too. Earlier anvils use P8;
@@ -46,13 +53,17 @@ not pad-spacing templates or fabrication designs.
 
 **Power is deliberately a selection, not an automatic Uno 5 V connection.**
 A normal Uno has **5 V I/O**, even when its 3V3 pin supplies the target.
-Direct signal wiring is conditional on the target's supply and **all populated
-components** being qualified for that voltage. These diagrams do not establish
-5 V compatibility of the IR ring. For a lower-voltage target use a compatible
-ISP host or verified SPI level translation (not designed or shown here).
-Do not connect Uno 5V/3V3 or any second supply output to the red lead without
-resolving that choice first. The Fritzing sketch leaves both Uno power outputs
-unconnected. Always remove the CR2032.
+**Do not program the reported 3.3 V target directly from the Uno's 5 V ISP
+outputs. Disconnect USB and target power before changing the setup.**
+Use verified SPI level translation, including suitable handling of MISO, or a
+voltage-compatible ISP host; this interface is not designed or shown here.
+Powering the ring at 3.3 V does not make the Uno's signal levels safe.
+Do not substitute 5 V target power without qualifying every populated component.
+Never join supply outputs. The Fritzing sketch leaves both Uno power outputs
+unconnected as a deliberate safety gate; its white lead represents the selected
+3.3 V supply, not approval of the current electrical stack. Check the supply's
+current budget too: the firmware can drive IR LEDs immediately after reset.
+Always remove the CR2032.
 
 Load `File > Examples > 11.ArduinoISP > ArduinoISP` onto the Uno before connecting
 the target. With all supplies off, verify every row end to end, check for
@@ -68,6 +79,58 @@ interface artwork is project-created. **This image was created with Fritzing**;
 the Fritzing-based diagrams and bundled interface artwork are
 [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 See [regeneration details](development.md#fritzing-harness-diagrams).
+
+## Arduino IDE settings for the reported COM6 setup
+
+The local installation has **attiny 1.0.2** (`attiny:avr`) and Arduino AVR
+Boards. No additional ATtiny core is needed for the following menu names.
+These are configuration instructions, not a recorded hardware programming test.
+Do not reconnect or program until the voltage-level issue above is resolved.
+
+First, with the ring disconnected, select **Arduino Uno**, **Port COM6**, and
+upload `File > Examples > 11.ArduinoISP > ArduinoISP` normally to the Uno.
+Close Serial Monitor. This loads the programmer software, not the ring firmware.
+
+Then open `firmware/Arduino-TV-B-Gone/Arduino-TV-B-Gone.ino` and set:
+
+| IDE setting | Value |
+| --- | --- |
+| Tools > Board | attiny > ATtiny25/45/85 |
+| Tools > Processor | ATtiny85 |
+| Tools > Clock | Internal 8 MHz, provided the target's clock fuses are configured accordingly |
+| Tools > Port | COM6 (the Uno's serial port, not a separate ATtiny port) |
+| Tools > Programmer | Arduino as ISP, **not** ArduinoISP |
+| Upload action | Sketch > Upload Using Programmer |
+
+The IR board has no external crystal/resonator footprint. The firmware's
+`delay_ten_us` loop is explicitly calibrated for **8 MHz**, so Internal 1 MHz
+is not an equivalent firmware setting, and External 8 MHz is not appropriate
+just because a legacy source comment mentions a resonator.
+An offline build with `attiny:avr:ATtinyX5:cpu=attiny85,clock=internal8` succeeds
+(5320 bytes flash, 4 bytes static RAM); that does not verify IR timing in hardware.
+
+**Clock menu selection does not change the chip's existing fuses.** A factory
+ATtiny85 normally runs at 1 MHz (8 MHz oscillator divided by eight). After
+repeatable signature reads and only when intentionally configuring this board
+for 8 MHz, this installed core's **Tools > Burn Bootloader** erases the chip
+and applies the selected clock fuses; it does not install a bootloader.
+For its Internal 8 MHz menu, the core specifies LF=`0xE2`, HF=`0xDF`, EF=`0xFF`.
+Back up existing firmware/EEPROM first if needed. Do not select an external
+clock or disable RESET/SPI, and do not repeat this operation for routine uploads.
+The attached chip's actual fuse values have **not** been read.
+
+After fixing the electrical levels, a read-only identity check with the
+standard ArduinoISP sketch is:
+
+```text
+avrdude -c stk500v1 -p t85 -P COM6 -b 19200 -n
+```
+
+Require repeatable signature **0x1e930b** before erasing or writing; do not force
+a mismatch. This command has not been run against the connected stack.
+If the Uno auto-resets instead of staying in ArduinoISP, it may need a 10 uF
+capacitor between its own RESET (+) and GND (-), fitted unpowered after loading
+ArduinoISP and removed before re-uploading to the Uno. This is not target RESET.
 
 ## Current IR ring: connect AVR ISP
 

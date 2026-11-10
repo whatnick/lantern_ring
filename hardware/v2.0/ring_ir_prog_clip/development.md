@@ -96,6 +96,9 @@ The wrapper invokes installed Fritzing `-svg` to open/export the native sketch
 into breadboard and schematic SVGs. `preview.py` uses FreeCAD's bundled Qt
 runtime only to rasterize those SVGs and the separate colour reference to PNG,
 with explicit Arial font registration for the Windows offscreen renderer.
+It also adds/darkens the white-wire outline for print contrast (Fritzing's
+schematic export has only one stroke); the native white VCC net, endpoints
+and inner stroke stay unchanged.
 It does not replace the Fritzing export with a handmade image.
 The original raw `.fz` is source; users should open `.fzz` to load the custom
 parts automatically. Keep the `.fz`, `.fzz`, `parts/`, exported SVGs and PNGs
@@ -111,12 +114,44 @@ or CAD geometry is changed by generating this documentation.
 The selected VCC block intentionally has no automatic connection to either
 Uno supply output; direct Uno signal wiring is conditional on compatible I/O
 levels, not approval of a 5 V coin-cell target. See the programming guide.
+The palette now follows the user's reported harness: grey D12/MISO, white
+3V3 VCC, blue D13/SCK, purple D11/MOSI, brown D10/RESET and black GND.
+The reported COM6 connection is not a voltage-level or programming qualification.
 
 The Fritzing-based diagram exports and interface artwork are CC BY-SA 3.0,
 with attribution to Fritzing and its core Uno part (author `althaus`).
 The standalone colour reference uses the same licence. Generator/test source
 retains the repository's existing licence. Photo provenance is independent
 and remains recorded in `images/sources.json`.
+
+## HTML wiring reference and voltage illustrations
+
+`docs/arduino-isp-wiring-reference.html` carries the standalone PDF's wiring,
+physical-parts figure and upload checklist, with additional power-only and
+unpowered continuity checks through the anvil window. Open the file in a
+browser with `docs/images` present, or print it to PDF. No external scripts,
+fonts or image services are required. The original PDF is deliberately not
+committed.
+
+`docs/images/arduino-isp-physical-wiring.svg` is a vector export of the local
+PDF's second page, preserving its actual-mesh renders, verified header-post
+annotations and separate wire lanes. The export does not alter any geometry.
+Its source PDF hash and the underlying committed mesh hashes are recorded in
+`docs/images/arduino-isp-reference-sources.json`.
+
+`docs/images/ir-voltage-test.svg` is editable source, not a render or photograph.
+Its shared capacitor definition uses the saved IR PCB's front pad coordinates,
+sizes and nets at two display scales. Both C1 and C2 have pad 1 VCC and pad 2
+GND, but C2 is rotated 180 degrees. The window rectangle maps saved anvil
+coordinates to IR coordinates with `x=TP3.x-u`, `y=TP3.y+v`. Component bodies
+and the meter are symbolic; only test landmarks are shown. Displayed voltages
+are expected readings, not measurements. Jaw/pin uncertainty and as-built
+revision uncertainty remain unchanged.
+
+`test_harness.py` checks the HTML's local references and cable rows, actual
+capacitor pad geometry/net labels, window mapping and illustration provenance.
+If source boards or illustrations change, update the editable SVG and its
+provenance together; never update hashes to conceal a geometric mismatch.
 
 ## Album reconstruction and Blender animation
 

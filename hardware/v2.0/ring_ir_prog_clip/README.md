@@ -1,5 +1,9 @@
 # Ring IR programming clip
 
+[Illustrated HTML wiring and voltage-testing reference](../../../docs/arduino-isp-wiring-reference.html)
+contains the PDF's cable map, physical parts, Arduino IDE setup and front-side
+C1/C2 checks. Open the downloaded HTML in a browser with its `docs/images` assets.
+
 A solder-free in-system programming (ISP) clip for the
 [`ring_pcb_IR`](../ring_pcb_IR) ATtiny85 board. Spring-loaded pogo pins press on
 the board's rear test pads, held by a hinged clip like

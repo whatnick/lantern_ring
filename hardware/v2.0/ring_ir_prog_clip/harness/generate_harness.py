@@ -16,20 +16,20 @@ HERE = pathlib.Path(__file__).resolve().parent
 CLIP = HERE.parent
 UNO_MODULE = "arduino_Uno_Rev3(fix)"
 SIGNALS = [
-    ("MISO", "green", "#238b45", "D12", "connector55", "1", "P2", "TP2", "PB1"),
-    ("VCC", "red", "#d62728", "Selected VCC", None, "2", "P9", "TP9", "VCC"),
+    ("MISO", "grey", "#707070", "D12", "connector55", "1", "P2", "TP2", "PB1"),
+    ("VCC", "white", "#ffffff", "3V3 VCC", None, "2", "P9", "TP9", "VCC"),
     ("SCK", "blue", "#1768c4", "D13", "connector56", "3", "P3", "TP3", "PB2"),
-    ("MOSI", "yellow", "#c99b00", "D11", "connector54", "4", "P1", "TP1", "PB0"),
-    ("RESET", "orange", "#e87500", "D10", "connector53", "5", "P6", "TP6", "PB5"),
+    ("MOSI", "purple", "#7b3fb3", "D11", "connector54", "4", "P1", "TP1", "PB0"),
+    ("RESET", "brown", "#8c564b", "D10", "connector53", "5", "P6", "TP6", "PB5"),
     ("GND", "black", "#202020", "GND", "connector89", "6", "J2", "TP8", "GND"),
 ]
 WARNINGS = [
     "REMOVE CR2032. Wire and check continuity with all power OFF.",
-    "Select ONE compatible target VCC. Uno 5V and 3V3 are intentionally NOT wired.",
-    "Uno I/O is 5V: direct signal wires require a target qualified for that level.",
-    "For lower-voltage targets use a compatible ISP host or verified SPI level translation (not shown).",
+    "White lead = user-reported 3V3 VCC. Uno supply pins are NOT automatically wired in this drawing.",
+    "STOP: a 3.3V target cannot take direct 5V Uno ISP signals. Disconnect USB and target power.",
+    "Use verified SPI level translation or a voltage-compatible ISP host before reconnecting (not shown).",
     "Uno 3V3 power does NOT change its I/O levels. Do not join supply outputs.",
-    "Diagram colours are a proposed convention, not a reading of the photo's wire colours.",
+    "Colours match the user's reported COM6 harness; continuity and programming are not yet verified.",
 ]
 
 
@@ -50,8 +50,17 @@ def svg_text(x, y, text, size=12, color="#17334c", anchor="start"):
 
 
 def svg_line(points, color, width=2):
-    return '<polyline points="%s" fill="none" stroke="%s" stroke-width="%s"/>' % (
-        " ".join("%s,%s" % p for p in points), color, width)
+    coordinates = " ".join("%s,%s" % p for p in points)
+    outline = ""
+    if color == "#ffffff":
+        outline = '<polyline points="%s" fill="none" stroke="#607080" stroke-width="%s"/>' % (
+            coordinates, width + 2)
+    return outline + '<polyline points="%s" fill="none" stroke="%s" stroke-width="%s"/>' % (
+        coordinates, color, width)
+
+
+def signal_ink(color):
+    return "#455466" if color == "#ffffff" else color
 
 
 def part(name, title, size, body, pins, buses=()):
@@ -112,14 +121,14 @@ def make_parts():
         x, y = 55 + ((n - 1) // 2) * 90, 85 if n % 2 == 0 else 132
         cid = "connector" + number
         pins[cid] = (x, y, "J1." + number + " " + sig)
-        body += svg_text(x, y - 10, number + " " + sig, 11, hexcolor, "middle")
+        body += svg_text(x, y - 10, number + " " + sig, 11, signal_ink(hexcolor), "middle")
         output = "connector" + str(10 + n)
         oy = 185 + (n - 1) * 28
         pins[output] = (299, oy, pogo + " " + sig)
         buses.append((cid, output))
         body += svg_line([(x, y + 4), (x, 153 + n * 2), (270 + n * 2, 153 + n * 2),
                           (270 + n * 2, oy), (295, oy)], hexcolor, 1)
-        body += svg_text(16, oy + 4, "J1.%s -> %s : %s" % (number, pogo, sig), 11, hexcolor)
+        body += svg_text(16, oy + 4, "J1.%s -> %s : %s" % (number, pogo, sig), 11, signal_ink(hexcolor))
     body += svg_text(16, 361, "P4 / PB3 and P5 / PB4: spare, NO ISP cable", 10)
     body += svg_text(16, 377, "Right-hand links depict contacts; not more jumpers", 10)
     probe = part("isp_probe", "IR ISP probe", (310, 384), body, pins, buses)
@@ -142,7 +151,7 @@ def make_parts():
     for i, (sig, _, hexcolor, _, _, _, _, tp, net) in enumerate(SIGNALS):
         y = 185 + i * 28
         pins["connector" + str(i + 1)] = (10, y, tp + " " + net)
-        body += svg_text(27, y + 4, tp + " / " + net + " / " + sig, 13, hexcolor)
+        body += svg_text(27, y + 4, tp + " / " + net + " / " + sig, 13, signal_ink(hexcolor))
     body += svg_text(16, 104, "Rear: TP1 / TP2 / TP3 / TP6 + off-grid TP9", 10)
     body += svg_text(16, 123, "Front: TP8 GND bar (via lower anvil)", 11)
     body += svg_text(16, 145, "TP4 / PB3 and TP5 / PB4 are spare", 11)
@@ -153,7 +162,7 @@ def make_parts():
     body += svg_text(16, 48, "SELECTED TARGET SUPPLY", 14)
     body += svg_text(16, 69, "One current-limited source, voltage qualified", 11)
     body += svg_text(16, 90, "No automatic connection to Uno 5V / 3V3", 11)
-    body += svg_text(260, 25, "+VCC", 11, "#d62728")
+    body += svg_text(252, 25, "3V3 VCC", 11)
     body += svg_text(32, 25, "GND", 11, "#202020")
     supply = part("isp_supply", "Selected target VCC", (310, 108), body,
                   {"connector1": (299, 8, "Selected target VCC"),
@@ -285,7 +294,7 @@ def sketch(parts, uno):
 
     notes = [
         (15, 5, 1250, 100, "<h2>Arduino Uno ArduinoISP -> programming clip -> Ring IR PCB</h2>"
-         "<p>GREEN MISO | RED VCC | BLUE SCK | YELLOW MOSI | ORANGE RESET | BLACK GND<br/>"
+         "<p>GREY MISO | WHITE 3V3 VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND<br/>"
          "J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.</p>"),
         (15, 115, 370, 90, "<b>HOST: Arduino Uno / ATmega328P</b><br/>"
          "Load File > Examples > 11.ArduinoISP > ArduinoISP.<br/>"
@@ -318,7 +327,7 @@ def reference():
             '<desc>Lantern Ring contributors. CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/</desc>'
             '<rect width="1500" height="1080" fill="#fff"/>')
     svg += svg_text(35, 48, "ARDUINO ISP -> PROGRAMMING CLIP -> RING IR PCB", 29)
-    svg += svg_text(35, 80, "Revision-independent ISP-6 wiring; suggested cable colours, not the photographed cable's colours.", 18)
+    svg += svg_text(35, 80, "User-reported COM6 harness colours; unchanged ISP-6 pinout. White leads have a dark outline for print.", 18)
     headers = [(35, 100, 250, "ARDUINO UNO / HOST"), (460, 100, 240, "PROBE J1 / ISP-6"),
                (855, 100, 265, "CLIP CONTACT PATH"), (1215, 100, 250, "RING IR / TARGET")]
     for x, y, w, text in headers:
@@ -329,7 +338,7 @@ def reference():
         svg += '<rect x="30" y="%s" width="1440" height="54" rx="5" fill="#f3f6f8"/>' % (y - 31)
         svg += svg_text(45, y, host + (" *" if sig == "VCC" else ""), 22)
         svg += svg_line([(290, y - 6), (445, y - 6)], hexcolor, 6)
-        svg += svg_text(365, y - 16, color.upper(), 14, hexcolor, "middle")
+        svg += svg_text(365, y - 16, color.upper(), 14, signal_ink(hexcolor), "middle")
         svg += svg_text(475, y, number + "  " + sig, 23)
         svg += svg_line([(710, y - 6), (840, y - 6)], hexcolor, 6)
         route = "J2 -> wire -> anvil" if sig == "GND" else pogo + " pogo"
@@ -342,8 +351,8 @@ def reference():
         number = int(n)
         sig = next(s[0] for s in SIGNALS if s[5] == n)
         x, y = 95 + ((number - 1) // 2) * 170, 680 if number % 2 == 0 else 742
-        svg += '<rect x="%s" y="%s" width="150" height="48" rx="5" fill="%s"/>' % (x - 60, y - 30, color)
-        svg += svg_text(x + 15, y, n + " " + sig, 20, "#fff", "middle")
+        svg += '<rect x="%s" y="%s" width="150" height="48" rx="5" fill="%s" stroke="#607080"/>' % (x - 60, y - 30, color)
+        svg += svg_text(x + 15, y, n + " " + sig, 20, "#17334c" if color == "#ffffff" else "#fff", "middle")
     svg += svg_text(35, 790, "Confirm pin 1 on silk. Cable mating-face view is mirrored.", 16)
     svg += svg_text(650, 605, "BLACK ground-return lead inside the clip", 22)
     svg += svg_text(650, 637, "J1.6 -> probe J2 -> insulated slack wire -> anvil J1", 18)

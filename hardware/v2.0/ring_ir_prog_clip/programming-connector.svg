@@ -19,9 +19,9 @@
   <path d="M325 198 L325 218" class="line"/>
   <rect x="120" y="222" width="410" height="204" rx="9" fill="#d0d5da" stroke="#687c8b" stroke-width="2"/>
   <g>
-    <circle cx="190" cy="275" r="37" class="pin" style="fill:#d62728"/><circle cx="325" cy="275" r="37" class="pin" style="fill:#c99b00"/><circle cx="460" cy="275" r="37" class="pin" style="fill:#202020"/>
-    <circle cx="190" cy="373" r="37" class="pin" style="fill:#238b45"/><circle cx="325" cy="373" r="37" class="pin" style="fill:#1768c4"/><circle cx="460" cy="373" r="37" class="pin" style="fill:#e87500"/>
-    <text x="190" y="270" text-anchor="middle" class="num">2</text><text x="190" y="296" text-anchor="middle" class="sig">VCC</text>
+    <circle cx="190" cy="275" r="37" class="pin" style="fill:#ffffff"/><circle cx="325" cy="275" r="37" class="pin" style="fill:#7b3fb3"/><circle cx="460" cy="275" r="37" class="pin" style="fill:#202020"/>
+    <circle cx="190" cy="373" r="37" class="pin" style="fill:#707070"/><circle cx="325" cy="373" r="37" class="pin" style="fill:#1768c4"/><circle cx="460" cy="373" r="37" class="pin" style="fill:#8c564b"/>
+    <text x="190" y="270" text-anchor="middle" class="num" style="fill:#17334c">2</text><text x="190" y="296" text-anchor="middle" class="sig" style="fill:#17334c">VCC</text>
     <text x="325" y="270" text-anchor="middle" class="num">4</text><text x="325" y="296" text-anchor="middle" class="sig">MOSI</text>
     <text x="460" y="270" text-anchor="middle" class="num">6</text><text x="460" y="296" text-anchor="middle" class="sig">GND</text>
     <text x="190" y="368" text-anchor="middle" class="num">1</text><text x="190" y="394" text-anchor="middle" class="sig">MISO</text>
@@ -33,16 +33,16 @@
   <text x="222" y="566" class="h2">toward pogo grid</text>
 
   <line x1="615" y1="135" x2="615" y2="620" stroke="#c6d3db" stroke-width="2"/>
-  <text x="655" y="157" class="h2">Arduino Uno running ArduinoISP</text>
-  <text x="655" y="205" class="txt">J1.1 MISO  &lt;-&gt;  D12 (MISO)</text>
-  <text x="655" y="250" class="txt">J1.2 VCC   &lt;-&gt;  target VCC*</text>
-  <text x="655" y="295" class="txt">J1.3 SCK   &lt;-&gt;  D13 (SCK)</text>
-  <text x="655" y="340" class="txt">J1.4 MOSI  &lt;-&gt;  D11 (MOSI)</text>
-  <text x="655" y="385" class="txt">J1.5 RESET &lt;-&gt;  D10</text>
-  <text x="655" y="430" class="txt">J1.6 GND   &lt;-&gt;  GND</text>
+  <text x="655" y="157" class="h2">Uno / ArduinoISP</text>
+  <text x="655" y="205" class="txt">1 MISO &lt;-&gt; D12 (grey)</text>
+  <text x="655" y="250" class="txt">2 VCC &lt;-&gt; 3V3 (white)*</text>
+  <text x="655" y="295" class="txt">3 SCK &lt;-&gt; D13 (blue)</text>
+  <text x="655" y="340" class="txt">4 MOSI &lt;-&gt; D11 (purple)</text>
+  <text x="655" y="385" class="txt">5 RESET &lt;-&gt; D10 (brown)</text>
+  <text x="655" y="430" class="txt">6 GND &lt;-&gt; GND (black)</text>
   <text x="655" y="498" class="warn">*Use one compatible target-power source.</text>
-  <text x="655" y="526" class="small">Match target and programmer I/O voltage;</text>
-  <text x="655" y="550" class="small">do not connect two supply outputs together.</text>
+  <text x="655" y="526" class="small">3V3 power does NOT change Uno 5V I/O.</text>
+  <text x="655" y="550" class="small">Use a verified level-compatible ISP setup.</text>
   <text x="655" y="588" class="small">Remove the CR2032 before connecting. J1 is</text>
   <text x="655" y="612" class="small">unshrouded: check pin 1 and cable orientation.</text>
   <text x="35" y="670" class="warn">Numbers are probe J1 pin numbers. Confirm the silkscreen pin-1 mark and wiring before powering.</text>

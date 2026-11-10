@@ -1,7 +1,12 @@
 """Independently check the saved Fritzing cable graph against the KiCad boards."""
 
+import hashlib
+from html.parser import HTMLParser
+import json
 import pathlib
+import re
 import unittest
+from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -9,11 +14,11 @@ from test_prog_clip import PROBE, TARGET, footprints
 
 HERE = pathlib.Path(__file__).resolve().parent / "harness"
 EXPECTED = [
-    ("1", "connector55", "TP2", "PB1", "#238b45"),
-    ("2", None, "TP9", "VCC", "#d62728"),
+    ("1", "connector55", "TP2", "PB1", "#707070"),
+    ("2", None, "TP9", "VCC", "#ffffff"),
     ("3", "connector56", "TP3", "PB2", "#1768c4"),
-    ("4", "connector54", "TP1", "PB0", "#c99b00"),
-    ("5", "connector53", "TP6", "PB5", "#e87500"),
+    ("4", "connector54", "TP1", "PB0", "#7b3fb3"),
+    ("5", "connector53", "TP6", "PB5", "#8c564b"),
     ("6", "connector89", "TP8", "GND", "#202020"),
 ]
 
@@ -100,6 +105,14 @@ class HarnessTests(unittest.TestCase):
             text = " ".join(exported.itertext())
             for label in ("PROGRAMMING CLIP", "RING IR PCB", "SELECTED TARGET SUPPLY", "REMOVE CR2032"):
                 self.assertIn(label, text)
+            outlined_white = []
+            for group in exported.iter():
+                strokes = [e for e in group if e.get("stroke")]
+                if group.get("partID") and len(strokes) == 2 and strokes[1].get("stroke") == "#ffffff":
+                    self.assertEqual(strokes[0].get("stroke"), "#607080")
+                    self.assertGreater(float(strokes[0].get("stroke-width")), float(strokes[1].get("stroke-width")))
+                    outlined_white.append(group)
+            self.assertEqual(len(outlined_white), 2, "Both white VCC links need visible outlines")
 
     def test_colour_reference_header_orientation_matches_actual_probe(self):
         svg = ET.parse(HERE / "wiring-reference.svg").getroot()
@@ -113,6 +126,104 @@ class HarnessTests(unittest.TestCase):
             self.assertGreater(header[odd[0]][0][1], header[even[0]][0][1])
         self.assertLess(text["1 MISO"][0], text["3 SCK"][0])
         self.assertLess(text["3 SCK"][0], text["5 RESET"][0])
+
+    def test_html_guide_links_images_and_cable_rows_match_the_target(self):
+        class GuideParser(HTMLParser):
+            def __init__(self):
+                super().__init__(convert_charrefs=True)
+                self.ids, self.links, self.images, self.rows = [], [], [], {}
+                self.row = None
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if "id" in attrs:
+                    self.ids.append(attrs["id"])
+                if tag == "a":
+                    self.links.append(attrs["href"])
+                elif tag == "img":
+                    self.images.append(attrs)
+                elif tag == "tr":
+                    self.row = attrs.get("data-j1")
+                    if self.row:
+                        self.rows[self.row] = []
+
+            def handle_endtag(self, tag):
+                if tag == "tr":
+                    self.row = None
+
+            def handle_data(self, data):
+                if self.row:
+                    self.rows[self.row].append(data)
+
+        guide = HERE.parents[3] / "docs" / "arduino-isp-wiring-reference.html"
+        parser = GuideParser()
+        parser.feed(guide.read_text(encoding="utf-8"))
+        self.assertEqual(len(parser.ids), len(set(parser.ids)))
+        self.assertEqual(set(parser.rows), {str(n) for n in range(1, 7)})
+        for link in parser.links + [img["src"] for img in parser.images]:
+            url = urlsplit(link)
+            if url.scheme or url.netloc:
+                continue
+            if url.path:
+                self.assertTrue((guide.parent / unquote(url.path)).is_file(), link)
+            else:
+                self.assertIn(url.fragment, parser.ids, link)
+        self.assertEqual(len(parser.images), 2)
+        for image in parser.images:
+            self.assertTrue(image.get("alt"))
+            self.assertFalse(urlsplit(image["src"]).scheme, "Guide images must work offline")
+        probe, target = footprints(PROBE), footprints(TARGET)
+        for number, host, tp, net, color in EXPECTED:
+            row = " ".join(parser.rows[number])
+            self.assertIn(tp, row)
+            self.assertIn(target[tp]["pads"]["1"][1], row)
+            self.assertIn(probe["J1"]["pads"][number][1].lstrip("/"), row)
+
+    def test_voltage_illustration_uses_actual_front_pads_and_window(self):
+        repo = HERE.parents[3]
+        svg = ET.parse(repo / "docs" / "images" / "ir-voltage-test.svg").getroot()
+        ids = {e.get("id"): e for e in svg.iter() if e.get("id")}
+        target = footprints(TARGET)
+        for ref in ("C1", "C2"):
+            self.assertEqual(target[ref]["layer"], "F.Cu")
+            for number in ("1", "2"):
+                node = ids[ref + "." + number]
+                (x, y), net, (w, h) = target[ref]["pads"][number]
+                self.assertEqual(node.get("data-ref"), ref)
+                self.assertEqual(node.get("data-pad"), number)
+                self.assertEqual(node.get("data-net"), net)
+                self.assertAlmostEqual(float(node.get("x")) + float(node.get("width")) / 2, x)
+                self.assertAlmostEqual(float(node.get("y")) + float(node.get("height")) / 2, y)
+                self.assertAlmostEqual(float(node.get("width")), w)
+                self.assertAlmostEqual(float(node.get("height")), h)
+        geometry = json.loads((HERE.parent / "generated" / "geometry.json").read_text())
+        u0, v0, u1, v1 = geometry["fit_inputs"]["anvil"]["window"]
+        ox, oy = target["TP3"]["pads"]["1"][0]
+        window = ids["anvil-window"]
+        for key, expected in (("x", ox - u1), ("y", oy + v0),
+                              ("width", u1 - u0), ("height", v1 - v0)):
+            self.assertAlmostEqual(float(window.get(key)), expected)
+        from test_prog_clip import edge_items
+        outline = [(float(x), float(y)) for x, y in
+                   re.findall(r"([-\d.]+),([-\d.]+)", ids["ir-outline"].get("points"))]
+        self.assertEqual(outline, edge_items(TARGET)[1][0])
+
+    def test_html_illustration_provenance_matches_committed_sources(self):
+        repo = HERE.parents[3]
+        sources = json.loads((repo / "docs" / "images" /
+                              "arduino-isp-reference-sources.json").read_text())
+        for table in (sources["asset_sha256"], sources["voltage_figure"]["source_sha256"]):
+            for path, digest in table.items():
+                normalized = (repo / path).read_text(encoding="utf-8").encode("utf-8")
+                self.assertEqual(hashlib.sha256(normalized).hexdigest(), digest, path)
+        physical = sources["physical_figure"]
+        self.assertFalse(physical["source_pdf_committed"])
+        self.assertTrue(physical["header_post_raycast_verified"])
+        mesh_dir = repo / physical["mesh_directory"]
+        meshes = json.loads((mesh_dir / "meshes.json").read_text())
+        for entry in meshes:
+            digest = hashlib.sha256((mesh_dir / entry["file"]).read_bytes()).hexdigest()
+            self.assertEqual(digest, physical["mesh_sha256"][entry["name"]], entry["name"])
 
 
 if __name__ == "__main__":

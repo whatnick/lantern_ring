@@ -412,7 +412,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="179.06494949805057" y="223.99999660972256" z="3" x1="0" y1="0" x2="300.93505050194943" y2="43.00000339027744" wireFlags="64"/>
-          <wireExtras mils="22" color="#238b45" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#707070" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -430,7 +430,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="179.99990078740157" y="358.99990078740154" z="3" x1="0" y1="0" x2="300.00009921259846" y2="-91.99990078740154" wireFlags="128"/>
-          <wireExtras mils="22" color="#238b45" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#707070" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -453,7 +453,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="724" y="320" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="64"/>
-          <wireExtras mils="22" color="#238b45" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#707070" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -471,7 +471,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="724" y="320" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="128"/>
-          <wireExtras mils="22" color="#238b45" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#707070" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -494,7 +494,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="329" y="578" z="3" x1="0" y1="0" x2="151" y2="-358" wireFlags="64"/>
-          <wireExtras mils="22" color="#d62728" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#ffffff" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -512,7 +512,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="329" y="578" z="3" x1="0" y1="0" x2="151" y2="-358" wireFlags="128"/>
-          <wireExtras mils="22" color="#d62728" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#ffffff" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -535,7 +535,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="724" y="348" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="64"/>
-          <wireExtras mils="22" color="#d62728" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#ffffff" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -553,7 +553,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="724" y="348" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="128"/>
-          <wireExtras mils="22" color="#d62728" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#ffffff" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -658,7 +658,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="188.06494610777315" y="223.99999660972256" z="3" x1="0" y1="0" x2="381.93505389222685" y2="-3.999996609722558" wireFlags="64"/>
-          <wireExtras mils="22" color="#c99b00" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#7b3fb3" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -676,7 +676,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="179.99990078740157" y="349.99990078740154" z="3" x1="0" y1="0" x2="390.00009921259846" y2="-129.99990078740154" wireFlags="128"/>
-          <wireExtras mils="22" color="#c99b00" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#7b3fb3" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -699,7 +699,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="724" y="404" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="64"/>
-          <wireExtras mils="22" color="#c99b00" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#7b3fb3" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -717,7 +717,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="724" y="404" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="128"/>
-          <wireExtras mils="22" color="#c99b00" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#7b3fb3" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -740,7 +740,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="197.0649427174957" y="223.99999660972256" z="3" x1="0" y1="0" x2="462.9350572825043" y2="43.00000339027744" wireFlags="64"/>
-          <wireExtras mils="22" color="#e87500" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#8c564b" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -758,7 +758,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="179.99990078740157" y="340.9999007874016" z="3" x1="0" y1="0" x2="480.00009921259846" y2="-73.9999007874016" wireFlags="128"/>
-          <wireExtras mils="22" color="#e87500" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#8c564b" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -781,7 +781,7 @@
       <views>
         <breadboardView layer="breadboardWire">
           <geometry x="724" y="432" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="64"/>
-          <wireExtras mils="22" color="#e87500" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#8c564b" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="breadboardWire">
               <geometry x="0" y="0"/>
@@ -799,7 +799,7 @@
         </breadboardView>
         <schematicView layer="schematicTrace">
           <geometry x="724" y="432" z="3" x1="0" y1="0" x2="211" y2="0" wireFlags="128"/>
-          <wireExtras mils="22" color="#e87500" opacity="1" banded="0"/>
+          <wireExtras mils="22" color="#8c564b" opacity="1" banded="0"/>
           <connectors>
             <connector connectorId="connector0" layer="schematicTrace">
               <geometry x="0" y="0"/>
@@ -993,7 +993,7 @@
     </instance>
     <instance moduleIdRef="NoteModuleID" modelIndex="900" path="note.fzp">
       <title>Wiring note</title>
-      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;h2&gt;Arduino Uno ArduinoISP -&gt; programming clip -&gt; Ring IR PCB&lt;/h2&gt;&lt;p&gt;GREEN MISO | RED VCC | BLUE SCK | YELLOW MOSI | ORANGE RESET | BLACK GND&lt;br/&gt;J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</text>
+      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;h2&gt;Arduino Uno ArduinoISP -&gt; programming clip -&gt; Ring IR PCB&lt;/h2&gt;&lt;p&gt;GREY MISO | WHITE 3V3 VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND&lt;br/&gt;J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</text>
       <views>
         <breadboardView layer="breadboardNote">
           <geometry x="15" y="5" z="6" width="1250" height="100"/>
@@ -1017,7 +1017,7 @@
     </instance>
     <instance moduleIdRef="NoteModuleID" modelIndex="902" path="note.fzp">
       <title>Wiring note</title>
-      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;b&gt;POWER / SAFETY - READ BEFORE CONNECTING&lt;/b&gt;&lt;br/&gt;REMOVE CR2032. Wire and check continuity with all power OFF.&lt;br/&gt;Select ONE compatible target VCC. Uno 5V and 3V3 are intentionally NOT wired.&lt;br/&gt;Uno I/O is 5V: direct signal wires require a target qualified for that level.&lt;br/&gt;For lower-voltage targets use a compatible ISP host or verified SPI level translation (not shown).&lt;br/&gt;Uno 3V3 power does NOT change its I/O levels. Do not join supply outputs.&lt;br/&gt;Diagram colours are a proposed convention, not a reading of the photo&amp;#x27;s wire colours.&lt;/body&gt;&lt;/html&gt;</text>
+      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;b&gt;POWER / SAFETY - READ BEFORE CONNECTING&lt;/b&gt;&lt;br/&gt;REMOVE CR2032. Wire and check continuity with all power OFF.&lt;br/&gt;White lead = user-reported 3V3 VCC. Uno supply pins are NOT automatically wired in this drawing.&lt;br/&gt;STOP: a 3.3V target cannot take direct 5V Uno ISP signals. Disconnect USB and target power.&lt;br/&gt;Use verified SPI level translation or a voltage-compatible ISP host before reconnecting (not shown).&lt;br/&gt;Uno 3V3 power does NOT change its I/O levels. Do not join supply outputs.&lt;br/&gt;Colours match the user&amp;#x27;s reported COM6 harness; continuity and programming are not yet verified.&lt;/body&gt;&lt;/html&gt;</text>
       <views>
         <breadboardView layer="breadboardNote">
           <geometry x="15" y="710" z="6" width="1250" height="190"/>

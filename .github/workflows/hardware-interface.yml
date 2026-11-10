@@ -8,6 +8,9 @@ on:
       - "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
       - "docs/design/contact-roadmap/**"
+      - "docs/arduino-isp-wiring-reference.html"
+      - "docs/images/arduino-isp-*"
+      - "docs/images/ir-voltage-test.svg"
       - ".github/workflows/hardware-interface.yml"
   pull_request:
     paths:
@@ -16,6 +19,9 @@ on:
       - "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
       - "docs/design/contact-roadmap/**"
+      - "docs/arduino-isp-wiring-reference.html"
+      - "docs/images/arduino-isp-*"
+      - "docs/images/ir-voltage-test.svg"
       - ".github/workflows/hardware-interface.yml"
 
 permissions:
@@ -43,5 +49,5 @@ jobs:
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_prog_clip.py"
       - name: Check photographed clip reconstruction, pogo pitches and CAD evidence
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_assembly.py"
-      - name: Check editable Fritzing ISP harness, colours and target connections
+      - name: Check Fritzing ISP harness and illustrated HTML programming guide
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_harness.py"
