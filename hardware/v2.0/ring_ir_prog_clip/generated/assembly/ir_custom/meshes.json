@@ -57,7 +57,7 @@
       0.2,
       0.52
     ],
-    "volume_mm3": 459.6646
+    "volume_mm3": 455.0157
   },
   {
     "name": "Ring",
@@ -87,7 +87,7 @@
       0.25,
       0.6
     ],
-    "volume_mm3": 320.6295
+    "volume_mm3": 315.9805
   },
   {
     "name": "Guide",
@@ -311,7 +311,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 9.7818
+    "area_mm2": 10.4936
   },
   {
     "name": "GuidePCB_rearMask",
@@ -383,7 +383,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 9.7818
+    "area_mm2": 10.4936
   },
   {
     "name": "AnvilPCB_rearMask",
@@ -395,7 +395,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 303.0427
+    "area_mm2": 299.9639
   },
   {
     "name": "AnvilPCB_rearCopper",
@@ -431,7 +431,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 295.5967
+    "area_mm2": 293.2625
   },
   {
     "name": "AnvilPCB_frontCopper",
@@ -443,7 +443,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 8.817
+    "area_mm2": 8.0724
   },
   {
     "name": "AnvilPCB_frontSilk",
@@ -455,7 +455,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 4.9439
+    "area_mm2": 5.6557
   },
   {
     "name": "FencePCB_rearMask",
@@ -467,7 +467,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": -1,
-    "area_mm2": 212.3374
+    "area_mm2": 209.2586
   },
   {
     "name": "FencePCB_frontMask",
@@ -479,7 +479,7 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 212.3374
+    "area_mm2": 209.2586
   },
   {
     "name": "FencePCB_frontSilk",
@@ -491,6 +491,6 @@
     ],
     "visual_surface_only": true,
     "surface_normal_z": 1,
-    "area_mm2": 4.1075
+    "area_mm2": 4.8194
   }
 ]

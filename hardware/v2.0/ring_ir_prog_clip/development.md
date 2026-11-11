@@ -12,6 +12,8 @@ repository root.
 - `check_reports.py` validates ERC/DRC reports and records source provenance.
 - `fit_check.py` builds and checks the clip stack in FreeCAD.
 - `test_prog_clip.py` checks the PCB interfaces and generated fit report.
+- `programming-evidence.json` records the verified firmware transfer and
+  separately the user-reported working 5 V rail; binary backups stay local.
 - `build.ps1` runs the complete KiCad and FreeCAD pipeline.
 - `assembly_parameters.json` separates readable album measurements from estimated
   kit geometry and declares the 1.27/2.00/2.54 mm grids and custom IR variant.
@@ -63,12 +65,117 @@ nets, ISP-6 pinout, anvil ground contact, courtyard/window clearance, board
 spacing, assembly fit and input provenance. Do not hand-edit generated KiCad
 boards or fabrication files. Update the source parameters and rebuild.
 
-After assembly, check that `avrdude -c usbasp -p t85` consistently reads the
-ATtiny85 signature `0x1e930b` before securing the anvil stack in place.
+Minor revision v0.2 overwrites the existing probe/anvil/fence filenames and
+their existing projects/schematics. Do not create a parallel versioned design.
+Git history preserves v0.1; historical photographs and quote archives are not
+the active production revision. The same ISP mapping and assembly principle
+are retained.
+
+The user reports that the custom probe/anvil/fence boards have now been built
+and physically fit-tested. Fit dimensions and repeatability results have not
+yet been recorded; the original FreeCAD report remains a virtual check against
+estimated clip geometry, not evidence of electrical contact or programming.
+The [as-built photo section](README.md#as-built-clip-with-ir-pcb) now records
+the latest album views of the assembled clip with the IR PCB seated. They
+document physical assembly, not measured tolerances or electrical qualification;
+the photographed revision is unverified and does not qualify the v0.2 changes.
+After finalizing the screwed anvil/fence stack, check that
+`avrdude -c usbasp -p t85` consistently reads the ATtiny85 signature `0x1e930b`.
 Follow [the programming wiring guide](programming.md) for header orientation,
 the separate anvil ground wire, safe power selection and a read-only first
 connection. It also distinguishes this AVR ISP adapter from target-specific
 SWD wiring and voltage-reference requirements.
+
+## Fritzing harness diagrams
+
+`harness/generate_harness.py` builds an editable `.fz` and bundled `.fzz`,
+four custom interface parts (probe, anvil, target and selected supply), and
+`wiring-reference.svg`. It checks the six signals against `parameters.json`
+without tying the cable to a mechanical revision. The host uses the installed
+Fritzing core `arduino_Uno_Rev3(fix)` part and its real D10/D11/D12/D13/GND
+connector IDs/positions, not a relabelled generic Arduino.
+
+```powershell
+& hardware\v2.0\ring_ir_prog_clip\harness\export.ps1
+python -m unittest discover -s hardware\v2.0\ring_ir_prog_clip -p "test_harness.py"
+```
+
+The wrapper invokes installed Fritzing `-svg` to open/export the native sketch
+into breadboard and schematic SVGs. `preview.py` uses FreeCAD's bundled Qt
+runtime only to rasterize those SVGs and the separate colour reference to PNG,
+with explicit Arial font registration for the Windows offscreen renderer.
+It also adds/darkens the white-wire outline for print contrast (Fritzing's
+schematic export has only one stroke); the native white VCC net, endpoints
+and inner stroke stay unchanged.
+It does not replace the Fritzing export with a handmade image.
+The original raw `.fz` is source; users should open `.fzz` to load the custom
+parts automatically. Keep the `.fz`, `.fzz`, `parts/`, exported SVGs and PNGs
+together. The auto-exported PCB view is removed: these custom parts are
+**logical wiring interfaces, not replacement PCB layouts**.
+
+`test_harness.py` independently parses the saved Fritzing graph, including
+internal part buses, reciprocal connectors and both wire views. It checks all
+six isolated nets against the actual KiCad probe/target pin maps, colour
+consistency, the separate front-ground return, unused Uno supply/reset pins,
+bundle resources and board-top J1 orientation. No electrical PCB, fabrication
+or CAD geometry is changed by generating this documentation.
+The logical power block now connects to the Uno part's actual 5V connector
+(`connector87`); Uno 3V3 (`connector86`) remains unconnected. The extra white
+feed to this block is a diagram breakout of the same supply, not a second
+power source. This documents the user-reported working battery-free 5 V rail,
+matching Uno ISP levels, without claiming full LED/load qualification.
+The palette now follows the user's reported harness: grey D12/MISO, white
+5V VCC, blue D13/SCK, purple D11/MOSI, brown D10/RESET and black GND.
+All three white VCC links receive outlines. One COM6 transfer and complete
+readback passed; that is separate from the later 5 V report and not contact
+life, mechanical or IR/load qualification.
+
+The Fritzing-based diagram exports and interface artwork are CC BY-SA 3.0,
+with attribution to Fritzing and its core Uno part (author `althaus`).
+The standalone colour reference uses the same licence. Generator/test source
+retains the repository's existing licence. Photo provenance is independent
+and remains recorded in `images/sources.json`.
+
+## HTML wiring reference and voltage illustrations
+
+`docs/arduino-isp-wiring-reference.html` carries the standalone PDF's wiring,
+physical-parts figure and upload checklist, with additional power-only and
+unpowered continuity checks through the anvil window. Open the file in a
+browser with `docs/images` present, or print it to PDF. No external scripts,
+fonts or image services are required. The original PDF is deliberately not
+committed.
+
+`docs/images/arduino-isp-physical-wiring.svg` is a vector export of the local
+PDF's second page, preserving its actual-mesh renders, verified header-post
+annotations and separate wire lanes. The export does not alter any geometry.
+Its source PDF hash and the underlying committed mesh hashes are recorded in
+`docs/images/arduino-isp-reference-sources.json`.
+
+`docs/images/ir-voltage-test.svg` is editable source, not a render or photograph.
+Its shared capacitor definition uses the saved IR PCB's front pad coordinates,
+sizes and nets at two display scales. Both C1 and C2 have pad 1 VCC and pad 2
+GND, but C2 is rotated 180 degrees. The window rectangle maps saved anvil
+coordinates to IR coordinates with `x=TP3.x-u`, `y=TP3.y+v`. Component bodies
+and the meter are symbolic; only test landmarks are shown. Displayed voltages
+are expected readings, not measurements. Jaw/pin uncertainty and as-built
+revision uncertainty remain unchanged.
+
+`test_harness.py` checks the HTML's local references and cable rows, actual
+capacitor pad geometry/net labels, window mapping and illustration provenance.
+If source boards or illustrations change, update the editable SVG and its
+provenance together; never update hashes to conceal a geometric mismatch.
+
+## Real programming workflow
+
+The repository skill `.github/skills/lantern-ring-ir-programming/SKILL.md`
+records the actual COM6/ArduinoISP sequence: stable signature, complete
+backups and a second verification, exact firmware build, verified flash
+write, only the necessary LF clock change, and fresh full readback plus
+EEPROM/fuse preservation checks. `programming-evidence.json` contains its
+image/readback hashes without local binary dumps or serial logs.
+The user-reported 5 V rail is the current documented wiring; the earlier
+verified run's reported supply is preserved as historical evidence, not
+rewritten as an instrumented 5 V test.
 
 ## Album reconstruction and Blender animation
 

@@ -17,6 +17,7 @@ Run commands from the repository root; use backslash filesystem paths on Windows
   Preserve the stable PCB, schematic, routing and Gerbers.
 - `parameters.json` and `generate.py` define the custom adapter PCBs;
   `build.ps1` generates them. Never hand-edit their generated electrical outputs.
+  v0.2 overwrites their existing filenames in place, not a parallel project.
 - `assembly_parameters.json` separates photographed caliper readings from
   estimated kit geometry. `assembly_model.py` creates reference kit CAD;
   it is not an electrically routed replacement for the stock kit boards.
@@ -56,6 +57,12 @@ before programming; never backfeed or solder a primary cell.
 signal directions and power checks. The current IR adapter is classic AVR ISP,
 not SWD; another target needs its own pad/net mapping and routing. A debugger's
 VTref is normally a voltage-sense input, not a target-power output.
+
+Use `lantern-ring-ir-programming` for the real programming flow. One ATtiny85
+transfer and complete readback are recorded in `programming-evidence.json`;
+the subsequently reported working setup uses Uno 5 V target power matching
+its ISP signals, with the CR2032 removed. Keep verified-transfer evidence
+separate from that user report and from unperformed IR/current/life tests.
 
 A centred stock 2.54 mm grid misses outer centres by about 0.570 mm diagonally.
 The custom nominal 0.9 mm tips on 1 mm pads have only 0.05 mm edge margin,
@@ -158,5 +165,6 @@ correct board sides, holes, contacts and captions. Check the MP4 with ffprobe
 and full ffmpeg decode. Commit source, CAD, media, provenance and directly
 related docs together. `animation\build` is ignored intermediate output; remove
 only that exact inspected directory after delivery, never a broad wildcard.
-Physical jaw/pin measurements, first-fit, retention, continuity and successful
-programming remain required before claiming the adapter works in hardware.
+The recorded programming success does not qualify all v0.2 mechanical changes.
+Physical jaw/pin measurements, retention, repeatable contact/life checks and
+IR/current/temperature tests remain required for release qualification.

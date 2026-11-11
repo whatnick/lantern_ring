@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module moduleId="lantern-ring-isp_probe" fritzingVersion="1.0.8">
+  <version>1</version>
+  <title>IR ISP probe</title>
+  <label>IR ISP probe</label>
+  <author>Lantern Ring contributors</author>
+  <date>2026-11-10</date>
+  <description>ISP harness interface only; not a PCB layout or approved voltage converter. Artwork: Lantern Ring contributors, CC BY-SA 3.0. Created with Fritzing.</description>
+  <properties>
+    <property name="family">Lantern Ring ISP harness</property>
+  </properties>
+  <views>
+    <breadboardView>
+      <layers image="breadboard/isp_probe.svg">
+        <layer layerId="breadboard"/>
+      </layers>
+    </breadboardView>
+    <schematicView>
+      <layers image="schematic/isp_probe.svg">
+        <layer layerId="schematic"/>
+      </layers>
+    </schematicView>
+    <iconView>
+      <layers image="icon/isp_probe.svg">
+        <layer layerId="icon"/>
+      </layers>
+    </iconView>
+    <pcbView>
+      <layers image="pcb/isp_probe.svg">
+        <layer layerId="silkscreen"/>
+      </layers>
+    </pcbView>
+  </views>
+  <connectors>
+    <connector id="connector1" name="J1.1 MISO" type="male">
+      <description>J1.1 MISO</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector1pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector1pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector11" name="P2 MISO" type="male">
+      <description>P2 MISO</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector11pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector11pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector2" name="J1.2 VCC" type="male">
+      <description>J1.2 VCC</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector2pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector2pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector12" name="P9 VCC" type="male">
+      <description>P9 VCC</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector12pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector12pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector3" name="J1.3 SCK" type="male">
+      <description>J1.3 SCK</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector3pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector3pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector13" name="P3 SCK" type="male">
+      <description>P3 SCK</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector13pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector13pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector4" name="J1.4 MOSI" type="male">
+      <description>J1.4 MOSI</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector4pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector4pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector14" name="P1 MOSI" type="male">
+      <description>P1 MOSI</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector14pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector14pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector5" name="J1.5 RESET" type="male">
+      <description>J1.5 RESET</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector5pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector5pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector15" name="P6 RESET" type="male">
+      <description>P6 RESET</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector15pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector15pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector6" name="J1.6 GND" type="male">
+      <description>J1.6 GND</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector6pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector6pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector16" name="J2 GND" type="male">
+      <description>J2 GND</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector16pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector16pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+  </connectors>
+  <buses>
+    <bus id="bus0">
+      <nodeMember connectorId="connector1"/>
+      <nodeMember connectorId="connector11"/>
+    </bus>
+    <bus id="bus1">
+      <nodeMember connectorId="connector2"/>
+      <nodeMember connectorId="connector12"/>
+    </bus>
+    <bus id="bus2">
+      <nodeMember connectorId="connector3"/>
+      <nodeMember connectorId="connector13"/>
+    </bus>
+    <bus id="bus3">
+      <nodeMember connectorId="connector4"/>
+      <nodeMember connectorId="connector14"/>
+    </bus>
+    <bus id="bus4">
+      <nodeMember connectorId="connector5"/>
+      <nodeMember connectorId="connector15"/>
+    </bus>
+    <bus id="bus5">
+      <nodeMember connectorId="connector6"/>
+      <nodeMember connectorId="connector16"/>
+    </bus>
+  </buses>
+</module>

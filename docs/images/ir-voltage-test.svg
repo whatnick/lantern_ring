@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Measure IR ring power through the anvil window</title>
+  <desc id="desc">PCB-derived front view and enlarged C1/C2 solder pads. Both capacitor pad ones are VCC and pad twos are ground. Clip the meter black lead to Uno ground and touch a fine red probe to VCC for about 5 volts with the reported working Uno 5V setup, then to ground for about zero volts. Disconnect ISP signals and remove the battery first.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#17334c}
+      .heading{font-size:23px;font-weight:bold}
+      .body{font-size:17px}
+      .small{font-size:15px}
+      .warning{fill:#9c2c0d;font-weight:bold}
+    </style>
+    <g id="supply-capacitors">
+      <rect x="134.582" y="109.074" width="1.6" height="0.8" rx="0.1" fill="#b5905d"/>
+      <rect x="137.9856" y="109.074" width="1.6" height="0.8" rx="0.1" fill="#b5905d"/>
+      <rect id="C1.1" data-ref="C1" data-pad="1" data-net="VCC" x="134.157" y="108.999" width="0.9" height="0.95" rx="0.225" fill="#ffffff" stroke="#607080" stroke-width="0.04"/>
+      <rect id="C1.2" data-ref="C1" data-pad="2" data-net="GND" x="135.707" y="108.999" width="0.9" height="0.95" rx="0.225" fill="#202020" stroke="#607080" stroke-width="0.04"/>
+      <rect id="C2.2" data-ref="C2" data-pad="2" data-net="GND" x="137.5606" y="108.999" width="0.9" height="0.95" rx="0.225" fill="#202020" stroke="#607080" stroke-width="0.04"/>
+      <rect id="C2.1" data-ref="C2" data-pad="1" data-net="VCC" x="139.1106" y="108.999" width="0.9" height="0.95" rx="0.225" fill="#ffffff" stroke="#607080" stroke-width="0.04"/>
+    </g>
+  </defs>
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <text x="25" y="35" class="heading">VOLTAGE CHECK | IR board front / component face</text>
+  <text x="25" y="60" class="small">PCB-derived landmarks, not a photograph. Rotate the physical clip to match; this is NOT the rear pogo-pad view.</text>
+  <rect x="20" y="80" width="520" height="610" rx="12" fill="#f3f6f8" stroke="#b6c8d2"/>
+  <rect x="560" y="80" width="620" height="610" rx="12" fill="#f3f6f8" stroke="#b6c8d2"/>
+  <text x="40" y="111" class="heading">1  FIND C1 / C2 THROUGH THE WINDOW</text>
+  <g id="front-board" transform="translate(84 132) scale(22) translate(-127.762 -101.6)">
+    <polygon id="ir-outline" points="145.288,106.68 145.288,115.57 140.97,119.888 136.652,120.65 132.08,119.888 127.762,115.57 127.762,106.68 132.08,102.362 136.525,101.6 140.97,102.362" fill="#d8e8d9" stroke="#35764b" stroke-width="0.08"/>
+    <rect id="anvil-window" x="128.661" y="103.957" width="15.982" height="13.388" rx="0.5" fill="#ffffff" fill-opacity="0.55" stroke="#ba6b0d" stroke-width="0.09" stroke-dasharray="0.25 0.18"/>
+    <rect x="135.414" y="111.792" width="4" height="4" rx="0.15" fill="#444d56"/>
+    <use xlink:href="#supply-capacitors"/>
+    <rect x="136.152" y="119.134" width="1" height="1" fill="#202020"/>
+  </g>
+  <text x="110" y="176" class="small" fill="#8d540b">Dashed line = saved anvil window</text>
+  <text x="252" y="284" text-anchor="middle" class="body">C1</text>
+  <text x="327" y="284" text-anchor="middle" class="body">C2</text>
+  <text x="296" y="407" text-anchor="middle" class="body" style="fill:#ffffff">U2</text>
+  <text x="280" y="572" text-anchor="middle" class="body">TP8 / GND (under the anvil contact)</text>
+  <text x="40" y="620" class="small">C1 = 100 nF; C2 = 10 uF. Use their solder terminals.</text>
+  <text x="40" y="645" class="small">MCU body is symbolic; do not probe its tiny QFN leads.</text>
+  <text x="580" y="111" class="heading">2  ENLARGED CAPACITOR TERMINALS</text>
+  <text x="580" y="139" class="small">The facing ends are GND; the two outside ends are VCC.</text>
+  <text x="729" y="177" text-anchor="middle" class="body">C1</text>
+  <text x="984" y="177" text-anchor="middle" class="body">C2 (opposite orientation)</text>
+  <g id="capacitor-closeup" transform="translate(625 220) scale(75) translate(-134 -109.474)">
+    <use xlink:href="#supply-capacitors"/>
+  </g>
+  <text x="671" y="280" text-anchor="middle" class="body">1: VCC</text>
+  <text x="787" y="280" text-anchor="middle" class="body">2: GND</text>
+  <text x="926" y="280" text-anchor="middle" class="body">2: GND</text>
+  <text x="1042" y="280" text-anchor="middle" class="body">1: VCC</text>
+  <text x="835" y="312" text-anchor="middle" class="small">White/black are net highlights, not actual pad colours.</text>
+  <path d="M725 510 L775 510 L775 345 L590 345 L590 220 L670.525 220" fill="none" stroke="#c52d32" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="670.525" cy="220" r="7" fill="none" stroke="#c52d32" stroke-width="2"/>
+  <text x="600" y="334" class="small" style="fill:#a62b0d">Fine RED tip touches VCC</text>
+  <rect x="600" y="380" width="150" height="150" rx="12" fill="#e1e6ea" stroke="#42596a" stroke-width="2"/>
+  <rect x="615" y="397" width="120" height="47" rx="3" fill="#eff4dc" stroke="#647181"/>
+  <text x="675" y="430" text-anchor="middle" class="heading">5.0 V</text>
+  <text x="675" y="470" text-anchor="middle" class="body">DC VOLTS</text>
+  <circle cx="635" cy="510" r="7" fill="#202020"/>
+  <circle cx="725" cy="510" r="7" fill="#c52d32"/>
+  <text x="635" y="495" text-anchor="middle" class="small">COM</text>
+  <text x="725" y="495" text-anchor="middle" class="small">V</text>
+  <path d="M635 510 L635 570 L815 570" fill="none" stroke="#202020" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="815" y="538" width="325" height="67" rx="6" fill="#ffffff" stroke="#647181"/>
+  <circle cx="815" cy="570" r="6" fill="#202020"/>
+  <text x="835" y="563" class="body">BLACK probe clipped to Uno GND</text>
+  <text x="835" y="588" class="small">Same reference as clip J1.6 / supply GND</text>
+  <text x="580" y="640" class="body">Then move only the red tip to an inner GND end:</text>
+  <text x="580" y="666" class="body">expect about 0 V. Across a capacitor: about 5 V.</text>
+  <rect x="20" y="715" width="1160" height="130" rx="10" fill="#fff1e9" stroke="#ba6b0d"/>
+  <text x="40" y="745" class="body warning">POWER OFF before changing leads. CR2032 REMOVED. Disconnect D10, D11, D12 and D13.</text>
+  <text x="40" y="773" class="body">Leave only the white Uno 5 V supply, black GND and the inter-jaw GND lead for this power-only test.</text>
+  <text x="40" y="801" class="body">Meter leads in COM and V, not A. Insulate the probe shaft; never bridge adjacent terminals.</text>
+  <text x="40" y="829" class="body warning">Displayed voltages are EXPECTED values, not measurements. Never use continuity mode on a powered PCB.</text>
+  <text x="25" y="876" class="small">Source: ring_pcb_IR and saved v0.2 anvil geometry. Only test landmarks shown; this is not a manufacturing or physical-access qualification.</text>
+</svg>

@@ -99,8 +99,10 @@ class AssemblyTests(unittest.TestCase):
         for ref in ("J1", "J2"):
             ground = [p for p in probe if p["ref"] == ref and p["net"] == "/GND"]
             self.assertEqual(len(ground), 1)
-        self.assertEqual({p["net"] for p in anvil}, {"/GND"})
-        self.assertEqual({p["ref"] for p in anvil}, {"P8", "J1"})
+        self.assertEqual({p["ref"] for p in anvil if p["net"] == "/GND"},
+                         {"P8L", "P8R", "J1"})
+        self.assertEqual({p["ref"] for p in anvil}, {"P8L", "P8R", "J1", "H1", "H2"})
+        self.assertTrue(all(not p["net"] for p in anvil if p["ref"] in {"H1", "H2"}))
         meshes = json.loads((out / "ir_custom" / "meshes.json").read_text())
         for part in ("Probe", "Guide", "Anvil", "Fence"):
             self.assertTrue(any(p["name"].startswith(part + "PCB_") for p in meshes))

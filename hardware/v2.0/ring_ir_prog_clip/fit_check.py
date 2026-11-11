@@ -256,7 +256,12 @@ def fixture_parts(params, geometry, f):
     anvil_pts = [xy(*q) for q in fi["anvil"]["outline"]]
     wu0, wv0, wu1, wv1 = fi["anvil"]["window"]
     window = box(wv0 - f["lt"], wv1 - f["lt"], wu0, wu1, z["riser_top"] - 1, z["anvil_top"] + 1)
-    parts["Anvil"] = prism_xy(anvil_pts, z["riser_top"], z["anvil_top"]).cut(window)
+    mount = fi["anvil"]["mount_holes"]
+    mount_cuts = []
+    for u, v in mount["centres_uv"]:
+        x, y = xy(u, v)
+        mount_cuts.append(cyl(mount["diameter"] / 2, x, y, z["riser_top"] - 1, z["anvil_top"] + 1))
+    parts["Anvil"] = prism_xy(anvil_pts, z["riser_top"], z["anvil_top"]).cut(compound([window] + mount_cuts))
     ring_pts = [xy(*q) for q in ring["outline"]]
     parts["Ring"] = prism_xy(ring_pts, z["anvil_top"], z["ring_top"])
     heights = params["component_heights_mm"]
@@ -267,8 +272,13 @@ def fixture_parts(params, geometry, f):
         comps.append(box(v0 - f["lt"], v1 - f["lt"], u0, u1, z["anvil_top"] - h, z["anvil_top"]))
     parts["RingParts"] = compound(comps)
     fu0, fv0, fu1, fv1 = fi["fence"]["frame"]
+    fence_cuts = [prism_xy([xy(*q) for q in fi["fence"]["pocket"]], z["anvil_top"] - 1, z["ring_top"] + 1)]
+    for u, v in fi["fence"]["mount_holes"]["centres_uv"]:
+        x, y = xy(u, v)
+        fence_cuts.append(cyl(fi["fence"]["mount_holes"]["diameter"] / 2,
+                              x, y, z["anvil_top"] - 1, z["ring_top"] + 1))
     parts["Fence"] = box(fv0 - f["lt"], fv1 - f["lt"], fu0, fu1, z["anvil_top"], z["ring_top"]).cut(
-        prism_xy([xy(*q) for q in fi["fence"]["pocket"]], z["anvil_top"] - 1, z["ring_top"] + 1))
+        compound(fence_cuts))
     parts["Guide"] = board_with_holes(fi, f, z["ring_top"])
     parts["Probe"] = board_with_holes(fi, f, z["upper_top"])
     # Printed riser: under the anvil up to the throat, hooked over the lower-jaw tip.
@@ -539,7 +549,7 @@ def main():
     report = {
         "status": "fail" if failures else "pass",
         "failures": failures,
-        "scope": "Virtual FreeCAD fit against photo/datasheet estimates of the clip; no physical fit, contact or programming test",
+        "scope": "Virtual FreeCAD fit against photo/datasheet estimates only; this report does not record physical fit, contact or programming testing",
         "clip_dimensions_measured": params["clip_kit"]["measured"],
         "freecad_version": ".".join(App.Version()[:3]),
         "riser_thickness_mm": round(f["riser"], 3),

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module moduleId="lantern-ring-isp_target" fritzingVersion="1.0.8">
+  <version>1</version>
+  <title>Ring IR target</title>
+  <label>Ring IR target</label>
+  <author>Lantern Ring contributors</author>
+  <date>2026-11-10</date>
+  <description>ISP harness interface only; not a PCB layout or approved voltage converter. Artwork: Lantern Ring contributors, CC BY-SA 3.0. Created with Fritzing.</description>
+  <properties>
+    <property name="family">Lantern Ring ISP harness</property>
+  </properties>
+  <views>
+    <breadboardView>
+      <layers image="breadboard/isp_target.svg">
+        <layer layerId="breadboard"/>
+      </layers>
+    </breadboardView>
+    <schematicView>
+      <layers image="schematic/isp_target.svg">
+        <layer layerId="schematic"/>
+      </layers>
+    </schematicView>
+    <iconView>
+      <layers image="icon/isp_target.svg">
+        <layer layerId="icon"/>
+      </layers>
+    </iconView>
+    <pcbView>
+      <layers image="pcb/isp_target.svg">
+        <layer layerId="silkscreen"/>
+      </layers>
+    </pcbView>
+  </views>
+  <connectors>
+    <connector id="connector1" name="TP2 PB1" type="male">
+      <description>TP2 PB1</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector1pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector1pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector2" name="TP9 VCC" type="male">
+      <description>TP9 VCC</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector2pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector2pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector3" name="TP3 PB2" type="male">
+      <description>TP3 PB2</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector3pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector3pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector4" name="TP1 PB0" type="male">
+      <description>TP1 PB0</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector4pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector4pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector5" name="TP6 PB5" type="male">
+      <description>TP6 PB5</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector5pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector5pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector6" name="TP8 GND" type="male">
+      <description>TP8 GND</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector6pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector6pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+  </connectors>
+  <buses/>
+</module>

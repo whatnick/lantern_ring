@@ -87,16 +87,235 @@
 			(outputdirectory "")
 		)
 	)
+	(footprint "ring_ir_prog_clip:GND_Anvil_Pad"
+		(layer "F.Cu")
+		(uuid "01b067aa-5d8f-4dc8-8c8d-a507f6d2e1ac")
+		(at 151.5 103.4097)
+		(descr "Exposed flat GND contact under the ring_pcb_IR front GND bar. Generated from the target board")
+		(tags "anvil contact ground")
+		(property "Reference" "P8R"
+			(at 0 -1.12 0)
+			(layer "F.Fab")
+			(uuid "04403fcb-a6a3-4712-97da-0e9fa628e557")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "GND anvil (TP8 bar)"
+			(at 0 1.12 0)
+			(layer "F.Fab")
+			(uuid "89409217-8bdb-4876-81a3-1ca2fa59dec1")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b0dd01c-9337-427c-adf3-11e095d3e11f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d49ef09b-8d04-413d-904b-dd0f31bd48ad")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/861a7fd5-ab1a-5cbc-87a3-9beb6c0ffac7")
+		(sheetfile "ring_ir_prog_anvil.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -1.45 -0.72)
+			(end 1.45 0.72)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "d49b47c0-9d31-4b73-9bb0-883f968e1011")
+		)
+		(pad "1" smd rect
+			(at 0 0)
+			(size 2.7 1.241)
+			(layers "F.Cu" "F.Mask")
+			(net "/GND")
+			(uuid "4ca7378f-6101-4eb5-9ba6-25b7b045a505")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:GND_Anvil_Pad"
+		(layer "F.Cu")
+		(uuid "26a8c5d6-d274-4e0a-bd5a-edd51759545b")
+		(at 148.5 103.4097)
+		(descr "Exposed flat GND contact under the ring_pcb_IR front GND bar. Generated from the target board")
+		(tags "anvil contact ground")
+		(property "Reference" "P8L"
+			(at 0 -1.12 0)
+			(layer "F.Fab")
+			(uuid "d8d41676-9446-41de-8b6f-e71f0e1acd8a")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Value" "GND anvil (TP8 bar)"
+			(at 0 1.12 0)
+			(layer "F.Fab")
+			(uuid "5efd4eef-0f2e-455c-8e98-16cdd326f79c")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cbff9573-2ab1-4f1c-a7af-e83910457b86")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e0cbb2f1-5b4a-428b-87b8-3eba898204d1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/78964a68-1ebb-5328-892f-7bb11c6ef79d")
+		(sheetfile "ring_ir_prog_anvil.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -1.45 -0.72)
+			(end 1.45 0.72)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "5e758e30-7289-44c2-91cb-2c43c6163e3d")
+		)
+		(pad "1" smd rect
+			(at 0 0)
+			(size 2.7 1.241)
+			(layers "F.Cu" "F.Mask")
+			(net "/GND")
+			(uuid "cf5364e8-941d-4d54-a0f0-3c082bca9892")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "ring_ir_prog_clip:M1_M1_2_Clearance_Hole"
+		(layer "F.Cu")
+		(uuid "2b46bf2d-a789-4249-acce-0b468e7eb4b7")
+		(at 159.5 85.2)
+		(descr "Unplated clearance hole for M1 or M1.2 screw; generated from parameters.json")
+		(tags "mounting hole M1 M1.2")
+		(property "Reference" "H2"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a0a67d49-43be-4ce4-9f33-9a64eae27e49")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "054e138a-47ba-4257-b379-2fbc20db9ad3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e4df56d4-6e6f-47b6-83ad-7c13133144f1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "83f404ab-ff1f-45c8-b6a3-3504889c1abf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 0.95 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "f844ec8d-b672-4a01-8421-cb3f662c71f4")
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 1.4 1.4)
+			(drill 1.4)
+			(layers "*.Cu" "*.Mask")
+			(uuid "24a86931-ce10-41ba-8259-5c002183c724")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 		(layer "F.Cu")
-		(uuid "b36f9522-32b6-4169-9354-4c462680ef0d")
+		(uuid "976f8daf-c217-4d4f-a18f-5917da7ddf71")
 		(at 150 108.9514)
 		(descr "THT pad as test Point, diameter 1.5mm, hole diameter 0.7mm")
 		(tags "test point THT pad")
 		(property "Reference" "J1"
 			(at 0 -1.648 0)
 			(layer "F.SilkS")
-			(uuid "e5aa9ecf-4191-4a2d-8a2d-2111b87edc75")
+			(uuid "3360f0fa-cc60-440f-8999-590ba9cae0e9")
 			(effects
 				(font
 					(size 1 1)
@@ -107,7 +326,7 @@
 		(property "Value" "GND_lead_to_probe"
 			(at 0 1.75 0)
 			(layer "F.Fab")
-			(uuid "e20ac9c6-e2d1-4e51-941c-6e9b42c68f2c")
+			(uuid "2ed47fb8-4630-4774-bf33-e9f1c33a5697")
 			(effects
 				(font
 					(size 1 1)
@@ -120,7 +339,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a2ceb423-5d31-45f1-96ac-1c43a4f78580")
+			(uuid "ce3ce0ca-1329-4f59-b81c-071841f43090")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -133,7 +352,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d60bc0c9-4d03-43b6-a5d0-c1c8a8b94c9a")
+			(uuid "8e55dd11-6451-485a-a9d3-ca0d5f9f9a87")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -154,7 +373,7 @@
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "1fb7401c-3daf-45b8-a025-3ed4714ef3c8")
+			(uuid "a9ec9fb1-aa76-43d1-876a-ac4d50814a74")
 		)
 		(fp_circle
 			(center 0 0)
@@ -165,12 +384,12 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "5e2b7d8a-0102-41b9-8d93-2ddd3f0bb04f")
+			(uuid "2e45ddb1-ba42-4010-97c6-d80482ff04cf")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 -1.65 0)
 			(layer "F.Fab")
-			(uuid "35625b24-e554-4824-aa98-f876938266ca")
+			(uuid "e2b01e6b-0cdb-42bf-b163-b0f5e4baddce")
 			(effects
 				(font
 					(size 1 1)
@@ -185,35 +404,34 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/GND")
-			(uuid "909fcdf3-7c2f-443c-8916-3cc7ecf4a983")
+			(uuid "520f6930-ebba-439b-90d8-0a07eb916c0b")
 		)
 		(embedded_fonts no)
 	)
-	(footprint "ring_ir_prog_clip:GND_Anvil_Pad"
+	(footprint "ring_ir_prog_clip:M1_M1_2_Clearance_Hole"
 		(layer "F.Cu")
-		(uuid "ec12a5cb-9a3b-4c50-a329-8532d72db859")
-		(at 150 103.4097)
-		(descr "Exposed flat GND contact under the ring_pcb_IR front GND bar. Generated from the target board")
-		(tags "anvil contact ground")
-		(property "Reference" "P8"
-			(at 0 -1.12 0)
-			(layer "F.Fab")
-			(uuid "4d7ff2ad-06f6-43a8-8d6a-a2a941c2905e")
+		(uuid "d1761aec-367a-489c-9047-8b0faf79456f")
+		(at 140.5 85.2)
+		(descr "Unplated clearance hole for M1 or M1.2 screw; generated from parameters.json")
+		(tags "mounting hole M1 M1.2")
+		(property "Reference" "H1"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e493e2e1-0c0d-491c-a9c8-62482e707cdb")
 			(effects
 				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "GND anvil (TP8 bar)"
-			(at 0 1.12 0)
+		(property "Value" ""
+			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "417135a6-2731-411b-aa94-d9de4f5e98ff")
+			(uuid "63af5a4f-d751-4626-8d0c-36f6d7b7ad4f")
 			(effects
 				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
+					(size 1.27 1.27)
 				)
 			)
 		)
@@ -221,7 +439,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9208d74d-34c2-4375-bcf7-9421748b0caa")
+			(uuid "2af77fdb-0756-44d9-bc31-05101095f0ce")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -232,34 +450,32 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c956bd9c-90b7-4529-8d12-4f44369b89bd")
+			(uuid "e636624f-1c13-4d84-a0f2-e18ff9ad6956")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(path "/950b689b-031c-5eea-b9ec-a0dc87acb87e")
-		(sheetfile "ring_ir_prog_anvil.kicad_sch")
-		(attr smd)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -3.1 -0.72)
-			(end 3.1 0.72)
+		(fp_circle
+			(center 0 0)
+			(end 0.95 0)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "ca7e1e4a-dc27-496e-b9cf-15488a1d6437")
+			(uuid "5d4b86d6-b048-4306-a438-cecc80c6c081")
 		)
-		(pad "1" smd rect
+		(pad "" np_thru_hole circle
 			(at 0 0)
-			(size 6 1.241)
-			(layers "F.Cu" "F.Mask")
-			(net "/GND")
-			(uuid "456f8eaa-1134-421a-83d2-7fd5772d3faa")
+			(size 1.4 1.4)
+			(drill 1.4)
+			(layers "*.Cu" "*.Mask")
+			(uuid "70aa93ab-93bb-496c-9559-267640018876")
 		)
 		(embedded_fonts no)
 	)
@@ -271,7 +487,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "8628e320-148d-4655-9f35-c3931e09f77d")
+		(uuid "c0dce3f5-bd1e-4459-86c0-6bd6e6b5a1d4")
 	)
 	(gr_line
 		(start 138.7624 105.4514)
@@ -281,7 +497,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "a23af839-9a11-4b8c-8e9d-9bc1150ea851")
+		(uuid "dac226d2-1419-4372-ae65-b72b5306630a")
 	)
 	(gr_arc
 		(start 141.9074 88.6584)
@@ -292,7 +508,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "893539e7-e726-4463-8de3-dc9c7ada75ac")
+		(uuid "35b695d2-6092-417a-a96f-718636adf946")
 	)
 	(gr_line
 		(start 141.9074 101.0464)
@@ -302,7 +518,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "9322bd63-fc9a-44fc-a485-e0663b87b1db")
+		(uuid "f8a9de64-5005-4401-a7c4-5ec6f9598e48")
 	)
 	(gr_line
 		(start 142.4074 88.1584)
@@ -312,7 +528,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "26c13eb4-e669-49a4-af98-a02db9113f5b")
+		(uuid "67ddb8bd-9add-4262-88d7-ea6f6a5e33d9")
 	)
 	(gr_arc
 		(start 142.4074 101.5464)
@@ -323,7 +539,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "4e37ed2a-070a-4d10-9c12-3d837ed06534")
+		(uuid "f38abaef-cc43-41ec-99a1-7d89672f0c0c")
 	)
 	(gr_line
 		(start 148.6 105.4514)
@@ -333,7 +549,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "8d8d84c8-81cb-4558-bc97-eb0c87881e5d")
+		(uuid "3dca74b6-8d53-4465-bf76-4d82787cd862")
 	)
 	(gr_line
 		(start 148.6 112.4514)
@@ -343,7 +559,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "832030ba-a0ac-4cc9-a6b4-50b2766dc5f9")
+		(uuid "7fd93ef4-24e5-4ad7-a179-a201e4770adf")
 	)
 	(gr_line
 		(start 151.4 105.4514)
@@ -353,7 +569,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "102cde65-4c4f-44d2-8ab6-b5bfbc16bec5")
+		(uuid "13d948c4-cb67-4eff-b7d0-a9809ed9f1b6")
 	)
 	(gr_line
 		(start 151.4 112.4514)
@@ -363,7 +579,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "9607bc86-db09-43de-84d4-d69c620aa26b")
+		(uuid "f4e0fba8-9571-433d-9eb7-69fc53ce1610")
 	)
 	(gr_arc
 		(start 157.3894 88.1584)
@@ -374,7 +590,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "8fafc81a-4224-4c72-ad7e-5a6675f6a382")
+		(uuid "b7144075-7041-4b6c-878b-eb751555d2a0")
 	)
 	(gr_line
 		(start 157.3894 101.5464)
@@ -384,7 +600,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "dace0c2e-8833-49c1-b1bc-e7fb443d22aa")
+		(uuid "724330be-ad4b-4d95-8afd-3f6e84cb3164")
 	)
 	(gr_line
 		(start 157.8894 88.6584)
@@ -394,7 +610,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "becfc640-730e-41f1-b2b7-1bea6901d862")
+		(uuid "afd3c6b7-8286-4a36-a4bd-5f5d9fe1a359")
 	)
 	(gr_arc
 		(start 157.8894 101.0464)
@@ -405,7 +621,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "ac529097-62b8-4a60-9b13-333ad54a0018")
+		(uuid "a2deaf16-270d-4cb1-b24e-eb8075132ab3")
 	)
 	(gr_line
 		(start 161.2884 83.3014)
@@ -415,7 +631,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "7450fcd1-048a-4db6-81b7-b4b3ab853b5c")
+		(uuid "15ff68a6-eae3-48a5-b724-d07a2af73daf")
 	)
 	(gr_line
 		(start 161.2884 105.4514)
@@ -425,7 +641,7 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "69b03a2a-e429-4f30-a7a9-0e548e840c9f")
+		(uuid "9b2ee0e6-04f0-4dde-996e-d85c01f37d90")
 	)
 	(gr_line
 		(start 141.2624 90.8814)
@@ -435,7 +651,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "1e21d643-28ca-472f-87a2-ee6493a468f7")
+		(uuid "cd011e31-0763-4d31-b3a6-a334f96c9c8a")
 	)
 	(gr_line
 		(start 141.2624 99.7714)
@@ -445,7 +661,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "b6c0ca34-0f70-487f-bc68-9e7c34128da2")
+		(uuid "a1ff9041-729f-4a25-a837-fac0d91e177f")
 	)
 	(gr_line
 		(start 145.5804 86.5634)
@@ -455,7 +671,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "e9f79568-cf71-45f1-adc3-58ada94d957c")
+		(uuid "3b381b0c-e251-478e-a1d1-1f1609e52ab9")
 	)
 	(gr_line
 		(start 145.5804 104.0894)
@@ -465,7 +681,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "8af098f9-a0d7-47a1-88e4-2846390ff3ab")
+		(uuid "a21be108-2d1e-4714-9137-3af4e2f829e5")
 	)
 	(gr_line
 		(start 149.8984 104.8514)
@@ -475,7 +691,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "bf44aa64-4379-4839-bfb7-677eda9d1d2a")
+		(uuid "6742d05c-7f0a-433d-913e-5ef0bd2e14b1")
 	)
 	(gr_line
 		(start 150.0254 85.8014)
@@ -485,7 +701,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "824b5f61-ef0d-45fc-9962-ed386f66c9a8")
+		(uuid "d244f70a-964e-4cdb-b7f7-9cbfe00b48e5")
 	)
 	(gr_line
 		(start 154.470399 86.5634)
@@ -495,7 +711,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "ccfc9866-9458-4b18-b1b5-e90d14b73ee7")
+		(uuid "ececa700-1538-48aa-9a6c-a940851f5400")
 	)
 	(gr_line
 		(start 154.470399 104.0894)
@@ -505,7 +721,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "3d84657a-e00b-4c59-bf0b-adfbe8ce4a5c")
+		(uuid "4b4364e7-3dcb-4a16-863d-5f350146aa77")
 	)
 	(gr_line
 		(start 158.7884 90.8814)
@@ -515,7 +731,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "cbd5d593-3e62-4226-865a-ea04c8fa436a")
+		(uuid "45bdfa6c-abd7-45a3-b264-fd298c78191f")
 	)
 	(gr_line
 		(start 158.7884 99.7714)
@@ -525,12 +741,12 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "927acb33-5f79-49c1-a6d5-dcd4eb179539")
+		(uuid "e163f5e1-475f-4c91-9640-43ee98da05bb")
 	)
 	(gr_text "RING LEDS DOWN"
 		(at 150 84.4014 0)
 		(layer "F.SilkS")
-		(uuid "bc4e156a-acac-4a5e-bfd6-254d38c29cda")
+		(uuid "edcfc68f-a4fe-4938-a185-0190323c60c7")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -541,7 +757,18 @@
 	(gr_text "GND"
 		(at 150 110.7514 0)
 		(layer "F.SilkS")
-		(uuid "dd2e66dd-767e-4356-a16f-b5fff8301ed3")
+		(uuid "8ff2b10b-e9a2-4cc5-9fc5-1d3824318b2a")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(gr_text "V0.2"
+		(at 157.5 87.3014 0)
+		(layer "F.SilkS")
+		(uuid "60e5a327-b401-4531-934b-31112a027ec8")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -552,7 +779,7 @@
 	(gr_text "IR ANVIL - TAPE TO RISER"
 		(at 150 84.4014 0)
 		(layer "B.SilkS")
-		(uuid "ebfe597d-c452-4c3d-b36e-bc1f776c7b57")
+		(uuid "dc179175-c356-443d-9481-8ce705ff8bff")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -567,7 +794,23 @@
 		(width 0.5)
 		(layer "F.Cu")
 		(net "/GND")
-		(uuid "1bf92c0b-0f13-4990-a6ad-a5959156cd1e")
+		(uuid "3d7c21aa-f066-4fd3-9de0-d4c6ed8cad34")
+	)
+	(segment
+		(start 148.5 103.4097)
+		(end 150 103.4097)
+		(width 0.5)
+		(layer "F.Cu")
+		(net "/GND")
+		(uuid "65508048-258d-43b8-8b7a-86124dd71636")
+	)
+	(segment
+		(start 151.5 103.4097)
+		(end 150 103.4097)
+		(width 0.5)
+		(layer "F.Cu")
+		(net "/GND")
+		(uuid "a06a4a02-92fb-47ca-9bdd-f29ebb065a25")
 	)
 	(embedded_fonts no)
 )

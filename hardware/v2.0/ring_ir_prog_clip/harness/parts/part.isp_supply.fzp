@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module moduleId="lantern-ring-isp_supply" fritzingVersion="1.0.8">
+  <version>1</version>
+  <title>Selected target VCC</title>
+  <label>Selected target VCC</label>
+  <author>Lantern Ring contributors</author>
+  <date>2026-11-10</date>
+  <description>ISP harness interface only; not a PCB layout or approved voltage converter. Artwork: Lantern Ring contributors, CC BY-SA 3.0. Created with Fritzing.</description>
+  <properties>
+    <property name="family">Lantern Ring ISP harness</property>
+  </properties>
+  <views>
+    <breadboardView>
+      <layers image="breadboard/isp_supply.svg">
+        <layer layerId="breadboard"/>
+      </layers>
+    </breadboardView>
+    <schematicView>
+      <layers image="schematic/isp_supply.svg">
+        <layer layerId="schematic"/>
+      </layers>
+    </schematicView>
+    <iconView>
+      <layers image="icon/isp_supply.svg">
+        <layer layerId="icon"/>
+      </layers>
+    </iconView>
+    <pcbView>
+      <layers image="pcb/isp_supply.svg">
+        <layer layerId="silkscreen"/>
+      </layers>
+    </pcbView>
+  </views>
+  <connectors>
+    <connector id="connector1" name="Selected target VCC" type="male">
+      <description>Selected target VCC</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector1pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector1pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+    <connector id="connector2" name="Common GND" type="male">
+      <description>Common GND</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector2pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector2pin" layer="schematic"/>
+        </schematicView>
+      </views>
+    </connector>
+  </connectors>
+  <buses/>
+</module>

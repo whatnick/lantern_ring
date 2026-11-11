@@ -1,0 +1,10 @@
+(footprint "M1_M1_2_Clearance_Hole"
+	(version 20240108)
+	(generator "ring_ir_prog_clip")
+	(layer "F.Cu")
+	(descr "Unplated clearance hole for M1 or M1.2 screw; generated from parameters.json")
+	(tags "mounting hole M1 M1.2")
+	(attr exclude_from_pos_files exclude_from_bom)
+	(fp_circle (center 0 0) (end 0.95 0) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))
+	(pad "" np_thru_hole circle (at 0 0) (size 1.4 1.4) (drill 1.4) (layers "*.Cu" "*.Mask"))
+)
