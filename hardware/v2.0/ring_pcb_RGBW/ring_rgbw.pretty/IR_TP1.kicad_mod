@@ -1,0 +1,179 @@
+(footprint "IR_TP1"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "SMD rectangular pad as test Point, square 1.0mm side length")
+	(tags "test point SMD pad rectangle square")
+	(property "Reference" "REF**"
+		(at 0 -1.448 0)
+		(layer "F.SilkS")
+		(uuid "c0ca52d9-1ef8-4006-9b8b-1e454d8f9ae2")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.2)
+			)
+		)
+	)
+	(property "Value" "IR_TP1"
+		(at 0 1.55 0)
+		(layer "F.Fab")
+		(uuid "6a64e4ab-dcba-4c85-af78-ebb4d0f166e6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "B.Fab")
+		(hide yes)
+		(uuid "5f6e31ec-cc54-4185-a67b-22fe97c96dae")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Description" "test point"
+		(at 0 0 0)
+		(layer "B.Fab")
+		(hide yes)
+		(uuid "e962d7c5-ca72-4186-b1d8-bbe32d9b2730")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify mirror)
+		)
+	)
+	(property "DNP" "DNP"
+		(at 279.2008 -231.5972 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4f22e8d1-6d09-49f4-83dc-c2433310ec8c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "DNP"
+		(at 279.2008 -231.5972 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1e292149-0ac6-4f0a-a42f-ae8a0242a8e0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(sheetfile "ring_pcb_IR.kicad_sch")
+	(attr exclude_from_pos_files)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.7 -0.7)
+		(end 0.7 -0.7)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ec4f32ff-7794-4126-b7d4-8529aa50b7e8")
+	)
+	(fp_line
+		(start -0.7 0.7)
+		(end -0.7 -0.7)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "01b65223-fbb0-4473-a046-80596283e567")
+	)
+	(fp_line
+		(start 0.7 -0.7)
+		(end 0.7 0.7)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "14c60e71-8423-455b-8773-7517d9a9b12b")
+	)
+	(fp_line
+		(start 0.7 0.7)
+		(end -0.7 0.7)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "269bceeb-1d55-4a61-80dc-07ba6a793575")
+	)
+	(fp_line
+		(start -1 -1)
+		(end -1 1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "0086167f-7a76-427b-96fe-60e7b2993eac")
+	)
+	(fp_line
+		(start -1 -1)
+		(end 1 -1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "7b693123-1350-4390-8cd6-8562ba5d0a40")
+	)
+	(fp_line
+		(start 1 1)
+		(end -1 1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e35c9f9c-97f9-4221-abea-8b8f1cf1bae9")
+	)
+	(fp_line
+		(start 1 1)
+		(end 1 -1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ebeae177-42bd-4100-ba9d-fe97e62dc043")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 -1.45 0)
+		(layer "F.Fab")
+		(uuid "0b3d28d2-2a58-4934-a23b-71a66a1bc4e1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 1 1)
+		(layers "F.Cu" "F.Mask")
+		(uuid "bac7a669-bd2e-4848-82aa-ccdf7849d6bf")
+	)
+	(embedded_fonts no)
+)

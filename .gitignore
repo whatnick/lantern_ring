@@ -36,3 +36,9 @@ __pycache__/
 *.FCStd1
 *.FCStd.*
 *.kicad_prl
+
+# RGBW verification needs its actual netlist, BOM and matched router exchange.
+!hardware/v2.0/ring_pcb_RGBW/generated/netlist.xml
+!hardware/v2.0/ring_pcb_RGBW/generated/bom.csv
+!hardware/v2.0/ring_pcb_RGBW/generated/ring_pcb_RGBW.dsn
+!hardware/v2.0/ring_pcb_RGBW/generated/ring_pcb_RGBW.ses

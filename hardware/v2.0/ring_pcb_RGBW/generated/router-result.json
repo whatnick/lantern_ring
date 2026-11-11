@@ -1,0 +1,11 @@
+{
+  "engine": "Freerouting 2.5.0, local CLI; power fanout already placed/checked",
+  "fixture": {
+    "sha256": "099f49257c6c373ce6adc0070f177d30cad8221bbece761a5625f245614528b0"
+  },
+  "ses_sha256": "70f8b641523871b12079e5ce1df6a7e2c5ff197291d957d08f404af6d4d5834b",
+  "jar_sha256": "f6f51bb02245e8e717f9359bd260cc9c5c0b1bc0acc8b7cb2cd5b8ffeb5de3c7",
+  "final_state": "EXPORTED",
+  "output_written": true,
+  "scope": "SES exported; completeness and clearances must pass KiCad after import"
+}

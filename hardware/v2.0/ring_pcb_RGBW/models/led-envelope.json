@@ -1,0 +1,10 @@
+{
+  "source": "Cree CLD-CT1387 Rev14 p11, 5.2 x 5.0 x 1.1 mm",
+  "scope": "Nominal external envelope; lens and terminal details illustrative, not manufacturer CAD or physical fit qualification",
+  "dimensions_mm": [
+    5.2,
+    5.0,
+    1.1
+  ],
+  "valid_solids": 10
+}

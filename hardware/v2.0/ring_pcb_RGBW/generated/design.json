@@ -1,0 +1,51 @@
+{
+  "status": "routed",
+  "source_board_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
+  "placement_board_sha256": "d4918bc13bcdec3003875841420f9b2795919b399c520a110767993ec624429d",
+  "parameters_sha256": "099691d128a3d0773f525a34d16cc5a1839d70b908d0491ec70cb0b38a28e4e6",
+  "generator_sha256": "8475b3952222d3e385496b5661f4b6a88ae0b37c42728e2e8d3a2d36118a8336",
+  "channels": [
+    {
+      "colour": "R",
+      "gpio": "PB0",
+      "anode": "1",
+      "cathode": "8",
+      "pwm": "OC0A"
+    },
+    {
+      "colour": "G",
+      "gpio": "PB1",
+      "anode": "2",
+      "cathode": "7",
+      "pwm": "OC0B"
+    },
+    {
+      "colour": "B",
+      "gpio": "PB4",
+      "anode": "3",
+      "cathode": "6",
+      "pwm": "OC1B"
+    },
+    {
+      "colour": "W",
+      "gpio": "PB2",
+      "anode": "4",
+      "cathode": "5",
+      "pwm": "software"
+    }
+  ],
+  "led_land_pattern": "Cree CLD-CT1387 Rev14 p12; PDF vector outline calibrated to 5.30 x 4.40 mm, rounded to 0.001 mm; manufacturer tolerance +/-0.1 mm",
+  "unqualified": [
+    "physical clip fit",
+    "colour/brightness at sub-mA drive",
+    "battery life/current/temperature",
+    "firmware PWM"
+  ],
+  "routing": {
+    "dsn_sha256": "6bc165d415f22afbef3d0ddd9b9015012cee3435545eda61a45779212539d1ec",
+    "ses_sha256": "70f8b641523871b12079e5ce1df6a7e2c5ff197291d957d08f404af6d4d5834b",
+    "router_result_sha256": "eb85dc52a8594a76d97f3570aaf2c612aeba9c74b300eba166deb0cf9d9238e1",
+    "board_sha256": "50a1d6b93eed0becc76c9f269048f75dc8992cad7336586a1e18c67f3a6038b7",
+    "finish_route_sha256": "813fe8ebbe8fb4067f604262da330db62ee54f36342b7c151bf073b6142b9102"
+  }
+}
