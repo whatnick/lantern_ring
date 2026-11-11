@@ -1,0 +1,37 @@
+{
+  "verified_isp_run": {
+    "completed_at": "2026-11-10T13:24:25.326893+00:00",
+    "target": "ATtiny85",
+    "signature": "0x1e930b",
+    "programmer": "Arduino Uno running ArduinoISP, STK500v1 at 19200 baud",
+    "port": "COM6",
+    "firmware": "Arduino-TV-B-Gone",
+    "source_commit": "b5eb6918f5ff64df47b6c331a7187b14ef7efdde",
+    "fqbn": "attiny:avr:ATtinyX5:cpu=attiny85,clock=internal8",
+    "flash_bytes_used": 5320,
+    "flash_bytes_read_back": 8192,
+    "eeprom_bytes_preserved": 512,
+    "original_memories": "Flash and EEPROM were blank; complete backups were verified against a second read before writing.",
+    "fuses_before": {"lfuse": "0x62", "hfuse": "0xdf", "efuse": "0xff", "lock": "0xff"},
+    "fuses_after": {"lfuse": "0xe2", "hfuse": "0xdf", "efuse": "0xff", "lock": "0xff"},
+    "verification": "Flash write verification and fresh-session whole-flash readback matched the intended image including its erased tail; EEPROM was unchanged.",
+    "reported_supply": "Earlier user-reported 3.3 V target supply and 3.2 V front-capacitor reading; no voltage was measured by the programming tool.",
+    "sha256": {
+      "flash_before": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+      "eeprom_before": "9f56cda75fefeab90f6fa5d5ddc9601544b121732c5ecccab32e631060453a5d",
+      "firmware_hex": "717db4f9975a89b17f49d121edb7f925d3fc3f12841eac82bef9c484f3529175",
+      "expected_whole_flash": "ff7af1095bfadb484db16eacb02f72d92bf5b64e4d821f73e82194ca82801583",
+      "flash_after": "ff7af1095bfadb484db16eacb02f72d92bf5b64e4d821f73e82194ca82801583",
+      "eeprom_after": "9f56cda75fefeab90f6fa5d5ddc9601544b121732c5ecccab32e631060453a5d"
+    },
+    "backup_policy": "Binary backups and tool logs remain outside the repository.",
+    "limitations": "One verified programming run, not an IR-functional, contact-life, current/temperature or electrical safety qualification."
+  },
+  "reported_5v_setup": {
+    "reported_on": "2026-11-11",
+    "source": "User report: 5V power rail works in practice.",
+    "documented_connection": "White lead from Uno 5V to probe J1.2; black common GND; CR2032 removed; no second target supply.",
+    "signal_levels": "5 V target power matches the Uno's 5 V ISP signals. A 3.3 V target still requires suitable level translation or a matching programmer.",
+    "limitations": "User-reported practical operation; not a separately instrumented or readback-verified 5 V run, nor qualification of every populated component or LED load."
+  }
+}

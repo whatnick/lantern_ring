@@ -11,6 +11,7 @@ on:
       - "docs/arduino-isp-wiring-reference.html"
       - "docs/images/arduino-isp-*"
       - "docs/images/ir-voltage-test.svg"
+      - ".github/skills/lantern-ring-ir-programming/**"
       - ".github/workflows/hardware-interface.yml"
   pull_request:
     paths:
@@ -22,6 +23,7 @@ on:
       - "docs/arduino-isp-wiring-reference.html"
       - "docs/images/arduino-isp-*"
       - "docs/images/ir-voltage-test.svg"
+      - ".github/skills/lantern-ring-ir-programming/**"
       - ".github/workflows/hardware-interface.yml"
 
 permissions:

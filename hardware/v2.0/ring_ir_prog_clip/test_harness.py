@@ -15,7 +15,7 @@ from test_prog_clip import PROBE, TARGET, footprints
 HERE = pathlib.Path(__file__).resolve().parent / "harness"
 EXPECTED = [
     ("1", "connector55", "TP2", "PB1", "#707070"),
-    ("2", None, "TP9", "VCC", "#ffffff"),
+    ("2", "connector87", "TP9", "VCC", "#ffffff"),
     ("3", "connector56", "TP3", "PB2", "#1768c4"),
     ("4", "connector54", "TP1", "PB0", "#7b3fb3"),
     ("5", "connector53", "TP6", "PB5", "#8c564b"),
@@ -79,8 +79,10 @@ class HarnessTests(unittest.TestCase):
                         self.assertEqual(inst.find("views/" + view + "/wireExtras").get("color"), color)
             self.assertTrue({("2", "connector16"), ("3", "connector1"), ("3", "connector2"),
                              ("4", "connector6"), ("5", "connector2")} <= groups[-1])
-            # Never silently feed a 5 V Uno output into an unqualified coin-cell target.
-            self.assertFalse(any(("1", cid) in graph for cid in ("connector85", "connector86", "connector87")))
+            self.assertIn(("5", "connector1"), groups[1])
+            # Use one matching 5 V supply, never short Uno 3V3 to it.
+            self.assertIn(("1", "connector87"), groups[1])
+            self.assertFalse(any(("1", cid) in graph for cid in ("connector85", "connector86")))
 
     def test_bundle_contains_the_editable_sketch_parts_and_valid_connector_artwork(self):
         with zipfile.ZipFile(HERE / "arduino_isp_harness.fzz") as bundle:
@@ -103,7 +105,7 @@ class HarnessTests(unittest.TestCase):
         for view in ("breadboard", "schematic"):
             exported = ET.parse(HERE / ("arduino_isp_harness_" + view + ".svg")).getroot()
             text = " ".join(exported.itertext())
-            for label in ("PROGRAMMING CLIP", "RING IR PCB", "SELECTED TARGET SUPPLY", "REMOVE CR2032"):
+            for label in ("PROGRAMMING CLIP", "RING IR PCB", "UNO 5V TARGET SUPPLY", "REMOVE CR2032"):
                 self.assertIn(label, text)
             outlined_white = []
             for group in exported.iter():
@@ -112,7 +114,7 @@ class HarnessTests(unittest.TestCase):
                     self.assertEqual(strokes[0].get("stroke"), "#607080")
                     self.assertGreater(float(strokes[0].get("stroke-width")), float(strokes[1].get("stroke-width")))
                     outlined_white.append(group)
-            self.assertEqual(len(outlined_white), 2, "Both white VCC links need visible outlines")
+            self.assertEqual(len(outlined_white), 3, "Every white VCC link needs a visible outline")
 
     def test_colour_reference_header_orientation_matches_actual_probe(self):
         svg = ET.parse(HERE / "wiring-reference.svg").getroot()
@@ -178,6 +180,7 @@ class HarnessTests(unittest.TestCase):
             self.assertIn(tp, row)
             self.assertIn(target[tp]["pads"]["1"][1], row)
             self.assertIn(probe["J1"]["pads"][number][1].lstrip("/"), row)
+        self.assertIn("Uno 5V", " ".join(parser.rows["2"]))
 
     def test_voltage_illustration_uses_actual_front_pads_and_window(self):
         repo = HERE.parents[3]
@@ -224,6 +227,18 @@ class HarnessTests(unittest.TestCase):
         for entry in meshes:
             digest = hashlib.sha256((mesh_dir / entry["file"]).read_bytes()).hexdigest()
             self.assertEqual(digest, physical["mesh_sha256"][entry["name"]], entry["name"])
+
+    def test_programming_evidence_preserves_memories_and_only_changes_clock_divider(self):
+        evidence = json.loads((HERE.parent / "programming-evidence.json").read_text())
+        run = evidence["verified_isp_run"]
+        before, after = run["fuses_before"], run["fuses_after"]
+        self.assertEqual({key for key in before if before[key] != after[key]}, {"lfuse"})
+        self.assertEqual(int(before["lfuse"], 16) ^ int(after["lfuse"], 16), 0x80)
+        self.assertEqual(run["sha256"]["expected_whole_flash"], run["sha256"]["flash_after"])
+        self.assertEqual(run["sha256"]["eeprom_before"], run["sha256"]["eeprom_after"])
+        self.assertLessEqual(run["flash_bytes_used"], run["flash_bytes_read_back"])
+        self.assertIn("User report:", evidence["reported_5v_setup"]["source"])
+        self.assertIn("not a separately", evidence["reported_5v_setup"]["limitations"])
 
 
 if __name__ == "__main__":

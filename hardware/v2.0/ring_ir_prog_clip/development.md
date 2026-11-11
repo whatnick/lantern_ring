@@ -12,6 +12,8 @@ repository root.
 - `check_reports.py` validates ERC/DRC reports and records source provenance.
 - `fit_check.py` builds and checks the clip stack in FreeCAD.
 - `test_prog_clip.py` checks the PCB interfaces and generated fit report.
+- `programming-evidence.json` records the verified firmware transfer and
+  separately the user-reported working 5 V rail; binary backups stay local.
 - `build.ps1` runs the complete KiCad and FreeCAD pipeline.
 - `assembly_parameters.json` separates readable album measurements from estimated
   kit geometry and declares the 1.27/2.00/2.54 mm grids and custom IR variant.
@@ -63,6 +65,12 @@ nets, ISP-6 pinout, anvil ground contact, courtyard/window clearance, board
 spacing, assembly fit and input provenance. Do not hand-edit generated KiCad
 boards or fabrication files. Update the source parameters and rebuild.
 
+Minor revision v0.2 overwrites the existing probe/anvil/fence filenames and
+their existing projects/schematics. Do not create a parallel versioned design.
+Git history preserves v0.1; historical photographs and quote archives are not
+the active production revision. The same ISP mapping and assembly principle
+are retained.
+
 The user reports that the custom probe/anvil/fence boards have now been built
 and physically fit-tested. Fit dimensions and repeatability results have not
 yet been recorded; the original FreeCAD report remains a virtual check against
@@ -111,12 +119,16 @@ six isolated nets against the actual KiCad probe/target pin maps, colour
 consistency, the separate front-ground return, unused Uno supply/reset pins,
 bundle resources and board-top J1 orientation. No electrical PCB, fabrication
 or CAD geometry is changed by generating this documentation.
-The selected VCC block intentionally has no automatic connection to either
-Uno supply output; direct Uno signal wiring is conditional on compatible I/O
-levels, not approval of a 5 V coin-cell target. See the programming guide.
+The logical power block now connects to the Uno part's actual 5V connector
+(`connector87`); Uno 3V3 (`connector86`) remains unconnected. The extra white
+feed to this block is a diagram breakout of the same supply, not a second
+power source. This documents the user-reported working battery-free 5 V rail,
+matching Uno ISP levels, without claiming full LED/load qualification.
 The palette now follows the user's reported harness: grey D12/MISO, white
-3V3 VCC, blue D13/SCK, purple D11/MOSI, brown D10/RESET and black GND.
-The reported COM6 connection is not a voltage-level or programming qualification.
+5V VCC, blue D13/SCK, purple D11/MOSI, brown D10/RESET and black GND.
+All three white VCC links receive outlines. One COM6 transfer and complete
+readback passed; that is separate from the later 5 V report and not contact
+life, mechanical or IR/load qualification.
 
 The Fritzing-based diagram exports and interface artwork are CC BY-SA 3.0,
 with attribution to Fritzing and its core Uno part (author `althaus`).
@@ -152,6 +164,18 @@ revision uncertainty remain unchanged.
 capacitor pad geometry/net labels, window mapping and illustration provenance.
 If source boards or illustrations change, update the editable SVG and its
 provenance together; never update hashes to conceal a geometric mismatch.
+
+## Real programming workflow
+
+The repository skill `.github/skills/lantern-ring-ir-programming/SKILL.md`
+records the actual COM6/ArduinoISP sequence: stable signature, complete
+backups and a second verification, exact firmware build, verified flash
+write, only the necessary LF clock change, and fresh full readback plus
+EEPROM/fuse preservation checks. `programming-evidence.json` contains its
+image/readback hashes without local binary dumps or serial logs.
+The user-reported 5 V rail is the current documented wiring; the earlier
+verified run's reported supply is preserved as historical evidence, not
+rewritten as an instrumented 5 V test.
 
 ## Album reconstruction and Blender animation
 

@@ -35,14 +35,14 @@
   <line x1="615" y1="135" x2="615" y2="620" stroke="#c6d3db" stroke-width="2"/>
   <text x="655" y="157" class="h2">Uno / ArduinoISP</text>
   <text x="655" y="205" class="txt">1 MISO &lt;-&gt; D12 (grey)</text>
-  <text x="655" y="250" class="txt">2 VCC &lt;-&gt; 3V3 (white)*</text>
+  <text x="655" y="250" class="txt">2 VCC &lt;-&gt; Uno 5V (white)*</text>
   <text x="655" y="295" class="txt">3 SCK &lt;-&gt; D13 (blue)</text>
   <text x="655" y="340" class="txt">4 MOSI &lt;-&gt; D11 (purple)</text>
   <text x="655" y="385" class="txt">5 RESET &lt;-&gt; D10 (brown)</text>
   <text x="655" y="430" class="txt">6 GND &lt;-&gt; GND (black)</text>
-  <text x="655" y="498" class="warn">*Use one compatible target-power source.</text>
-  <text x="655" y="526" class="small">3V3 power does NOT change Uno 5V I/O.</text>
-  <text x="655" y="550" class="small">Use a verified level-compatible ISP setup.</text>
+  <text x="655" y="498" class="warn">*5V target rail: reported working.</text>
+  <text x="655" y="526" class="small">Use one source; check PCB power/current.</text>
+  <text x="655" y="550" class="small">3.3V targets still need matched I/O levels.</text>
   <text x="655" y="588" class="small">Remove the CR2032 before connecting. J1 is</text>
   <text x="655" y="612" class="small">unshrouded: check pin 1 and cable orientation.</text>
   <text x="35" y="670" class="warn">Numbers are probe J1 pin numbers. Confirm the silkscreen pin-1 mark and wiring before powering.</text>

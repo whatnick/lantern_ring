@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
   <title id="title">Measure IR ring power through the anvil window</title>
-  <desc id="desc">PCB-derived front view and enlarged C1/C2 solder pads. Both capacitor pad ones are VCC and pad twos are ground. Clip the meter black lead to Uno ground and touch a fine red probe to VCC for about 3.3 volts, then to ground for about zero volts. Disconnect ISP signals and remove the battery first.</desc>
+  <desc id="desc">PCB-derived front view and enlarged C1/C2 solder pads. Both capacitor pad ones are VCC and pad twos are ground. Clip the meter black lead to Uno ground and touch a fine red probe to VCC for about 5 volts with the reported working Uno 5V setup, then to ground for about zero volts. Disconnect ISP signals and remove the battery first.</desc>
   <defs>
     <style>
       text{font-family:Arial,sans-serif;fill:#17334c}
@@ -55,7 +55,7 @@
   <text x="600" y="334" class="small" style="fill:#a62b0d">Fine RED tip touches VCC</text>
   <rect x="600" y="380" width="150" height="150" rx="12" fill="#e1e6ea" stroke="#42596a" stroke-width="2"/>
   <rect x="615" y="397" width="120" height="47" rx="3" fill="#eff4dc" stroke="#647181"/>
-  <text x="675" y="430" text-anchor="middle" class="heading">3.3 V</text>
+  <text x="675" y="430" text-anchor="middle" class="heading">5.0 V</text>
   <text x="675" y="470" text-anchor="middle" class="body">DC VOLTS</text>
   <circle cx="635" cy="510" r="7" fill="#202020"/>
   <circle cx="725" cy="510" r="7" fill="#c52d32"/>
@@ -67,10 +67,10 @@
   <text x="835" y="563" class="body">BLACK probe clipped to Uno GND</text>
   <text x="835" y="588" class="small">Same reference as clip J1.6 / supply GND</text>
   <text x="580" y="640" class="body">Then move only the red tip to an inner GND end:</text>
-  <text x="580" y="666" class="body">expect about 0 V. Across a capacitor: about 3.3 V.</text>
+  <text x="580" y="666" class="body">expect about 0 V. Across a capacitor: about 5 V.</text>
   <rect x="20" y="715" width="1160" height="130" rx="10" fill="#fff1e9" stroke="#ba6b0d"/>
   <text x="40" y="745" class="body warning">POWER OFF before changing leads. CR2032 REMOVED. Disconnect D10, D11, D12 and D13.</text>
-  <text x="40" y="773" class="body">Leave only the white 3.3 V supply, black GND and the inter-jaw GND lead for this power-only test.</text>
+  <text x="40" y="773" class="body">Leave only the white Uno 5 V supply, black GND and the inter-jaw GND lead for this power-only test.</text>
   <text x="40" y="801" class="body">Meter leads in COM and V, not A. Insulate the probe shaft; never bridge adjacent terminals.</text>
   <text x="40" y="829" class="body warning">Displayed voltages are EXPECTED values, not measurements. Never use continuity mode on a powered PCB.</text>
   <text x="25" y="876" class="small">Source: ring_pcb_IR and saved v0.2 anvil geometry. Only test landmarks shown; this is not a manufacturing or physical-access qualification.</text>

@@ -53,7 +53,7 @@
 <body>
 <main>
   <header>
-    <p class="small">Lantern Ring / IR programming clip / 10 November 2026</p>
+    <p class="small">Lantern Ring / IR programming clip / 11 November 2026</p>
     <h1>ArduinoISP wiring, upload and voltage checks</h1>
     <p>The standalone PDF's wiring reference, physical-parts diagram and upload
       checklist, now as an offline HTML guide, with illustrated checks through
@@ -69,25 +69,29 @@
   <section id="safety" aria-labelledby="safety-title">
     <h2 id="safety-title">Before connecting anything</h2>
     <div class="warning">
-      <strong>Remove the CR2032. White 3.3 V power does not make Uno signals 3.3 V.</strong>
-      A USB-powered Uno still drives 5 V ISP outputs. Direct connection to the
-      3.3 V target is outside specifications and can damage it; prior operation
-      is not qualification. Use verified SPI level translation, including suitable
-      MISO handling, or a voltage-compatible ISP host before programming.
-      The passive clip does not regulate or shift levels. Do not substitute
-      5 V target power without qualifying every populated component.
+      <strong>Remove the CR2032. Current practical setup: white lead from Uno 5V to target VCC.</strong>
+      The user reports this 5 V power rail working on the populated IR board.
+      It matches the Uno's 5 V ISP signals and is within the ATtiny85-20M's
+      supply rating at 8 MHz. Use one supply and check actual PCB voltage,
+      current and temperature; practical operation is not full LED/load or
+      release qualification. The passive clip does not regulate or shift levels.
+      A 3.3 V alternative still requires suitable SPI level translation
+      (including MISO handling) or a matching programmer, not direct 5 V signals.
     </div>
     <p>Disconnect USB and target power before changing leads, seating the ring,
       opening the clip or fitting capacitors. Use <strong>one</strong> suitable
       target supply and shared ground; never join supply outputs or backfeed,
       charge or solder a primary coin cell. Check the supply's current budget:
       existing firmware can drive IR LEDs immediately after reset.</p>
-    <p class="note"><strong>Recorded status, not a successful upload:</strong>
-      read-only attempts on COM6 on 10 November 2026 reached ArduinoISP but
-      repeatedly returned target signature <code>0x000000</code>, not
-      <code>0x1e930b</code>. No erase, fuse write or firmware upload occurred.
-      Target fuses and memories could not be read. The fault is not diagnosed;
-      physical power, continuity, alignment and clock checks are still required.</p>
+    <p class="note"><strong>Recorded successful programming:</strong>
+      after early <code>0x000000</code> reads and contact alignment, ArduinoISP
+      on COM6 identified <code>0x1e930b</code>, wrote and verified 5320 bytes,
+      and a fresh whole-flash readback matched all 8192 bytes. EEPROM remained
+      unchanged. Only LF changed from <code>0x62</code> to <code>0xE2</code>;
+      HF/EF/LOCK were preserved. The later 5 V rail report is distinct from
+      that earlier run's reported 3.3 V supply. IR function, contact life and
+      load/temperature qualification remain untested.
+      <a href="../hardware/v2.0/ring_ir_prog_clip/programming-evidence.json">Evidence and hashes</a>.</p>
   </section>
 
   <section id="wiring" aria-labelledby="wiring-title">
@@ -102,7 +106,7 @@
         <thead><tr><th scope="col">Lead</th><th scope="col">Uno / selected supply</th><th scope="col">Probe J1</th><th scope="col">Contact path inside the clip</th></tr></thead>
         <tbody>
           <tr data-j1="1"><td><span class="swatch grey" aria-hidden="true"></span>Grey</td><td>D12 / MISO</td><td>1 / MISO</td><td>P2 pogo to rear TP2 / PB1</td></tr>
-          <tr data-j1="2"><td><span class="swatch white" aria-hidden="true"></span>White</td><td>Reported 3.3 V target VCC; resolve signal levels first</td><td>2 / VCC</td><td>P9 pogo to rear TP9 / VCC</td></tr>
+          <tr data-j1="2"><td><span class="swatch white" aria-hidden="true"></span>White</td><td>Uno 5V target VCC, battery removed</td><td>2 / VCC</td><td>P9 pogo to rear TP9 / VCC</td></tr>
           <tr data-j1="3"><td><span class="swatch blue" aria-hidden="true"></span>Blue</td><td>D13 / SCK</td><td>3 / SCK</td><td>P3 pogo to rear TP3 / PB2</td></tr>
           <tr data-j1="4"><td><span class="swatch purple" aria-hidden="true"></span>Purple</td><td>D11 / MOSI</td><td>4 / MOSI</td><td>P1 pogo to rear TP1 / PB0</td></tr>
           <tr data-j1="5"><td><span class="swatch brown" aria-hidden="true"></span>Brown</td><td>D10, <strong>not Uno RESET</strong></td><td>5 / RESET</td><td>P6 pogo to rear TP6 / PB5</td></tr>
@@ -194,11 +198,15 @@
       are LF=<code>0xE2</code>, HF=<code>0xDF</code>, EF=<code>0xFF</code>.
       Back up firmware/EEPROM first if needed. Do not select an external clock
       or disable RESET/SPI. Routine uploads do not need this step.
-      The connected chip's actual fuse values remain unread.</div>
+      In the recorded run, fuses read LF=<code>0x62</code>, HF=<code>0xDF</code>,
+      EF=<code>0xFF</code>, LOCK=<code>0xFF</code>; only LF changed to
+      <code>0xE2</code>, with every value checked by fresh readback.</div>
     <p>An offline build with
       <code>attiny:avr:ATtinyX5:cpu=attiny85,clock=internal8</code> passed:
       5320 bytes flash and 4 bytes static RAM. This verifies compilation,
-      not physical programming or IR timing.</p>
+      not IR timing. The separate hardware transfer and full readback also
+      passed. Its real backup/minimal-fuse/readback sequence is documented in
+      the <a href="../.github/skills/lantern-ring-ir-programming/SKILL.md">repository programming skill</a>.</p>
     <h3>Connect, identify, then write and verify</h3>
     <ol>
       <li>With power off and CR2032 removed, verify every cable, the separate
@@ -227,20 +235,22 @@
       are oppositely oriented: the ends facing each other are GND; the outside
       ends are VCC. Confirm the component references and rotate the assembly
       to match the front view below rather than assuming a left/right pin.</p>
-    <p class="note"><strong>Is 3.2 V sufficient?</strong> Yes for the
+    <p class="note"><strong>Why document 5 V now?</strong> The user reports the
+      Uno 5 V target rail working in practice; it also matches Uno signal levels.
+      The earlier 3.2 V capacitor reading was sufficient for the
       ATtiny85-20M at 8 MHz: its supply rating is 2.7-5.5 V, with operation
       up to 10 MHz specified at 2.7 V and above. The user reported 3.2 V
       across a front capacitor; if this was C1 or C2, that is compatible with
       the MCU supply rating. It is not an independently verified measurement
       or evidence of reliable ISP contact. See the
       <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-8-bit-AVR-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf">Microchip datasheet</a>.
-      Ordinary I/O pins, excluding RESET, have an absolute maximum of
+      This historical 3.3 V setup is not the current default. Ordinary I/O pins, excluding RESET, have an absolute maximum of
       VCC + 0.5 V: about 3.7 V at a 3.2 V supply. This is a damage limit,
       not a recommended signal level; 5 V Uno signals remain outside it.</p>
     <figure>
       <a href="images/ir-voltage-test.svg">
         <img src="images/ir-voltage-test.svg" width="1200" height="900"
-             alt="Front PCB outline and anvil-window boundary locate C1 and C2 above U2. Enlarged capacitor pads show outer VCC and inner GND ends. A DC voltmeter has its black COM lead clipped to Uno GND and its red V lead probing C1 VCC for an expected 3.3 V.">
+             alt="Front PCB outline and anvil-window boundary locate C1 and C2 above U2. Enlarged capacitor pads show outer VCC and inner GND ends. A DC voltmeter has its black COM lead clipped to Uno GND and its red V lead probing C1 VCC for an expected 5 V with the current Uno 5V setup.">
       </a>
       <figcaption>Pad centres, sizes and nets come from the saved IR PCB; the
         window extent comes from the saved v0.2 anvil geometry. Component
@@ -252,26 +262,26 @@
     <ol>
       <li><strong>Power off first.</strong> Remove USB and any target supply,
         keep the CR2032 out, then unplug the four ISP signal leads:
-        brown D10, purple D11, grey D12 and blue D13. Leave white 3.3 V,
+        brown D10, purple D11, grey D12 and blue D13. Leave white Uno 5 V,
         black GND and the separate inter-jaw ground wire connected.
         This prevents phantom power through the signal pins.</li>
       <li>Put the meter leads in <strong>COM and V</strong>, not a current
         socket. Select <strong>DC volts</strong>, auto range or 20 V range.
         Insulate the probe shaft so only a fine tip is exposed.</li>
       <li>Clip the black probe to <strong>Uno GND</strong>. Apply the single
-        suitable 3.3 V supply and touch only the red tip to the accessible
+        suitable 5 V supply and touch only the red tip to the accessible
         capacitor solder terminals. Do not bridge them or disturb the clip.</li>
     </ol>
     <table>
       <caption>Expected readings with the black probe on Uno GND</caption>
       <thead><tr><th scope="col">Red probe point</th><th scope="col">Expected</th><th scope="col">Purpose</th></tr></thead>
       <tbody>
-        <tr><td>C1.1 or C2.1 / VCC</td><td>About 3.3 V</td><td>Checks that power reaches the ring, not merely the header</td></tr>
+        <tr><td>C1.1 or C2.1 / VCC</td><td>About 5 V</td><td>Checks that power reaches the ring, not merely the header</td></tr>
         <tr><td>C1.2 or C2.2 / GND</td><td>About 0 V</td><td>Checks the target ground relative to programmer ground</td></tr>
-        <tr><td>Across the two terminals, if safely accessible</td><td>About 3.3 V, red on VCC</td><td>Confirms the local MCU supply difference; the one-probe method above is less likely to short pads</td></tr>
+        <tr><td>Across the two terminals, if safely accessible</td><td>About 5 V, red on VCC</td><td>Confirms the local MCU supply difference; the one-probe method above is less likely to short pads</td></tr>
       </tbody>
     </table>
-    <p>Both terminals near 3.3 V suggests a missing ground return. A correct
+    <p>Both terminals near the supply voltage suggests a missing ground return. A correct
       voltage at header J1.2 but a low VCC reading at the capacitor suggests a
       poor VCC contact or another supply/load fault. Unstable readings that
       change with seating suggest unreliable contact; do not flash while
@@ -315,6 +325,9 @@
   </section>
 
   <footer>
+    <p><strong>In-place v0.2:</strong> the existing probe/anvil/fence KiCad
+      filenames are overwritten as a minor revision of the same assembly,
+      not duplicated in a second versioned project. ISP pins do not change.</p>
     <p><a href="../hardware/v2.0/ring_ir_prog_clip/programming.md">Programming guide</a>
       &middot; <a href="../hardware/v2.0/ring_ir_prog_clip/harness/arduino_isp_harness.fzz">Editable Fritzing harness</a>
       &middot; <a href="images/arduino-isp-reference-sources.json">Illustration provenance</a></p>

@@ -3,10 +3,12 @@
 The clip is a passive contact fixture, not a programmer, voltage converter or
 protocol adapter. The current probe is wired for the **ATtiny85 IR ring's
 six-wire AVR ISP interface**. It does not give that MCU SWD support.
-The user reports the custom clip has been built and its physical fit tested.
-That report does not establish repeatable electrical contact or successful
-programming. Other PCBs need their own verified pad pattern, signal mapping and
-clearances.
+The custom clip has been built and fit-tested (user report), and an ATtiny85
+was successfully programmed with full readback verification on 2026-11-10.
+The user subsequently reports that the **5 V target power rail works in practice**.
+The documented Uno setup now uses **5 V target power and 5 V ISP signals**.
+This is practical prototype evidence, not contact-life, LED-current/temperature
+or release qualification. Other PCBs still need their own verified interfaces.
 
 [Printable HTML wiring, physical-parts and voltage-testing guide](../../../docs/arduino-isp-wiring-reference.html)
 includes the standalone PDF's contents, the reported cable colours, Arduino IDE
@@ -36,7 +38,7 @@ outlines in the diagrams so they remain visible on paper.
 | Colour | Arduino Uno running ArduinoISP | Clip probe J1 | Contact path to Ring IR |
 | --- | --- | --- | --- |
 | Grey | D12 / MISO | 1 / MISO | P2 -> rear TP2 / PB1 |
-| White | Reported 3V3 target VCC; resolve logic levels below first | 2 / VCC | P9 -> rear TP9 / VCC |
+| White | **Uno 5V** target VCC, battery removed | 2 / VCC | P9 -> rear TP9 / VCC |
 | Blue | D13 / SCK | 3 / SCK | P3 -> rear TP3 / PB2 |
 | Purple | D11 / MOSI | 4 / MOSI | P1 -> rear TP1 / PB0 |
 | Brown | D10, **not Uno RESET** | 5 / RESET | P6 -> rear TP6 / PB5 |
@@ -51,19 +53,20 @@ contacts**, not five additional loose wires; the lower black link means the
 flat anvil-to-front-TP8 contact. The interface blocks are logical drawings,
 not pad-spacing templates or fabrication designs.
 
-**Power is deliberately a selection, not an automatic Uno 5 V connection.**
-A normal Uno has **5 V I/O**, even when its 3V3 pin supplies the target.
-**Do not program the reported 3.3 V target directly from the Uno's 5 V ISP
-outputs. Disconnect USB and target power before changing the setup.**
-Use verified SPI level translation, including suitable handling of MISO, or a
-voltage-compatible ISP host; this interface is not designed or shown here.
-Powering the ring at 3.3 V does not make the Uno's signal levels safe.
-Do not substitute 5 V target power without qualifying every populated component.
-Never join supply outputs. The Fritzing sketch leaves both Uno power outputs
-unconnected as a deliberate safety gate; its white lead represents the selected
-3.3 V supply, not approval of the current electrical stack. Check the supply's
-current budget too: the firmware can drive IR LEDs immediately after reset.
-Always remove the CR2032.
+**Current practical setup: Uno 5V -> white lead -> J1.2 -> P9 -> TP9.**
+The user reports this 5 V rail working on the populated IR board. It matches
+the Uno's 5 V ISP signals and is within the ATtiny85-20M's 2.7-5.5 V supply
+rating at 8 MHz. The Fritzing power block is a logical breakout of that same
+Uno supply, not another source; Uno 3V3 is unconnected.
+Always remove the CR2032, use one supply, and power off before changing leads.
+Check voltage at C1/C2 on the actual PCB and check the supply/current budget:
+the firmware may drive IR LEDs immediately after reset. Practical operation
+does not replace component voltage-rating, load/current or temperature checks.
+
+**Alternative 3.3 V targets still need matched signal levels.** Powering an
+ATtiny at 3.3 V does not change the Uno's 5 V outputs. Use appropriate SPI level
+translation (including MISO handling) or a voltage-compatible host for that
+alternative; prior tolerance is not a specification. Never join 5V and 3V3 outputs.
 
 Load `File > Examples > 11.ArduinoISP > ArduinoISP` onto the Uno before connecting
 the target. With all supplies off, verify every row end to end, check for
@@ -84,8 +87,8 @@ See [regeneration details](development.md#fritzing-harness-diagrams).
 
 The local installation has **attiny 1.0.2** (`attiny:avr`) and Arduino AVR
 Boards. No additional ATtiny core is needed for the following menu names.
-These are configuration instructions, not a recorded hardware programming test.
-Do not reconnect or program until the voltage-level issue above is resolved.
+These settings were used in the successful programming flow below. The 5 V
+rail is a later user report, distinct from that earlier recorded transfer.
 
 First, with the ring disconnected, select **Arduino Uno**, **Port COM6**, and
 upload `File > Examples > 11.ArduinoISP > ArduinoISP` normally to the Uno.
@@ -117,9 +120,11 @@ and applies the selected clock fuses; it does not install a bootloader.
 For its Internal 8 MHz menu, the core specifies LF=`0xE2`, HF=`0xDF`, EF=`0xFF`.
 Back up existing firmware/EEPROM first if needed. Do not select an external
 clock or disable RESET/SPI, and do not repeat this operation for routine uploads.
-The attached chip's actual fuse values have **not** been read.
+In the recorded run, the chip initially had LF=`0x62`, HF=`0xDF`, EF=`0xFF`,
+LOCK=`0xFF`. Only LF changed to `0xE2`; the other values were preserved and
+read back. Do not repeat clock configuration for that chip's routine uploads.
 
-After fixing the electrical levels, a read-only identity check with the
+With matched target power and signal levels, a read-only identity check with the
 standard ArduinoISP sketch is:
 
 ```text
@@ -127,10 +132,33 @@ avrdude -c stk500v1 -p t85 -P COM6 -b 19200 -n
 ```
 
 Require repeatable signature **0x1e930b** before erasing or writing; do not force
-a mismatch. This command has not been run against the connected stack.
+a mismatch. Early reads returned `0x000000`; after the contacts were aligned,
+the target identified correctly and programming completed.
 If the Uno auto-resets instead of staying in ArduinoISP, it may need a 10 uF
 capacitor between its own RESET (+) and GND (-), fitted unpowered after loading
 ArduinoISP and removed before re-uploading to the Uno. This is not target RESET.
+
+## Recorded real programming flow
+
+The successful 2026-11-10 COM6 run used `stk500v1`, 19200 baud, and
+`attiny:avr:ATtinyX5:cpu=attiny85,clock=internal8`:
+
+1. Seat/align the clip and require a stable `0x1e930b` signature; never use `-F`.
+2. Read all 8192 flash bytes, 512 EEPROM bytes and LF/HF/EF/LOCK with `-n`.
+   Read/verify again before writing. Both memories were blank in this run.
+3. Build and archive the exact firmware image outside the repository.
+4. Write and verify the 5320-byte firmware, then change only LF from `0x62`
+   to `0xE2` for internal 8 MHz. HF/EF/LOCK stayed `0xDF`/`0xFF`/`0xFF`.
+5. Reconnect in a fresh read-only session: the entire 8192-byte flash matched
+   the image plus erased tail; all 512 EEPROM bytes were unchanged and all
+   fuse/lock readbacks matched. IR function was not tested.
+
+[Programming evidence](programming-evidence.json) separates that verified
+transfer, with its earlier reported 3.3 V supply, from the later report that
+5 V works. No binary backups or local serial logs are committed.
+Use the repository skill
+[`lantern-ring-ir-programming`](../../../.github/skills/lantern-ring-ir-programming/SKILL.md)
+for identification, backup, minimal fuse changes and final readback commands.
 
 ## Current IR ring: connect AVR ISP
 

@@ -20,8 +20,25 @@ with its generic guide PCBs replaced by the boards here.
 > readable measurements, but mounting geometry and spring travel remain estimates.
 > New album photographs show the assembled custom clip with the IR PCB seated.
 > No measured fit dimensions or contact-quality data have been recorded yet.
-> Repeatable electrical contact and successful programming have not been
-> documented; the original PCB fit report remains a virtual estimate.
+> A 2026-11-10 ATtiny85 programming run completed with full flash readback
+> verification after contact alignment. The user reports the 5 V target rail
+> working in practice; the documented Uno harness now uses 5 V power.
+> This does not qualify contact life, LED current/temperature or mechanical
+> retention; the original PCB fit report remains a virtual estimate.
+
+## In-place minor revision
+
+v0.2 **overwrites the existing design paths**, not a second versioned project:
+`probe/ring_ir_prog_probe.kicad_pcb`, `anvil/ring_ir_prog_anvil.kicad_pcb` and
+`fence/ring_ir_prog_fence.kicad_pcb`, with the existing probe/anvil schematics
+and projects. Keep these names; do not create parallel `v0.2` files/directories.
+The screws and balanced GND pads are a minor revision of the same assembly,
+not a changed ISP pinout. Edit the generator/configuration and rebuild in place.
+Git history preserves earlier revisions; old photos/quote packages remain historical.
+
+[Recorded programming evidence](programming-evidence.json) and the
+[`lantern-ring-ir-programming` skill](../../../.github/skills/lantern-ring-ir-programming/SKILL.md)
+document the actual successful flow.
 
 ## As-built clip with IR PCB
 
@@ -355,8 +372,10 @@ The old estimated fit model remains separately documented.
 
 - **Remove the CR2032 before programming.** The programmer's VCC drives the
   ring's VCC directly, and backfeeding a primary lithium cell is unsafe.
-- Use a 3.3 V or 5 V programmer within the ATtiny85 and LED limits, and keep
-  current limited.
+- The user-reported working Uno setup uses its **5 V rail** for the target,
+  matching its 5 V ISP signals. Use one source and check PCB voltage/current;
+  this is not full component or LED-load qualification. A 3.3 V target needs
+  level translation or a matching programmer, not direct 5 V Uno outputs.
 - Always insert LEDs down. Face-up insertion lets pins hit components.
 - The unshrouded header is not keyed. Check pin 1 and every Dupont lead against
   the ISP table; provide cable strain relief so unplugging does not peel SMD pads.

@@ -22,6 +22,9 @@ as linked in the root README. Preserve historical designs and their assets.
   `fit_check.py` (FreeCAD) fits them in the estimated clip jaw.
   Load `lantern-ring-ecad-mcad-render` for actual-PCB layer export, clip assembly
   reconstruction and Blender rendering; preserve measured/estimated provenance.
+  Load `lantern-ring-ir-programming` for physical programming, voltage/contact
+  diagnosis, backups and verified readback. The reported working Uno setup uses
+  its 5 V rail for the battery-free target, matching 5 V ISP signals.
 - `firmware/Arduino-TV-B-Gone`: legacy firmware; keep unrelated behaviour unchanged.
 - `software/materialator`: independent STL volume/metal-weight experiment.
 - `docs/design`: electrical proposals and repository review notes.
@@ -95,6 +98,12 @@ If the IR board's test pads change, regenerate the clip. Clip jaw dimensions in
 `clip_kit.geometry` are photo/datasheet estimates: keep `measured: false` until
 the jaw and pogo pins are measured, never describe the fit as physical, and
 program with the CR2032 removed.
+
+v0.2 overwrites the existing probe/anvil/fence KiCad paths as a minor revision
+of the same assembly; do not create parallel revision-named files/projects.
+See `programming-evidence.json` for the verified firmware transfer and the
+separate user-reported working 5 V rail. Preserve that distinction and retain
+current/temperature, IR-function and contact-life qualification limits.
 
 Never solder directly to or charge a primary CR2032. No physical design is
 release-ready until contact load/current/temperature, cell safety and mechanical

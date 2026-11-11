@@ -81,7 +81,7 @@
             <connector connectorId="connector16" layer="breadboard">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector0" modelIndex="113" layer="breadboardWire"/>
+                <connect connectorId="connector0" modelIndex="114" layer="breadboardWire"/>
               </connects>
             </connector>
           </connectors>
@@ -158,7 +158,7 @@
             <connector connectorId="connector16" layer="schematic">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector0" modelIndex="113" layer="schematicTrace"/>
+                <connect connectorId="connector0" modelIndex="114" layer="schematicTrace"/>
               </connects>
             </connector>
           </connectors>
@@ -174,13 +174,13 @@
             <connector connectorId="connector1" layer="breadboard">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector1" modelIndex="113" layer="breadboardWire"/>
+                <connect connectorId="connector1" modelIndex="114" layer="breadboardWire"/>
               </connects>
             </connector>
             <connector connectorId="connector2" layer="breadboard">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector0" modelIndex="114" layer="breadboardWire"/>
+                <connect connectorId="connector0" modelIndex="115" layer="breadboardWire"/>
               </connects>
             </connector>
           </connectors>
@@ -191,13 +191,13 @@
             <connector connectorId="connector1" layer="schematic">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector1" modelIndex="113" layer="schematicTrace"/>
+                <connect connectorId="connector1" modelIndex="114" layer="schematicTrace"/>
               </connects>
             </connector>
             <connector connectorId="connector2" layer="schematic">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector0" modelIndex="114" layer="schematicTrace"/>
+                <connect connectorId="connector0" modelIndex="115" layer="schematicTrace"/>
               </connects>
             </connector>
           </connectors>
@@ -243,7 +243,7 @@
             <connector connectorId="connector6" layer="breadboard">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector1" modelIndex="114" layer="breadboardWire"/>
+                <connect connectorId="connector1" modelIndex="115" layer="breadboardWire"/>
               </connects>
             </connector>
           </connectors>
@@ -284,7 +284,7 @@
             <connector connectorId="connector6" layer="schematic">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector1" modelIndex="114" layer="schematicTrace"/>
+                <connect connectorId="connector1" modelIndex="115" layer="schematicTrace"/>
               </connects>
             </connector>
           </connectors>
@@ -301,12 +301,13 @@
               <geometry x="0" y="0"/>
               <connects>
                 <connect connectorId="connector0" modelIndex="103" layer="breadboardWire"/>
+                <connect connectorId="connector1" modelIndex="112" layer="breadboardWire"/>
               </connects>
             </connector>
             <connector connectorId="connector2" layer="breadboard">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector1" modelIndex="112" layer="breadboardWire"/>
+                <connect connectorId="connector1" modelIndex="113" layer="breadboardWire"/>
               </connects>
             </connector>
           </connectors>
@@ -318,12 +319,13 @@
               <geometry x="0" y="0"/>
               <connects>
                 <connect connectorId="connector0" modelIndex="103" layer="schematicTrace"/>
+                <connect connectorId="connector1" modelIndex="112" layer="schematicTrace"/>
               </connects>
             </connector>
             <connector connectorId="connector2" layer="schematic">
               <geometry x="0" y="0"/>
               <connects>
-                <connect connectorId="connector1" modelIndex="112" layer="schematicTrace"/>
+                <connect connectorId="connector1" modelIndex="113" layer="schematicTrace"/>
               </connects>
             </connector>
           </connectors>
@@ -364,6 +366,12 @@
               <geometry x="0" y="0"/>
               <connects>
                 <connect connectorId="connector0" modelIndex="111" layer="breadboardWire"/>
+                <connect connectorId="connector0" modelIndex="113" layer="breadboardWire"/>
+              </connects>
+            </connector>
+            <connector connectorId="connector87" layer="breadboardbreadboard">
+              <geometry x="0" y="0"/>
+              <connects>
                 <connect connectorId="connector0" modelIndex="112" layer="breadboardWire"/>
               </connects>
             </connector>
@@ -400,6 +408,12 @@
               <geometry x="0" y="0"/>
               <connects>
                 <connect connectorId="connector0" modelIndex="111" layer="schematicTrace"/>
+                <connect connectorId="connector0" modelIndex="113" layer="schematicTrace"/>
+              </connects>
+            </connector>
+            <connector connectorId="connector87" layer="schematic">
+              <geometry x="0" y="0"/>
+              <connects>
                 <connect connectorId="connector0" modelIndex="112" layer="schematicTrace"/>
               </connects>
             </connector>
@@ -859,6 +873,47 @@
       </views>
     </instance>
     <instance moduleIdRef="WireModuleID" modelIndex="112" path="wire.fzp">
+      <title>Uno 5V feed (same supply)</title>
+      <views>
+        <breadboardView layer="breadboardWire">
+          <geometry x="202.46494068332925" y="394.9999321944513" z="3" x1="0" y1="0" x2="126.53505931667075" y2="183.00006780554872" wireFlags="64"/>
+          <wireExtras mils="22" color="#ffffff" opacity="1" banded="0"/>
+          <connectors>
+            <connector connectorId="connector0" layer="breadboardWire">
+              <geometry x="0" y="0"/>
+              <connects>
+                <connect connectorId="connector87" modelIndex="1" layer="breadboardbreadboard"/>
+              </connects>
+            </connector>
+            <connector connectorId="connector1" layer="breadboardWire">
+              <geometry x="0" y="0"/>
+              <connects>
+                <connect connectorId="connector1" modelIndex="5" layer="breadboard"/>
+              </connects>
+            </connector>
+          </connectors>
+        </breadboardView>
+        <schematicView layer="schematicTrace">
+          <geometry x="107.99990078740157" y="215.0" z="3" x1="0" y1="0" x2="221.00009921259843" y2="363.0" wireFlags="128"/>
+          <wireExtras mils="22" color="#ffffff" opacity="1" banded="0"/>
+          <connectors>
+            <connector connectorId="connector0" layer="schematicTrace">
+              <geometry x="0" y="0"/>
+              <connects>
+                <connect connectorId="connector87" modelIndex="1" layer="schematic"/>
+              </connects>
+            </connector>
+            <connector connectorId="connector1" layer="schematicTrace">
+              <geometry x="0" y="0"/>
+              <connects>
+                <connect connectorId="connector1" modelIndex="5" layer="schematic"/>
+              </connects>
+            </connector>
+          </connectors>
+        </schematicView>
+      </views>
+    </instance>
+    <instance moduleIdRef="WireModuleID" modelIndex="113" path="wire.fzp">
       <title>Supply common GND</title>
       <views>
         <breadboardView layer="breadboardWire">
@@ -899,7 +954,7 @@
         </schematicView>
       </views>
     </instance>
-    <instance moduleIdRef="WireModuleID" modelIndex="113" path="wire.fzp">
+    <instance moduleIdRef="WireModuleID" modelIndex="114" path="wire.fzp">
       <title>WIRE: probe J2 to anvil J1</title>
       <views>
         <breadboardView layer="breadboardWire">
@@ -950,7 +1005,7 @@
         </schematicView>
       </views>
     </instance>
-    <instance moduleIdRef="WireModuleID" modelIndex="114" path="wire.fzp">
+    <instance moduleIdRef="WireModuleID" modelIndex="115" path="wire.fzp">
       <title>CONTACT ONLY: front TP8 GND</title>
       <views>
         <breadboardView layer="breadboardWire">
@@ -993,7 +1048,7 @@
     </instance>
     <instance moduleIdRef="NoteModuleID" modelIndex="900" path="note.fzp">
       <title>Wiring note</title>
-      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;h2&gt;Arduino Uno ArduinoISP -&gt; programming clip -&gt; Ring IR PCB&lt;/h2&gt;&lt;p&gt;GREY MISO | WHITE 3V3 VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND&lt;br/&gt;J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</text>
+      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;h2&gt;Arduino Uno ArduinoISP -&gt; programming clip -&gt; Ring IR PCB&lt;/h2&gt;&lt;p&gt;GREY MISO | WHITE 5V VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND&lt;br/&gt;J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</text>
       <views>
         <breadboardView layer="breadboardNote">
           <geometry x="15" y="5" z="6" width="1250" height="100"/>
@@ -1017,7 +1072,7 @@
     </instance>
     <instance moduleIdRef="NoteModuleID" modelIndex="902" path="note.fzp">
       <title>Wiring note</title>
-      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;b&gt;POWER / SAFETY - READ BEFORE CONNECTING&lt;/b&gt;&lt;br/&gt;REMOVE CR2032. Wire and check continuity with all power OFF.&lt;br/&gt;White lead = user-reported 3V3 VCC. Uno supply pins are NOT automatically wired in this drawing.&lt;br/&gt;STOP: a 3.3V target cannot take direct 5V Uno ISP signals. Disconnect USB and target power.&lt;br/&gt;Use verified SPI level translation or a voltage-compatible ISP host before reconnecting (not shown).&lt;br/&gt;Uno 3V3 power does NOT change its I/O levels. Do not join supply outputs.&lt;br/&gt;Colours match the user&amp;#x27;s reported COM6 harness; continuity and programming are not yet verified.&lt;/body&gt;&lt;/html&gt;</text>
+      <text>&lt;html&gt;&lt;body style='font-family:Arial;font-size:10pt'&gt;&lt;b&gt;POWER / SAFETY - READ BEFORE CONNECTING&lt;/b&gt;&lt;br/&gt;REMOVE CR2032. Wire and check continuity with all power OFF.&lt;br/&gt;White lead = Uno 5V to J1.2; black = common GND. Use ONE supply, never join outputs.&lt;br/&gt;The 5V target rail is user-reported working; target power now matches Uno 5V ISP signals.&lt;br/&gt;Measure power at the PCB and check current/temperature; practical operation is not full qualification.&lt;br/&gt;For a 3.3V target use level translation or a compatible ISP host; Uno 3V3 does not change its 5V I/O.&lt;br/&gt;Programming and full readback passed on 10 Nov 2026; IR operation remains untested.&lt;/body&gt;&lt;/html&gt;</text>
       <views>
         <breadboardView layer="breadboardNote">
           <geometry x="15" y="710" z="6" width="1250" height="190"/>

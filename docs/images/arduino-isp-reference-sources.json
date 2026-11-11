@@ -3,7 +3,7 @@
   "physical_figure": {
     "path": "docs/images/arduino-isp-physical-wiring.svg",
     "kind": "Local PDF page 2 vector export, preserving the original five embedded physical views and annotations",
-    "source_pdf_sha256": "50f702bc0d1cba454cda1803c4853db9219541abfd4495c756aea0e5061d97c7",
+    "source_pdf_sha256": "7538b3cdaa9f23a91cef7c34594b3a2c47241550e8f6461c7297167dd0a2f54d",
     "source_pdf_committed": false,
     "exporter": "PyMuPDF get_svg_image(text_as_path=False)",
     "header_post_raycast_verified": true,
@@ -56,7 +56,9 @@
     },
     "artwork": "Uno: Fritzing core part by althaus. Clip, header and IR board: local Blender renders from the existing project meshes.",
     "qualification": "Unchanged existing CAD meshes; jaw/pin estimates remain unmeasured. No physical qualification.",
-    "text_normalization": "Qt PDF soft-hyphen glyph mappings are replaced by visible ASCII hyphens so browsers preserve arrows and labels."
+    "text_normalization": "Qt PDF soft-hyphen glyph mappings are replaced by visible ASCII hyphens so browsers preserve arrows and labels.",
+    "power_note": "Updated diagram uses white Uno 5V target power, reported working on 2026-11-11; not a separately measured programming run.",
+    "uno_5v_connector": "connector87; marker located from the installed Fritzing Uno core artwork"
   },
   "voltage_figure": {
     "path": "docs/images/ir-voltage-test.svg",
@@ -72,8 +74,8 @@
     "displayed_voltages": "Expected readings only, not measured values"
   },
   "asset_sha256": {
-    "docs/images/arduino-isp-physical-wiring.svg": "5663013d6f006cdf9c8eb91da43c666845b557bc0b5f3a0ff136eed39cda7793",
-    "docs/images/ir-voltage-test.svg": "b0a5a40e73c84668d59df8ca12d1b1d931170b794afe285f33f2ce15477dfa77"
+    "docs/images/arduino-isp-physical-wiring.svg": "5ecf7202e770b59f556061c7d6dbc0d87e8f3b134524e6b18226b3b38b776048",
+    "docs/images/ir-voltage-test.svg": "63128b162804150df0f1da3a6f46a13bac2ba33d6d2fa1bf0db21bf3e1c8b5b2"
   },
   "license": "CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/"
 }

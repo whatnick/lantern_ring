@@ -3983,10 +3983,10 @@
   <g transform="translate(166.667,6277.78)">
    <g id="breadboard">
     <rect fill="#fff1ee" height="1100" rx="88.8889" stroke="#d62728" width="3355.56" x="44.4444" y="44.4444" />
-    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="155.556" text-anchor="start" x="177.778" y="533.333">SELECTED TARGET SUPPLY</text>
-    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="177.778" y="766.667">One current-limited source, voltage qualified</text>
-    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="177.778" y="1000">No automatic connection to Uno 5V / 3V3</text>
-    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="2800" y="277.778">3V3 VCC</text>
+    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="155.556" text-anchor="start" x="177.778" y="533.333">UNO 5V TARGET SUPPLY</text>
+    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="177.778" y="766.667">Logical power breakout, not another supply</text>
+    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="177.778" y="1000">5V linked to Uno; 3V3 remains unconnected</text>
+    <text fill="#17334c" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="2800" y="277.778">5V VCC</text>
     <text fill="#202020" font-family="Droid Sans,Arial,sans-serif" font-size="122.222" text-anchor="start" x="355.556" y="277.778">GND</text>
     <circle cx="3322.22" cy="88.8889" fill="#fff" id="connector1pin" r="33.3333" stroke="#8a6c22" stroke-width="16.6667" />
     <circle cx="500" cy="88.8889" fill="#fff" id="connector2pin" r="33.3333" stroke="#8a6c22" stroke-width="16.6667" />
@@ -4075,17 +4075,21 @@
    </g>
   </g>
  </g>
- <g partID="1140">
+ <g partID="1150">
   <line stroke="#202020" stroke-linecap="round" stroke-width="44.2222" x1="7877.78" x2="10222.2" y1="7077.78" y2="5055.56" />
   <line stroke="#202020" stroke-linecap="round" stroke-width="22" x1="7877.78" x2="10222.2" y1="7077.78" y2="5055.56" />
  </g>
- <g partID="1130">
+ <g partID="1140">
   <path d="M7877.78,5055.56C8655.56,5611.11, 8655.56,6088.89 7877.78,6366.67" fill="none" stroke="#202020" stroke-linecap="round" stroke-width="44.2222" />
   <path d="M7877.78,5055.56C8655.56,5611.11, 8655.56,6088.89 7877.78,6366.67" fill="none" stroke="#202020" stroke-linecap="round" stroke-width="22" />
  </g>
- <g partID="1120">
+ <g partID="1130">
   <line stroke="#202020" stroke-linecap="round" stroke-width="44.2222" x1="2282.94" x2="666.667" y1="4333.33" y2="6366.67" />
   <line stroke="#202020" stroke-linecap="round" stroke-width="22" x1="2282.94" x2="666.667" y1="4333.33" y2="6366.67" />
+ </g>
+ <g partID="1120">
+  <line stroke="#607080" stroke-linecap="round" stroke-width="44.2222" x1="2082.94" x2="3488.89" y1="4333.33" y2="6366.67" />
+  <line stroke="#ffffff" stroke-linecap="round" stroke-width="22" x1="2082.94" x2="3488.89" y1="4333.33" y2="6366.67" />
  </g>
  <g partID="1110">
   <line stroke="#202020" stroke-linecap="round" stroke-width="44.2222" x1="2282.94" x2="7166.67" y1="4333.33" y2="2388.89" />
@@ -4158,19 +4162,19 @@
      <text fill="#000000" x="122.222" y="402.951">REMOVE CR2032. Wire and check continuity with all power OFF. </text>
     </g>
     <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="552.951">
-     <text fill="#000000" x="122.222" y="552.951">White lead = user-reported 3V3 VCC. Uno supply pins are NOT automatically wired in this drawing. </text>
+     <text fill="#000000" x="122.222" y="552.951">White lead = Uno 5V to J1.2; black = common GND. Use ONE supply, never join outputs. </text>
     </g>
     <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="702.951">
-     <text fill="#000000" x="122.222" y="702.951">STOP: a 3.3V target cannot take direct 5V Uno ISP signals. Disconnect USB and target power. </text>
+     <text fill="#000000" x="122.222" y="702.951">The 5V target rail is user-reported working; target power now matches Uno 5V ISP signals. </text>
     </g>
     <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="852.951">
-     <text fill="#000000" x="122.222" y="852.951">Use verified SPI level translation or a voltage-compatible ISP host before reconnecting (not shown). </text>
+     <text fill="#000000" x="122.222" y="852.951">Measure power at the PCB and check current/temperature; practical operation is not full qualification. </text>
     </g>
     <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="1002.95">
-     <text fill="#000000" x="122.222" y="1002.95">Uno 3V3 power does NOT change its I/O levels. Do not join supply outputs. </text>
+     <text fill="#000000" x="122.222" y="1002.95">For a 3.3V target use level translation or a compatible ISP host; Uno 3V3 does not change its 5V I/O. </text>
     </g>
     <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="1152.95">
-     <text fill="#000000" x="122.222" y="1152.95">Colours match the user's reported COM6 harness; continuity and programming are not yet verified.</text>
+     <text fill="#000000" x="122.222" y="1152.95">Programming and full readback passed on 10 Nov 2026; IR operation remains untested.</text>
     </g>
    </g>
   </g>
@@ -4201,7 +4205,7 @@
     <text fill="#000000" x="122.222" y="501.91">Arduino Uno ArduinoISP -&gt; programming clip -&gt; Ring IR PCB</text>
    </g>
    <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="759.549">
-    <text fill="#000000" x="122.222" y="759.549">GREY MISO | WHITE 3V3 VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND </text>
+    <text fill="#000000" x="122.222" y="759.549">GREY MISO | WHITE 5V VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND </text>
    </g>
    <g fill="#000000" font-family="Noto Sans" font-size="130.729" stroke="none" x="122.222" y="909.549">
     <text fill="#000000" x="122.222" y="909.549">J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.</text>

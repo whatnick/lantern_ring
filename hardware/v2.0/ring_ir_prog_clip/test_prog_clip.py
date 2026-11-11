@@ -251,6 +251,16 @@ class ClipTest(unittest.TestCase):
         self.assertIn('(rev "0.2")', read(os.path.join(HERE, "anvil", "ring_ir_prog_anvil.kicad_sch")))
         self.assertEqual(self.params["board_revision"], "0.2")
 
+    def test_minor_revision_uses_only_the_canonical_board_files(self):
+        boards = {os.path.relpath(os.path.join(root, name), HERE).replace(os.sep, "/")
+                  for root, _, names in os.walk(HERE) for name in names
+                  if name.endswith(".kicad_pcb")}
+        self.assertEqual(boards, {
+            "probe/ring_ir_prog_probe.kicad_pcb",
+            "anvil/ring_ir_prog_anvil.kicad_pcb",
+            "fence/ring_ir_prog_fence.kicad_pcb",
+        })
+
     def test_programming_connector_diagram_matches_isp_pin_map(self):
         path = os.path.join(HERE, "programming-connector.svg")
         root = ET.parse(path).getroot()

@@ -17,7 +17,7 @@ CLIP = HERE.parent
 UNO_MODULE = "arduino_Uno_Rev3(fix)"
 SIGNALS = [
     ("MISO", "grey", "#707070", "D12", "connector55", "1", "P2", "TP2", "PB1"),
-    ("VCC", "white", "#ffffff", "3V3 VCC", None, "2", "P9", "TP9", "VCC"),
+    ("VCC", "white", "#ffffff", "5V", "connector87", "2", "P9", "TP9", "VCC"),
     ("SCK", "blue", "#1768c4", "D13", "connector56", "3", "P3", "TP3", "PB2"),
     ("MOSI", "purple", "#7b3fb3", "D11", "connector54", "4", "P1", "TP1", "PB0"),
     ("RESET", "brown", "#8c564b", "D10", "connector53", "5", "P6", "TP6", "PB5"),
@@ -25,11 +25,11 @@ SIGNALS = [
 ]
 WARNINGS = [
     "REMOVE CR2032. Wire and check continuity with all power OFF.",
-    "White lead = user-reported 3V3 VCC. Uno supply pins are NOT automatically wired in this drawing.",
-    "STOP: a 3.3V target cannot take direct 5V Uno ISP signals. Disconnect USB and target power.",
-    "Use verified SPI level translation or a voltage-compatible ISP host before reconnecting (not shown).",
-    "Uno 3V3 power does NOT change its I/O levels. Do not join supply outputs.",
-    "Colours match the user's reported COM6 harness; continuity and programming are not yet verified.",
+    "White lead = Uno 5V to J1.2; black = common GND. Use ONE supply, never join outputs.",
+    "The 5V target rail is user-reported working; target power now matches Uno 5V ISP signals.",
+    "Measure power at the PCB and check current/temperature; practical operation is not full qualification.",
+    "For a 3.3V target use level translation or a compatible ISP host; Uno 3V3 does not change its 5V I/O.",
+    "Programming and full readback passed on 10 Nov 2026; IR operation remains untested.",
 ]
 
 
@@ -159,10 +159,10 @@ def make_parts():
     ring = part("isp_target", "Ring IR target", (310, 384), body, pins)
 
     body = '<rect x="4" y="4" width="302" height="99" rx="8" fill="#fff1ee" stroke="#d62728"/>'
-    body += svg_text(16, 48, "SELECTED TARGET SUPPLY", 14)
-    body += svg_text(16, 69, "One current-limited source, voltage qualified", 11)
-    body += svg_text(16, 90, "No automatic connection to Uno 5V / 3V3", 11)
-    body += svg_text(252, 25, "3V3 VCC", 11)
+    body += svg_text(16, 48, "UNO 5V TARGET SUPPLY", 14)
+    body += svg_text(16, 69, "Logical power breakout, not another supply", 11)
+    body += svg_text(16, 90, "5V linked to Uno; 3V3 remains unconnected", 11)
+    body += svg_text(252, 25, "5V VCC", 11)
     body += svg_text(32, 25, "GND", 11, "#202020")
     supply = part("isp_supply", "Selected target VCC", (310, 108), body,
                   {"connector1": (299, 8, "Selected target VCC"),
@@ -287,6 +287,7 @@ def sketch(parts, uno):
         if sig != "GND":
             wire((2, "connector" + str(10 + n)), (4, "connector" + number), color,
                  "CONTACT ONLY: " + sig)
+    wire((1, "connector87"), (5, "connector1"), "#ffffff", "Uno 5V feed (same supply)")
     wire((1, "connector89"), (5, "connector2"), "#202020", "Supply common GND")
     wire((2, "connector16"), (3, "connector1"), "#202020", "WIRE: probe J2 to anvil J1",
          (70, 50, 70, -25))
@@ -294,7 +295,7 @@ def sketch(parts, uno):
 
     notes = [
         (15, 5, 1250, 100, "<h2>Arduino Uno ArduinoISP -> programming clip -> Ring IR PCB</h2>"
-         "<p>GREY MISO | WHITE 3V3 VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND<br/>"
+         "<p>GREY MISO | WHITE 5V VCC | BLUE SCK | PURPLE MOSI | BROWN RESET | BLACK GND<br/>"
          "J1 = board-top view. Right-hand links represent spring/flat contacts, NOT extra cables.</p>"),
         (15, 115, 370, 90, "<b>HOST: Arduino Uno / ATmega328P</b><br/>"
          "Load File > Examples > 11.ArduinoISP > ArduinoISP.<br/>"

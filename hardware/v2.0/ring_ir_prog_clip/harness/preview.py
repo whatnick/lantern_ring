@@ -27,7 +27,7 @@ def outline_white_wires(path):
                 strokes.insert(0, outline)
             strokes[0].set("stroke", "#607080")
             changed += 1
-    if changed != 2:
+    if changed != 3:
         raise ValueError("Missing white VCC wire strokes in Fritzing export: " + path)
     root.write(path, encoding="utf-8", xml_declaration=True)
 
