@@ -8,6 +8,14 @@ as linked in the root README. Preserve historical designs and their assets.
 - `hardware/v1.0`: legacy multi-colour PCB, native FreeCAD assembly and logo STLs.
 - `hardware/v2.0/ring_mono`: current mono-colour PCB and existing fabrication data.
 - `hardware/v2.0/ring_pcb_IR`: separate ATtiny85/IR design, not the mono contact map.
+- `hardware/v2.0/ring_pcb_RGBW`: experimental single-LED RGBW, four-layer board.
+  Edit `parameters.json`/`generate.py`, not generated KiCad files. Preserve the
+  IR outline, thickness, TP1-TP9 nets/pads and exposed contact windows exactly.
+  `build.ps1` verifies saved routing; `-Rebuild -Render -FreeroutingJar <jar>`
+  regenerates locally. Require all-severity ERC/DRC/parity/connectivity clean,
+  portable `test_rgbw.py` passing and fresh render/FreeCAD evidence.
+  Three hardware PWM channels plus PB2 software PWM are a circuit allocation,
+  not implemented firmware or physical battery/clip qualification.
 - `hardware/v2.0/ring_pcb_dotstar`: incomplete APA102 experiment, not production.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
   `ring_3d/animation` renders the Blender 5 assembly GIF/MP4 via `render.ps1`;

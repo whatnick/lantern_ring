@@ -1,0 +1,231 @@
+{
+  "valid_solids": 65,
+  "feature_count": 1,
+  "inputs_sha256": {
+    "ring_pcb_RGBW.kicad_pcb": "50a1d6b93eed0becc76c9f269048f75dc8992cad7336586a1e18c67f3a6038b7",
+    "ring_pcb_RGBW.kicad_sch": "85f1063008e879ceb60f991126caa7d152a398baba1eccbdebee864e2ffc9a15",
+    "create_led_model.py": "32ff66837f2a66a45602e6bcee4431cf1ff79e7a2c57bd06c0dfbb283fef2f93",
+    "check_cad.py": "69b7f4534bd4851bb50255a15c9766d428eb9461790b7984cc2d7860e510194c",
+    "build.ps1": "3f17ec296e8bc72270f1ec395d9b19a1aac0c769fd7507f28988a1c9b576cf33",
+    "models/step/ATtiny85_QFN20.step": "657b868b07d8257879f718f56d0e2ffeaad2811d07aaf916aa80a1c4619e0f35",
+    "models/step/CLQ6A_RGBW.step": "9cd2387596ca36fe82043f1801880526a052cb3d330ae269ef670336301bfc3e",
+    "models/step/C_0402_1005Metric.step": "03e44c4b2b727b8d4b6b1fd598cbd12dd5e614f1dfeefa96a92a07e3a3b312a2",
+    "models/step/C_0805_2012Metric.step": "9a669c1a2f1ea25b88b401acef6efeaa80a067bd7da9db6993de719a7fbe155c",
+    "models/step/DMG1012T_SOT523.step": "23ac188929f7d26f19aa782e97002387e6b692b091df1d216f21a53da3bbcded",
+    "models/step/R_0402_1005Metric.step": "91507e5af4251cb4ef38e04889c9b98da29904432bd83786bba13ae9b605eacb"
+  },
+  "clip_geometry_sha256": "d584691d8fa4709cf4e51c6119c0489e3970ae966c5a561d0cc34afde72c7308",
+  "step_sha256": "4ca4b3d54b1384a99550b9c16db0577ec39423b3d75a908bb217680e7dd2495f",
+  "component_window_screen_passed": true,
+  "component_screens": {
+    "R4": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.592999999999984,
+      "step_instance": "R_0402_1005Metric"
+    },
+    "Q2": {
+      "screen_envelope_mm": [
+        1.7,
+        1.7,
+        1.0
+      ],
+      "window_edge_margin_mm": 0.8890000000000153,
+      "step_instance": "DMG1012T_SOT523"
+    },
+    "Q3": {
+      "screen_envelope_mm": [
+        1.7,
+        1.7,
+        1.0
+      ],
+      "window_edge_margin_mm": 0.9929999999999897,
+      "step_instance": "DMG1012T_SOT523001"
+    },
+    "R13": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 2.1449999999999907,
+      "step_instance": "R_0402_1005Metric001"
+    },
+    "C2": {
+      "screen_envelope_mm": [
+        2.1,
+        1.35,
+        1.4
+      ],
+      "window_edge_margin_mm": 3.0679999999999783,
+      "step_instance": "C_0805_2012Metric"
+    },
+    "R11": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.1929999999999783,
+      "step_instance": "R_0402_1005Metric002"
+    },
+    "Q4": {
+      "screen_envelope_mm": [
+        1.7,
+        1.7,
+        1.0
+      ],
+      "window_edge_margin_mm": 1.1930000000000067,
+      "step_instance": "DMG1012T_SOT523002"
+    },
+    "R10": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.339000000000004,
+      "step_instance": "R_0402_1005Metric003"
+    },
+    "Q1": {
+      "screen_envelope_mm": [
+        1.7,
+        1.7,
+        1.0
+      ],
+      "window_edge_margin_mm": 0.8890000000000153,
+      "step_instance": "DMG1012T_SOT523003"
+    },
+    "R1": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.5430000000000064,
+      "step_instance": "R_0402_1005Metric004"
+    },
+    "U1": {
+      "screen_envelope_mm": [
+        4.1,
+        4.1,
+        1.0
+      ],
+      "window_edge_margin_mm": 0.7949999999999962,
+      "step_instance": "ATtiny85_QFN20"
+    },
+    "R9": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.339000000000004,
+      "step_instance": "R_0402_1005Metric005"
+    },
+    "R8": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.5449999999999962,
+      "step_instance": "R_0402_1005Metric006"
+    },
+    "R7": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 1.092999999999984,
+      "step_instance": "R_0402_1005Metric007"
+    },
+    "D1": {
+      "screen_envelope_mm": [
+        5.3,
+        5.1,
+        1.2
+      ],
+      "window_edge_margin_mm": 0.19300000000001205,
+      "step_instance": "CLQ6A_RGBW"
+    },
+    "R2": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 1.8430000000000035,
+      "step_instance": "R_0402_1005Metric008"
+    },
+    "R5": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.18899999999999828,
+      "step_instance": "R_0402_1005Metric009"
+    },
+    "C1": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.6
+      ],
+      "window_edge_margin_mm": 3.5449999999999964,
+      "step_instance": "C_0402_1005Metric"
+    },
+    "R14": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 4.238999999999981,
+      "step_instance": "R_0402_1005Metric010"
+    },
+    "R6": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.18899999999999828,
+      "step_instance": "R_0402_1005Metric011"
+    },
+    "R12": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.994999999999999,
+      "step_instance": "R_0402_1005Metric012"
+    },
+    "R3": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.143000000000015,
+      "step_instance": "R_0402_1005Metric013"
+    }
+  },
+  "overall_bounds_mm": [
+    -22.238000000000003,
+    -20.65,
+    0.0,
+    -4.712,
+    -1.5999999999991235,
+    2.8449999999999998
+  ],
+  "scope": "Nominal package CAD plus conservative size screens, not physical clip fit, solder allowance or jaw/pin qualification",
+  "model_scope": "LED/QFN/SOT are local nominal envelopes with illustrative terminal details; passives use KiCad STEP models",
+  "clip_geometry_measured": false
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Datasheet-sized envelope models, not manufacturer CAD; terminal details illustrative",
+  "ATtiny85_QFN20": {
+    "body_mm": [
+      4,
+      4,
+      0.9
+    ],
+    "ep_mm": [
+      2.6,
+      2.6
+    ],
+    "pitch_mm": 0.5,
+    "source": "Microchip ATtiny25/45/85 20M QFN package"
+  },
+  "DMG1012T_SOT523": {
+    "body_mm": [
+      0.8,
+      1.6,
+      0.85
+    ],
+    "source": "Diodes DS31783 Rev8-2 p6"
+  },
+  "reason": "Installed footprint library references unavailable QFN/SOT523 STEP files; no guessed model aliases used"
+}

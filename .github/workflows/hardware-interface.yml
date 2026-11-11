@@ -5,6 +5,7 @@ on:
     paths:
       - "hardware/v2.0/ring_3d/**"
       - "hardware/v2.0/ring_ir_prog_clip/**"
+      - "hardware/v2.0/ring_pcb_RGBW/**"
       - "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
       - "docs/design/contact-roadmap/**"
@@ -17,6 +18,7 @@ on:
     paths:
       - "hardware/v2.0/ring_3d/**"
       - "hardware/v2.0/ring_ir_prog_clip/**"
+      - "hardware/v2.0/ring_pcb_RGBW/**"
       - "hardware/v2.0/ring_pcb_IR/ring_pcb_IR.kicad_pcb"
       - "hardware/v2.0/ring_mono/ring_mono.kicad_pcb"
       - "docs/design/contact-roadmap/**"
@@ -49,6 +51,8 @@ jobs:
         run: python -m unittest discover -s docs/design/contact-roadmap -p "test_roadmap.py"
       - name: Check IR programming clip against the IR ring board
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_prog_clip.py"
+      - name: Check RGBW circuit, unchanged ISP interface and saved validation evidence
+        run: python -m unittest discover -s hardware/v2.0/ring_pcb_RGBW -p "test_rgbw.py"
       - name: Check photographed clip reconstruction, pogo pitches and CAD evidence
         run: python -m unittest discover -s hardware/v2.0/ring_ir_prog_clip -p "test_assembly.py"
       - name: Check Fritzing ISP harness and illustrated HTML programming guide
