@@ -16,6 +16,9 @@ as linked in the root README. Preserve historical designs and their assets.
   portable `test_rgbw.py` passing and fresh render/FreeCAD evidence.
   Three hardware PWM channels plus PB2 software PWM are a circuit allocation,
   not implemented firmware or physical battery/clip qualification.
+- `hardware/v2.0/ring_pcb_RGBW_dual`: independent two-dual-MOSFET RGBW option,
+  with the same immutable IR interface and verification gates. Keep both RGBW
+  variants and their comparison; neither is physically qualified.
 - `hardware/v2.0/ring_pcb_dotstar`: incomplete APA102 experiment, not production.
 - `hardware/v2.0/ring_3d`: v2 keyed bayonet cassette source and generated artifacts.
   `ring_3d/animation` renders the Blender 5 assembly GIF/MP4 via `render.ps1`;

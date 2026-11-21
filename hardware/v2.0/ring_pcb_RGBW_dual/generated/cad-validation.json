@@ -1,0 +1,213 @@
+{
+  "valid_solids": 63,
+  "feature_count": 1,
+  "inputs_sha256": {
+    "ring_pcb_RGBW.kicad_pcb": "9a59f57ea930f83c41a4cc67525c728a735c5114ab1e393a0b9f055c8aa922c1",
+    "ring_pcb_RGBW.kicad_sch": "c87b8e01b39e2b8ab4c676b8c5f647fb90a17fed2ab35b8658d438cce032c145",
+    "create_led_model.py": "e5d53b73a8fbec7c1decfd880112442f3eeb70a3eb534217df8255c7fba13918",
+    "check_cad.py": "9ec83f7eb2f3009a82a1152d2b3df57203a16871d66f532ba96b07ebe10dac26",
+    "build.ps1": "3f17ec296e8bc72270f1ec395d9b19a1aac0c769fd7507f28988a1c9b576cf33",
+    "models/step/ATtiny85_QFN20.step": "11754fedfc9625b68ca61ca278a14b75d3df955999c8eb148141e9bc2cb18e11",
+    "models/step/CLQ6A_RGBW.step": "d24ec88f68fc64afbb7f66a85ba39ce744c3cd93e958bfb4d3fa19829c135fcc",
+    "models/step/C_0402_1005Metric.step": "03e44c4b2b727b8d4b6b1fd598cbd12dd5e614f1dfeefa96a92a07e3a3b312a2",
+    "models/step/C_0805_2012Metric.step": "9a669c1a2f1ea25b88b401acef6efeaa80a067bd7da9db6993de719a7fbe155c",
+    "models/step/NTZD3154N_SOT563.step": "0336bc6754e7eb6325d4d4da616d4dd3336a95f264e0046649cf6da9feaa6c6b",
+    "models/step/R_0402_1005Metric.step": "91507e5af4251cb4ef38e04889c9b98da29904432bd83786bba13ae9b605eacb"
+  },
+  "clip_geometry_sha256": "d584691d8fa4709cf4e51c6119c0489e3970ae966c5a561d0cc34afde72c7308",
+  "step_sha256": "67bdbadd3fdc62316ec983f460d74ca0b24b5d631a47d52452da9c1d390b4099",
+  "component_window_screen_passed": true,
+  "component_screens": {
+    "Q2": {
+      "screen_envelope_mm": [
+        1.7,
+        1.7,
+        0.65
+      ],
+      "window_edge_margin_mm": 1.1930000000000067,
+      "step_instance": "NTZD3154N_SOT563"
+    },
+    "R4": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.592999999999984,
+      "step_instance": "R_0402_1005Metric"
+    },
+    "R5": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.18899999999999828,
+      "step_instance": "R_0402_1005Metric001"
+    },
+    "C1": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.6
+      ],
+      "window_edge_margin_mm": 3.5449999999999964,
+      "step_instance": "C_0402_1005Metric"
+    },
+    "R11": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.1929999999999783,
+      "step_instance": "R_0402_1005Metric002"
+    },
+    "R2": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 1.8430000000000035,
+      "step_instance": "R_0402_1005Metric003"
+    },
+    "R13": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 2.1449999999999907,
+      "step_instance": "R_0402_1005Metric004"
+    },
+    "R8": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.5449999999999962,
+      "step_instance": "R_0402_1005Metric005"
+    },
+    "Q1": {
+      "screen_envelope_mm": [
+        1.7,
+        1.7,
+        0.65
+      ],
+      "window_edge_margin_mm": 0.8890000000000153,
+      "step_instance": "NTZD3154N_SOT563001"
+    },
+    "R6": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.18899999999999828,
+      "step_instance": "R_0402_1005Metric006"
+    },
+    "R3": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.143000000000015,
+      "step_instance": "R_0402_1005Metric007"
+    },
+    "R10": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.339000000000004,
+      "step_instance": "R_0402_1005Metric008"
+    },
+    "R14": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 4.238999999999981,
+      "step_instance": "R_0402_1005Metric009"
+    },
+    "D1": {
+      "screen_envelope_mm": [
+        5.3,
+        5.1,
+        1.2
+      ],
+      "window_edge_margin_mm": 0.19300000000001205,
+      "step_instance": "CLQ6A_RGBW"
+    },
+    "R1": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.5430000000000064,
+      "step_instance": "R_0402_1005Metric010"
+    },
+    "R12": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 0.994999999999999,
+      "step_instance": "R_0402_1005Metric011"
+    },
+    "R7": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 1.092999999999984,
+      "step_instance": "R_0402_1005Metric012"
+    },
+    "R9": {
+      "screen_envelope_mm": [
+        1.1,
+        0.6,
+        0.5
+      ],
+      "window_edge_margin_mm": 3.339000000000004,
+      "step_instance": "R_0402_1005Metric013"
+    },
+    "U1": {
+      "screen_envelope_mm": [
+        4.1,
+        4.1,
+        1.0
+      ],
+      "window_edge_margin_mm": 0.7949999999999962,
+      "step_instance": "ATtiny85_QFN20"
+    },
+    "C2": {
+      "screen_envelope_mm": [
+        2.1,
+        1.35,
+        1.4
+      ],
+      "window_edge_margin_mm": 3.0679999999999783,
+      "step_instance": "C_0805_2012Metric"
+    }
+  },
+  "overall_bounds_mm": [
+    -22.238000000000003,
+    -20.65,
+    0.0,
+    -4.712,
+    -1.5999999999991235,
+    2.8449999999999998
+  ],
+  "scope": "Nominal package CAD plus conservative size screens, not physical clip fit, solder allowance or jaw/pin qualification",
+  "model_scope": "LED/QFN/SOT are local nominal envelopes with illustrative terminal details; passives use KiCad STEP models",
+  "clip_geometry_measured": false
+}

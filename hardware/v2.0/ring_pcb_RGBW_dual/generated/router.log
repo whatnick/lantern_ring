@@ -1,0 +1,73 @@
+2026-11-21 19:23:12.714 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+2026-11-21 19:23:13.085 INFO   Hardware: 8 CPU cores, 265 CPU score, 16320 MB RAM
+2026-11-21 19:23:13.102 WARN   GUI is disabled and you don't have a console available, so the only feedback from Freerouting is in the log.
+2026-11-21 19:23:14.587 INFO   [F6796A\32A6BA] Loading board file 'ring_pcb_RGBW.dsn'...
+2026-11-21 19:23:14.739 INFO   [F6796A\32A6BA] Job 'F6796A\32A6BA' started at 2026-11-21T08:53:14.738765900Z.
+2026-11-21 19:23:14.972 WARN   Design Warning: Board has 23 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 23 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 2 pin-to-pin clearance violations:
+          - D1.7 [net G_K] <-> D1.1 [net VCC]
+          - D1.6 [net B_K] <-> D1.4 [net VCC]
+      * 21 fixed trace/via clearance violations (first 5 shown):
+          - FixedVia#260 [net VCC] <-> ObstacleArea#6
+          - FixedVia#256 [net GND] <-> FixedVia#254 [net GND]
+          - FixedVia#256 [net GND] <-> FixedVia#254 [net GND]
+          - FixedVia#256 [net GND] <-> FixedVia#254 [net GND]
+          - FixedVia#256 [net GND] <-> FixedVia#254 [net GND]
+          ... and 16 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 23 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-11-21 19:23:15.042 INFO   [F6796A\32A6BA] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=2.
+2026-11-21 19:23:15.257 INFO   [F6796A\32A6BA] Auto-routing stage started on board '063ed0fd7b3b62fd66db782145f5be65' with baseline score 238.24 for 36 unrouted items.
+2026-11-21 19:23:20.437 INFO   [F6796A\32A6BA] Auto-routing pass #1 on board '063ed0fd7b3b62fd66db782145f5be65' was completed in 5.09 seconds with score 688.53 (13 unrouted and 23 violations), using 4.53 CPU seconds and the job allocated 0.76 GB of memory so far.
+2026-11-21 19:23:22.083 INFO   [F6796A\32A6BA] Auto-routing pass #2 on board 'a9d8cad3f2cbd378bef4ee8edc9b0b38' was completed in 1.56 seconds with score 735.31 (11 unrouted and 23 violations), using 6.36 CPU seconds and the job allocated 1.23 GB of memory so far.
+2026-11-21 19:23:22.690 INFO   [F6796A\32A6BA] Auto-routing pass #3 on board '30a8906760a291b064a3acbea4f76c6c' was completed in 0.53 seconds with score 758.70 (10 unrouted and 23 violations), using 6.36 CPU seconds and the job allocated 1.23 GB of memory so far.
+2026-11-21 19:23:23.225 INFO   [F6796A\32A6BA] Auto-routing pass #4 on board 'e6a9ddcb921ce7e8f0f113ddc1e85347' was completed in 0.45 seconds with score 758.70 (10 unrouted and 23 violations), using 7.30 CPU seconds and the job allocated 1.39 GB of memory so far.
+2026-11-21 19:23:23.712 INFO   [F6796A\32A6BA] Auto-routing pass #5 on board '5c339044f7e238b67fc535488a24af49' was completed in 0.40 seconds with score 758.70 (10 unrouted and 23 violations), using 7.30 CPU seconds and the job allocated 1.39 GB of memory so far.
+2026-11-21 19:23:24.109 INFO   [F6796A\32A6BA] Auto-routing pass #6 on board '5d47723b37f03ae846e3b7be5322a692' was completed in 0.33 seconds with score 758.70 (10 unrouted and 23 violations), using 8.25 CPU seconds and the job allocated 1.57 GB of memory so far.
+2026-11-21 19:23:24.572 INFO   [F6796A\32A6BA] Auto-routing pass #7 on board '57d146e787ef38e41d2fcf0934cc3966' was completed in 0.39 seconds with score 758.70 (10 unrouted and 23 violations), using 8.25 CPU seconds and the job allocated 1.57 GB of memory so far.
+2026-11-21 19:23:25.065 INFO   [F6796A\32A6BA] Auto-routing pass #8 on board '2006658e7b70891a51a2f117b1405d35' was completed in 0.41 seconds with score 758.70 (10 unrouted and 23 violations), using 9.20 CPU seconds and the job allocated 1.77 GB of memory so far.
+2026-11-21 19:23:25.594 INFO   [F6796A\32A6BA] Auto-routing pass #9 on board 'a9c6b544e9352d839a2440e989d1a568' was completed in 0.42 seconds with score 758.70 (10 unrouted and 23 violations), using 9.20 CPU seconds and the job allocated 1.77 GB of memory so far.
+2026-11-21 19:23:26.130 INFO   [F6796A\32A6BA] Auto-routing pass #10 on board '62f433b1aacb0bc02319d1a3ef1ddd22' was completed in 0.44 seconds with score 758.70 (10 unrouted and 23 violations), using 10.16 CPU seconds and the job allocated 1.96 GB of memory so far.
+2026-11-21 19:23:26.644 INFO   [F6796A\32A6BA] Auto-routing pass #11 on board '265df942233b1f8cadb170993c3f0a99' was completed in 0.43 seconds with score 758.70 (10 unrouted and 23 violations), using 10.16 CPU seconds and the job allocated 1.96 GB of memory so far.
+2026-11-21 19:23:27.135 INFO   [F6796A\32A6BA] Auto-routing pass #12 on board 'f3de9264c1a87f97bea8828c65da0aa4' was completed in 0.42 seconds with score 758.70 (10 unrouted and 23 violations), using 11.13 CPU seconds and the job allocated 2.17 GB of memory so far.
+2026-11-21 19:23:27.559 INFO   [F6796A\32A6BA] Auto-routing pass #13 on board 'ba0a1f5e31874e65417251b9b080e5f2' was completed in 0.36 seconds with score 758.70 (10 unrouted and 23 violations), using 11.13 CPU seconds and the job allocated 2.17 GB of memory so far.
+2026-11-21 19:23:28.010 INFO   [F6796A\32A6BA] Auto-routing pass #14 on board 'e1c667ac348b39825ff8f1b8285b7a9b' was completed in 0.39 seconds with score 782.10 (9 unrouted and 23 violations), using 12.13 CPU seconds and the job allocated 2.40 GB of memory so far.
+2026-11-21 19:23:28.416 INFO   [F6796A\32A6BA] Auto-routing pass #15 on board '34ba8161a9e5984f53f57c537e0923df' was completed in 0.34 seconds with score 782.10 (9 unrouted and 23 violations), using 12.13 CPU seconds and the job allocated 2.40 GB of memory so far.
+2026-11-21 19:23:28.860 INFO   [F6796A\32A6BA] Auto-routing pass #16 on board '1d6ed938dc5f9f5683a35356373f71ea' was completed in 0.39 seconds with score 782.10 (9 unrouted and 23 violations), using 13.11 CPU seconds and the job allocated 2.65 GB of memory so far.
+2026-11-21 19:23:29.260 INFO   [F6796A\32A6BA] Auto-routing pass #17 on board '57ceef4eb234f27c1ea67ecd200205ea' was completed in 0.33 seconds with score 782.10 (9 unrouted and 23 violations), using 13.11 CPU seconds and the job allocated 2.65 GB of memory so far.
+2026-11-21 19:23:29.652 INFO   [F6796A\32A6BA] Auto-routing pass #18 on board 'c77eb14efde2a23c439d6541ef130a2d' was completed in 0.35 seconds with score 782.10 (9 unrouted and 23 violations), using 13.11 CPU seconds and the job allocated 2.65 GB of memory so far.
+2026-11-21 19:23:29.937 INFO   [F6796A\32A6BA] Auto-routing pass #19 on board 'fb3bb31654bb2adcfbbe66c87a02fc21' was completed in 0.24 seconds with score 758.70 (10 unrouted and 23 violations), using 14.06 CPU seconds and the job allocated 2.91 GB of memory so far.
+2026-11-21 19:23:30.386 INFO   [F6796A\32A6BA] Auto-routing pass #20 on board '34ba8161a9e5984f53f57c537e0923df' was completed in 0.00 seconds with score 782.10 (9 unrouted and 23 violations), using 14.06 CPU seconds and the job allocated 2.91 GB of memory so far.
+2026-11-21 19:23:30.686 INFO   [F6796A\32A6BA] Auto-routing pass #21 on board '34ba8161a9e5984f53f57c537e0923df' was completed in 0.29 seconds with score 782.10 (9 unrouted and 23 violations), using 14.06 CPU seconds and the job allocated 2.91 GB of memory so far.
+2026-11-21 19:23:31.056 INFO   [F6796A\32A6BA] Auto-routing pass #22 on board '1d6ed938dc5f9f5683a35356373f71ea' was completed in 0.36 seconds with score 805.49 (8 unrouted and 23 violations), using 15.06 CPU seconds and the job allocated 3.19 GB of memory so far.
+2026-11-21 19:23:31.203 INFO   [F6796A\32A6BA] Auto-routing pass #23 on board '1d8c975be7c23819498cbfc721578eb7' was completed in 0.11 seconds with score 805.49 (8 unrouted and 23 violations), using 15.06 CPU seconds and the job allocated 3.19 GB of memory so far.
+2026-11-21 19:23:31.353 INFO   [F6796A\32A6BA] Auto-routing pass #24 on board '1d8c975be7c23819498cbfc721578eb7' was completed in 0.14 seconds with score 805.49 (8 unrouted and 23 violations), using 15.06 CPU seconds and the job allocated 3.19 GB of memory so far.
+2026-11-21 19:23:31.494 INFO   [F6796A\32A6BA] Auto-routing pass #25 on board '1d8c975be7c23819498cbfc721578eb7' was completed in 0.13 seconds with score 805.49 (8 unrouted and 23 violations), using 15.06 CPU seconds and the job allocated 3.19 GB of memory so far.
+2026-11-21 19:23:31.535 INFO   [F6796A\32A6BA] Last-mile rip-up removed 3 blocking trace(s) or via(s) around 8 remaining connection(s).
+2026-11-21 19:23:31.855 INFO   [F6796A\32A6BA] Auto-routing pass #26 on board '524f3cef2a745fc3fc4564a9e3c51161' was completed in 0.29 seconds with score 758.70 (10 unrouted and 23 violations), using 16.06 CPU seconds and the job allocated 3.53 GB of memory so far.
+2026-11-21 19:23:32.269 INFO   [F6796A\32A6BA] Auto-routing pass #27 on board '8bc7f9f9be8801f1f987be52f062d2b2' was completed in 0.36 seconds with score 782.10 (9 unrouted and 23 violations), using 16.06 CPU seconds and the job allocated 3.53 GB of memory so far.
+2026-11-21 19:23:32.628 INFO   [F6796A\32A6BA] Auto-routing pass #28 on board 'ebe45aca672f1b230bbf5d087c485cd9' was completed in 0.32 seconds with score 805.49 (8 unrouted and 23 violations), using 16.06 CPU seconds and the job allocated 3.53 GB of memory so far.
+2026-11-21 19:23:32.786 INFO   [F6796A\32A6BA] Auto-routing pass #29 on board 'fe1a527a5b4257436120f5662182ba1f' was completed in 0.12 seconds with score 805.49 (8 unrouted and 23 violations), using 17.05 CPU seconds and the job allocated 3.88 GB of memory so far.
+2026-11-21 19:23:32.907 INFO   [F6796A\32A6BA] Auto-routing pass #30 on board 'fe1a527a5b4257436120f5662182ba1f' was completed in 0.12 seconds with score 805.49 (8 unrouted and 23 violations), using 17.05 CPU seconds and the job allocated 3.88 GB of memory so far.
+2026-11-21 19:23:33.022 INFO   [F6796A\32A6BA] Auto-routing pass #31 on board 'fe1a527a5b4257436120f5662182ba1f' was completed in 0.11 seconds with score 805.49 (8 unrouted and 23 violations), using 17.05 CPU seconds and the job allocated 3.88 GB of memory so far.
+2026-11-21 19:23:33.062 INFO   [F6796A\32A6BA] Last-mile rip-up removed 3 blocking trace(s) or via(s) around 8 remaining connection(s).
+2026-11-21 19:23:33.269 INFO   [F6796A\32A6BA] Auto-routing pass #32 on board '76a9b07309d6d3cbc66eddb422b62149' was completed in 0.18 seconds with score 805.49 (8 unrouted and 23 violations), using 17.05 CPU seconds and the job allocated 3.88 GB of memory so far.
+2026-11-21 19:23:33.281 INFO   [F6796A\32A6BA] The router's best score (805.49) has not improved by more than 0.5 points since pass #22. Stopping the auto-router after 32 passes (8 items still unconnected).
+The following connections could not be routed -- please review your design (e.g. check pad clearances, trace width rules, and available routing space):
+  Net 'GND' (6 unrouted connections):
+    - via  ->  Q2-4
+    - Q1-1  ->  via
+    - via  ->  Q1-4
+    - via  ->  Q2-1
+    - conductionarea  ->  conductionarea
+    - conductionarea  ->  conductionarea
+  Net 'VCC' (1 unrouted connection):
+    - C2-1  ->  C1-1
+  Net 'PB2' (1 unrouted connection):
+    - TP3-1  ->  U1-14
+2026-11-21 19:23:33.385 INFO   [F6796A\32A6BA] Auto-routing stage completed: started with 36 unrouted nets, completed in 18.31 seconds, final score: 805.49 (8 unrouted and 23 violations), using 17.05 total CPU seconds, 3.88 GB total allocated, and 310.5 MB peak heap usage.
+2026-11-21 19:23:33.398 INFO   [F6796A\32A6BA] Job 'F6796A\32A6BA' finished with state: COMPLETED (elapsed: 18.66 seconds, finished at UTC: 2026-11-21T08:53:33.397609700Z).
+2026-11-21 19:23:33.430 INFO   Saving output file 'C:\Users\tisha\dev\lantern_ring\hardware\v2.0\ring_pcb_RGBW_dual\generated\ring_pcb_RGBW.ses' (SES)...
+2026-11-21 19:23:33.433 INFO   Successfully saved output file 'C:\Users\tisha\dev\lantern_ring\hardware\v2.0\ring_pcb_RGBW_dual\generated\ring_pcb_RGBW.ses' (18436 bytes).
