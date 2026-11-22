@@ -75,8 +75,9 @@ preserved. Saved KiCad ERC/DRC reports show zero violations, unconnected items
 and schematic-parity issues. See the [routing and MOSFET comparison](docs/design/rgbw-mosfet-comparison.md).
 
 These are virtual results, not fabrication, physical clip-fit, battery safety
-or electrical qualification. RGBW firmware has not been implemented. The
-redesigned RGBW LED is active; confirm stock and assembly sourcing before ordering.
+or electrical qualification. [Experimental RGBW firmware](firmware/rgbw-driver/README.md)
+provides fixed and JP1-selected colours but has not been tested on hardware.
+The redesigned RGBW LED is active; confirm stock and assembly sourcing before ordering.
 
 The [Elecrow 3D-print feasibility assessment](docs/design/elecrow-3d-print-feasibility.md)
 covers fit risks for the ring's non-PCB components.

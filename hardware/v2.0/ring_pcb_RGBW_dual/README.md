@@ -133,15 +133,15 @@ programming on the new assembled variant rather than inheriting the IR result.
   colours. Its resistance is not a current limiter. Blue/green/white forward
   voltage may leave insufficient regulation headroom as the cell discharges;
   determine whether a boost rail is needed before choosing parts.
-- Use new RGBW firmware, not edits to Arduino-TV-B-Gone. Plan timer ownership
-  for three hardware channels and nonblocking software PWM on PB2; validate
+- Use new RGBW firmware, not edits to Arduino-TV-B-Gone. Preserve timer ownership
+  for three hardware channels and timer-driven software PWM on PB2; validate
   PWM frequency, endpoint duties, core timing interactions and colour mixing.
   Keep PB3 configured as an input and preserve RESET/SPI fuses.
 
-RGBW firmware is not implemented or flashed by this PCB task. Timer0 owns
-OC0A/OC0B (red/green), Timer1 OC1B supplies blue, and white needs nonblocking
-timer-driven software PWM on PB2. Validate polarity, frequencies, endpoint
-duties, core timing interactions and selector latching on real hardware.
+An [experimental RGBW driver](../../../firmware/rgbw-driver/README.md) now
+provides a fixed firmware colour or two JP1-selected presets. It has not been
+flashed or validated on this PCB. Validate polarity, frequencies, endpoint
+duties, current and selector latching on real hardware.
 
 ## Sources, rebuild and checks
 
