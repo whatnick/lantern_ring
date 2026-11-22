@@ -3,7 +3,9 @@
 Compare the [four-single-MOSFET design](../../hardware/v2.0/ring_pcb_RGBW/README.md)
 with the [two-dual-MOSFET design](../../hardware/v2.0/ring_pcb_RGBW_dual/README.md).
 
-Both alternatives preserve the IR outline, 1.6 mm board thickness, TP1-TP9
+Both alternatives now use the active QT Brightek QBLP679-RGBCW LED. Its four
+anodes are tied together externally for low-side N-MOSFET switching. Both
+preserve the IR outline, 1.6 mm board thickness, TP1-TP9
 geometry/nets and contact-mask windows, and keep four independent LED
 resistors and gate networks. Both use four copper layers. These are virtual
 results, not fabrication or physical clip qualifications.
@@ -20,23 +22,17 @@ routing views, reports and FreeCAD evidence.
 | MOSFET package body, nominal | 0.8 x 1.6 mm each | 1.2 x 1.6 mm each |
 | Combined body area, nominal | 5.12 mm2 | 3.84 mm2 |
 | Sum of courtyard bounding rectangles, including line widths | 20.21 mm2 | 9.56 mm2 |
-| Segments / vias in these routed files | 136 / 35 | 169 / 39 |
-| Copper track centreline length | 171.71 mm | 190.00 mm |
-| Smallest anvil-opening screen margin | 0.189 mm, R5 | 0.189 mm, R5 |
-| Closest rear pogo pad centre to foreign via copper edge | 0.823 mm, TP5 | 0.823 mm, TP5 |
+| Smallest anvil-opening screen margin | 0.143 mm, D1 | 0.143 mm, D1 |
 | Native ERC / DRC / parity / unconnected | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |
 
 The ~10.65 mm2 courtyard-bounding-box reduction is a package-placement
 comparison, **not an increase in usable board area**: the board outline is
-unchanged and the dual placement needed longer traces and four more vias.
-These routing results are particular to the current layouts/router run,
+unchanged. Routing results are particular to the current layouts/router run,
 not a guaranteed property of either topology. The 0402 gate and current
 resistors remain; six 0.5 mm-pitch pins per dual package may complicate
 assembly/rework. A package fault can affect two channels.
-The via spacing is a nominal geometric screen, not proof of pogo contact:
-the nominal 0.45 mm probe-tip radius leaves 0.373 mm to the nearest
-foreign via edge before registration error, solder mask tolerances and
-actual conductive tip shape are considered.
+Foreign-net copper is checked against the exposed contact windows, not against
+every possible displaced probe tip; this is not proof of pogo contact.
 
 The onsemi device specifies a **0.9 ohm maximum** RDS(on) at 1.8 V and
 350 mA, compared with the single Diodes device's **0.7 ohm maximum** at
@@ -57,8 +53,9 @@ off state from the high-voltage leakage limit. Verify leakage and turn-off
 across supply and temperature, particularly during ISP reset, with real
 devices before use.
 
-Both options have a 0.189 mm nominal smallest screen margin, already too
-small to establish physical clip clearance. The QFN exposed-pad via,
+Both options have a 0.143 mm nominal D1 window screen margin, already too
+small to establish physical clip clearance. The 1.85 mm LED height envelope
+is recorded but not checked against the full jaw. The QFN exposed-pad via,
 actual solder height, clip jaw/pogo dimensions, battery load/current/
 temperature and RGBW firmware remain unqualified. The dual option is
 promising for fewer placements, but the simpler original remains the

@@ -92,8 +92,8 @@ class RGBWTest(unittest.TestCase):
 
     def test_actual_schematic_and_board_have_four_independent_limited_channels(self):
         for i, (colour, gpio, anode, cathode) in enumerate(
-                (("R", "PB0", "1", "8"), ("G", "PB1", "2", "7"),
-                 ("B", "PB4", "3", "6"), ("W", "PB2", "4", "5")), 1):
+                (("R", "PB0", "5", "4"), ("G", "PB1", "6", "3"),
+                 ("B", "PB4", "7", "2"), ("W", "PB2", "8", "1")), 1):
             qref = "Q1" if i <= 2 else "Q2"
             source, gate, drain = ("1", "2", "6") if i % 2 else ("4", "5", "3")
             expected = {("D1", anode): "VCC", ("D1", cathode): colour + "_K",
@@ -113,6 +113,18 @@ class RGBWTest(unittest.TestCase):
                               ("JP1", "2", "GND")):
             self.assertEqual(self.nets[(ref, pin)], net)
             self.assertEqual(self.fps[ref]["pads"][pin][1], net)
+
+    def test_led_land_pattern_matches_manufacturer(self):
+        led = self.fps["D1"]
+        self.assertEqual(led["rot"], 90)
+        for i in range(4):
+            y = led["at"][1] - (i - 1.5) * 1.16
+            for number, x in ((str(i + 1), led["at"][0] + 2.4),
+                              (str(8 - i), led["at"][0] - 2.4)):
+                pos, _, size = led["pads"][number]
+                self.assertAlmostEqual(pos[0], x, places=4)
+                self.assertAlmostEqual(pos[1], y, places=4)
+                self.assertEqual(size, (0.6, 1.6))
 
     def test_no_foreign_net_routes_in_exposed_contacts(self):
         nets = {int(code): name for code, name in re.findall(r'\(net (\d+) "([^"]*)"\)', self.text)}

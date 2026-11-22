@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 -1.7 0)
 		(layer "F.SilkS")
-		(uuid "969fc17c-66f2-4be6-89ce-04c35227d0e6")
+		(uuid "0faee3d0-3183-4dc2-a70c-dfb48d9200fe")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 	(property "Value" "SOT-523"
 		(at 0 1.75 0)
 		(layer "F.Fab")
-		(uuid "d897bc2d-cb5c-4810-84fc-9243bef8edc6")
+		(uuid "263a7c9f-ac83-4a03-92c5-5b4f48fbba9e")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "6e84733f-2eeb-4969-8d07-6cc58d11bec7")
+		(uuid "38822d31-636d-4c64-98e8-9e973ed7fd8e")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0293e8cc-be91-4ca4-9fe5-f7a3827096d6")
+		(uuid "82903da6-a029-4ffa-b5ef-aeb9550c55ec")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -63,7 +63,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "5cb7ec68-f517-4ca5-b1a9-9db0c0ed6391")
+		(uuid "4bc7a3c8-3f05-41fd-aadb-c96365239bb3")
 	)
 	(fp_line
 		(start 0.65 0.9)
@@ -73,7 +73,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "e214bbae-ec48-4c9d-aa69-1edae4d85421")
+		(uuid "9b0b68fe-6cf4-4384-9a41-ccec86ba7a05")
 	)
 	(fp_circle
 		(center -1.25 -0.51)
@@ -84,7 +84,7 @@
 		)
 		(fill yes)
 		(layer "F.SilkS")
-		(uuid "bce33cd8-9687-464a-9cc5-84ec677dc10c")
+		(uuid "ad9856cc-125b-4f64-857a-b392813a8699")
 	)
 	(fp_line
 		(start -1.15 -1.05)
@@ -94,7 +94,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "7a296f17-db0a-46cd-a0df-edb96b354c90")
+		(uuid "7a4260ce-e0a0-41ff-8324-05a5a2d6f419")
 	)
 	(fp_line
 		(start -1.15 -1.05)
@@ -104,7 +104,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "8df8c624-b5a7-4c80-b3ca-1fdebee46a0b")
+		(uuid "e1bc56f0-054e-4e47-a778-1074a4a69be7")
 	)
 	(fp_line
 		(start 1.15 1.05)
@@ -114,7 +114,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "c9e5ff9d-ae29-4f9c-95f1-1161617f2450")
+		(uuid "2a5a7fe7-275f-4e2b-a52f-527e0f017513")
 	)
 	(fp_line
 		(start 1.15 1.05)
@@ -124,7 +124,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "39ba95cb-da7c-4f97-bcba-5f5ece7653dc")
+		(uuid "c6aed4bd-482c-4a4b-9573-6e7f42ff2dfb")
 	)
 	(fp_line
 		(start -0.4 -0.45)
@@ -134,7 +134,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "88fd247a-7a06-4d3f-8cd8-b412a5c932a0")
+		(uuid "bafd0fa8-ce87-45ec-b056-e862260e0bb8")
 	)
 	(fp_line
 		(start -0.4 -0.45)
@@ -144,7 +144,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "a9ff508e-5715-46c3-a29e-f2305ca64314")
+		(uuid "da2a8245-88e3-4ac0-becb-5a9178e17d69")
 	)
 	(fp_line
 		(start -0.4 0.8)
@@ -154,7 +154,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "46b2a8e2-d907-4028-8470-c4201900a74a")
+		(uuid "39c66dc2-e98a-4229-8182-48d599dcc136")
 	)
 	(fp_line
 		(start 0.4 -0.8)
@@ -164,7 +164,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "960f02b1-60a3-4e07-b7e0-a27c7ad9caa4")
+		(uuid "ad7a52b7-4b5b-4cb9-95b4-d983f5273bc9")
 	)
 	(fp_line
 		(start 0.4 0.8)
@@ -174,12 +174,12 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "9c47d068-eff0-4c68-a5cb-63a09972dad9")
+		(uuid "d17f7ae9-b05e-4134-ac35-eb0683019949")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 270)
 		(layer "F.Fab")
-		(uuid "26f8dac6-966a-49fa-9504-2ca4c3f1b774")
+		(uuid "b105258d-674d-42c6-bc58-292ed8719631")
 		(effects
 			(font
 				(size 0.4 0.4)
@@ -192,21 +192,21 @@
 		(size 0.51 0.4)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "eab03f59-8b42-428d-b038-f2afb91dbd69")
+		(uuid "f85043e3-7e55-4ac5-8823-0e7c2aefef01")
 	)
 	(pad "2" smd roundrect
 		(at -0.645 0.5 180)
 		(size 0.51 0.4)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "a07bd594-6060-4ee5-878d-0eac1db1066d")
+		(uuid "3445f3ca-5c1c-46fb-882c-abaee38973cc")
 	)
 	(pad "3" smd roundrect
 		(at 0.645 0 180)
 		(size 0.51 0.4)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "9d4c23d4-a28c-4501-9089-830e7e0b6b64")
+		(uuid "d608f223-f7c1-4b0d-a12f-ca2673f1e4e3")
 	)
 	(embedded_fonts no)
 	(model "${KIPRJMOD}/models/step/DMG1012T_SOT523.step"

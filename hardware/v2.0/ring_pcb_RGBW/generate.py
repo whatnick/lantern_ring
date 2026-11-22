@@ -86,10 +86,10 @@ def pins(text):
 
 
 def led_symbol():
-    out = ['(symbol "CLQ6A_RGBW" (pin_names (offset 0.5)) (in_bom yes) (on_board yes)',
+    out = ['(symbol "QBLP679_RGBW" (pin_names (offset 0.5)) (in_bom yes) (on_board yes)',
            '(property "Reference" "D" (at 0 12.7 0) (effects (font (size 1.27 1.27))))',
-           '(property "Value" "CLQ6A_RGBW" (at 0 -12.7 0) (effects (font (size 1.27 1.27))))',
-           '(symbol "CLQ6A_RGBW_0_1"']
+           '(property "Value" "QBLP679_RGBW" (at 0 -12.7 0) (effects (font (size 1.27 1.27))))',
+           '(symbol "QBLP679_RGBW_0_1"']
     for colour, y in zip("RGBW", (7.62, 2.54, -2.54, -7.62)):
         out += ['(polyline (pts (xy -2.54 %s) (xy 0 %s) (xy -2.54 %s) (xy -2.54 %s)) (stroke (width 0.254) (type default)) (fill (type none)))'
                 % (y + 1.27, y, y - 1.27, y + 1.27),
@@ -97,8 +97,8 @@ def led_symbol():
                 '(polyline (pts (xy -7.62 %s) (xy -2.54 %s)) (stroke (width 0) (type default)) (fill (type none)))' % (y, y),
                 '(polyline (pts (xy 0 %s) (xy 7.62 %s)) (stroke (width 0) (type default)) (fill (type none)))' % (y, y),
                 '(text "%s" (at 2.54 %s 0) (effects (font (size 1.27 1.27))))' % (colour, y + 1.27)]
-    out += [') (symbol "CLQ6A_RGBW_1_1"']
-    for a, k, colour, y in zip("1234", "8765", "RGBW", (7.62, 2.54, -2.54, -7.62)):
+    out += [') (symbol "QBLP679_RGBW_1_1"']
+    for a, k, colour, y in zip("5678", "4321", "RGBW", (7.62, 2.54, -2.54, -7.62)):
         for number, name, x, angle in ((a, "A_" + colour, -10.16, 0), (k, "K_" + colour, 10.16, 180)):
             out.append('(pin passive line (at %s %s %d) (length 2.54) (name "%s" (effects (font (size 1.0 1.0)))) (number "%s" (effects (font (size 1.0 1.0)))))'
                        % (x, y, angle, name, number))
@@ -106,22 +106,23 @@ def led_symbol():
 
 
 def write_led_footprint(params):
-    out = ['(footprint "CLQ6A_PLCC8" (version 20240108) (generator "pcbnew") (layer "F.Cu")',
-           '(descr "Cree CLD-CT1387 Rev14 pp11-12; vector land pattern calibrated to 5.30 x 4.40 mm")',
+    out = ['(footprint "QBLP679_PLCC8" (version 20240108) (generator "pcbnew") (layer "F.Cu")',
+           '(descr "QT Brightek QBLP679-RGBXW v1.2 pp3,11; 5050 RGBW independent die")',
            '(attr smd)',
-           '(fp_text reference "REF**" (at 0 -3.2) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.15))))',
-           '(fp_text value "CLQ6A_RGBW" (at 0 3.2) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.15))))',
-           '(fp_rect (start -2.9 -2.75) (end 2.9 2.75) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))',
-           '(fp_rect (start -2.6 -2.5) (end 2.6 2.5) (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab"))',
-           '(fp_circle (center -3.1 -1.7) (end -2.95 -1.7) (stroke (width 0.1) (type solid)) (fill none) (layer "F.SilkS"))']
-    for number, poly in params["led_lands_mm"].items():
-        anchor = (-2.2 if int(number) < 5 else 2.2,
-                  {1: -1.75, 2: -0.5, 3: 0.5, 4: 1.75, 5: 1.75, 6: 0.5, 7: -0.5, 8: -1.75}[int(number)])
-        pts = " ".join("(xy %.4f %.4f)" % (x - anchor[0], y - anchor[1]) for x, y in poly)
-        out.append('(pad "%s" smd custom (at %s %s) (size 0.3 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (options (clearance outline) (anchor rect)) (primitives (gr_poly (pts %s) (width 0) (fill yes))))'
-                   % (number, anchor[0], anchor[1], pts))
-    out += ['(model "${KIPRJMOD}/models/step/CLQ6A_RGBW.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))', ')']
-    (FPDIR / "CLQ6A_PLCC8.kicad_mod").write_text("\n".join(out) + "\n", encoding="utf-8")
+           '(fp_text reference "REF**" (at 0 -3.8) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.15))))',
+           '(fp_text value "QBLP679_RGBW" (at 0 3.8) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.15))))',
+           '(fp_rect (start -2.75 -3.45) (end 2.75 3.45) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))',
+           '(fp_rect (start -2.5 -2.5) (end 2.5 2.5) (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab"))',
+           '(fp_circle (center -2.9 2.9) (end -2.75 2.9) (stroke (width 0.1) (type solid)) (fill none) (layer "F.SilkS"))']
+    width, length = params["led_land_size_mm"]
+    for i in range(4):
+        x = (i - 1.5) * params["led_land_pitch_mm"]
+        for number, y in ((i + 1, params["led_land_row_offset_mm"]),
+                          (8 - i, -params["led_land_row_offset_mm"])):
+            out.append('(pad "%d" smd rect (at %.4f %.4f) (size %.4f %.4f) (layers "F.Cu" "F.Paste" "F.Mask"))'
+                       % (number, x, y, width, length))
+    out += ['(model "${KIPRJMOD}/models/step/QBLP679_RGBW.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))', ')']
+    (FPDIR / "QBLP679_PLCC8.kicad_mod").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
 def sourcing(manufacturer, mpn, description, datasheet=""):
@@ -148,8 +149,8 @@ def parts(params):
     led_nets = {}
     for ch in params["channels"]:
         led_nets.update({ch["anode"]: "VCC", ch["cathode"]: ch["colour"] + "_K"})
-    add("D1", LIB, "CLQ6A_RGBW", "CLQ6A RGBW", "CLQ6A_PLCC8", led_nets, (149.86, 60.96),
-        sourcing("Cree LED", params["led_mpn"], "Four independent dies, anodes joined on PCB; 5.2x5.0x1.1 mm", params["led_datasheet"]))
+    add("D1", LIB, "QBLP679_RGBW", "QBLP679 RGBW", "QBLP679_PLCC8", led_nets, (149.86, 60.96),
+        sourcing("QT Brightek", params["led_mpn"], "Four independent dies, anodes joined on PCB; 5.0x5.0x1.65 mm", params["led_datasheet"]))
     resistor_mpns = {2200: "RC0402FR-072K2L", 1000: "RC0402FR-071KL",
                      100000: "RC0402FR-07100KL", 10000: "RC0402FR-0710KL"}
 
@@ -642,7 +643,7 @@ def board(items, params):
         item.SetNet(netmap[via["net"]])
         b.Add(item)
     power_fanout(b, params)
-    for text, x, y in (("RGBW 0.1 EXP", 136.5, 105.0), ("whatnick", 136.5, 106.4), ("TAPR OHL", 136.5, 107.8)):
+    for text, x, y in (("RGBW " + params["revision"] + " EXP", 136.5, 105.0), ("whatnick", 136.5, 106.4), ("TAPR OHL", 136.5, 107.8)):
         t = pcbnew.PCB_TEXT(b)
         t.SetText(text)
         t.SetPosition(point(x, y))
@@ -700,7 +701,7 @@ def main():
                 "parameters_sha256": digest(HERE / "parameters.json"),
                 "generator_sha256": digest(HERE / "generate.py"),
                 "channels": params["channels"],
-                "led_land_pattern": "Cree CLD-CT1387 Rev14 p12; PDF vector outline calibrated to 5.30 x 4.40 mm, rounded to 0.001 mm; manufacturer tolerance +/-0.1 mm",
+                "led_land_pattern": "QT Brightek QBLP679-RGBXW v1.2 pp3,11; 0.60 x 1.60 mm pads on 1.16 mm pitch, 3.20 mm inside gap",
                 "unqualified": ["physical clip fit", "colour/brightness at sub-mA drive", "battery life/current/temperature", "firmware PWM"]}
     (GEN / "design.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print("Generated %d physical footprints; source IR board unchanged." % len(list(b.GetFootprints())))

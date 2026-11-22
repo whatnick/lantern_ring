@@ -1,5 +1,15 @@
 # RGBW PCB manufacturing cost: preliminary estimate
 
+**Historical estimate for the obsolete Cree-LED revision, not the current
+QBLP679 redesign.** Requote both board variants before ordering.
+
+For the redesign, [DigiKey listed QBLP679-RGBCW active](https://www.digikey.com/en/products/detail/qt-brightek-qtb/QBLP679-RGBCW/13278847)
+on 22 November 2026 at $0.79 each in cut tape (five LEDs: $3.95 before
+shipping). [JLCPCB C6629825](https://jlcpcb.com/partdetail/C6629825) reported
+zero stock at that time. Customer-supplied-part feasibility, minimum quantities,
+handling and any additional placement or inspection charges need an actual
+quote. This snapshot is not a reservation or a complete redesign estimate.
+
 **22 November 2026; USD; not a supplier quote.** This estimate is for five
 assembled examples of **one** RGBW variant, not five of each. It excludes the
 ring body, CR2032, pogo contacts, programming clip, firmware and testing.
@@ -12,8 +22,8 @@ and [Mouser](https://www.mouser.com/ProductDetail/Cree-LED/CLQ6A-TKW-S1L1R1H1QBB
 The checked Mouser listing has no available stock or price. The exact LED and
 the QFN MCU were not found in the in-stock JLCPCB catalog snapshot. Do not
 assume an available LED, an equivalent footprint or that JLCPCB will accept
-customer-supplied parts. A replacement needs separate pinout, land-pattern,
-optical/electrical and clip-fit verification and a revised BOM and quote.
+customer-supplied parts. The later QBLP679 revision uses a different footprint
+and pinout; its availability and revised BOM require a new assembly quote.
 
 ## Partial five-board example
 
