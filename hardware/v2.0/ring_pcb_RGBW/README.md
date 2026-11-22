@@ -1,4 +1,4 @@
-# Lantern Ring v2 RGBW variant
+# Lantern Ring v2 RGBW variant: single MOSFET option
 
 **Experimental RGBW hardware, not physically qualified.** This generated KiCad
 10 project uses one four-die RGBW LED and four MOSFET-driven channels. It keeps
@@ -6,6 +6,12 @@ the IR board's native outline, 1.6 mm thickness and TP1-TP9 interface. The RGBW
 variant uses **four copper layers**, unlike the two-layer IR board: dedicated
 In1 GND and In2 VCC planes avoid relying on fragmented outer pours.
 The IR board, programming clip and legacy firmware remain unchanged.
+
+This **routed four-layer** option uses four single MOSFETs. The saved
+all-severity KiCad reports show zero ERC/DRC findings, unconnected items and
+schematic-parity issues. Compare the [two-dual-MOSFET option](../ring_pcb_RGBW_dual/README.md)
+and [routing analysis](../../../docs/design/rgbw-mosfet-comparison.md).
+These checks do not qualify physical fit, battery safety or operation.
 
 ![Actual populated PCB render; nominal package envelopes](generated/isometric.png)
 
@@ -77,6 +83,10 @@ VCC. R/G/B/W cathodes are 8/7/6/5 respectively. The custom land polygons come
 from the recommended pattern in Cree CLD-CT1387 Rev14, page 12, rather than a
 generic PLCC footprint. Its 100 mA photometric specifications do not predict
 this design's sub-mA brightness or colour.
+
+**Sourcing blocker:** DigiKey and Mouser list this exact LED as obsolete.
+See the [cost and sourcing estimate](../../../docs/design/rgbw-manufacturing-cost.md);
+any replacement requires separate verification and a revised design.
 
 Each cathode connects through a **2.2k, 1%, 63 mW 0402** resistor to the drain
 of a genuine Diodes Incorporated **DMG1012T-7** (SOT523). Source is GND;

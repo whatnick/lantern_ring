@@ -65,6 +65,19 @@ estimated clip dimensions. It has not yet been built or measured.
 
 ![IR programming clip, virtual FreeCAD fit](hardware/v2.0/ring_ir_prog_clip/generated/fit/clipped_iso.png)
 
+### Experimental RGBW PCBs
+
+The [four-single-MOSFET](hardware/v2.0/ring_pcb_RGBW/README.md) and
+[two-dual-MOSFET](hardware/v2.0/ring_pcb_RGBW_dual/README.md) RGBW variants
+are both routed as **four-layer, 1.6 mm** boards. Their inner layers are GND
+and VCC planes; the IR outline, TP1-TP9 pads and exposed contact windows are
+preserved. Saved KiCad ERC/DRC reports show zero violations, unconnected items
+and schematic-parity issues. See the [routing and MOSFET comparison](docs/design/rgbw-mosfet-comparison.md).
+
+These are virtual results, not fabrication, physical clip-fit, battery safety
+or electrical qualification. RGBW firmware has not been implemented. The
+specified RGBW LED is obsolete; see the [cost and sourcing estimate](docs/design/rgbw-manufacturing-cost.md).
+
 The [Elecrow 3D-print feasibility assessment](docs/design/elecrow-3d-print-feasibility.md)
 covers fit risks for the ring's non-PCB components.
 

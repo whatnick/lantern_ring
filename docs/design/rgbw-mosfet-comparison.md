@@ -8,6 +8,12 @@ geometry/nets and contact-mask windows, and keep four independent LED
 resistors and gate networks. Both use four copper layers. These are virtual
 results, not fabrication or physical clip qualifications.
 
+Both routed boards use F.Cu/B.Cu for signals and outer pours, with In1 GND
+and In2 VCC planes. The saved native KiCad reports include schematic parity
+and unconnected-item checks; the raw autorouter logs contain proxy warnings
+and are not themselves clean reports. The individual design READMEs link the
+routing views, reports and FreeCAD evidence.
+
 | Metric | Four single DMG1012T | Two dual NTZD3154N |
 | --- | ---: | ---: |
 | MOSFET packages / fitted parts | 4 / 22 | 2 / 20 |

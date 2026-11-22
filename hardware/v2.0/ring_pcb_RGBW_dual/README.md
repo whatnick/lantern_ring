@@ -2,15 +2,17 @@
 
 **Experimental RGBW hardware, not physically qualified.** This generated KiCad
 10 project uses one four-die RGBW LED and four MOSFET-driven channels using
-two dual N-channel MOSFET packages. It keeps
-the IR board's native outline, 1.6 mm thickness and TP1-TP9 interface. The RGBW
+two dual N-channel MOSFET packages. It keeps the IR board's native outline,
+1.6 mm thickness and TP1-TP9 interface. The RGBW
 variant uses **four copper layers**, unlike the two-layer IR board: dedicated
 In1 GND and In2 VCC planes avoid relying on fragmented outer pours.
 The IR board, programming clip and legacy firmware remain unchanged.
 
-The separately retained [four-single-MOSFET option](../ring_pcb_RGBW/README.md)
-is the comparison baseline. Both are experimental and neither is a fitted,
-physically tested design.
+This **routed four-layer** option's saved all-severity KiCad reports show zero
+ERC/DRC findings, unconnected items and schematic-parity issues. The separately
+retained [four-single-MOSFET option](../ring_pcb_RGBW/README.md) is the
+comparison baseline. Both are experimental and neither has been physically
+qualified.
 [See the routed/electrical comparison](../../../docs/design/rgbw-mosfet-comparison.md).
 
 ![Actual populated PCB render; nominal package envelopes](generated/isometric.png)
@@ -83,6 +85,10 @@ VCC. R/G/B/W cathodes are 8/7/6/5 respectively. The custom land polygons come
 from the recommended pattern in Cree CLD-CT1387 Rev14, page 12, rather than a
 generic PLCC footprint. Its 100 mA photometric specifications do not predict
 this design's sub-mA brightness or colour.
+
+**Sourcing blocker:** DigiKey and Mouser list this exact LED as obsolete.
+See the [cost and sourcing estimate](../../../docs/design/rgbw-manufacturing-cost.md);
+any replacement requires separate verification and a revised design.
 
 Each cathode connects through a **2.2k, 1%, 63 mW 0402** resistor to one
 channel of an onsemi **NTZD3154NT1G** dual N-channel MOSFET (SOT-563).
