@@ -79,16 +79,17 @@ Timer1 OC1A shares PB1, already used by OC0B. PB2 has no hardware PWM output.
 
 ## Implemented circuit
 
-The Cree **CLQ6A-TKW-S1L1R1H1QBB7935BB3** has eight independent
-terminals; it is **not internally common-anode**. Copper joins anodes 1-4 to
-VCC. R/G/B/W cathodes are 8/7/6/5 respectively. The custom land polygons come
-from the recommended pattern in Cree CLD-CT1387 Rev14, page 12, rather than a
-generic PLCC footprint. Its 100 mA photometric specifications do not predict
-this design's sub-mA brightness or colour.
+The [QT Brightek QBLP679-RGBCW](https://www.qt-brightek.com/datasheet/QBLP679-RGBXW.pdf)
+has four independent dies, not an internally common anode. Copper connects
+R/G/B/W anodes 5/6/7/8 to VCC; their cathodes are 4/3/2/1. This gives
+common-anode circuit operation with the existing low-side N-MOSFETs. The
+5 x 5 x 1.65 mm package has a 5.5 mm lead span; the footprint follows the
+manufacturer's page 11 land pattern. Page 4 brightness specifications are
+at 20 mA and do not predict this design's sub-mA brightness or colour.
 
-**Sourcing blocker:** DigiKey and Mouser list this exact LED as obsolete.
-See the [cost and sourcing estimate](../../../docs/design/rgbw-manufacturing-cost.md);
-any replacement requires separate verification and a revised design.
+On 22 November 2026 DigiKey listed this exact part active and in stock in cut
+tape; JLCPCB listed it out of stock. Recheck availability, MSL 5A handling,
+assembly sourcing and current price before ordering.
 
 Each cathode connects through a **2.2k, 1%, 63 mW 0402** resistor to one
 channel of an onsemi **NTZD3154NT1G** dual N-channel MOSFET (SOT-563).
@@ -184,10 +185,9 @@ Portable tests independently parse saved boards/netlists to compare the
 native outline, all nine contacts, pad geometry, mask openings, channel
 connectivity and foreign-net copper exclusion from exposed contact windows.
 
-The retained raw router log reports 23 DSN-proxy clearance findings and eight
-unconnected proxy items (GND, VCC and PB2). These are **not a clean router
-report**: conservative concave-pad proxies, ideal plane representations and
-seed-route interpretation differ from the actual board. After importing the
+The retained raw router log is **not a clean router report**: its ideal plane
+representations and seed-route interpretation differ from the actual board.
+After importing the
 SES without deleting the native seed routes and refilling real polygons,
 KiCad reports **zero violations, zero unconnected items and zero parity
 issues**, with no exclusions. `generated/drc.json`, not the router score,
@@ -199,9 +199,10 @@ require a correctly placed STEP instance for every populated component, and
 screen 20 conservative package envelopes against the existing anvil opening.
 This is not a full jaw sweep, solder-blob allowance, printed tolerance check,
 contact-force analysis or a physical clip-fit qualification.
-The smallest nominal screening margin is only **0.189 mm** (R5/R6); the LED
-is also close to the upper window edge. These are geometric margins, not
-manufacturing tolerance budgets. Verify the assembled parts clear the actual
+The smallest nominal screening margin is only **0.143 mm** at D1. The screen
+checks the package's projected outline within the anvil window; its 1.85 mm
+height envelope is recorded but not checked against the full jaw. This is not a
+manufacturing tolerance budget. Verify the assembled parts clear the actual
 clip before clamping. The QFN exposed-pad via needs an assembly/stencil
 strategy (for example filled/capped via-in-pad); solder wicking is not
 qualified by ERC, DRC or these envelope models.

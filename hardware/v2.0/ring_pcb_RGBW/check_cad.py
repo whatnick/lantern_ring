@@ -20,7 +20,7 @@ fps = saved.footprints(HERE / "ring_pcb_RGBW.kicad_pcb")
 geometry = json.loads((HERE.parent / "ring_ir_prog_clip" / "generated" / "geometry.json").read_text())
 window = geometry["fit_inputs"]["anvil"]["window"]
 origin = fps["TP3"]["pads"]["1"][0]
-limits = {"D": (5.3, 5.1, 1.2), "U": (4.1, 4.1, 1.0),
+limits = {"D": (5.2, 5.7, 1.85), "U": (4.1, 4.1, 1.0),
           "Q": (1.7, 1.7, 1.0), "R": (1.1, 0.6, 0.5),
           "C1": (1.1, 0.6, 0.6), "C2": (2.1, 1.35, 1.4)}
 screens = {}

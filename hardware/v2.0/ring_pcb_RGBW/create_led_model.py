@@ -9,17 +9,17 @@ import Part
 HERE = Path(__file__).resolve().parent
 doc = App.newDocument("RGBW_LED_Envelope")
 body = doc.addObject("Part::Feature", "Package")
-body.Shape = Part.makeBox(5.2, 5.0, 0.75, App.Vector(-2.6, -2.5, 0.3))
+body.Shape = Part.makeBox(5.0, 5.0, 1.18, App.Vector(-2.5, -2.5, 0.42))
 lens = doc.addObject("Part::Feature", "Lens")
-lens.Shape = Part.makeBox(4.0, 4.0, 0.05, App.Vector(-2, -2, 1.05))
+lens.Shape = Part.makeBox(4.0, 4.0, 0.05, App.Vector(-2, -2, 1.6))
 if App.GuiUp:
     body.ViewObject.ShapeColor = (0.87, 0.86, 0.79)
     lens.ViewObject.ShapeColor = (0.96, 0.96, 0.93)
 leads = []
-for x in (-2.4, 2.0):
-    for y in (-1.9, -0.75, 0.4, 1.55):
+for y in (-2.75, 2.5):
+    for x in (-2.04, -0.88, 0.28, 1.44):
         lead = doc.addObject("Part::Feature", "Terminal%d" % len(leads))
-        lead.Shape = Part.makeBox(0.4, 0.55, 0.3, App.Vector(x, y, 0))
+        lead.Shape = Part.makeBox(0.6, 0.25, 0.42, App.Vector(x, y, 0))
         leads.append(lead)
 doc.recompute()
 for obj in [body, lens] + leads:
@@ -27,12 +27,12 @@ for obj in [body, lens] + leads:
         raise ValueError("Invalid LED model part " + obj.Name)
 out = HERE / "models" / "step"
 out.mkdir(parents=True, exist_ok=True)
-Part.export([body, lens] + leads, str(out / "CLQ6A_RGBW.step"))
-doc.saveAs(str(out.parent / "CLQ6A_RGBW.FCStd"))
+Part.export([body, lens] + leads, str(out / "QBLP679_RGBW.step"))
+doc.saveAs(str(out.parent / "QBLP679_RGBW.FCStd"))
 (out.parent / "led-envelope.json").write_text(json.dumps({
-    "source": "Cree CLD-CT1387 Rev14 p11, 5.2 x 5.0 x 1.1 mm",
+    "source": "QT Brightek QBLP679-RGBXW v1.2 p3, 5.0 x 5.0 x 1.65 mm; lead span 5.5 mm",
     "scope": "Nominal external envelope; lens and terminal details illustrative, not manufacturer CAD or physical fit qualification",
-    "dimensions_mm": [5.2, 5.0, 1.1],
+    "dimensions_mm": [5.0, 5.0, 1.65],
     "valid_solids": len(leads) + 2
 }, indent=2) + "\n")
 App.closeDocument(doc.Name)

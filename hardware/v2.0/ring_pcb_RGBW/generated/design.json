@@ -1,40 +1,40 @@
 {
   "status": "routed",
   "source_board_sha256": "627be3bf51e0e076dbfe06b90e46aa5dfad62d631cddc8195bcd7ac58636b64c",
-  "placement_board_sha256": "d4918bc13bcdec3003875841420f9b2795919b399c520a110767993ec624429d",
-  "parameters_sha256": "099691d128a3d0773f525a34d16cc5a1839d70b908d0491ec70cb0b38a28e4e6",
-  "generator_sha256": "8475b3952222d3e385496b5661f4b6a88ae0b37c42728e2e8d3a2d36118a8336",
+  "placement_board_sha256": "5160d3f99d038c839d7f0c97822a019e9024bbe64436f62feace8bbd63d7285b",
+  "parameters_sha256": "05d62458cc6515922451ce1e4350f8e23eab70416ccbe1ec9d57cec11d4fe131",
+  "generator_sha256": "03e5439f44afd4d8683f2ef83b1d79a4caae3c7f45f1ccc2e6fd46f20704209d",
   "channels": [
     {
       "colour": "R",
       "gpio": "PB0",
-      "anode": "1",
-      "cathode": "8",
+      "anode": "5",
+      "cathode": "4",
       "pwm": "OC0A"
     },
     {
       "colour": "G",
       "gpio": "PB1",
-      "anode": "2",
-      "cathode": "7",
+      "anode": "6",
+      "cathode": "3",
       "pwm": "OC0B"
     },
     {
       "colour": "B",
       "gpio": "PB4",
-      "anode": "3",
-      "cathode": "6",
+      "anode": "7",
+      "cathode": "2",
       "pwm": "OC1B"
     },
     {
       "colour": "W",
       "gpio": "PB2",
-      "anode": "4",
-      "cathode": "5",
+      "anode": "8",
+      "cathode": "1",
       "pwm": "software"
     }
   ],
-  "led_land_pattern": "Cree CLD-CT1387 Rev14 p12; PDF vector outline calibrated to 5.30 x 4.40 mm, rounded to 0.001 mm; manufacturer tolerance +/-0.1 mm",
+  "led_land_pattern": "QT Brightek QBLP679-RGBXW v1.2 pp3,11; 0.60 x 1.60 mm pads on 1.16 mm pitch, 3.20 mm inside gap",
   "unqualified": [
     "physical clip fit",
     "colour/brightness at sub-mA drive",
@@ -42,10 +42,10 @@
     "firmware PWM"
   ],
   "routing": {
-    "dsn_sha256": "6bc165d415f22afbef3d0ddd9b9015012cee3435545eda61a45779212539d1ec",
-    "ses_sha256": "70f8b641523871b12079e5ce1df6a7e2c5ff197291d957d08f404af6d4d5834b",
-    "router_result_sha256": "eb85dc52a8594a76d97f3570aaf2c612aeba9c74b300eba166deb0cf9d9238e1",
-    "board_sha256": "50a1d6b93eed0becc76c9f269048f75dc8992cad7336586a1e18c67f3a6038b7",
+    "dsn_sha256": "26ee8114fde1265074acef022e2909e1b494276e5d230cf30e6a98c397a37769",
+    "ses_sha256": "3c0562d1ac39466b076c3b40eeb5c4b2fc22d979e5b5b7e106813d7d80062d8d",
+    "router_result_sha256": "f53be1b045645dfe68e20f3fe257253b56c26b9ff569d85fce6a2c1ba51e25c6",
+    "board_sha256": "7cdd2616d9f24e8b92b14e6357358e482b943508dcad5287c1b127a50118e948",
     "finish_route_sha256": "813fe8ebbe8fb4067f604262da330db62ee54f36342b7c151bf073b6142b9102"
   }
 }

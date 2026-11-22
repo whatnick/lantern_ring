@@ -1,9 +1,9 @@
 {
   "engine": "Freerouting 2.5.0, local CLI; power fanout already placed/checked",
   "fixture": {
-    "sha256": "e0c9b512601da57b1fda233181ae0a88371c21448729a24a9de323bda66896c3"
+    "sha256": "59cd98279f90767421e7a7bea3c5748e3ca3bf0246be4536face0339fefc409a"
   },
-  "ses_sha256": "247196e3e7328f201b6fdb65c2adc55965402f8a7c7c7c294676a53536250230",
+  "ses_sha256": "52e95a05ebc6f3188d8809b3d017d281a27e6ca3590bb938f5411bfb8ae508c6",
   "jar_sha256": "f6f51bb02245e8e717f9359bd260cc9c5c0b1bc0acc8b7cb2cd5b8ffeb5de3c7",
   "final_state": "EXPORTED",
   "output_written": true,

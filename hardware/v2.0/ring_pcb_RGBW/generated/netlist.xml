@@ -2,13 +2,13 @@
 <export version="E">
   <design>
     <source>C:\Users\tisha\dev\lantern_ring\hardware\v2.0\ring_pcb_RGBW\ring_pcb_RGBW.kicad_sch</source>
-    <date>2026-11-11T22:47:39</date>
+    <date>2026-11-22T16:48:12</date>
     <tool>Eeschema 10.0.3</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Lantern Ring RGBW - four-channel PWM</title>
         <company>whatnick</company>
-        <rev>0.1</rev>
+        <rev>0.2</rev>
         <date/>
         <source>ring_pcb_RGBW.kicad_sch</source>
         <comment number="1" value="Experimental; IR outline / TP1-TP9; battery removed for ISP"/>
@@ -91,24 +91,24 @@
       </units>
     </comp>
     <comp ref="D1">
-      <value>CLQ6A RGBW</value>
-      <footprint>ring_rgbw:CLQ6A_PLCC8</footprint>
-      <datasheet>https://assets.cree-led.com/a/ds/h/HB-CLQ6A-TKW.pdf</datasheet>
-      <description>Four independent dies, anodes joined on PCB; 5.2x5.0x1.1 mm</description>
+      <value>QBLP679 RGBW</value>
+      <footprint>ring_rgbw:QBLP679_PLCC8</footprint>
+      <datasheet>https://www.qt-brightek.com/datasheet/QBLP679-RGBXW.pdf</datasheet>
+      <description>Four independent dies, anodes joined on PCB; 5.0x5.0x1.65 mm</description>
       <fields>
-        <field name="Manufacturer">Cree LED</field>
-        <field name="MPN">CLQ6A-TKW-S1L1R1H1QBB7935BB3</field>
-        <field name="DigiKey">https://www.digikey.com/en/products?keywords=CLQ6A-TKW-S1L1R1H1QBB7935BB3</field>
-        <field name="Mouser">https://www.mouser.com/c/?q=CLQ6A-TKW-S1L1R1H1QBB7935BB3</field>
-        <field name="Footprint">ring_rgbw:CLQ6A_PLCC8</field>
-        <field name="Datasheet">https://assets.cree-led.com/a/ds/h/HB-CLQ6A-TKW.pdf</field>
-        <field name="Description">Four independent dies, anodes joined on PCB; 5.2x5.0x1.1 mm</field>
+        <field name="Manufacturer">QT Brightek</field>
+        <field name="MPN">QBLP679-RGBCW</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=QBLP679-RGBCW</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=QBLP679-RGBCW</field>
+        <field name="Footprint">ring_rgbw:QBLP679_PLCC8</field>
+        <field name="Datasheet">https://www.qt-brightek.com/datasheet/QBLP679-RGBXW.pdf</field>
+        <field name="Description">Four independent dies, anodes joined on PCB; 5.0x5.0x1.65 mm</field>
       </fields>
-      <libsource lib="ring_rgbw" part="CLQ6A_RGBW" description=""/>
-      <property name="Manufacturer" value="Cree LED"/>
-      <property name="MPN" value="CLQ6A-TKW-S1L1R1H1QBB7935BB3"/>
-      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=CLQ6A-TKW-S1L1R1H1QBB7935BB3"/>
-      <property name="Mouser" value="https://www.mouser.com/c/?q=CLQ6A-TKW-S1L1R1H1QBB7935BB3"/>
+      <libsource lib="ring_rgbw" part="QBLP679_RGBW" description=""/>
+      <property name="Manufacturer" value="QT Brightek"/>
+      <property name="MPN" value="QBLP679-RGBCW"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=QBLP679-RGBCW"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=QBLP679-RGBCW"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
@@ -116,14 +116,14 @@
       <units>
         <unit name="A">
           <pins>
-            <pin num="1"/>
-            <pin num="2"/>
-            <pin num="3"/>
-            <pin num="4"/>
-            <pin num="8"/>
-            <pin num="7"/>
-            <pin num="6"/>
             <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="4"/>
+            <pin num="3"/>
+            <pin num="2"/>
+            <pin num="1"/>
           </pins>
         </unit>
       </units>
@@ -1150,23 +1150,23 @@
         <pin num="21" name="GND" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="ring_rgbw" part="CLQ6A_RGBW">
+    <libpart lib="ring_rgbw" part="QBLP679_RGBW">
       <fields>
         <field name="Reference">D</field>
-        <field name="Value">CLQ6A_RGBW</field>
+        <field name="Value">QBLP679_RGBW</field>
         <field name="Footprint"/>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
       <pins>
-        <pin num="1" name="A_R" type="passive"/>
-        <pin num="2" name="A_G" type="passive"/>
-        <pin num="3" name="A_B" type="passive"/>
-        <pin num="4" name="A_W" type="passive"/>
-        <pin num="5" name="K_W" type="passive"/>
-        <pin num="6" name="K_B" type="passive"/>
-        <pin num="7" name="K_G" type="passive"/>
-        <pin num="8" name="K_R" type="passive"/>
+        <pin num="1" name="K_W" type="passive"/>
+        <pin num="2" name="K_B" type="passive"/>
+        <pin num="3" name="K_G" type="passive"/>
+        <pin num="4" name="K_R" type="passive"/>
+        <pin num="5" name="A_R" type="passive"/>
+        <pin num="6" name="A_G" type="passive"/>
+        <pin num="7" name="A_B" type="passive"/>
+        <pin num="8" name="A_W" type="passive"/>
       </pins>
     </libpart>
   </libparts>
@@ -1198,7 +1198,7 @@
       <node ref="R7" pin="2" pintype="passive"/>
     </net>
     <net code="3" name="B_K" class="Default">
-      <node ref="D1" pin="6" pinfunction="K_B_6" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="K_B_2" pintype="passive"/>
       <node ref="R3" pin="1" pintype="passive"/>
     </net>
     <net code="4" name="GND" class="Power">
@@ -1228,7 +1228,7 @@
       <node ref="R6" pin="2" pintype="passive"/>
     </net>
     <net code="7" name="G_K" class="Default">
-      <node ref="D1" pin="7" pinfunction="K_G_7" pintype="passive"/>
+      <node ref="D1" pin="3" pinfunction="K_G_3" pintype="passive"/>
       <node ref="R2" pin="1" pintype="passive"/>
     </net>
     <net code="8" name="PB0" class="Default">
@@ -1272,16 +1272,16 @@
       <node ref="R9" pin="1" pintype="passive"/>
     </net>
     <net code="16" name="R_K" class="Default">
-      <node ref="D1" pin="8" pinfunction="K_R_8" pintype="passive"/>
+      <node ref="D1" pin="4" pinfunction="K_R_4" pintype="passive"/>
       <node ref="R1" pin="1" pintype="passive"/>
     </net>
     <net code="17" name="VCC" class="Power">
       <node ref="C1" pin="1" pintype="passive"/>
       <node ref="C2" pin="1" pintype="passive"/>
-      <node ref="D1" pin="1" pinfunction="A_R_1" pintype="passive"/>
-      <node ref="D1" pin="2" pinfunction="A_G_2" pintype="passive"/>
-      <node ref="D1" pin="3" pinfunction="A_B_3" pintype="passive"/>
-      <node ref="D1" pin="4" pinfunction="A_W_4" pintype="passive"/>
+      <node ref="D1" pin="5" pinfunction="A_R_5" pintype="passive"/>
+      <node ref="D1" pin="6" pinfunction="A_G_6" pintype="passive"/>
+      <node ref="D1" pin="7" pinfunction="A_B_7" pintype="passive"/>
+      <node ref="D1" pin="8" pinfunction="A_W_8" pintype="passive"/>
       <node ref="R13" pin="1" pintype="passive"/>
       <node ref="R14" pin="1" pintype="passive"/>
       <node ref="TP9" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -1297,7 +1297,7 @@
       <node ref="R8" pin="2" pintype="passive"/>
     </net>
     <net code="20" name="W_K" class="Default">
-      <node ref="D1" pin="5" pinfunction="K_W_5" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K_W_1" pintype="passive"/>
       <node ref="R4" pin="1" pintype="passive"/>
     </net>
     <net code="21" name="unconnected-(U1-NC-Pad3)" class="Default">

@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at -5.1308 2.159 0)
 		(layer "F.SilkS")
-		(uuid "199f7d9d-ca25-4d66-9727-4135c17a84af")
+		(uuid "a25f0244-75b3-4e72-8821-9108ddb8b3e1")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -19,7 +19,7 @@
 	(property "Value" "IR_TP7"
 		(at 0 1.55 0)
 		(layer "F.Fab")
-		(uuid "60e0e820-0f9a-4dc3-ad70-17b75ecd675b")
+		(uuid "699bb0ff-50d1-414b-b372-0588fb833f7a")
 		(effects
 			(font
 				(size 1 1)
@@ -31,7 +31,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "81255d04-4808-4b53-ae41-d99643983d18")
+		(uuid "a14c5840-b7ae-4aaf-9b8b-1f1fedbb7310")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -42,7 +42,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "16294eef-6977-4e32-aca6-aa2b4ebabda0")
+		(uuid "bd536e37-bbdf-4daa-86e7-b5473849536d")
 		(effects
 			(font
 				(size 1.27 1.27)

@@ -76,7 +76,7 @@ and schematic-parity issues. See the [routing and MOSFET comparison](docs/design
 
 These are virtual results, not fabrication, physical clip-fit, battery safety
 or electrical qualification. RGBW firmware has not been implemented. The
-specified RGBW LED is obsolete; see the [cost and sourcing estimate](docs/design/rgbw-manufacturing-cost.md).
+redesigned RGBW LED is active; confirm stock and assembly sourcing before ordering.
 
 The [Elecrow 3D-print feasibility assessment](docs/design/elecrow-3d-print-feasibility.md)
 covers fit risks for the ring's non-PCB components.
