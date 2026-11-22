@@ -91,6 +91,14 @@ Engineering source references and regeneration instructions are in
 | --- | --- | --- | --- |
 | ![Baseline serviceable pogo assembly](docs/design/contact-roadmap/images/local-freecad/01-serviceable-pogo.png) | ![Copper foil and silicone pressure-contact concept](docs/design/contact-roadmap/images/local-freecad/02-copper-pressure.png) | ![Plated spring cartridge concept](docs/design/contact-roadmap/images/local-freecad/03-plated-springs.png) | ![Floating metal ring body with polymer insert](docs/design/contact-roadmap/images/local-freecad/04-floating-metal.png) |
 
+## Legacy printed ring bodies
+
+![Colourful legacy printed ring bodies and separate emblem pieces](docs/legacy-printed-ring-bodies-and-emblems.jpg)
+
+These are earlier printed ring bodies and emblem pieces, not the v2 twist-lock
+cassette. The [legacy ring-body and emblem models](hardware/v1.0/ring_3d/) are
+preserved alongside the newer design.
+
 ![Purple Ring](docs/ring_purple.jpg)
 ![Red Ring](docs/red_ring.jpg)
 ![Blue Ring](docs/ring_blue.jpg)
