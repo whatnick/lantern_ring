@@ -6,16 +6,16 @@
     "ring_pcb_RGBW.kicad_sch": "85f1063008e879ceb60f991126caa7d152a398baba1eccbdebee864e2ffc9a15",
     "create_led_model.py": "32ff66837f2a66a45602e6bcee4431cf1ff79e7a2c57bd06c0dfbb283fef2f93",
     "check_cad.py": "69b7f4534bd4851bb50255a15c9766d428eb9461790b7984cc2d7860e510194c",
-    "build.ps1": "3f17ec296e8bc72270f1ec395d9b19a1aac0c769fd7507f28988a1c9b576cf33",
-    "models/step/ATtiny85_QFN20.step": "657b868b07d8257879f718f56d0e2ffeaad2811d07aaf916aa80a1c4619e0f35",
-    "models/step/CLQ6A_RGBW.step": "9cd2387596ca36fe82043f1801880526a052cb3d330ae269ef670336301bfc3e",
+    "build.ps1": "684bb03fc4b56d1103d23ecc8a5f2a74aca32da70b4b56ca0e8c90ba933f1dda",
+    "models/step/ATtiny85_QFN20.step": "ec5475ea152abe5bef9eb4fc01fb3f25286c51b2d6b949b273d9974231eef6fc",
+    "models/step/CLQ6A_RGBW.step": "6afd7a5069baff98b0d34ff6e9b9a867537f15f1a26afe529accaee372c2cd48",
     "models/step/C_0402_1005Metric.step": "03e44c4b2b727b8d4b6b1fd598cbd12dd5e614f1dfeefa96a92a07e3a3b312a2",
     "models/step/C_0805_2012Metric.step": "9a669c1a2f1ea25b88b401acef6efeaa80a067bd7da9db6993de719a7fbe155c",
-    "models/step/DMG1012T_SOT523.step": "23ac188929f7d26f19aa782e97002387e6b692b091df1d216f21a53da3bbcded",
+    "models/step/DMG1012T_SOT523.step": "656dc7fb8d7cc1eb43da3c0a408f8d659957c5905f65bebb31932d2727a4f465",
     "models/step/R_0402_1005Metric.step": "91507e5af4251cb4ef38e04889c9b98da29904432bd83786bba13ae9b605eacb"
   },
   "clip_geometry_sha256": "d584691d8fa4709cf4e51c6119c0489e3970ae966c5a561d0cc34afde72c7308",
-  "step_sha256": "4ca4b3d54b1384a99550b9c16db0577ec39423b3d75a908bb217680e7dd2495f",
+  "step_sha256": "90b62a8e9abc8bba1286a36e5875ff42cc45cb9b2512b92dcba46772324a2b82",
   "component_window_screen_passed": true,
   "component_screens": {
     "R4": {

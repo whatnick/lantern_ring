@@ -11,7 +11,8 @@ $gen = Join-Path $here 'generated'
 $base = Join-Path $here 'ring_pcb_RGBW'
 $cli = Join-Path $KiCadBin 'kicad-cli.exe'
 $py = Join-Path $KiCadBin 'python.exe'
-$env:KICAD10_3DMODEL_DIR = Join-Path (Split-Path $KiCadBin) 'share\kicad\3dmodels'
+$env:KICAD_SHARE = Join-Path (Split-Path $KiCadBin) 'share\kicad'
+$env:KICAD10_3DMODEL_DIR = Join-Path $env:KICAD_SHARE '3dmodels'
 
 function Invoke-Checked {
     param([string]$Tool, [string[]]$Arguments)
