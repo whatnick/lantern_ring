@@ -17,6 +17,9 @@ under the Green Lantern (willpower) crown, and the LEDs light the crown lens.
 
 ![Same-scale comparison with the legacy ring](generated/legacy-comparison.png)
 
+[Photograph of legacy printed ring bodies and separate emblems](../../../docs/legacy-printed-ring-bodies-and-emblems.jpg).
+These earlier pieces are not the v2 twist-lock cassette.
+
 ![Open-band elastic-fit curvature study](generated/flex-fit.png)
 
 The [contact and metal-body roadmap](../../../docs/design/contact-roadmap/README.md)
