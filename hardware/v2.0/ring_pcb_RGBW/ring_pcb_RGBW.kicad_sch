@@ -1,0 +1,2197 @@
+(kicad_sch (version 20231120) (generator "eeschema") (uuid "73a83665-f655-5538-a6b2-5f754948bf43") (paper "A3")
+(title_block (title "Lantern Ring RGBW - four-channel PWM") (rev "0.1") (company "whatnick") (comment 1 "Experimental; IR outline / TP1-TP9; battery removed for ISP"))
+(lib_symbols
+(symbol "ring_rgbw:ATtiny85-20M"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -12.7 13.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "ATtiny85-20M"
+			(at 2.54 -13.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20MHz, 8kB Flash, 512B SRAM, 512B EEPROM, debugWIRE, QFN-20"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "AVR 8bit Microcontroller tinyAVR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "QFN*1EP*4x4mm*P0.5mm*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "ATtiny85-20M_0_1"
+			(rectangle
+				(start -12.7 -12.7)
+				(end 12.7 12.7)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "ATtiny85-20M_1_1"
+			(pin bidirectional line
+				(at 15.24 -5.08 180)
+				(length 2.54)
+				(name "~{RESET}/PB5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 15.24 0 180)
+				(length 2.54)
+				(name "XTAL1/PB3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 10.16 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 7.62 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 15.24 -2.54 180)
+				(length 2.54)
+				(name "XTAL2/PB4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 5.08 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 2.54 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -15.24 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 0 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 -2.54 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 15.24 7.62 180)
+				(length 2.54)
+				(name "AREF/PB0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 15.24 5.08 180)
+				(length 2.54)
+				(name "PB1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 -5.08 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 15.24 2.54 180)
+				(length 2.54)
+				(name "PB2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 15.24 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 -7.62 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -12.7 -10.16 0)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -7.62 -12.7 90)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -5.08 -12.7 90)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -2.54 -12.7 90)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -15.24 90)
+				(length 2.54)
+				(hide yes)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "ring_rgbw:CLQ6A_RGBW" (pin_names (offset 0.5)) (in_bom yes) (on_board yes)
+(property "Reference" "D" (at 0 12.7 0) (effects (font (size 1.27 1.27))))
+(property "Value" "CLQ6A_RGBW" (at 0 -12.7 0) (effects (font (size 1.27 1.27))))
+(symbol "CLQ6A_RGBW_0_1"
+(polyline (pts (xy -2.54 8.89) (xy 0 7.62) (xy -2.54 6.35) (xy -2.54 8.89)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy 0 6.35) (xy 0 8.89)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy -7.62 7.62) (xy -2.54 7.62)) (stroke (width 0) (type default)) (fill (type none)))
+(polyline (pts (xy 0 7.62) (xy 7.62 7.62)) (stroke (width 0) (type default)) (fill (type none)))
+(text "R" (at 2.54 8.89 0) (effects (font (size 1.27 1.27))))
+(polyline (pts (xy -2.54 3.81) (xy 0 2.54) (xy -2.54 1.27) (xy -2.54 3.81)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy 0 1.27) (xy 0 3.81)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy -7.62 2.54) (xy -2.54 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+(polyline (pts (xy 0 2.54) (xy 7.62 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+(text "G" (at 2.54 3.81 0) (effects (font (size 1.27 1.27))))
+(polyline (pts (xy -2.54 -1.27) (xy 0 -2.54) (xy -2.54 -3.81) (xy -2.54 -1.27)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy 0 -3.81) (xy 0 -1.27)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy -7.62 -2.54) (xy -2.54 -2.54)) (stroke (width 0) (type default)) (fill (type none)))
+(polyline (pts (xy 0 -2.54) (xy 7.62 -2.54)) (stroke (width 0) (type default)) (fill (type none)))
+(text "B" (at 2.54 -1.27 0) (effects (font (size 1.27 1.27))))
+(polyline (pts (xy -2.54 -6.35) (xy 0 -7.62) (xy -2.54 -8.89) (xy -2.54 -6.35)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy 0 -8.89) (xy 0 -6.35)) (stroke (width 0.254) (type default)) (fill (type none)))
+(polyline (pts (xy -7.62 -7.62) (xy -2.54 -7.62)) (stroke (width 0) (type default)) (fill (type none)))
+(polyline (pts (xy 0 -7.62) (xy 7.62 -7.62)) (stroke (width 0) (type default)) (fill (type none)))
+(text "W" (at 2.54 -6.35 0) (effects (font (size 1.27 1.27))))
+) (symbol "CLQ6A_RGBW_1_1"
+(pin passive line (at -10.16 7.62 0) (length 2.54) (name "A_R" (effects (font (size 1.0 1.0)))) (number "1" (effects (font (size 1.0 1.0)))))
+(pin passive line (at 10.16 7.62 180) (length 2.54) (name "K_R" (effects (font (size 1.0 1.0)))) (number "8" (effects (font (size 1.0 1.0)))))
+(pin passive line (at -10.16 2.54 0) (length 2.54) (name "A_G" (effects (font (size 1.0 1.0)))) (number "2" (effects (font (size 1.0 1.0)))))
+(pin passive line (at 10.16 2.54 180) (length 2.54) (name "K_G" (effects (font (size 1.0 1.0)))) (number "7" (effects (font (size 1.0 1.0)))))
+(pin passive line (at -10.16 -2.54 0) (length 2.54) (name "A_B" (effects (font (size 1.0 1.0)))) (number "3" (effects (font (size 1.0 1.0)))))
+(pin passive line (at 10.16 -2.54 180) (length 2.54) (name "K_B" (effects (font (size 1.0 1.0)))) (number "6" (effects (font (size 1.0 1.0)))))
+(pin passive line (at -10.16 -7.62 0) (length 2.54) (name "A_W" (effects (font (size 1.0 1.0)))) (number "4" (effects (font (size 1.0 1.0)))))
+(pin passive line (at 10.16 -7.62 180) (length 2.54) (name "K_W" (effects (font (size 1.0 1.0)))) (number "5" (effects (font (size 1.0 1.0)))))
+))
+(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Transistor_FET:DMG1012T"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "Q"
+			(at 5.08 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DMG1012T"
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-523"
+			(at 5.08 -1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/ds31783.pdf"
+			(at 5.08 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" "20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "N-Channel MOSFET"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "SOT?523*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "DMG1012T_0_1"
+			(polyline
+				(pts
+					(xy 2.54 -3.81) (xy -2.286 -3.81) (xy -2.286 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "DMG1012T_1_1"
+			(circle
+				(center -2.286 0)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.016 -4.318) (xy -0.889 -4.191) (xy -0.889 -3.429) (xy -0.762 -3.302)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.889 -3.81) (xy -0.254 -4.191) (xy -0.254 -3.429) (xy -0.889 -3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 1.905) (xy 0.254 -1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 0) (xy -2.54 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 2.286) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 0.508) (xy 0.762 -0.508)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -1.27) (xy 0.762 -2.286)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.143 -3.81) (xy 0.508 -3.429) (xy 0.508 -4.191) (xy 1.143 -3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 -3.302) (xy 1.143 -3.429) (xy 1.143 -4.191) (xy 1.016 -4.318)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 1.651 0)
+				(radius 2.794)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 2.54) (xy 2.54 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.54 1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(circle
+				(center 2.54 -1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.54 -3.81)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin input line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "G"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -5.08 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 5.08 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Jumper:SolderJumper_2_Open"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "JP"
+			(at 0 2.032 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 0 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 0 -5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "solder jumper SPST"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "SolderJumper*Open*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SolderJumper_2_Open_0_1"
+			(polyline
+				(pts
+					(xy -0.254 1.016) (xy -0.254 -1.016)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -0.254 -1.016)
+				(mid -1.2656 0)
+				(end -0.254 1.016)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(arc
+				(start 0.254 1.016)
+				(mid 1.2656 0)
+				(end 0.254 -1.016)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 1.016) (xy 0.254 -1.016)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SolderJumper_2_Open_1_1"
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 3.81)
+				(name "B"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Device:C"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "C"
+			(at 0.635 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 0.635 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0.9652 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "cap capacitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "C_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "C_0_1"
+			(polyline
+				(pts
+					(xy -2.032 0.762) (xy 2.032 0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.032 -0.762) (xy 2.032 -0.762)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "C_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.794)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+)
+(symbol (lib_id "ring_rgbw:ATtiny85-20M") (at 60.96 58.42 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "9157f57e-2091-58b8-8b38-4ca207a1c7c0")
+(property "Reference" "U1" (at 50.80 39.37 0) (effects (font (size 1.0 1.0))))
+(property "Value" "ATtiny85-20MU" (at 50.80 41.91 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:QFN20" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Microchip" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "ATTINY85-20MU" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "ATtiny85 8KB, QFN20 exposed pad, 2.7-5.5 V" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=ATTINY85-20MU" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=ATTINY85-20MU" (at 50.80 39.37 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "1cfb732a-9771-5fcd-b694-9f7d711ace69"))
+(pin "2" (uuid "57aa6d3c-a998-5e34-b751-4215498e3ed0"))
+(pin "3" (uuid "e12b7ef7-05a5-509e-b7fd-6b1f9cf33710"))
+(pin "4" (uuid "19b3a435-1f87-5774-9027-623b0c67a7a4"))
+(pin "5" (uuid "a90dc1ed-180a-58fb-bb37-e692e8b2eee7"))
+(pin "6" (uuid "a2ceb066-23de-51b5-a1c9-1cf8fa824005"))
+(pin "7" (uuid "c8bd719b-9656-5302-a37a-655938d26ed5"))
+(pin "8" (uuid "59f94737-7df9-5e20-827b-746953cb1ab8"))
+(pin "9" (uuid "1f69ec06-d1e0-518e-b5d3-1b2e9b5f262a"))
+(pin "10" (uuid "583f40c0-a1a7-5ad7-b732-abbc0f5cb2e6"))
+(pin "11" (uuid "6eb3702a-96c2-5a11-a132-18cede7605d9"))
+(pin "12" (uuid "f93c4cb6-aa52-57bb-b5bf-bda46b3733ae"))
+(pin "13" (uuid "ffe5ff06-47d7-5245-ae1e-f1a6a7db4545"))
+(pin "14" (uuid "852cf8c8-2a8f-5fad-933e-15cb444ac037"))
+(pin "15" (uuid "00b688db-b8be-5fdb-b833-d7e2f1d618d4"))
+(pin "16" (uuid "08dc8428-88f0-5c12-ac03-24665939a27c"))
+(pin "17" (uuid "0d61b5cb-195d-50d0-b678-065148242630"))
+(pin "18" (uuid "21f61482-ba3c-5227-88ab-ee0aed9a5079"))
+(pin "19" (uuid "da4b65e4-c649-535c-a5bf-8ddafac1fb75"))
+(pin "20" (uuid "8deaf888-ae3c-5acf-9979-728342fba137"))
+(pin "21" (uuid "17948c99-dd16-5041-af6f-e2eabc36d10e"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "U1") (unit 1)))))
+(wire (pts (xy 76.2 63.5) (xy 82.55 63.5)) (stroke (width 0) (type default)) (uuid "d6bcdd47-85af-5c37-a4b2-41e3c47a5ce9"))
+(global_label "PB5" (shape bidirectional) (at 82.55 63.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "0b306487-a289-547d-88c9-85a79bf8a3aa"))
+(wire (pts (xy 76.2 58.42) (xy 82.55 58.42)) (stroke (width 0) (type default)) (uuid "75235165-a088-538c-a7bd-6dda5ccf4fc2"))
+(global_label "PB3" (shape bidirectional) (at 82.55 58.42 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "42ee1f14-705a-52d0-bfef-05071e92bf06"))
+(no_connect (at 48.26 48.26) (uuid "775305aa-a1f3-5fae-85eb-b3a08abbaaca"))
+(no_connect (at 48.26 50.8) (uuid "01c8eab8-63ba-5f43-ba63-0d6e3e5aad32"))
+(wire (pts (xy 76.2 60.96) (xy 82.55 60.96)) (stroke (width 0) (type default)) (uuid "296a3d73-de6b-51a4-9078-5d16e1b2ab27"))
+(global_label "PB4" (shape bidirectional) (at 82.55 60.96 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "2e6ab837-46eb-5520-8ee6-240b99c0ccb3"))
+(no_connect (at 48.26 53.34) (uuid "801c10f6-188a-5467-90de-4a189f1c1e0c"))
+(no_connect (at 48.26 55.88) (uuid "1ff77056-c821-543f-838b-c133d75ef61e"))
+(wire (pts (xy 60.96 73.66) (xy 60.96 80.01)) (stroke (width 0) (type default)) (uuid "f3164500-b619-50c3-87c6-b8b186c662da"))
+(global_label "GND" (shape bidirectional) (at 60.96 80.01 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "88d618a3-f7ce-5f79-8d29-16eb75dbc673"))
+(no_connect (at 48.26 58.42) (uuid "73c08202-df96-5145-bc0e-fbe3753b7ccc"))
+(no_connect (at 48.26 60.96) (uuid "410e71fe-1bb2-50c8-8a04-dddb2b7599e4"))
+(wire (pts (xy 76.2 50.8) (xy 82.55 50.8)) (stroke (width 0) (type default)) (uuid "82bfbdf3-f6d6-5728-97ee-49085e774716"))
+(global_label "PB0" (shape bidirectional) (at 82.55 50.8 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "c288a49d-7db6-5e72-9eaf-4750a5c43f71"))
+(wire (pts (xy 76.2 53.34) (xy 82.55 53.34)) (stroke (width 0) (type default)) (uuid "a887f71d-b71a-5a28-afa2-04fb2b97cda6"))
+(global_label "PB1" (shape bidirectional) (at 82.55 53.34 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "cd6cf5e9-ae0c-5ff3-8f68-91f3261637d9"))
+(no_connect (at 48.26 63.5) (uuid "194233ac-8711-5385-aba0-2db5deea4932"))
+(wire (pts (xy 76.2 55.88) (xy 82.55 55.88)) (stroke (width 0) (type default)) (uuid "1e4e8409-fd8d-50e1-aa1b-5c54d3395ae6"))
+(global_label "PB2" (shape bidirectional) (at 82.55 55.88 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "17a3bb22-fad0-5dfb-9abd-e279ca8eb14c"))
+(wire (pts (xy 60.96 43.18) (xy 60.96 36.83)) (stroke (width 0) (type default)) (uuid "15ec1c10-576e-5da4-b5ad-d807f33d96ba"))
+(global_label "VCC" (shape bidirectional) (at 60.96 36.83 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "e77bda47-044e-5b60-b3cf-a5723ad5b28f"))
+(no_connect (at 48.26 66.04) (uuid "b14d5bf8-bfb1-5a55-9873-a62555510fea"))
+(no_connect (at 48.26 68.58) (uuid "479f9ac1-0793-55e1-964b-b4e5958ff6bf"))
+(no_connect (at 53.34 71.12) (uuid "0f260aa8-9d31-5310-b49b-3878480c3447"))
+(no_connect (at 55.88 71.12) (uuid "29f6da15-5465-567e-a540-05c37d672eb5"))
+(no_connect (at 58.42 71.12) (uuid "4c6eed35-6e03-53ff-a6d0-aa93b01333e6"))
+(wire (pts (xy 60.96 73.66) (xy 60.96 80.01)) (stroke (width 0) (type default)) (uuid "a03d5500-28be-58b4-b832-1b41606371e4"))
+(global_label "GND" (shape bidirectional) (at 60.96 80.01 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "c75176b2-420c-57eb-b513-94c98b674533"))
+(symbol (lib_id "ring_rgbw:CLQ6A_RGBW") (at 149.86 60.96 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "ee7fa090-a72c-55bc-8f8a-3a340abff53c")
+(property "Reference" "D1" (at 149.86 45.72 0) (effects (font (size 1.0 1.0))))
+(property "Value" "CLQ6A RGBW" (at 149.86 48.26 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:CLQ6A_PLCC8" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Cree LED" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "CLQ6A-TKW-S1L1R1H1QBB7935BB3" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "Four independent dies, anodes joined on PCB; 5.2x5.0x1.1 mm" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "https://assets.cree-led.com/a/ds/h/HB-CLQ6A-TKW.pdf" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=CLQ6A-TKW-S1L1R1H1QBB7935BB3" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=CLQ6A-TKW-S1L1R1H1QBB7935BB3" (at 149.86 45.72 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "1a90b301-a782-5456-9ce1-4b8b6b308d0f"))
+(pin "8" (uuid "bd25a269-4f49-591c-9247-790e8a528bf2"))
+(pin "2" (uuid "77463a35-e1fb-524c-8ad9-26dfff09ea6b"))
+(pin "7" (uuid "2423dde2-148b-5314-b714-225121bb7e6a"))
+(pin "3" (uuid "cf9e57ff-0499-55a5-baae-17101160c59e"))
+(pin "6" (uuid "3b2ac949-4c9c-5cb0-ae38-cb6c22c1ed91"))
+(pin "4" (uuid "91148363-24ee-5553-98d4-fc848bc87352"))
+(pin "5" (uuid "55fea6b6-16ce-56e8-a0d5-a89f14befcbb"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "D1") (unit 1)))))
+(wire (pts (xy 139.7 53.34) (xy 133.35 53.34)) (stroke (width 0) (type default)) (uuid "2016635d-f14f-55b9-bf83-d838aba1edaa"))
+(global_label "VCC" (shape bidirectional) (at 133.35 53.34 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "e04ac3ee-6b48-52c1-8b40-66f53f278ab9"))
+(wire (pts (xy 160.02 53.34) (xy 166.37 53.34)) (stroke (width 0) (type default)) (uuid "427aa408-ffc2-5416-afba-b84de7a677fe"))
+(global_label "R_K" (shape bidirectional) (at 166.37 53.34 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "70d0c093-877f-5abb-ae9f-02bf3a7bbe4a"))
+(wire (pts (xy 139.7 58.42) (xy 133.35 58.42)) (stroke (width 0) (type default)) (uuid "5d3f64f6-a6a0-536b-9591-85ab2cb6c14a"))
+(global_label "VCC" (shape bidirectional) (at 133.35 58.42 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "36af4d6e-008d-5396-ae66-50a73bcd0f26"))
+(wire (pts (xy 160.02 58.42) (xy 166.37 58.42)) (stroke (width 0) (type default)) (uuid "6f066d9c-26ac-5b9f-9083-15bc09f6ca4c"))
+(global_label "G_K" (shape bidirectional) (at 166.37 58.42 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "6c16edb7-53c7-5b83-9a2f-1a4cedaec588"))
+(wire (pts (xy 139.7 63.5) (xy 133.35 63.5)) (stroke (width 0) (type default)) (uuid "95affb3c-d575-5021-866c-c2a918a42334"))
+(global_label "VCC" (shape bidirectional) (at 133.35 63.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "76bc02a4-9b6a-5a02-8626-7a8f9c8846a6"))
+(wire (pts (xy 160.02 63.5) (xy 166.37 63.5)) (stroke (width 0) (type default)) (uuid "bdfdca64-edc2-5ecb-a250-3eb33d3e1905"))
+(global_label "B_K" (shape bidirectional) (at 166.37 63.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "1d4dcf59-6d2c-5a33-8303-b0ed165c3c72"))
+(wire (pts (xy 139.7 68.58) (xy 133.35 68.58)) (stroke (width 0) (type default)) (uuid "63c5f244-37bb-58ac-80c4-5990d2db4549"))
+(global_label "VCC" (shape bidirectional) (at 133.35 68.58 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "1028e734-4b98-56dc-b5a3-ba25a5fcfeaf"))
+(wire (pts (xy 160.02 68.58) (xy 166.37 68.58)) (stroke (width 0) (type default)) (uuid "40da8e18-c8e8-56fd-beb1-1cd2b298d1b3"))
+(global_label "W_K" (shape bidirectional) (at 166.37 68.58 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "287b16ae-03de-5ce3-9ca7-f1994014c884"))
+(symbol (lib_id "Device:R") (at 76.20 132.08 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "4d76daef-1724-5edb-9c18-7c7e9e7e6066")
+(property "Reference" "R1" (at 76.20 125.73 0) (effects (font (size 1.0 1.0))))
+(property "Value" "2.2k" (at 76.20 128.27 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-072K2L" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "R die current limiter; 0402 1% 63mW" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-072K2L" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-072K2L" (at 76.20 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "c6965d09-36d3-52ac-9460-845fb2d23c12"))
+(pin "2" (uuid "2ab55ecf-ea4a-5fdf-856a-0581f663d8ed"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R1") (unit 1)))))
+(wire (pts (xy 76.2 128.27) (xy 76.2 121.92)) (stroke (width 0) (type default)) (uuid "6bdb07a8-6c02-5346-b312-9e0acdd5ed38"))
+(global_label "R_K" (shape bidirectional) (at 76.2 121.92 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "141ef675-c822-59e9-adff-122c5ef0b017"))
+(wire (pts (xy 76.2 135.89) (xy 76.2 142.24)) (stroke (width 0) (type default)) (uuid "e4da38d7-3664-5cb6-80d4-b4ab0c6dd5ec"))
+(global_label "R_D" (shape bidirectional) (at 76.2 142.24 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "d630aa59-5341-596b-9495-8046f78829bc"))
+(symbol (lib_id "Transistor_FET:DMG1012T") (at 73.66 157.48 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "dc328029-95e5-566c-8f1f-97778605b119")
+(property "Reference" "Q1" (at 86.36 154.94 0) (effects (font (size 1.0 1.0))))
+(property "Value" "DMG1012T" (at 86.36 157.48 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:SOT523" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Diodes Incorporated" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "DMG1012T-7" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "R low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMG1012T.pdf" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=DMG1012T-7" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=DMG1012T-7" (at 86.36 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "bf893fbf-d50a-5ad2-acec-b4d8501bdb28"))
+(pin "2" (uuid "e549864c-23c0-5804-9b7a-ad16bea6c100"))
+(pin "3" (uuid "a851494c-cb43-5085-a057-fc23027baa7f"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "Q1") (unit 1)))))
+(wire (pts (xy 68.58 157.48) (xy 62.23 157.48)) (stroke (width 0) (type default)) (uuid "210c35cb-3bdb-5612-a64f-1f42219014b1"))
+(global_label "R_G" (shape bidirectional) (at 62.23 157.48 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "4492c2b5-99d9-527a-bcd4-d2476c83b21f"))
+(wire (pts (xy 76.2 162.56) (xy 76.2 168.91)) (stroke (width 0) (type default)) (uuid "2c941aab-b5ea-547b-a908-4ea599f543e7"))
+(global_label "GND" (shape bidirectional) (at 76.2 168.91 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "e77db687-e9d3-5bc0-abdc-f4d405c61a04"))
+(wire (pts (xy 76.2 152.4) (xy 76.2 146.05)) (stroke (width 0) (type default)) (uuid "ec901be1-c91f-50f7-af1e-96b4d47dbe2f"))
+(global_label "R_D" (shape bidirectional) (at 76.2 146.05 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "c6dd5051-15c2-5af4-bc84-d685cc6dff33"))
+(symbol (lib_id "Device:R") (at 50.80 154.94 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "6649f390-ecc5-5cd4-a750-81351dde97f5")
+(property "Reference" "R5" (at 50.80 148.59 0) (effects (font (size 1.0 1.0))))
+(property "Value" "1k" (at 50.80 151.13 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-071KL" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "R gate/ISP isolation; 0402 1% 63mW" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-071KL" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-071KL" (at 50.80 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "ae2b3ccd-e6b5-5ef1-8c3d-a76c0527afd0"))
+(pin "2" (uuid "5033800e-51f7-5404-a671-a04416ce14b2"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R5") (unit 1)))))
+(wire (pts (xy 50.8 151.13) (xy 50.8 144.78)) (stroke (width 0) (type default)) (uuid "514af3d2-20b6-5c39-962b-b9d55bb4b89f"))
+(global_label "PB0" (shape bidirectional) (at 50.8 144.78 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "b07f72b5-3267-5634-9b5c-0d0aaf18ff0a"))
+(wire (pts (xy 50.8 158.75) (xy 50.8 165.1)) (stroke (width 0) (type default)) (uuid "ab942a9a-a9aa-5b20-8673-64daba8e4962"))
+(global_label "R_G" (shape bidirectional) (at 50.8 165.1 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "368ce4a6-eb5b-5f74-94f1-829de6c2c6b2"))
+(symbol (lib_id "Device:R") (at 50.80 180.34 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "2e55be01-4b9c-5545-9f4a-628f5628b364")
+(property "Reference" "R9" (at 50.80 173.99 0) (effects (font (size 1.0 1.0))))
+(property "Value" "100k" (at 50.80 176.53 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-07100KL" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "R gate pull-down; 0402 1% 63mW" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-07100KL" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-07100KL" (at 50.80 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "560d6342-7724-5889-a567-02be3a4e1e85"))
+(pin "2" (uuid "affb98cd-7189-5985-bf84-3b73d990d71f"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R9") (unit 1)))))
+(wire (pts (xy 50.8 176.53) (xy 50.8 170.18)) (stroke (width 0) (type default)) (uuid "6cfc3470-46f0-5505-bd75-83268e7455c1"))
+(global_label "R_G" (shape bidirectional) (at 50.8 170.18 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "c3d893c8-d906-5a36-ba27-1eab835f92a9"))
+(wire (pts (xy 50.8 184.15) (xy 50.8 190.5)) (stroke (width 0) (type default)) (uuid "cf8c5691-359a-50d5-90eb-cfdc764172b4"))
+(global_label "GND" (shape bidirectional) (at 50.8 190.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "ed1398d7-cb88-55e1-84aa-60ef7de6ef43"))
+(symbol (lib_id "Device:R") (at 167.64 132.08 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "279c967c-9d51-5c4c-84c4-93426f2801df")
+(property "Reference" "R2" (at 167.64 125.73 0) (effects (font (size 1.0 1.0))))
+(property "Value" "2.2k" (at 167.64 128.27 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-072K2L" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "G die current limiter; 0402 1% 63mW" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-072K2L" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-072K2L" (at 167.64 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "b1d24a67-ce91-5f3d-a4f4-9900448a5a67"))
+(pin "2" (uuid "ddb690b7-ca8f-5899-9f07-23fb5c9f6f8c"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R2") (unit 1)))))
+(wire (pts (xy 167.64 128.27) (xy 167.64 121.92)) (stroke (width 0) (type default)) (uuid "75031ff5-6df4-55bb-a0e3-5e5ed7319cb5"))
+(global_label "G_K" (shape bidirectional) (at 167.64 121.92 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "ed761544-93c8-56d2-87d0-15831dff06af"))
+(wire (pts (xy 167.64 135.89) (xy 167.64 142.24)) (stroke (width 0) (type default)) (uuid "862711a7-62bc-5c8c-a6f2-d787f2e27b8a"))
+(global_label "G_D" (shape bidirectional) (at 167.64 142.24 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "1ea6dd9d-9172-5546-995a-f93498ff3512"))
+(symbol (lib_id "Transistor_FET:DMG1012T") (at 165.10 157.48 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "39cc6fb2-3aae-5d4b-b6cb-81e8b1c272d7")
+(property "Reference" "Q2" (at 177.80 154.94 0) (effects (font (size 1.0 1.0))))
+(property "Value" "DMG1012T" (at 177.80 157.48 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:SOT523" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Diodes Incorporated" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "DMG1012T-7" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "G low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMG1012T.pdf" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=DMG1012T-7" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=DMG1012T-7" (at 177.80 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "efccf502-1331-5436-a6ff-3cd3c87c6a7e"))
+(pin "2" (uuid "be8a1e92-c7ae-513d-b193-1c38c78a41af"))
+(pin "3" (uuid "cbeaa4de-3f5e-5965-9846-5d1db1e20ad1"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "Q2") (unit 1)))))
+(wire (pts (xy 160.02 157.48) (xy 153.67 157.48)) (stroke (width 0) (type default)) (uuid "8766b20a-2538-5011-b5bb-86414f50c659"))
+(global_label "G_G" (shape bidirectional) (at 153.67 157.48 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "715c142c-0114-5f89-b195-59acd49bc8ea"))
+(wire (pts (xy 167.64 162.56) (xy 167.64 168.91)) (stroke (width 0) (type default)) (uuid "0f1f4188-0aa1-59f5-9741-9c40862cc7df"))
+(global_label "GND" (shape bidirectional) (at 167.64 168.91 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "688055ae-ec2b-5491-82d9-98aae5da0efb"))
+(wire (pts (xy 167.64 152.4) (xy 167.64 146.05)) (stroke (width 0) (type default)) (uuid "472280ea-fc51-5c7b-89a8-d8a5be1b09ea"))
+(global_label "G_D" (shape bidirectional) (at 167.64 146.05 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "a77d5113-3fdb-5ba5-ae16-fe3c90abf630"))
+(symbol (lib_id "Device:R") (at 142.24 154.94 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "c68544c5-c3c6-544c-a524-efb0c348a0e8")
+(property "Reference" "R6" (at 142.24 148.59 0) (effects (font (size 1.0 1.0))))
+(property "Value" "1k" (at 142.24 151.13 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-071KL" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "G gate/ISP isolation; 0402 1% 63mW" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-071KL" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-071KL" (at 142.24 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "eacb1b6f-cb3a-56c2-aa07-cb6b97246760"))
+(pin "2" (uuid "d7332c3b-a352-5df5-80f7-8b92c2cb87cb"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R6") (unit 1)))))
+(wire (pts (xy 142.24 151.13) (xy 142.24 144.78)) (stroke (width 0) (type default)) (uuid "e07e8516-3312-534b-a4f8-102a93d31bb6"))
+(global_label "PB1" (shape bidirectional) (at 142.24 144.78 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "c753845a-fb4e-5aaa-9ca6-7ad755c581d3"))
+(wire (pts (xy 142.24 158.75) (xy 142.24 165.1)) (stroke (width 0) (type default)) (uuid "27c2138e-7fd2-57e9-8bed-d7ca0e3f7b4a"))
+(global_label "G_G" (shape bidirectional) (at 142.24 165.1 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "d3c69344-4413-5c3b-985c-818629971bdd"))
+(symbol (lib_id "Device:R") (at 142.24 180.34 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "27dc2533-7fbf-5326-b158-76e6e7a6c97f")
+(property "Reference" "R10" (at 142.24 173.99 0) (effects (font (size 1.0 1.0))))
+(property "Value" "100k" (at 142.24 176.53 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-07100KL" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "G gate pull-down; 0402 1% 63mW" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-07100KL" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-07100KL" (at 142.24 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "d66362eb-d7fd-5408-9ba5-2ed937b3ffe4"))
+(pin "2" (uuid "12c42b9b-a8dd-578b-bde7-c4c3ade05db1"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R10") (unit 1)))))
+(wire (pts (xy 142.24 176.53) (xy 142.24 170.18)) (stroke (width 0) (type default)) (uuid "7fcf73c0-0f0d-51ac-90cb-7002016d2539"))
+(global_label "G_G" (shape bidirectional) (at 142.24 170.18 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "66985451-6930-53e5-8a8a-41b54412b91d"))
+(wire (pts (xy 142.24 184.15) (xy 142.24 190.5)) (stroke (width 0) (type default)) (uuid "24efd302-a208-55c6-9b1b-f26b13e43d9a"))
+(global_label "GND" (shape bidirectional) (at 142.24 190.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "561e5491-16ab-5af1-9209-4541f285cc7c"))
+(symbol (lib_id "Device:R") (at 259.08 132.08 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "47a06387-e948-5042-9d90-aee07b65108e")
+(property "Reference" "R3" (at 259.08 125.73 0) (effects (font (size 1.0 1.0))))
+(property "Value" "2.2k" (at 259.08 128.27 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-072K2L" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "B die current limiter; 0402 1% 63mW" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-072K2L" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-072K2L" (at 259.08 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "49d1961b-2753-5382-b51d-452d67c9af50"))
+(pin "2" (uuid "1be10447-59a4-523b-8468-32b9273d10a2"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R3") (unit 1)))))
+(wire (pts (xy 259.08 128.27) (xy 259.08 121.92)) (stroke (width 0) (type default)) (uuid "752df063-42ef-5afa-91ad-8d966cdc7ba1"))
+(global_label "B_K" (shape bidirectional) (at 259.08 121.92 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "6c656791-83f3-501e-9eb0-6f13aee5d238"))
+(wire (pts (xy 259.08 135.89) (xy 259.08 142.24)) (stroke (width 0) (type default)) (uuid "153f0b63-76ec-507f-b1c0-06d01d4d6d3c"))
+(global_label "B_D" (shape bidirectional) (at 259.08 142.24 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "e7a7a265-2077-5cd8-985c-b3d641274284"))
+(symbol (lib_id "Transistor_FET:DMG1012T") (at 256.54 157.48 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "084a6b03-fd71-55f4-a584-9136b8c57241")
+(property "Reference" "Q3" (at 269.24 154.94 0) (effects (font (size 1.0 1.0))))
+(property "Value" "DMG1012T" (at 269.24 157.48 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:SOT523" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Diodes Incorporated" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "DMG1012T-7" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "B low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMG1012T.pdf" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=DMG1012T-7" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=DMG1012T-7" (at 269.24 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "a72841c1-6ccb-5488-8aa0-d9ad120a3a7e"))
+(pin "2" (uuid "1519d67f-3c0d-54d1-930f-8b646fb9382b"))
+(pin "3" (uuid "5a896125-7ee3-5a04-8ece-4da94cbbc2eb"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "Q3") (unit 1)))))
+(wire (pts (xy 251.46 157.48) (xy 245.11 157.48)) (stroke (width 0) (type default)) (uuid "78895ece-dfd9-5ef6-aa70-cb34f6aeb017"))
+(global_label "B_G" (shape bidirectional) (at 245.11 157.48 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "9778a13e-e9c6-5dea-a1f0-bba90866ae13"))
+(wire (pts (xy 259.08 162.56) (xy 259.08 168.91)) (stroke (width 0) (type default)) (uuid "4d0c3f26-0bf1-5b30-b7cc-0c5a6ed63204"))
+(global_label "GND" (shape bidirectional) (at 259.08 168.91 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "fea04351-81d8-50bf-9fcf-160e3e9a855d"))
+(wire (pts (xy 259.08 152.4) (xy 259.08 146.05)) (stroke (width 0) (type default)) (uuid "be2009fd-7c7c-5ec8-8a07-e3263e49dd74"))
+(global_label "B_D" (shape bidirectional) (at 259.08 146.05 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "7cbef8bd-91da-5fab-9fba-cc5606c015f5"))
+(symbol (lib_id "Device:R") (at 233.68 154.94 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "b723f62e-e962-5bbf-b787-2c273c92d724")
+(property "Reference" "R7" (at 233.68 148.59 0) (effects (font (size 1.0 1.0))))
+(property "Value" "1k" (at 233.68 151.13 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-071KL" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "B gate/ISP isolation; 0402 1% 63mW" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-071KL" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-071KL" (at 233.68 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "3bf43c20-3b4f-5623-a53d-ef5f2a5cdf7f"))
+(pin "2" (uuid "b9111ae3-3788-5341-af63-6022ed062b65"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R7") (unit 1)))))
+(wire (pts (xy 233.68 151.13) (xy 233.68 144.78)) (stroke (width 0) (type default)) (uuid "778aad15-c179-5bb9-a8ba-cbd886f0fd90"))
+(global_label "PB4" (shape bidirectional) (at 233.68 144.78 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "6ebd84fd-432a-5a57-ac29-602a903e3f93"))
+(wire (pts (xy 233.68 158.75) (xy 233.68 165.1)) (stroke (width 0) (type default)) (uuid "92a51784-49f7-56b5-8fa8-26292a07e3eb"))
+(global_label "B_G" (shape bidirectional) (at 233.68 165.1 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "2bcd00c4-e1eb-5888-a090-3bbe21816138"))
+(symbol (lib_id "Device:R") (at 233.68 180.34 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "a5fc20cd-7db5-5bdf-a8e5-29713d349d2a")
+(property "Reference" "R11" (at 233.68 173.99 0) (effects (font (size 1.0 1.0))))
+(property "Value" "100k" (at 233.68 176.53 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-07100KL" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "B gate pull-down; 0402 1% 63mW" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-07100KL" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-07100KL" (at 233.68 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "0492f57c-8fa8-5591-a666-fc4e105443c4"))
+(pin "2" (uuid "1e48cd8b-c8c5-53f3-b280-524b16f0e86a"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R11") (unit 1)))))
+(wire (pts (xy 233.68 176.53) (xy 233.68 170.18)) (stroke (width 0) (type default)) (uuid "7ecdbced-b19f-5d99-aa9f-8f07f61575e9"))
+(global_label "B_G" (shape bidirectional) (at 233.68 170.18 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "cf51c665-b0f1-5526-a757-3b64cbc4c1cc"))
+(wire (pts (xy 233.68 184.15) (xy 233.68 190.5)) (stroke (width 0) (type default)) (uuid "fbf1853e-53da-5467-9861-d7df886e256e"))
+(global_label "GND" (shape bidirectional) (at 233.68 190.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "69f18c32-5fcf-5ef9-993b-ece64700f1ec"))
+(symbol (lib_id "Device:R") (at 350.52 132.08 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "277baf5e-5a48-55f0-8e3c-72c7f6ded604")
+(property "Reference" "R4" (at 350.52 125.73 0) (effects (font (size 1.0 1.0))))
+(property "Value" "2.2k" (at 350.52 128.27 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-072K2L" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "W die current limiter; 0402 1% 63mW" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-072K2L" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-072K2L" (at 350.52 125.73 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "bb565881-0dd5-5d10-92c6-7dc67aeb9fd7"))
+(pin "2" (uuid "48ceaafb-492e-519d-ab55-ae5b518e954a"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R4") (unit 1)))))
+(wire (pts (xy 350.52 128.27) (xy 350.52 121.92)) (stroke (width 0) (type default)) (uuid "22218efd-aa73-57dc-87f8-febf34e30a77"))
+(global_label "W_K" (shape bidirectional) (at 350.52 121.92 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "b7d884dd-85ce-5cf8-bd5c-259cfa3fd4bc"))
+(wire (pts (xy 350.52 135.89) (xy 350.52 142.24)) (stroke (width 0) (type default)) (uuid "a623f9a6-2c0e-5707-b294-f68df2dea32d"))
+(global_label "W_D" (shape bidirectional) (at 350.52 142.24 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "77117adf-fe48-5319-b7bd-4bc096cc126e"))
+(symbol (lib_id "Transistor_FET:DMG1012T") (at 347.98 157.48 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "41b3fe3f-2c0d-53d4-b1e3-feb7857890f7")
+(property "Reference" "Q4" (at 360.68 154.94 0) (effects (font (size 1.0 1.0))))
+(property "Value" "DMG1012T" (at 360.68 157.48 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:SOT523" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Diodes Incorporated" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "DMG1012T-7" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "W low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMG1012T.pdf" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=DMG1012T-7" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=DMG1012T-7" (at 360.68 154.94 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "5d7f6681-123d-59f1-b7b6-1570cd3717a9"))
+(pin "2" (uuid "f6885b92-ee9e-5526-be7f-84897374c3c7"))
+(pin "3" (uuid "20e87ce2-4f6c-51bb-8e77-0a71a51b9d8d"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "Q4") (unit 1)))))
+(wire (pts (xy 342.9 157.48) (xy 336.55 157.48)) (stroke (width 0) (type default)) (uuid "f2aaac57-0520-510b-97cb-a25cd8640ea6"))
+(global_label "W_G" (shape bidirectional) (at 336.55 157.48 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "227ee002-565a-5043-98d7-48420ce05086"))
+(wire (pts (xy 350.52 162.56) (xy 350.52 168.91)) (stroke (width 0) (type default)) (uuid "8ce79bd1-e06e-5f44-9ba6-ad03927c1091"))
+(global_label "GND" (shape bidirectional) (at 350.52 168.91 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "0dab0053-fb84-5a81-87d2-ac9c69ebe81e"))
+(wire (pts (xy 350.52 152.4) (xy 350.52 146.05)) (stroke (width 0) (type default)) (uuid "86a93f1e-6fc3-51c9-9345-126ebd9702d1"))
+(global_label "W_D" (shape bidirectional) (at 350.52 146.05 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "5c199cd0-eaf5-5436-b29c-3861d2cff197"))
+(symbol (lib_id "Device:R") (at 325.12 154.94 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "2d805b37-2d15-57b7-b8af-f3181a7b598e")
+(property "Reference" "R8" (at 325.12 148.59 0) (effects (font (size 1.0 1.0))))
+(property "Value" "1k" (at 325.12 151.13 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-071KL" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "W gate/ISP isolation; 0402 1% 63mW" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-071KL" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-071KL" (at 325.12 148.59 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "3c09ee2a-984b-52f5-83a0-b34fc85b3a2b"))
+(pin "2" (uuid "f4c70169-9e44-5f29-bd46-289eba5155b2"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R8") (unit 1)))))
+(wire (pts (xy 325.12 151.13) (xy 325.12 144.78)) (stroke (width 0) (type default)) (uuid "d620197a-43fd-52a8-b4b5-e7fa0c05bdcb"))
+(global_label "PB2" (shape bidirectional) (at 325.12 144.78 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "264a15a6-0686-5cd7-a796-9a01097047b4"))
+(wire (pts (xy 325.12 158.75) (xy 325.12 165.1)) (stroke (width 0) (type default)) (uuid "410cee91-431a-574e-aa5d-76be7a550c9f"))
+(global_label "W_G" (shape bidirectional) (at 325.12 165.1 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "d5d270d2-9cab-5ee1-baef-3e740e4bcbfa"))
+(symbol (lib_id "Device:R") (at 325.12 180.34 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "9ded8e5a-122b-508a-b89a-3bc41a5036e0")
+(property "Reference" "R12" (at 325.12 173.99 0) (effects (font (size 1.0 1.0))))
+(property "Value" "100k" (at 325.12 176.53 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-07100KL" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "W gate pull-down; 0402 1% 63mW" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-07100KL" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-07100KL" (at 325.12 173.99 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "f229b407-1004-52c4-8707-19e28613a23e"))
+(pin "2" (uuid "86c89094-5101-5be6-bb01-f12b47147642"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R12") (unit 1)))))
+(wire (pts (xy 325.12 176.53) (xy 325.12 170.18)) (stroke (width 0) (type default)) (uuid "79ce88cd-77c7-5ed5-b739-8823a441ea8a"))
+(global_label "W_G" (shape bidirectional) (at 325.12 170.18 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "0ddf0b9c-0951-5917-abef-fd0739d49650"))
+(wire (pts (xy 325.12 184.15) (xy 325.12 190.5)) (stroke (width 0) (type default)) (uuid "9238c828-b2aa-5051-a2f5-7f2fc0dd873d"))
+(global_label "GND" (shape bidirectional) (at 325.12 190.5 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "be1bb85f-58ee-500a-b132-bad46a47cf62"))
+(symbol (lib_id "Device:R") (at 236.22 43.18 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "78dc5638-7cfd-519f-87cc-752b83614743")
+(property "Reference" "R13" (at 236.22 36.83 0) (effects (font (size 1.0 1.0))))
+(property "Value" "100k" (at 236.22 39.37 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-07100KL" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "Mode selector pull-up; 0402 1% 63mW" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-07100KL" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-07100KL" (at 236.22 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "94267387-1e48-5aad-b19b-095a6eee0fb3"))
+(pin "2" (uuid "4b331389-45f7-5ed4-9739-1a7ae0b4f3b0"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R13") (unit 1)))))
+(wire (pts (xy 236.22 39.37) (xy 236.22 33.02)) (stroke (width 0) (type default)) (uuid "7fa1dc2d-9711-50be-8853-9f45528c45c4"))
+(global_label "VCC" (shape bidirectional) (at 236.22 33.02 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "b410bd0b-5f42-56f7-adbe-9c9ca506f81a"))
+(wire (pts (xy 236.22 46.99) (xy 236.22 53.34)) (stroke (width 0) (type default)) (uuid "65d91e7c-2c70-532e-bd0e-2dc815e6a9b7"))
+(global_label "PB3" (shape bidirectional) (at 236.22 53.34 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "d1f98da4-57a3-510c-9a18-ca557814e86e"))
+(symbol (lib_id "Device:R") (at 104.14 43.18 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "76ebd97f-6578-538c-bd7d-09f7e615291a")
+(property "Reference" "R14" (at 104.14 36.83 0) (effects (font (size 1.0 1.0))))
+(property "Value" "10k" (at 104.14 39.37 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:R0402" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "YAGEO" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "RC0402FR-0710KL" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "ISP RESET pull-up; 0402 1% 63mW" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=RC0402FR-0710KL" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=RC0402FR-0710KL" (at 104.14 36.83 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "caff5a8c-46d6-57b8-ad68-2de86206e011"))
+(pin "2" (uuid "307245e2-1078-5f2f-be72-8b544913a578"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "R14") (unit 1)))))
+(wire (pts (xy 104.14 39.37) (xy 104.14 33.02)) (stroke (width 0) (type default)) (uuid "440490e7-cd95-597a-a32c-4f89c3ee6ea2"))
+(global_label "VCC" (shape bidirectional) (at 104.14 33.02 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "104c697a-0452-57c6-85ba-d5d9b1ed178d"))
+(wire (pts (xy 104.14 46.99) (xy 104.14 53.34)) (stroke (width 0) (type default)) (uuid "9649e83e-9f03-5f9d-8736-9c9e7e170ffc"))
+(global_label "PB5" (shape bidirectional) (at 104.14 53.34 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "7e4b2af7-46ec-51d0-ab54-a90ab19b02d9"))
+(symbol (lib_id "Jumper:SolderJumper_2_Open") (at 236.22 68.58 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "fb9261bd-d65f-5ed6-81dc-728cf3c7dafd")
+(property "Reference" "JP1" (at 236.22 62.23 0) (effects (font (size 1.0 1.0))))
+(property "Value" "MODE: open/closed" (at 236.22 64.77 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:ModeBridge" (at 236.22 62.23 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "701b60a5-5f01-59c3-bdf3-001dd1e92a8d"))
+(pin "2" (uuid "56e3352d-c26d-5118-8713-d9ece6544119"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "JP1") (unit 1)))))
+(wire (pts (xy 231.14 68.58) (xy 224.79 68.58)) (stroke (width 0) (type default)) (uuid "fd43c689-9375-5f9e-abb8-1b8f19f0c4cc"))
+(global_label "PB3" (shape bidirectional) (at 224.79 68.58 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "bb57175a-4eb8-5755-ab7e-89ff3a6c92cb"))
+(wire (pts (xy 241.3 68.58) (xy 247.65 68.58)) (stroke (width 0) (type default)) (uuid "95ec9b9e-7591-5e60-a813-7642ac684919"))
+(global_label "GND" (shape bidirectional) (at 247.65 68.58 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "3f70ff67-01da-58f6-83ec-b898a9c58093"))
+(symbol (lib_id "Device:C") (at 104.14 78.74 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "05a99b0f-3f36-5e8e-89c1-1956fd5d4fb7")
+(property "Reference" "C1" (at 104.14 72.39 0) (effects (font (size 1.0 1.0))))
+(property "Value" "100n" (at 104.14 74.93 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:C0402" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Murata" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "GRM155R71A104KA01D" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "100nF X7R 10V 0402 local decoupling" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=GRM155R71A104KA01D" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=GRM155R71A104KA01D" (at 104.14 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "9f169fdc-aa4d-59a3-8f53-7df41fc044e2"))
+(pin "2" (uuid "d17f737d-d398-5d7e-8d46-039eaff210c4"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "C1") (unit 1)))))
+(wire (pts (xy 104.14 74.93) (xy 104.14 68.58)) (stroke (width 0) (type default)) (uuid "719e51e7-fb17-5148-9b9c-6b770fca1517"))
+(global_label "VCC" (shape bidirectional) (at 104.14 68.58 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "ee74f91a-a42a-5911-9d39-6b2861f43cd5"))
+(wire (pts (xy 104.14 82.55) (xy 104.14 88.9)) (stroke (width 0) (type default)) (uuid "ac087999-a5e5-5da1-ba59-79dde2a0bef9"))
+(global_label "GND" (shape bidirectional) (at 104.14 88.9 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "3f13a89c-563a-5ca8-8c80-acd3743805d9"))
+(symbol (lib_id "Device:C") (at 124.46 78.74 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "f26e2032-8372-50f3-87cd-476553b9b849")
+(property "Reference" "C2" (at 124.46 72.39 0) (effects (font (size 1.0 1.0))))
+(property "Value" "10u" (at 124.46 74.93 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:C0805" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Manufacturer" "Samsung Electro-Mechanics" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "MPN" "CL21A106KPFNNNE" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Description" "10uF X5R 10V 0805 bulk; verify DC bias" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Datasheet" "" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "DigiKey" "https://www.digikey.com/en/products?keywords=CL21A106KPFNNNE" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(property "Mouser" "https://www.mouser.com/c/?q=CL21A106KPFNNNE" (at 124.46 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "6dfead51-a592-5d62-a325-d5e87340481b"))
+(pin "2" (uuid "29a6a36e-233f-5f6a-867d-74976a86bb9e"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "C2") (unit 1)))))
+(wire (pts (xy 124.46 74.93) (xy 124.46 68.58)) (stroke (width 0) (type default)) (uuid "d8da98f0-43e6-593f-a856-a9355b5b9631"))
+(global_label "VCC" (shape bidirectional) (at 124.46 68.58 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "0124ec15-383e-5832-86c8-ab1c7ea0fb63"))
+(wire (pts (xy 124.46 82.55) (xy 124.46 88.9)) (stroke (width 0) (type default)) (uuid "d10b3539-71af-5b17-8051-e3cd33102ff1"))
+(global_label "GND" (shape bidirectional) (at 124.46 88.9 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "746e9af4-fd04-5943-bef0-74b7dfd80b87"))
+(symbol (lib_id "Connector:TestPoint") (at 302.26 38.10 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "41314636-f88a-5179-bc29-dfc803976900")
+(property "Reference" "TP1" (at 302.26 31.75 0) (effects (font (size 1.0 1.0))))
+(property "Value" "PB0" (at 302.26 34.29 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP1" (at 302.26 31.75 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "9175dcb4-8fed-584d-9fdf-f225848081da"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP1") (unit 1)))))
+(wire (pts (xy 302.26 38.1) (xy 302.26 44.45)) (stroke (width 0) (type default)) (uuid "b3cb1c1c-d8e2-534b-8164-5389a99a2516"))
+(global_label "PB0" (shape bidirectional) (at 302.26 44.45 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "fbe19275-c4ae-5595-a843-88ab08a4ea23"))
+(symbol (lib_id "Connector:TestPoint") (at 332.74 38.10 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "07606695-9951-5d54-bf6b-d369e310cf68")
+(property "Reference" "TP2" (at 332.74 31.75 0) (effects (font (size 1.0 1.0))))
+(property "Value" "PB1" (at 332.74 34.29 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP2" (at 332.74 31.75 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "fc9b56f2-2857-5835-9602-3347e89a8a8a"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP2") (unit 1)))))
+(wire (pts (xy 332.74 38.1) (xy 332.74 44.45)) (stroke (width 0) (type default)) (uuid "977a8022-5fb1-559d-bc42-92e393335c87"))
+(global_label "PB1" (shape bidirectional) (at 332.74 44.45 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "ee58a040-97e7-5272-9846-98d555faeaa3"))
+(symbol (lib_id "Connector:TestPoint") (at 363.22 38.10 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "71f3192c-a71f-5e73-b10c-e34a88725494")
+(property "Reference" "TP3" (at 363.22 31.75 0) (effects (font (size 1.0 1.0))))
+(property "Value" "PB2" (at 363.22 34.29 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP3" (at 363.22 31.75 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "4b6b8547-122b-54d8-9ca0-feaa01e6ce61"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP3") (unit 1)))))
+(wire (pts (xy 363.22 38.1) (xy 363.22 44.45)) (stroke (width 0) (type default)) (uuid "cde3a836-3f09-5441-b14d-53003ce10e9e"))
+(global_label "PB2" (shape bidirectional) (at 363.22 44.45 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "a3c8987e-267a-5b85-b1e4-747e59b8b0d4"))
+(symbol (lib_id "Connector:TestPoint") (at 302.26 58.42 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "abddf688-6a32-51ac-9b95-0a3e5b4f1cf1")
+(property "Reference" "TP4" (at 302.26 52.07 0) (effects (font (size 1.0 1.0))))
+(property "Value" "PB3" (at 302.26 54.61 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP4" (at 302.26 52.07 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "9052a826-dc7b-5d1e-a96b-f664b28c4363"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP4") (unit 1)))))
+(wire (pts (xy 302.26 58.42) (xy 302.26 64.77)) (stroke (width 0) (type default)) (uuid "73c8fb6e-4d38-56c6-a092-d74a14afa8fa"))
+(global_label "PB3" (shape bidirectional) (at 302.26 64.77 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "e6d71f74-abc7-5b18-8b12-74905f18b0bb"))
+(symbol (lib_id "Connector:TestPoint") (at 332.74 58.42 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "9b5d165d-af0f-5ee8-9e8a-30d6f7522cd3")
+(property "Reference" "TP5" (at 332.74 52.07 0) (effects (font (size 1.0 1.0))))
+(property "Value" "PB4" (at 332.74 54.61 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP5" (at 332.74 52.07 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "1c1d0060-6fe2-5141-8cba-3f5c75c96e03"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP5") (unit 1)))))
+(wire (pts (xy 332.74 58.42) (xy 332.74 64.77)) (stroke (width 0) (type default)) (uuid "96e5c137-bed1-519d-9122-b4badd5e4194"))
+(global_label "PB4" (shape bidirectional) (at 332.74 64.77 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "74fb4ebe-198b-52d1-b3c4-231e0ff0d88d"))
+(symbol (lib_id "Connector:TestPoint") (at 363.22 58.42 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "e30c631a-165e-5bd7-a8b7-d1303c28a7af")
+(property "Reference" "TP6" (at 363.22 52.07 0) (effects (font (size 1.0 1.0))))
+(property "Value" "PB5" (at 363.22 54.61 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP6" (at 363.22 52.07 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "3abccc37-0238-523c-a690-7aeb639148b9"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP6") (unit 1)))))
+(wire (pts (xy 363.22 58.42) (xy 363.22 64.77)) (stroke (width 0) (type default)) (uuid "839fe155-c2c7-59e3-9a46-ec75beda96ea"))
+(global_label "PB5" (shape bidirectional) (at 363.22 64.77 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "b701746e-a44e-5005-8b50-0559a7e1abab"))
+(symbol (lib_id "Connector:TestPoint") (at 302.26 78.74 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "1eb18a4a-7f05-5581-9959-6ec43856bf4a")
+(property "Reference" "TP7" (at 302.26 72.39 0) (effects (font (size 1.0 1.0))))
+(property "Value" "GND" (at 302.26 74.93 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP7" (at 302.26 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "6a9c7ac8-4eee-5aae-8097-e05eca406b3b"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP7") (unit 1)))))
+(wire (pts (xy 302.26 78.74) (xy 302.26 85.09)) (stroke (width 0) (type default)) (uuid "0f882e04-bfba-545f-bd7d-18d0541aa4cf"))
+(global_label "GND" (shape bidirectional) (at 302.26 85.09 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "7e7f2137-670c-5a01-9fb3-a7d609ee2c6d"))
+(symbol (lib_id "Connector:TestPoint") (at 332.74 78.74 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "b876239e-6725-5268-8d90-07692032598c")
+(property "Reference" "TP8" (at 332.74 72.39 0) (effects (font (size 1.0 1.0))))
+(property "Value" "GND" (at 332.74 74.93 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP8" (at 332.74 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "d23dd7ba-9f0c-54bc-949f-8db75a81ac41"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP8") (unit 1)))))
+(wire (pts (xy 332.74 78.74) (xy 332.74 85.09)) (stroke (width 0) (type default)) (uuid "f6f9a9f4-d811-55ad-9b86-3147b592433e"))
+(global_label "GND" (shape bidirectional) (at 332.74 85.09 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "02fb73ee-e1d8-596d-96cb-3653341af4ba"))
+(symbol (lib_id "Connector:TestPoint") (at 363.22 78.74 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "2c4abd7b-a4f5-5119-a9d3-5db42311b02d")
+(property "Reference" "TP9" (at 363.22 72.39 0) (effects (font (size 1.0 1.0))))
+(property "Value" "VCC" (at 363.22 74.93 0) (effects (font (size 1.0 1.0))))
+(property "Footprint" "ring_rgbw:IR_TP9" (at 363.22 72.39 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "27184d7a-7b5d-58c5-879e-61fd48c56a8e"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "TP9") (unit 1)))))
+(wire (pts (xy 363.22 78.74) (xy 363.22 85.09)) (stroke (width 0) (type default)) (uuid "9c254b7a-b53a-5da5-9f3b-83086392233b"))
+(global_label "VCC" (shape bidirectional) (at 363.22 85.09 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "b5eef373-5b9f-5287-ae04-1e57369c7b39"))
+(symbol (lib_id "power:PWR_FLAG") (at 205.74 99.06 0) (unit 1) (in_bom no) (on_board no) (dnp no) (uuid "4d89e1ff-f50e-5d06-9ede-a03c9d68bf9f")
+(property "Reference" "#FLG01" (at 205.74 92.71 0) (effects (font (size 1.0 1.0)) hide))
+(property "Value" "PWR_FLAG" (at 205.74 95.25 0) (effects (font (size 1.0 1.0)) hide))
+(property "Footprint" "" (at 205.74 92.71 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "6bb24821-3323-50b3-84f9-e103bc323415"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "#FLG01") (unit 1)))))
+(wire (pts (xy 205.74 99.06) (xy 205.74 105.41)) (stroke (width 0) (type default)) (uuid "799e57d0-fcfd-5033-ab66-5fea5610e99a"))
+(global_label "VCC" (shape bidirectional) (at 205.74 105.41 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "ceb3d845-2ce3-54f4-abec-aa6fe96667aa"))
+(symbol (lib_id "power:PWR_FLAG") (at 226.06 99.06 0) (unit 1) (in_bom no) (on_board no) (dnp no) (uuid "24243c96-1624-5929-a810-5daccf0ecd13")
+(property "Reference" "#FLG02" (at 226.06 92.71 0) (effects (font (size 1.0 1.0)) hide))
+(property "Value" "PWR_FLAG" (at 226.06 95.25 0) (effects (font (size 1.0 1.0)) hide))
+(property "Footprint" "" (at 226.06 92.71 0) (effects (font (size 1.0 1.0)) hide))
+(pin "1" (uuid "439786f9-dada-5000-b0be-c8cc6f8c2b09"))
+(instances (project "ring_pcb_RGBW" (path "/73a83665-f655-5538-a6b2-5f754948bf43" (reference "#FLG02") (unit 1)))))
+(wire (pts (xy 226.06 99.06) (xy 226.06 105.41)) (stroke (width 0) (type default)) (uuid "84c742b1-504b-59f4-b99e-ac4ff0331d41"))
+(global_label "GND" (shape bidirectional) (at 226.06 105.41 0) (effects (font (size 1.0 1.0)) (justify left)) (uuid "fce8f246-a9b3-53d9-b583-bb40a11ad367"))
+(text "MCU / ISP: preserve RESET; 8 MHz internal oscillator" (at 27.94 20.32 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "18fc73e3-09cb-5e98-be34-16674683dad3"))
+(text "One RGBW package: independent dice, common anodes on PCB" (at 119.38 20.32 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "c92d3de1-ede5-501d-b974-b2f643b18b7f"))
+(text "PB3: OPEN = high / CLOSED = low; latch before PWM" (at 200.66 20.32 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "a457f1e2-66f4-5b72-b762-a983d80649da"))
+(text "LOCKED IR CONTACTS: no header needed on ring" (at 299.72 20.32 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "9c85b9ac-b39f-55ff-9619-bf44b6bd9658"))
+(text "R / PB0 / OC0A" (at 30.48 119.38 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "88c4cc56-ece7-5dad-9ead-5e58937b3587"))
+(text "G / PB1 / OC0B" (at 121.92 119.38 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "db5cade4-b839-5df9-8d73-54b632e81026"))
+(text "B / PB4 / OC1B" (at 213.36 119.38 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "f4e8f288-41df-546d-8597-d5cbd010df73"))
+(text "W / PB2 / SOFTWARE PWM" (at 304.8 119.38 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "0a76a602-464d-56e4-90d0-8a31eb7af3a5"))
+(text "2.2k per die: conservative low current, NOT constant brightness. No boost: blue/white may dim on CR2032." (at 25.4 213.36 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "1eebb321-5e0b-5052-87fb-1f2871769070"))
+(text "Programming: remove battery; single 5V supply, max 5.5V. ISP may light LEDs; current resistors remain in circuit." (at 25.4 223.52 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "fa0b49a6-9c52-5a6a-b944-4ce2480eddf5"))
+(text "Firmware must preserve RESET/SPI fuses. Physical current, colour, temperature, cell life and clip fit are unqualified." (at 25.4 233.68 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "31d757a5-2526-5daa-ab9a-8f790de5afab"))
+(sheet_instances (path "/" (page "1"))))

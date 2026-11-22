@@ -1,0 +1,25 @@
+{
+  "scope": "Datasheet-sized envelope models, not manufacturer CAD; terminal details illustrative",
+  "ATtiny85_QFN20": {
+    "body_mm": [
+      4,
+      4,
+      0.9
+    ],
+    "ep_mm": [
+      2.6,
+      2.6
+    ],
+    "pitch_mm": 0.5,
+    "source": "Microchip ATtiny25/45/85 20M QFN package"
+  },
+  "NTZD3154N_SOT563": {
+    "body_mm": [
+      1.2,
+      1.6,
+      0.55
+    ],
+    "source": "onsemi NTZD3154N/D Rev5 case 463A"
+  },
+  "reason": "Explicit nominal package envelopes; no guessed model aliases used"
+}

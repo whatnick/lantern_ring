@@ -1,0 +1,1340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\tisha\dev\lantern_ring\hardware\v2.0\ring_pcb_RGBW\ring_pcb_RGBW.kicad_sch</source>
+    <date>2026-11-11T22:47:39</date>
+    <tool>Eeschema 10.0.3</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Lantern Ring RGBW - four-channel PWM</title>
+        <company>whatnick</company>
+        <rev>0.1</rev>
+        <date/>
+        <source>ring_pcb_RGBW.kicad_sch</source>
+        <comment number="1" value="Experimental; IR outline / TP1-TP9; battery removed for ISP"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>100n</value>
+      <footprint>ring_rgbw:C0402</footprint>
+      <description>100nF X7R 10V 0402 local decoupling</description>
+      <fields>
+        <field name="Manufacturer">Murata</field>
+        <field name="MPN">GRM155R71A104KA01D</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=GRM155R71A104KA01D</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=GRM155R71A104KA01D</field>
+        <field name="Footprint">ring_rgbw:C0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">100nF X7R 10V 0402 local decoupling</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Manufacturer" value="Murata"/>
+      <property name="MPN" value="GRM155R71A104KA01D"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=GRM155R71A104KA01D"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=GRM155R71A104KA01D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>05a99b0f-3f36-5e8e-89c1-1956fd5d4fb7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C2">
+      <value>10u</value>
+      <footprint>ring_rgbw:C0805</footprint>
+      <description>10uF X5R 10V 0805 bulk; verify DC bias</description>
+      <fields>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL21A106KPFNNNE</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=CL21A106KPFNNNE</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=CL21A106KPFNNNE</field>
+        <field name="Footprint">ring_rgbw:C0805</field>
+        <field name="Datasheet"/>
+        <field name="Description">10uF X5R 10V 0805 bulk; verify DC bias</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL21A106KPFNNNE"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=CL21A106KPFNNNE"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=CL21A106KPFNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f26e2032-8372-50f3-87cd-476553b9b849</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D1">
+      <value>CLQ6A RGBW</value>
+      <footprint>ring_rgbw:CLQ6A_PLCC8</footprint>
+      <datasheet>https://assets.cree-led.com/a/ds/h/HB-CLQ6A-TKW.pdf</datasheet>
+      <description>Four independent dies, anodes joined on PCB; 5.2x5.0x1.1 mm</description>
+      <fields>
+        <field name="Manufacturer">Cree LED</field>
+        <field name="MPN">CLQ6A-TKW-S1L1R1H1QBB7935BB3</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=CLQ6A-TKW-S1L1R1H1QBB7935BB3</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=CLQ6A-TKW-S1L1R1H1QBB7935BB3</field>
+        <field name="Footprint">ring_rgbw:CLQ6A_PLCC8</field>
+        <field name="Datasheet">https://assets.cree-led.com/a/ds/h/HB-CLQ6A-TKW.pdf</field>
+        <field name="Description">Four independent dies, anodes joined on PCB; 5.2x5.0x1.1 mm</field>
+      </fields>
+      <libsource lib="ring_rgbw" part="CLQ6A_RGBW" description=""/>
+      <property name="Manufacturer" value="Cree LED"/>
+      <property name="MPN" value="CLQ6A-TKW-S1L1R1H1QBB7935BB3"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=CLQ6A-TKW-S1L1R1H1QBB7935BB3"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=CLQ6A-TKW-S1L1R1H1QBB7935BB3"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ee7fa090-a72c-55bc-8f8a-3a340abff53c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="8"/>
+            <pin num="7"/>
+            <pin num="6"/>
+            <pin num="5"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="JP1">
+      <value>MODE: open/closed</value>
+      <footprint>ring_rgbw:ModeBridge</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:ModeBridge</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Jumper" part="SolderJumper_2_Open" description="Solder Jumper, 2-pole, open"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="solder jumper SPST"/>
+      <property name="ki_fp_filters" value="SolderJumper*Open*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fb9261bd-d65f-5ed6-81dc-728cf3c7dafd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q1">
+      <value>DMG1012T</value>
+      <footprint>ring_rgbw:SOT523</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</datasheet>
+      <description>R low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</description>
+      <fields>
+        <field name="Manufacturer">Diodes Incorporated</field>
+        <field name="MPN">DMG1012T-7</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=DMG1012T-7</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=DMG1012T-7</field>
+        <field name="Footprint">ring_rgbw:SOT523</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</field>
+        <field name="Description">R low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="DMG1012T" description="20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523"/>
+      <property name="Manufacturer" value="Diodes Incorporated"/>
+      <property name="MPN" value="DMG1012T-7"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=DMG1012T-7"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=DMG1012T-7"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="N-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?523*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dc328029-95e5-566c-8f1f-97778605b119</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="3"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q2">
+      <value>DMG1012T</value>
+      <footprint>ring_rgbw:SOT523</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</datasheet>
+      <description>G low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</description>
+      <fields>
+        <field name="Manufacturer">Diodes Incorporated</field>
+        <field name="MPN">DMG1012T-7</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=DMG1012T-7</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=DMG1012T-7</field>
+        <field name="Footprint">ring_rgbw:SOT523</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</field>
+        <field name="Description">G low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="DMG1012T" description="20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523"/>
+      <property name="Manufacturer" value="Diodes Incorporated"/>
+      <property name="MPN" value="DMG1012T-7"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=DMG1012T-7"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=DMG1012T-7"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="N-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?523*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>39cc6fb2-3aae-5d4b-b6cb-81e8b1c272d7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="3"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q3">
+      <value>DMG1012T</value>
+      <footprint>ring_rgbw:SOT523</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</datasheet>
+      <description>B low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</description>
+      <fields>
+        <field name="Manufacturer">Diodes Incorporated</field>
+        <field name="MPN">DMG1012T-7</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=DMG1012T-7</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=DMG1012T-7</field>
+        <field name="Footprint">ring_rgbw:SOT523</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</field>
+        <field name="Description">B low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="DMG1012T" description="20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523"/>
+      <property name="Manufacturer" value="Diodes Incorporated"/>
+      <property name="MPN" value="DMG1012T-7"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=DMG1012T-7"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=DMG1012T-7"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="N-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?523*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>084a6b03-fd71-55f4-a584-9136b8c57241</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="3"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q4">
+      <value>DMG1012T</value>
+      <footprint>ring_rgbw:SOT523</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</datasheet>
+      <description>W low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</description>
+      <fields>
+        <field name="Manufacturer">Diodes Incorporated</field>
+        <field name="MPN">DMG1012T-7</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=DMG1012T-7</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=DMG1012T-7</field>
+        <field name="Footprint">ring_rgbw:SOT523</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/DMG1012T.pdf</field>
+        <field name="Description">W low-side MOSFET; Rds max 0.7 ohm at Vgs=1.8 V</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="DMG1012T" description="20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523"/>
+      <property name="Manufacturer" value="Diodes Incorporated"/>
+      <property name="MPN" value="DMG1012T-7"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=DMG1012T-7"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=DMG1012T-7"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="N-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?523*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>41b3fe3f-2c0d-53d4-b1e3-feb7857890f7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="3"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R1">
+      <value>2.2k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>R die current limiter; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-072K2L</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-072K2L</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">R die current limiter; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-072K2L"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-072K2L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4d76daef-1724-5edb-9c18-7c7e9e7e6066</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R2">
+      <value>2.2k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>G die current limiter; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-072K2L</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-072K2L</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">G die current limiter; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-072K2L"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-072K2L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>279c967c-9d51-5c4c-84c4-93426f2801df</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R3">
+      <value>2.2k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>B die current limiter; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-072K2L</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-072K2L</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">B die current limiter; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-072K2L"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-072K2L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>47a06387-e948-5042-9d90-aee07b65108e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R4">
+      <value>2.2k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>W die current limiter; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-072K2L</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-072K2L</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">W die current limiter; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-072K2L"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-072K2L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>277baf5e-5a48-55f0-8e3c-72c7f6ded604</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R5">
+      <value>1k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>R gate/ISP isolation; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-071KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-071KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">R gate/ISP isolation; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-071KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-071KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6649f390-ecc5-5cd4-a750-81351dde97f5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R6">
+      <value>1k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>G gate/ISP isolation; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-071KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-071KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">G gate/ISP isolation; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-071KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-071KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c68544c5-c3c6-544c-a524-efb0c348a0e8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R7">
+      <value>1k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>B gate/ISP isolation; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-071KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-071KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">B gate/ISP isolation; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-071KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-071KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b723f62e-e962-5bbf-b787-2c273c92d724</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R8">
+      <value>1k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>W gate/ISP isolation; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-071KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-071KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">W gate/ISP isolation; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-071KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-071KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2d805b37-2d15-57b7-b8af-f3181a7b598e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R9">
+      <value>100k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>R gate pull-down; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-07100KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-07100KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">R gate pull-down; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-07100KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-07100KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2e55be01-4b9c-5545-9f4a-628f5628b364</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R10">
+      <value>100k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>G gate pull-down; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-07100KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-07100KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">G gate pull-down; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-07100KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-07100KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27dc2533-7fbf-5326-b158-76e6e7a6c97f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R11">
+      <value>100k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>B gate pull-down; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-07100KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-07100KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">B gate pull-down; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-07100KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-07100KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a5fc20cd-7db5-5bdf-a8e5-29713d349d2a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R12">
+      <value>100k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>W gate pull-down; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-07100KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-07100KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">W gate pull-down; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-07100KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-07100KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9ded8e5a-122b-508a-b89a-3bc41a5036e0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R13">
+      <value>100k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>Mode selector pull-up; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-07100KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-07100KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">Mode selector pull-up; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-07100KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-07100KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>78dc5638-7cfd-519f-87cc-752b83614743</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R14">
+      <value>10k</value>
+      <footprint>ring_rgbw:R0402</footprint>
+      <description>ISP RESET pull-up; 0402 1% 63mW</description>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=RC0402FR-0710KL</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=RC0402FR-0710KL</field>
+        <field name="Footprint">ring_rgbw:R0402</field>
+        <field name="Datasheet"/>
+        <field name="Description">ISP RESET pull-up; 0402 1% 63mW</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=RC0402FR-0710KL"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=RC0402FR-0710KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>76ebd97f-6578-538c-bd7d-09f7e615291a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP1">
+      <value>PB0</value>
+      <footprint>ring_rgbw:IR_TP1</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP1</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>41314636-f88a-5179-bc29-dfc803976900</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP2">
+      <value>PB1</value>
+      <footprint>ring_rgbw:IR_TP2</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP2</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>07606695-9951-5d54-bf6b-d369e310cf68</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP3">
+      <value>PB2</value>
+      <footprint>ring_rgbw:IR_TP3</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP3</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>71f3192c-a71f-5e73-b10c-e34a88725494</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP4">
+      <value>PB3</value>
+      <footprint>ring_rgbw:IR_TP4</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP4</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>abddf688-6a32-51ac-9b95-0a3e5b4f1cf1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP5">
+      <value>PB4</value>
+      <footprint>ring_rgbw:IR_TP5</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP5</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9b5d165d-af0f-5ee8-9e8a-30d6f7522cd3</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP6">
+      <value>PB5</value>
+      <footprint>ring_rgbw:IR_TP6</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP6</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e30c631a-165e-5bd7-a8b7-d1303c28a7af</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP7">
+      <value>GND</value>
+      <footprint>ring_rgbw:IR_TP7</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP7</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1eb18a4a-7f05-5581-9959-6ec43856bf4a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP8">
+      <value>GND</value>
+      <footprint>ring_rgbw:IR_TP8</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP8</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b876239e-6725-5268-8d90-07692032598c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP9">
+      <value>VCC</value>
+      <footprint>ring_rgbw:IR_TP9</footprint>
+      <fields>
+        <field name="Footprint">ring_rgbw:IR_TP9</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2c4abd7b-a4f5-5119-a9d3-5db42311b02d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>ATtiny85-20MU</value>
+      <footprint>ring_rgbw:QFN20</footprint>
+      <datasheet>https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf</datasheet>
+      <description>ATtiny85 8KB, QFN20 exposed pad, 2.7-5.5 V</description>
+      <fields>
+        <field name="Manufacturer">Microchip</field>
+        <field name="MPN">ATTINY85-20MU</field>
+        <field name="DigiKey">https://www.digikey.com/en/products?keywords=ATTINY85-20MU</field>
+        <field name="Mouser">https://www.mouser.com/c/?q=ATTINY85-20MU</field>
+        <field name="Footprint">ring_rgbw:QFN20</field>
+        <field name="Datasheet">https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf</field>
+        <field name="Description">ATtiny85 8KB, QFN20 exposed pad, 2.7-5.5 V</field>
+      </fields>
+      <libsource lib="ring_rgbw" part="ATtiny85-20M" description="20MHz, 8kB Flash, 512B SRAM, 512B EEPROM, debugWIRE, QFN-20"/>
+      <property name="Manufacturer" value="Microchip"/>
+      <property name="MPN" value="ATTINY85-20MU"/>
+      <property name="DigiKey" value="https://www.digikey.com/en/products?keywords=ATTINY85-20MU"/>
+      <property name="Mouser" value="https://www.mouser.com/c/?q=ATTINY85-20MU"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ring_pcb_RGBW.kicad_sch"/>
+      <property name="ki_keywords" value="AVR 8bit Microcontroller tinyAVR"/>
+      <property name="ki_fp_filters" value="QFN*1EP*4x4mm*P0.5mm*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9157f57e-2091-58b8-8b38-4ca207a1c7c0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="13"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="15"/>
+            <pin num="8"/>
+            <pin num="21"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="14"/>
+            <pin num="2"/>
+            <pin num="5"/>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Jumper" part="SolderJumper_2_Open">
+      <description>Solder Jumper, 2-pole, open</description>
+      <footprints>
+        <fp>SolderJumper*Open*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">SolderJumper_2_Open</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Solder Jumper, 2-pole, open</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="B" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="DMG1012T">
+      <description>20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523</description>
+      <docs>https://www.diodes.com/assets/Datasheets/ds31783.pdf</docs>
+      <footprints>
+        <fp>SOT?523*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">DMG1012T</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-523</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/ds31783.pdf</field>
+        <field name="Description">20V Vds, 0.63 Id, N-Channel MOSFET with ESD protection, SOT-523</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ring_rgbw" part="ATtiny85-20M">
+      <description>20MHz, 8kB Flash, 512B SRAM, 512B EEPROM, debugWIRE, QFN-20</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf</docs>
+      <footprints>
+        <fp>QFN*1EP*4x4mm*P0.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ATtiny85-20M</field>
+        <field name="Footprint">Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf</field>
+        <field name="Description">20MHz, 8kB Flash, 512B SRAM, 512B EEPROM, debugWIRE, QFN-20</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~{RESET}/PB5" type="bidirectional"/>
+        <pin num="2" name="XTAL1/PB3" type="bidirectional"/>
+        <pin num="3" name="NC" type="no_connect"/>
+        <pin num="4" name="NC" type="no_connect"/>
+        <pin num="5" name="XTAL2/PB4" type="bidirectional"/>
+        <pin num="6" name="NC" type="no_connect"/>
+        <pin num="7" name="NC" type="no_connect"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="NC" type="no_connect"/>
+        <pin num="10" name="NC" type="no_connect"/>
+        <pin num="11" name="AREF/PB0" type="bidirectional"/>
+        <pin num="12" name="PB1" type="bidirectional"/>
+        <pin num="13" name="NC" type="no_connect"/>
+        <pin num="14" name="PB2" type="bidirectional"/>
+        <pin num="15" name="VCC" type="power_in"/>
+        <pin num="16" name="NC" type="no_connect"/>
+        <pin num="17" name="NC" type="no_connect"/>
+        <pin num="18" name="NC" type="no_connect"/>
+        <pin num="19" name="NC" type="no_connect"/>
+        <pin num="20" name="NC" type="no_connect"/>
+        <pin num="21" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ring_rgbw" part="CLQ6A_RGBW">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">CLQ6A_RGBW</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="A_R" type="passive"/>
+        <pin num="2" name="A_G" type="passive"/>
+        <pin num="3" name="A_B" type="passive"/>
+        <pin num="4" name="A_W" type="passive"/>
+        <pin num="5" name="K_W" type="passive"/>
+        <pin num="6" name="K_B" type="passive"/>
+        <pin num="7" name="K_G" type="passive"/>
+        <pin num="8" name="K_R" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>${KICAD10_SYMBOL_DIR}/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>${KICAD10_SYMBOL_DIR}/Device.kicad_sym</uri>
+    </library>
+    <library logical="Jumper">
+      <uri>${KICAD10_SYMBOL_DIR}/Jumper.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>${KICAD10_SYMBOL_DIR}/Transistor_FET.kicad_sym</uri>
+    </library>
+    <library logical="ring_rgbw">
+      <uri>${KIPRJMOD}/ring_rgbw.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="B_D" class="Default">
+      <node ref="Q3" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+    </net>
+    <net code="2" name="B_G" class="Default">
+      <node ref="Q3" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+    </net>
+    <net code="3" name="B_K" class="Default">
+      <node ref="D1" pin="6" pinfunction="K_B_6" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+    </net>
+    <net code="4" name="GND" class="Power">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="JP1" pin="2" pinfunction="B_2" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q4" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="TP7" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP8" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="21" pinfunction="GND_21" pintype="passive"/>
+      <node ref="U1" pin="8" pinfunction="GND_8" pintype="power_in"/>
+    </net>
+    <net code="5" name="G_D" class="Default">
+      <node ref="Q2" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+    </net>
+    <net code="6" name="G_G" class="Default">
+      <node ref="Q2" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+    </net>
+    <net code="7" name="G_K" class="Default">
+      <node ref="D1" pin="7" pinfunction="K_G_7" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="8" name="PB0" class="Default">
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="11" pinfunction="AREF/PB0_11" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="PB1" class="Default">
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="12" pinfunction="PB1_12" pintype="bidirectional"/>
+    </net>
+    <net code="10" name="PB2" class="Default">
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="14" pinfunction="PB2_14" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="PB3" class="Default">
+      <node ref="JP1" pin="1" pinfunction="A_1" pintype="passive"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+      <node ref="TP4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="XTAL1/PB3_2" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="PB4" class="Default">
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="TP5" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="XTAL2/PB4_5" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="PB5" class="Default">
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="TP6" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="~{RESET}/PB5_1" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="R_D" class="Default">
+      <node ref="Q1" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+    </net>
+    <net code="15" name="R_G" class="Default">
+      <node ref="Q1" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+    </net>
+    <net code="16" name="R_K" class="Default">
+      <node ref="D1" pin="8" pinfunction="K_R_8" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+    </net>
+    <net code="17" name="VCC" class="Power">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="A_R_1" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A_G_2" pintype="passive"/>
+      <node ref="D1" pin="3" pinfunction="A_B_3" pintype="passive"/>
+      <node ref="D1" pin="4" pinfunction="A_W_4" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="TP9" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="15" pinfunction="VCC_15" pintype="power_in"/>
+    </net>
+    <net code="18" name="W_D" class="Default">
+      <node ref="Q4" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+    </net>
+    <net code="19" name="W_G" class="Default">
+      <node ref="Q4" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+    </net>
+    <net code="20" name="W_K" class="Default">
+      <node ref="D1" pin="5" pinfunction="K_W_5" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+    </net>
+    <net code="21" name="unconnected-(U1-NC-Pad3)" class="Default">
+      <node ref="U1" pin="3" pinfunction="NC_3" pintype="no_connect"/>
+    </net>
+    <net code="22" name="unconnected-(U1-NC-Pad4)" class="Default">
+      <node ref="U1" pin="4" pinfunction="NC_4" pintype="no_connect"/>
+    </net>
+    <net code="23" name="unconnected-(U1-NC-Pad6)" class="Default">
+      <node ref="U1" pin="6" pinfunction="NC_6" pintype="no_connect"/>
+    </net>
+    <net code="24" name="unconnected-(U1-NC-Pad7)" class="Default">
+      <node ref="U1" pin="7" pinfunction="NC_7" pintype="no_connect"/>
+    </net>
+    <net code="25" name="unconnected-(U1-NC-Pad9)" class="Default">
+      <node ref="U1" pin="9" pinfunction="NC_9" pintype="no_connect"/>
+    </net>
+    <net code="26" name="unconnected-(U1-NC-Pad10)" class="Default">
+      <node ref="U1" pin="10" pinfunction="NC_10" pintype="no_connect"/>
+    </net>
+    <net code="27" name="unconnected-(U1-NC-Pad13)" class="Default">
+      <node ref="U1" pin="13" pinfunction="NC_13" pintype="no_connect"/>
+    </net>
+    <net code="28" name="unconnected-(U1-NC-Pad16)" class="Default">
+      <node ref="U1" pin="16" pinfunction="NC_16" pintype="no_connect"/>
+    </net>
+    <net code="29" name="unconnected-(U1-NC-Pad17)" class="Default">
+      <node ref="U1" pin="17" pinfunction="NC_17" pintype="no_connect"/>
+    </net>
+    <net code="30" name="unconnected-(U1-NC-Pad18)" class="Default">
+      <node ref="U1" pin="18" pinfunction="NC_18" pintype="no_connect"/>
+    </net>
+    <net code="31" name="unconnected-(U1-NC-Pad19)" class="Default">
+      <node ref="U1" pin="19" pinfunction="NC_19" pintype="no_connect"/>
+    </net>
+    <net code="32" name="unconnected-(U1-NC-Pad20)" class="Default">
+      <node ref="U1" pin="20" pinfunction="NC_20" pintype="no_connect"/>
+    </net>
+  </nets>
+</export>

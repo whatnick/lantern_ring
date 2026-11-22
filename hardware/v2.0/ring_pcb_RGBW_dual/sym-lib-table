@@ -1,0 +1,1 @@
+(sym_lib_table (version 7) (lib (name "ring_rgbw")(type "KiCad")(uri "${KIPRJMOD}/ring_rgbw.kicad_sym")(options "")(descr "RGBW local symbols")))
